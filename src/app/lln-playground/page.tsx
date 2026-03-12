@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect, useCallback, useMemo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useMemo, useCallback } from "react";
+import { motion, AnimatePresence, useAnimation } from "framer-motion";
 import {
   Gamepad2,
   Brain,
@@ -93,8 +93,31 @@ import {
   Gift,
   PartyPopper,
   Confetti,
+  Compass,
+  Search,
+  Filter,
+  LayoutGrid,
+  LayoutList,
+  Database,
+  Cpu,
+  Fungi,
+  TreeDeciduous,
+  FlaskConical,
+  Globe,
+  Merge,
+  Crystal,
+  Hexagon,
 } from "lucide-react";
 import Link from "next/link";
+
+// Import all our major components
+import { SynthesisEngine, COMBINATION_TILES, METHOD_INGREDIENTS, discoverCombinations } from "./SynthesisEngine";
+import { MyceliumNetwork, MyceliumNetworkSimulation, LifePrinciplesDisplay } from "./MyceliumNetwork";
+import { OriginFirstDistillation, BootstrapIntelligenceEngine, SuperInstanceWorkflow, SEED_LIBRARY, GEOMETRIC_COMPRESSORS } from "./OriginFirstDistillation";
+import { KnowledgeDistillationSystem, OriginFirstDistillationEngine } from "./KnowledgeDistillationSystem";
+import { UserLearningEngineComponent } from "./UserLearningEngine";
+import { ExplorerHub } from "./ExplorerHub";
+import { ExtendedSynthesisRounds, EXTENDED_SYNTHESIS_ROUNDS } from "./SynthesisRoundsExtended";
 
 // ============================================================================
 // TYPES & INTERFACES
@@ -103,6 +126,7 @@ import Link from "next/link";
 type UserRole = "kid" | "teen" | "developer" | "researcher" | "enterprise" | "educator" | "hobbyist" | "scientist" | "pm" | "artist";
 type GameMode = "charades" | "word-chain" | "story-build" | "riddle-battle" | "emoji-translate" | "concept-map" | "debate" | "improv";
 type DifficultyLevel = "beginner" | "intermediate" | "advanced" | "expert";
+type HubSection = "play" | "synthesis" | "mycelium" | "distillation" | "learning" | "explorer" | "rounds";
 
 interface UserProfile {
   id: string;
@@ -203,37 +227,6 @@ interface Idiom {
   lockedToSeed: boolean;
   category: string;
   createdBy?: string;
-}
-
-interface TokenAnalysis {
-  baselineCost: number;
-  optimizedCost: number;
-  savings: number;
-  idiomEfficiency: number;
-  attentionJustified: boolean;
-  projectedSavings: number;
-  efficiencyTrend: "up" | "down" | "stable";
-}
-
-interface Achievement {
-  id: string;
-  name: string;
-  description: string;
-  emoji: string;
-  unlocked: boolean;
-  progress: number;
-  total: number;
-  category: "gameplay" | "social" | "creative" | "efficiency" | "learning";
-  xpReward: number;
-}
-
-interface WordCategory {
-  id: string;
-  name: string;
-  emoji: string;
-  words: string[];
-  difficulty: DifficultyLevel;
-  unlocked: boolean;
 }
 
 // ============================================================================
@@ -437,7 +430,7 @@ const AGENT_TEMPLATES: Agent[] = [
   { id: "a8", name: "Pixel", emoji: "👾", role: "actor", personality: "gamer", modelType: "claude-3", tokensUsed: 0, wins: 0, idioms: [], color: "#A855F7", unlocked: false, description: "Speaks in gaming terms" },
 ];
 
-const WORD_CATEGORIES: WordCategory[] = [
+const WORD_CATEGORIES = [
   { id: "animals", name: "Animals", emoji: "🐾", words: ["ELEPHANT", "PENGUIN", "GIRAFFE", "DOLPHIN", "BUTTERFLY"], difficulty: "beginner", unlocked: true },
   { id: "food", name: "Food", emoji: "🍕", words: ["PIZZA", "BANANA", "CHOCOLATE", "SPAGHETTI", "ICE CREAM"], difficulty: "beginner", unlocked: true },
   { id: "nature", name: "Nature", emoji: "🌿", words: ["RAINBOW", "MOUNTAIN", "OCEAN", "VOLCANO", "WATERFALL"], difficulty: "beginner", unlocked: true },
@@ -448,17 +441,6 @@ const WORD_CATEGORIES: WordCategory[] = [
   { id: "professions", name: "Jobs", emoji: "👔", words: ["ASTRONAUT", "ARCHITECT", "DETECTIVE", "INVENTOR", "PHILOSOPHER"], difficulty: "beginner", unlocked: true },
 ];
 
-const ACHIEVEMENTS: Achievement[] = [
-  { id: "first_game", name: "First Steps", description: "Complete your first game", emoji: "🎮", unlocked: false, progress: 0, total: 1, category: "gameplay", xpReward: 50 },
-  { id: "win_streak_5", name: "On Fire!", description: "Win 5 games in a row", emoji: "🔥", unlocked: false, progress: 0, total: 5, category: "gameplay", xpReward: 200 },
-  { id: "idiom_creator", name: "Language Inventor", description: "Create 10 idioms", emoji: "💡", unlocked: false, progress: 0, total: 10, category: "creative", xpReward: 150 },
-  { id: "token_saver", name: "Efficiency Expert", description: "Save 1000 tokens", emoji: "💰", unlocked: false, progress: 0, total: 1000, category: "efficiency", xpReward: 100 },
-  { id: "constraint_master", name: "Constraint Master", description: "Use all constraint types", emoji: "🏆", unlocked: false, progress: 0, total: 10, category: "gameplay", xpReward: 250 },
-  { id: "social_butterfly", name: "Social Butterfly", description: "Play with 10 different friends", emoji: "🦋", unlocked: false, progress: 0, total: 10, category: "social", xpReward: 100 },
-  { id: "quick_learner", name: "Quick Learner", description: "Guess correctly in under 3 turns", emoji: "⚡", unlocked: false, progress: 0, total: 5, category: "gameplay", xpReward: 150 },
-  { id: "teacher", name: "Teacher", description: "Help others learn 5 new concepts", emoji: "📚", unlocked: false, progress: 0, total: 5, category: "learning", xpReward: 200 },
-];
-
 const SAMPLE_IDIOMS: Idiom[] = [
   { id: "i1", shorthand: "🧊💨", meaning: "Cold shoulder - ignore/dismiss", originAgents: ["a1", "a2"], usageCount: 47, tokenSavings: 142, lockedToSeed: false, category: "social" },
   { id: "i2", shorthand: "🎲→🎯", meaning: "Random becomes intentional", originAgents: ["a2", "a3"], usageCount: 23, tokenSavings: 89, lockedToSeed: true, seed: "seed_7x9_omega", category: "strategy" },
@@ -466,426 +448,6 @@ const SAMPLE_IDIOMS: Idiom[] = [
   { id: "i4", shorthand: "🔥🧩", meaning: "Challenging but exciting", originAgents: ["a3", "a4"], usageCount: 34, tokenSavings: 78, lockedToSeed: false, category: "emotional" },
   { id: "i5", shorthand: "👀💡", meaning: "I see the idea now!", originAgents: ["a2", "a4"], usageCount: 89, tokenSavings: 167, lockedToSeed: false, category: "learning" },
 ];
-
-// ============================================================================
-// CHILD COMPONENTS
-// ============================================================================
-
-// Role Selection Modal
-function RoleSelectionModal({ onSelect, currentRole }: { onSelect: (role: UserRole) => void; currentRole?: UserRole }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
-    >
-      <motion.div
-        initial={{ scale: 0.9, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        className="bg-slate-900 rounded-3xl p-8 max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto"
-      >
-        <h2 className="text-3xl font-bold text-white text-center mb-2">Welcome to LLN Playground!</h2>
-        <p className="text-slate-400 text-center mb-8">Choose your adventure type to get started</p>
-        
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-          {(Object.entries(USER_ROLE_CONFIG) as [UserRole, typeof USER_ROLE_CONFIG[UserRole]][]).map(([role, config]) => (
-            <motion.button
-              key={role}
-              onClick={() => onSelect(role)}
-              className={`p-4 rounded-2xl border-2 transition-all ${
-                currentRole === role
-                  ? 'border-white bg-white/10'
-                  : 'border-slate-700 hover:border-slate-500 bg-slate-800/50'
-              }`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-3"
-                style={{ backgroundColor: config.color + '30' }}
-              >
-                <config.icon className="w-6 h-6" style={{ color: config.color }} />
-              </div>
-              <h3 className="text-white font-semibold text-sm text-center">{config.label}</h3>
-              <p className="text-slate-500 text-xs text-center mt-1 line-clamp-2">{config.description}</p>
-            </motion.button>
-          ))}
-        </div>
-      </motion.div>
-    </motion.div>
-  );
-}
-
-// Game Mode Selector
-function GameModeSelector({ 
-  selectedMode, 
-  onSelect, 
-  userRole,
-  unlockedOnly = true 
-}: { 
-  selectedMode: GameMode; 
-  onSelect: (mode: GameMode) => void;
-  userRole: UserRole;
-  unlockedOnly?: boolean;
-}) {
-  const modes = Object.entries(GAME_MODES) as [GameMode, typeof GAME_MODES[GameMode]][];
-  const roleConfig = USER_ROLE_CONFIG[userRole];
-  
-  return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-      {modes.map(([modeId, mode]) => (
-        <motion.button
-          key={modeId}
-          onClick={() => onSelect(modeId)}
-          className={`p-4 rounded-xl border-2 transition-all text-left ${
-            selectedMode === modeId
-              ? 'border-purple-500 bg-purple-500/20'
-              : 'border-slate-700 hover:border-slate-500 bg-slate-800/50'
-          }`}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-        >
-          <div className="flex items-center gap-2 mb-2">
-            <mode.icon className="w-5 h-5 text-purple-400" />
-            <span className="text-white font-medium text-sm">{mode.label}</span>
-          </div>
-          <p className="text-slate-500 text-xs line-clamp-2">{mode.description}</p>
-          <div className="flex items-center gap-2 mt-2">
-            <span className={`text-xs px-2 py-0.5 rounded ${
-              mode.difficulty === 'beginner' ? 'bg-green-500/20 text-green-400' :
-              mode.difficulty === 'intermediate' ? 'bg-yellow-500/20 text-yellow-400' :
-              mode.difficulty === 'advanced' ? 'bg-orange-500/20 text-orange-400' :
-              'bg-red-500/20 text-red-400'
-            }`}>
-              {mode.difficulty}
-            </span>
-            <span className="text-xs text-slate-600">~{mode.avgTokens}t</span>
-          </div>
-        </motion.button>
-      ))}
-    </div>
-  );
-}
-
-// Word Category Selector
-function WordCategorySelector({
-  selectedCategory,
-  onSelect,
-  userRole,
-}: {
-  selectedCategory: string;
-  onSelect: (categoryId: string) => void;
-  userRole: UserRole;
-}) {
-  const categories = WORD_CATEGORIES.filter(c => c.unlocked || userRole === 'developer');
-  
-  return (
-    <div className="flex flex-wrap gap-2">
-      {categories.map(category => (
-        <motion.button
-          key={category.id}
-          onClick={() => onSelect(category.id)}
-          className={`px-4 py-2 rounded-xl border transition-all flex items-center gap-2 ${
-            selectedCategory === category.id
-              ? 'border-purple-500 bg-purple-500/20 text-white'
-              : 'border-slate-700 hover:border-slate-500 bg-slate-800/50 text-slate-400'
-          }`}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <span className="text-lg">{category.emoji}</span>
-          <span className="text-sm">{category.name}</span>
-        </motion.button>
-      ))}
-    </div>
-  );
-}
-
-// Achievement Badge
-function AchievementBadge({ achievement }: { achievement: Achievement }) {
-  const progressPercent = (achievement.progress / achievement.total) * 100;
-  
-  return (
-    <motion.div
-      className={`p-4 rounded-xl border ${
-        achievement.unlocked 
-          ? 'border-amber-500/50 bg-amber-500/10' 
-          : 'border-slate-700/50 bg-slate-800/50'
-      }`}
-      whileHover={{ scale: 1.02 }}
-    >
-      <div className="flex items-start gap-3">
-        <div className={`text-3xl ${achievement.unlocked ? '' : 'grayscale opacity-50'}`}>
-          {achievement.emoji}
-        </div>
-        <div className="flex-1">
-          <h4 className={`font-medium ${achievement.unlocked ? 'text-amber-400' : 'text-slate-400'}`}>
-            {achievement.name}
-          </h4>
-          <p className="text-slate-500 text-xs mt-0.5">{achievement.description}</p>
-          {!achievement.unlocked && (
-            <div className="mt-2">
-              <div className="h-1.5 bg-slate-700 rounded-full overflow-hidden">
-                <motion.div
-                  className="h-full bg-purple-500"
-                  initial={{ width: 0 }}
-                  animate={{ width: `${progressPercent}%` }}
-                />
-              </div>
-              <span className="text-xs text-slate-600 mt-1">
-                {achievement.progress}/{achievement.total}
-              </span>
-            </div>
-          )}
-        </div>
-        <div className="text-xs text-amber-400">
-          +{achievement.xpReward} XP
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
-// Kid-Friendly Game UI
-function KidFriendlyUI({
-  targetWord,
-  messages,
-  isPlaying,
-  onPlay,
-  agents,
-  category,
-}: {
-  targetWord: string;
-  messages: GameMessage[];
-  isPlaying: boolean;
-  onPlay: () => void;
-  agents: Agent[];
-  category: string;
-}) {
-  const categoryData = WORD_CATEGORIES.find(c => c.id === category);
-  
-  return (
-    <div className="bg-gradient-to-br from-green-900/30 to-blue-900/30 rounded-3xl p-6 border-2 border-green-500/30">
-      {/* Fun Header */}
-      <div className="text-center mb-6">
-        <motion.div
-          className="text-6xl mb-4"
-          animate={{ rotate: [0, 10, -10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          {categoryData?.emoji || "🎮"}
-        </motion.div>
-        <h2 className="text-2xl font-bold text-white">Let's Play!</h2>
-        <p className="text-green-300">Guess the secret word!</p>
-      </div>
-
-      {/* Friendly Agents */}
-      <div className="flex justify-center gap-4 mb-6">
-        {agents.filter(a => a.unlocked).slice(0, 3).map((agent, idx) => (
-          <motion.div
-            key={agent.id}
-            className="text-center"
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 1.5, delay: idx * 0.2, repeat: Infinity }}
-          >
-            <div
-              className="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl mb-2"
-              style={{ backgroundColor: agent.color + '30' }}
-            >
-              {agent.emoji}
-            </div>
-            <span className="text-white text-sm">{agent.name}</span>
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Messages in Kid-Friendly Style */}
-      <div className="space-y-4 mb-6 max-h-60 overflow-y-auto">
-        {messages.map(msg => {
-          const agent = agents.find(a => a.id === msg.agentId);
-          return (
-            <motion.div
-              key={msg.id}
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              className={`p-4 rounded-2xl ${
-                msg.type === 'celebration'
-                  ? 'bg-yellow-500/20 border-2 border-yellow-500'
-                  : 'bg-slate-800/50'
-              }`}
-            >
-              <div className="flex items-center gap-3">
-                <span className="text-2xl">{agent?.emoji || "🤖"}</span>
-                <div>
-                  <span className="font-medium text-white">{agent?.name}: </span>
-                  <span className="text-slate-300">{msg.content}</span>
-                </div>
-              </div>
-            </motion.div>
-          );
-        })}
-      </div>
-
-      {/* Play Button */}
-      <motion.button
-        onClick={onPlay}
-        disabled={isPlaying}
-        className="w-full py-4 rounded-2xl bg-gradient-to-r from-green-400 to-blue-500 text-white font-bold text-xl flex items-center justify-center gap-3 disabled:opacity-50"
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
-      >
-        {isPlaying ? (
-          <>
-            <RefreshCw className="w-6 h-6 animate-spin" />
-            Playing...
-          </>
-        ) : (
-          <>
-            <Play className="w-6 h-6" />
-            Start Game!
-          </>
-        )}
-      </motion.button>
-
-      {/* Celebration */}
-      {messages.some(m => m.type === 'celebration') && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="mt-6 p-6 bg-yellow-500/20 rounded-2xl text-center border-2 border-yellow-500"
-        >
-          <motion.div
-            animate={{ rotate: [0, 360] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-            className="text-5xl mb-2"
-          >
-            🎉
-          </motion.div>
-          <h3 className="text-2xl font-bold text-yellow-400">You Got It!</h3>
-          <p className="text-yellow-300">Amazing job! You're so smart!</p>
-          <div className="flex justify-center gap-2 mt-4">
-            <Star className="w-8 h-8 text-yellow-400 fill-yellow-400" />
-            <Star className="w-8 h-8 text-yellow-400 fill-yellow-400" />
-            <Star className="w-8 h-8 text-yellow-400 fill-yellow-400" />
-          </div>
-        </motion.div>
-      )}
-    </div>
-  );
-}
-
-// Teen Competitive UI
-function TeenCompetitiveUI({
-  targetWord,
-  messages,
-  isPlaying,
-  onPlay,
-  agents,
-  tokenCost,
-  roundHistory,
-  achievements,
-}: {
-  targetWord: string;
-  messages: GameMessage[];
-  isPlaying: boolean;
-  onPlay: () => void;
-  agents: Agent[];
-  tokenCost: number;
-  roundHistory: GameRound[];
-  achievements: Achievement[];
-}) {
-  return (
-    <div className="space-y-6">
-      {/* Stats Bar */}
-      <div className="flex items-center justify-between p-4 bg-slate-800/50 rounded-xl">
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2">
-            <Flame className="w-5 h-5 text-orange-400" />
-            <span className="text-white font-bold">3 Streak</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Trophy className="w-5 h-5 text-yellow-400" />
-            <span className="text-white">{roundHistory.filter(r => r.winner).length} Wins</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Coins className="w-5 h-5 text-amber-400" />
-            <span className="text-white">{tokenCost} Tokens</span>
-          </div>
-        </div>
-        <div className="flex items-center gap-2">
-          {achievements.filter(a => a.unlocked).slice(0, 3).map(a => (
-            <span key={a.id} className="text-xl" title={a.name}>{a.emoji}</span>
-          ))}
-        </div>
-      </div>
-
-      {/* Game Area */}
-      <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700/50">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-semibold text-white flex items-center gap-2">
-            <Zap className="w-5 h-5 text-yellow-400" />
-            Battle Arena
-          </h2>
-          <motion.button
-            onClick={onPlay}
-            disabled={isPlaying}
-            className="px-6 py-2 rounded-xl bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold flex items-center gap-2"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {isPlaying ? (
-              <>
-                <RefreshCw className="w-4 h-4 animate-spin" />
-                Battling...
-              </>
-            ) : (
-              <>
-                <Sword className="w-4 h-4" />
-                Battle!
-              </>
-            )}
-          </motion.button>
-        </div>
-
-        {/* Messages */}
-        <div className="space-y-3 max-h-80 overflow-y-auto">
-          {messages.map(msg => {
-            const agent = agents.find(a => a.id === msg.agentId);
-            return (
-              <motion.div
-                key={msg.id}
-                initial={{ x: -20, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                className={`p-3 rounded-xl ${
-                  msg.type === 'guess' ? 'bg-orange-500/10 border border-orange-500/30' : 'bg-slate-900/50'
-                }`}
-              >
-                <div className="flex items-center gap-3">
-                  <span className="text-xl">{agent?.emoji}</span>
-                  <div className="flex-1">
-                    <span className="font-medium text-white">{agent?.name}: </span>
-                    <span className="text-slate-300">{msg.content}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    {msg.reactions?.map(r => (
-                      <span key={r.emoji} className="text-sm">{r.emoji} {r.count}</span>
-                    ))}
-                    <span className="text-xs text-amber-400">{msg.tokens}t</span>
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// Sword icon fallback
-function Sword({ className }: { className?: string }) {
-  return <span className={className}>⚔️</span>;
-}
 
 // ============================================================================
 // MAIN COMPONENT
@@ -903,26 +465,19 @@ export default function LLNPlayground() {
   const [constraints, setConstraints] = useState<Constraint[]>(CONSTRAINT_TEMPLATES);
   const [activeConstraints, setActiveConstraints] = useState<Constraint[]>([]);
   const [idioms, setIdioms] = useState<Idiom[]>(SAMPLE_IDIOMS);
-  const [achievements, setAchievements] = useState<Achievement[]>(ACHIEVEMENTS);
   
   // Play State
   const [currentRound, setCurrentRound] = useState<GameRound | null>(null);
   const [messages, setMessages] = useState<GameMessage[]>([]);
   const [isPlaying, setIsPlaying] = useState(false);
   const [roundHistory, setRoundHistory] = useState<GameRound[]>([]);
-  const [useRealAI, setUseRealAI] = useState(false);
-  const [aiLoading, setAiLoading] = useState(false);
   
-  // Analysis State
-  const [tokenAnalysis, setTokenAnalysis] = useState<TokenAnalysis>({
-    baselineCost: 1000,
-    optimizedCost: 650,
-    savings: 350,
-    idiomEfficiency: 0.35,
-    attentionJustified: true,
-    projectedSavings: 500,
-    efficiencyTrend: "up",
-  });
+  // Hub Navigation
+  const [activeSection, setActiveSection] = useState<HubSection>("play");
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
+  
+  // Mycelium Simulation
+  const [myceliumSimulation] = useState(() => new MyceliumNetworkSimulation());
 
   // Derived values
   const categoryWords = WORD_CATEGORIES.find(c => c.id === selectedCategory)?.words || [];
@@ -1099,554 +654,535 @@ export default function LLNPlayground() {
       "BANANA": ["Yellow curve that monkeys love!", "You peel it before eating!", "A fruit shaped like a smile!"],
       "ELEPHANT": ["Big gray friend with a trunk!", "Never forgets anything!", "Largest land animal!"],
       "PENGUIN": ["Wears a tuxedo everyday!", "Waddles on ice!", "Lives where it's super cold!"],
+      "DOLPHIN": ["Smart ocean friend!", "Jumps through hoops!", "Loves to play!"],
+      "BUTTERFLY": ["Starts as caterpillar!", "Beautiful wings!", "Flower visitor!"],
+      "PIZZA": ["Triangle of happiness!", "Cheese on bread!", "Everyone's favorite!"],
+      "RAINBOW": ["Colors in the sky!", "After rain comes sunshine!", "Nature's art!"],
+      "COMPUTER": ["Electric brain!", "Clicks and types!", "Does math fast!"],
+      "GRAVITY": ["What goes up must come down!", "Invisible force!", "Keeps us grounded!"],
+      "HAPPINESS": ["Feels like sunshine!", "Smile inside!", "Best feeling ever!"],
+      "FREEDOM": ["Flying without chains!", "Your own choices!", "Liberty!"],
+      "ASTRONAUT": ["Space traveler!", "Wears special suit!", "Sees Earth from above!"],
     };
-    let base = descriptions[target]?.[Math.floor(Math.random() * 3)] || "Something fun and exciting!";
     
-    for (const constraint of constraints) {
-      switch (constraint.type) {
-        case "rhyme":
-          base = base.includes("love") ? "Yellow curve, monkeys love, fits like a glove!" : base + " - time to play!";
-          break;
-        case "emoji-only":
-          base = "🍌🐒💛🎉";
-          break;
-        case "haiku":
-          base = "Yellow curved shape\nMonkeys love to peel and eat\nSweet soft fruit inside";
-          break;
-      }
+    const baseDescs = descriptions[target.toUpperCase()] || ["Something amazing!", "Can you guess it?", "A wonderful thing!"];
+    let desc = baseDescs[Math.floor(Math.random() * baseDescs.length)];
+    
+    if (constraints.some(c => c.type === "rhyme")) {
+      const rhymes: Record<string, string> = {
+        "BANANA": "Yellow fruit, a tasty nana!",
+        "PIZZA": "Cheesy treat, perfect on a feetsa!",
+        "RAINBOW": "Colors high, look at them glow!",
+      };
+      desc = rhymes[target.toUpperCase()] || desc + " - so fine!";
     }
-    return base;
+    
+    if (constraints.some(c => c.type === "emoji-only")) {
+      const emojiMap: Record<string, string> = {
+        "BANANA": "🍌💛🐵",
+        "ELEPHANT": "🐘🐘🐘",
+        "PENGUIN": "🐧❄️🧊",
+        "PIZZA": "🍕🧀😋",
+        "RAINBOW": "🌈⛈️☀️",
+      };
+      desc = emojiMap[target.toUpperCase()] || "🤔❓✨";
+    }
+    
+    return desc;
   };
 
   const generateGuess = (target: string, constraints: Constraint[]): string => {
-    if (Math.random() > 0.4) {
-      return `Is it... ${target.toUpperCase()}?`;
+    const wrongGuesses = ["Is it a cat?", "Could it be a car?", "Maybe a house?", "A ball?", "Some food?"];
+    const correctGuess = `Is it ${target}?`;
+    
+    // 70% chance to guess correctly
+    if (Math.random() > 0.3) {
+      return correctGuess;
     }
-    const wrongGuesses = ["Apple?", "Orange?", "Grape?", "Mango?"];
     return wrongGuesses[Math.floor(Math.random() * wrongGuesses.length)];
   };
 
   const generateIdiom = (actor: Agent, guesser: Agent, target: string): Idiom => {
-    const idioms = [
-      { shorthand: "🍌🎯", meaning: `Quick win - ${target} identified fast!` },
-      { shorthand: "💡⚡", meaning: "Instant understanding!" },
-      { shorthand: "🎪🏆", meaning: "Performance success!" },
-    ];
-    const chosen = idioms[Math.floor(Math.random() * idioms.length)];
+    const emojis = ["🌊", "🔥", "⚡", "💡", "🎯", "🧠", "💎", "🌟"];
+    const shorthand = `${emojis[Math.floor(Math.random() * emojis.length)]}${emojis[Math.floor(Math.random() * emojis.length)]}`;
     return {
       id: `idiom_${Date.now()}`,
-      shorthand: chosen.shorthand,
-      meaning: chosen.meaning,
+      shorthand,
+      meaning: `Understanding of ${target} through play`,
       originAgents: [actor.id, guesser.id],
       usageCount: 1,
-      tokenSavings: Math.floor(Math.random() * 50) + 20,
+      tokenSavings: 50,
       lockedToSeed: false,
-      category: selectedCategory,
+      category: "game-generated"
     };
   };
 
-  // Update token analysis
-  useEffect(() => {
-    const idiomSavings = idioms.reduce((acc, i) => acc + i.tokenSavings, 0);
-    const constraintPenalty = activeConstraints.reduce((acc, c) => acc + c.penalty, 0);
-    const baseline = 1000;
-    const optimized = Math.max(100, baseline - idiomSavings + (constraintPenalty - 1) * 100);
+  // Get role configuration
+  const roleConfig = userProfile ? USER_ROLE_CONFIG[userProfile.role] : null;
 
-    setTokenAnalysis({
-      baselineCost: baseline,
-      optimizedCost: Math.round(optimized),
-      savings: Math.round(baseline - optimized),
-      idiomEfficiency: idiomSavings / baseline,
-      attentionJustified: (baseline - optimized) > 200,
-      projectedSavings: Math.round(idiomSavings * 1.5),
-      efficiencyTrend: baseline - optimized > 300 ? "up" : baseline - optimized > 200 ? "stable" : "down",
-    });
-  }, [idioms, activeConstraints]);
-
-  // Render role-specific UI
-  const renderRoleSpecificUI = () => {
-    if (!userProfile) return null;
-
-    switch (userProfile.role) {
-      case "kid":
-        return (
-          <KidFriendlyUI
-            targetWord={targetWord}
-            messages={messages}
-            isPlaying={isPlaying}
-            onPlay={simulateRound}
-            agents={agents}
-            category={selectedCategory}
-          />
-        );
-      case "teen":
-        return (
-          <TeenCompetitiveUI
-            targetWord={targetWord}
-            messages={messages}
-            isPlaying={isPlaying}
-            onPlay={simulateRound}
-            agents={agents}
-            tokenCost={currentRound?.tokenCost || 0}
-            roundHistory={roundHistory}
-            achievements={achievements}
-          />
-        );
-      default:
-        return renderDefaultUI();
-    }
-  };
-
-  // Default UI for other roles
-  const renderDefaultUI = () => (
-    <div className="space-y-6">
-      {/* Game Controls */}
-      <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700/50">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-semibold text-white flex items-center gap-2">
-            <Play className="w-5 h-5 text-green-400" />
-            {GAME_MODES[selectedMode].label}
-          </h2>
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2">
-              <span className={`text-xs ${!useRealAI ? 'text-slate-400' : 'text-slate-600'}`}>Sim</span>
-              <button
-                onClick={() => setUseRealAI(!useRealAI)}
-                className={`relative w-12 h-6 rounded-full transition-colors ${useRealAI ? 'bg-purple-500' : 'bg-slate-700'}`}
-              >
-                <motion.div
-                  className="absolute top-1 w-4 h-4 rounded-full bg-white"
-                  animate={{ left: useRealAI ? '28px' : '4px' }}
-                  transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                />
-              </button>
-              <span className={`text-xs ${useRealAI ? 'text-purple-400' : 'text-slate-600'}`}>
-                <Brain className="w-3 h-3 inline mr-1" />
-                AI
-              </span>
-            </div>
-            <motion.button
-              onClick={simulateRound}
-              disabled={isPlaying || aiLoading}
-              className={`px-4 py-2 rounded-lg text-white font-medium flex items-center gap-2 disabled:opacity-50 ${
-                useRealAI ? 'bg-gradient-to-r from-purple-500 to-pink-500' : 'bg-gradient-to-r from-green-500 to-emerald-500'
-              }`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {isPlaying || aiLoading ? (
-                <>
-                  <RefreshCw className="w-4 h-4 animate-spin" />
-                  {useRealAI ? 'AI Playing...' : 'Playing...'}
-                </>
-              ) : (
-                <>
-                  <Play className="w-4 h-4" />
-                  {useRealAI ? 'Play with AI' : 'Play Round'}
-                </>
-              )}
-            </motion.button>
-          </div>
-        </div>
-
-        {/* Current Round Status */}
-        {currentRound && (
-          <div className="mb-4 p-4 rounded-xl bg-slate-900/50 border border-purple-500/30">
-            <div className="flex items-center justify-between mb-2">
-              <div className="flex items-center gap-2">
-                <span className="text-purple-400 font-medium">Target:</span>
-                <span className="text-white font-mono text-lg">{currentRound.target}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                  currentRound.status === 'complete' ? 'bg-green-500/20 text-green-400' :
-                  currentRound.status === 'acting' ? 'bg-blue-500/20 text-blue-400' :
-                  currentRound.status === 'guessing' ? 'bg-amber-500/20 text-amber-400' :
-                  'bg-purple-500/20 text-purple-400'
-                }`}>
-                  {currentRound.status.toUpperCase()}
-                </span>
-                <span className="text-amber-400 text-sm flex items-center gap-1">
-                  <Coins className="w-4 h-4" />
-                  {currentRound.tokenCost}
-                </span>
-              </div>
-            </div>
-            {currentRound.constraints.length > 0 && (
-              <div className="flex flex-wrap gap-1">
-                {currentRound.constraints.map(c => (
-                  <span key={c.id} className="px-2 py-0.5 rounded bg-pink-500/20 text-pink-300 text-xs">
-                    {c.emoji} {c.type}
-                  </span>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* Messages */}
-        <div className="h-80 overflow-y-auto space-y-3 pr-2 custom-scrollbar">
-          <AnimatePresence>
-            {messages.map(msg => {
-              const agent = agents.find(a => a.id === msg.agentId);
-              return (
-                <motion.div
-                  key={msg.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className={`p-3 rounded-xl ${
-                    msg.type === 'celebration'
-                      ? 'bg-gradient-to-r from-yellow-500/20 to-amber-500/20 border border-yellow-500/30'
-                      : msg.type === 'idiom-generated'
-                      ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30'
-                      : msg.type === 'judgment'
-                      ? 'bg-cyan-500/10 border border-cyan-500/30'
-                      : msg.type === 'guess'
-                      ? 'bg-slate-900/80 border border-slate-700/50'
-                      : 'bg-slate-900/50 border border-slate-700/30'
-                  }`}
-                >
-                  <div className="flex items-start gap-3">
-                    {agent && (
-                      <div
-                        className="w-8 h-8 rounded-lg flex items-center justify-center text-lg shrink-0"
-                        style={{ backgroundColor: agent.color + '30' }}
-                      >
-                        {agent.emoji}
-                      </div>
-                    )}
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className={`font-medium text-sm ${
-                          msg.type === 'celebration' ? 'text-yellow-300' :
-                          msg.type === 'idiom-generated' ? 'text-purple-300' :
-                          agent ? 'text-white' : 'text-slate-400'
-                        }`}>
-                          {msg.type === 'celebration' ? '🎉 Celebration!' :
-                           msg.type === 'idiom-generated' ? '✨ System' :
-                           agent?.name || 'System'}
-                        </span>
-                        <span className={`text-xs px-1.5 py-0.5 rounded ${
-                          msg.type === 'description' ? 'bg-blue-500/20 text-blue-400' :
-                          msg.type === 'guess' ? 'bg-amber-500/20 text-amber-400' :
-                          msg.type === 'judgment' ? 'bg-cyan-500/20 text-cyan-400' :
-                          'bg-purple-500/20 text-purple-400'
-                        }`}>
-                          {msg.type}
-                        </span>
-                        {msg.constraintApplied && (
-                          <span className="text-xs text-pink-400">[{msg.constraintApplied}]</span>
-                        )}
-                      </div>
-                      <p className="text-slate-300 text-sm">{msg.content}</p>
-                    </div>
-                    <div className="text-xs text-amber-400">
-                      {msg.tokens}t
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </AnimatePresence>
-
-          {messages.length === 0 && (
-            <div className="h-full flex items-center justify-center text-slate-500">
-              <div className="text-center">
-                <Gamepad2 className="w-12 h-12 mx-auto mb-2 opacity-30" />
-                <p>Click "Play Round" to start a game</p>
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-
-  // Main render
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-950 to-slate-900">
-      {/* Role Selection Modal */}
-      {showRoleSelector && (
-        <RoleSelectionModal onSelect={handleRoleSelect} />
-      )}
-
+    <div className="min-h-screen bg-slate-950 text-white">
       {/* Header */}
-      <header className="sticky top-16 z-40 bg-slate-900/80 backdrop-blur-lg border-b border-purple-500/20">
-        <div className="max-w-7xl mx-auto px-4 py-4">
+      <div className="sticky top-0 z-40 bg-slate-900/95 backdrop-blur-md border-b border-slate-800">
+        <div className="max-w-7xl mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <motion.div
-                className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center"
-                animate={{ rotate: isPlaying ? 360 : 0 }}
-                transition={{ duration: 2, repeat: isPlaying ? Infinity : 0, ease: "linear" }}
-              >
-                <Network className="w-6 h-6 text-white" />
-              </motion.div>
-              <div>
-                <h1 className="text-2xl font-bold text-white flex items-center gap-2">
-                  LLN Playground
-                  <span className="text-xs px-2 py-1 bg-purple-500/30 rounded-full text-purple-300">v0.2</span>
-                </h1>
-                <p className="text-purple-300 text-sm">Large Language Networks - Agents Learning Through Play</p>
-              </div>
-            </div>
-
-            {/* User Profile Badge */}
-            {userProfile && (
-              <div className="flex items-center gap-3">
-                <button
-                  onClick={() => setShowRoleSelector(true)}
-                  className="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 transition-colors"
-                >
-                  <div
-                    className="w-8 h-8 rounded-lg flex items-center justify-center"
-                    style={{ backgroundColor: USER_ROLE_CONFIG[userProfile.role].color + '30' }}
-                  >
-                    {(() => {
-                      const IconComponent = USER_ROLE_CONFIG[userProfile.role].icon;
-                      return <IconComponent className="w-4 h-4" style={{ color: USER_ROLE_CONFIG[userProfile.role].color }} />;
-                    })()}
-                  </div>
-                  <div className="text-left">
-                    <div className="text-white text-sm font-medium">{userProfile.displayName}</div>
-                    <div className="text-slate-500 text-xs">Level {userProfile.level} • {userProfile.xp} XP</div>
-                  </div>
-                </button>
-                <Link href="/agent-cells" className="text-purple-400 hover:text-purple-300 flex items-center gap-1 text-sm">
-                  <Layers className="w-4 h-4" />
-                  Agent Cells
-                </Link>
-              </div>
-            )}
-          </div>
-        </div>
-      </header>
-
-      <main className="max-w-7xl mx-auto px-4 py-8">
-        {/* Token Cost Analysis Dashboard */}
-        <section className="mb-8">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-            <motion.div
-              className="bg-slate-800/50 rounded-2xl p-4 border border-slate-700/50"
-              whileHover={{ scale: 1.02 }}
-            >
-              <div className="flex items-center gap-2 mb-1">
-                <Coins className="w-4 h-4 text-amber-400" />
-                <span className="text-slate-400 text-xs">Baseline</span>
-              </div>
-              <div className="text-2xl font-bold text-white">{tokenAnalysis.baselineCost.toLocaleString()}</div>
-            </motion.div>
-
-            <motion.div
-              className="bg-slate-800/50 rounded-2xl p-4 border border-green-500/30"
-              whileHover={{ scale: 1.02 }}
-            >
-              <div className="flex items-center gap-2 mb-1">
-                <Zap className="w-4 h-4 text-green-400" />
-                <span className="text-slate-400 text-xs">Optimized</span>
-              </div>
-              <div className="text-2xl font-bold text-green-400">{tokenAnalysis.optimizedCost.toLocaleString()}</div>
-            </motion.div>
-
-            <motion.div
-              className="bg-slate-800/50 rounded-2xl p-4 border border-purple-500/30"
-              whileHover={{ scale: 1.02 }}
-            >
-              <div className="flex items-center gap-2 mb-1">
-                <TrendingUp className="w-4 h-4 text-purple-400" />
-                <span className="text-slate-400 text-xs">Savings</span>
-              </div>
-              <div className="text-2xl font-bold text-purple-400">{tokenAnalysis.savings.toLocaleString()}</div>
-            </motion.div>
-
-            <motion.div
-              className={`bg-slate-800/50 rounded-2xl p-4 border ${tokenAnalysis.attentionJustified ? 'border-cyan-500/30' : 'border-red-500/30'}`}
-              whileHover={{ scale: 1.02 }}
-            >
-              <div className="flex items-center gap-2 mb-1">
-                <Target className={`w-4 h-4 ${tokenAnalysis.attentionJustified ? 'text-cyan-400' : 'text-red-400'}`} />
-                <span className="text-slate-400 text-xs">ROI</span>
-              </div>
-              <div className={`text-2xl font-bold ${tokenAnalysis.attentionJustified ? 'text-cyan-400' : 'text-red-400'}`}>
-                {tokenAnalysis.attentionJustified ? 'YES' : 'NO'}
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="bg-slate-800/50 rounded-2xl p-4 border border-amber-500/30"
-              whileHover={{ scale: 1.02 }}
-            >
-              <div className="flex items-center gap-2 mb-1">
-                <Star className="w-4 h-4 text-amber-400" />
-                <span className="text-slate-400 text-xs">Projected</span>
-              </div>
-              <div className="text-2xl font-bold text-amber-400">+{tokenAnalysis.projectedSavings}</div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Main Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Left Panel */}
-          <div className="space-y-6">
-            {/* Game Mode Selection */}
-            <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700/50">
-              <h2 className="text-lg font-semibold text-white flex items-center gap-2 mb-4">
-                <Gamepad2 className="w-5 h-5 text-purple-400" />
-                Game Mode
-              </h2>
-              <GameModeSelector
-                selectedMode={selectedMode}
-                onSelect={setSelectedMode}
-                userRole={userProfile?.role || 'hobbyist'}
-              />
-            </div>
-
-            {/* Word Category */}
-            <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700/50">
-              <h2 className="text-lg font-semibold text-white flex items-center gap-2 mb-4">
-                <Sparkles className="w-5 h-5 text-amber-400" />
-                Word Category
-              </h2>
-              <WordCategorySelector
-                selectedCategory={selectedCategory}
-                onSelect={setSelectedCategory}
-                userRole={userProfile?.role || 'hobbyist'}
-              />
-            </div>
-
-            {/* Constraints */}
-            <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700/50">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-lg font-semibold text-white flex items-center gap-2">
-                  <Puzzle className="w-5 h-5 text-pink-400" />
-                  Constraints
-                </h2>
-                <span className="text-xs px-2 py-1 bg-pink-500/20 rounded-full text-pink-400">
-                  {activeConstraints.length} active
-                </span>
-              </div>
-              <div className="space-y-2 max-h-60 overflow-y-auto">
-                {constraints.filter(c => c.unlocked || userProfile?.role === 'developer').map(constraint => (
+              <Link href="/" className="flex items-center gap-2">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                  <Network className="w-5 h-5 text-white" />
+                </div>
+                <div className="hidden sm:block">
+                  <h1 className="text-lg font-bold">LLN Playground</h1>
+                  <p className="text-xs text-slate-500">Large Language Networks</p>
+                </div>
+              </Link>
+              
+              {/* Section Tabs */}
+              <div className="hidden md:flex items-center gap-1 ml-6">
+                {[
+                  { id: "play", label: "Play", icon: Gamepad2 },
+                  { id: "synthesis", label: "Synthesis", icon: Merge },
+                  { id: "mycelium", label: "Network", icon: Fungi },
+                  { id: "distillation", label: "Distillation", icon: Brain },
+                  { id: "learning", label: "ML Engine", icon: Cpu },
+                  { id: "explorer", label: "Explorer", icon: Compass },
+                  { id: "rounds", label: "Rounds", icon: Rocket },
+                ].map((section) => (
                   <motion.button
-                    key={constraint.id}
-                    onClick={() => toggleConstraint(constraint)}
-                    className={`w-full text-left p-3 rounded-xl transition-all ${
-                      activeConstraints.find(c => c.id === constraint.id)
-                        ? 'bg-pink-500/20 border-pink-500/50 border'
-                        : 'bg-slate-900/50 border border-slate-700/30 hover:border-slate-600'
+                    key={section.id}
+                    onClick={() => setActiveSection(section.id as HubSection)}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm transition-all ${
+                      activeSection === section.id
+                        ? "bg-purple-500/20 text-purple-400 border border-purple-500/30"
+                        : "text-slate-400 hover:text-white hover:bg-slate-800"
                     }`}
+                    whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <span className="text-lg">{constraint.emoji}</span>
-                        <span className={`text-sm ${activeConstraints.find(c => c.id === constraint.id) ? 'text-pink-300' : 'text-slate-400'}`}>
-                          {constraint.value}
-                        </span>
-                      </div>
-                      <span className="text-xs text-amber-400">{constraint.penalty}x</span>
-                    </div>
+                    <section.icon className="w-4 h-4" />
+                    {section.label}
                   </motion.button>
                 ))}
               </div>
             </div>
-          </div>
 
-          {/* Center Panel */}
-          <div className="lg:col-span-2">
-            {renderRoleSpecificUI()}
-
-            {/* Idioms Library */}
-            <div className="mt-6 bg-slate-800/50 rounded-2xl p-6 border border-slate-700/50">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-lg font-semibold text-white flex items-center gap-2">
-                  <Sparkles className="w-5 h-5 text-amber-400" />
-                  Idiom Library
-                  <span className="text-xs px-2 py-0.5 bg-amber-500/20 rounded-full text-amber-400">
-                    {idioms.length} learned
-                  </span>
-                </h2>
-                <button className="text-xs text-purple-400 hover:text-purple-300 flex items-center gap-1">
-                  <Download className="w-4 h-4" />
-                  Export
-                </button>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                {idioms.map(idiom => (
-                  <motion.div
-                    key={idiom.id}
-                    className={`p-4 rounded-xl bg-slate-900/50 border ${idiom.lockedToSeed ? 'border-cyan-500/50' : 'border-slate-700/30'}`}
-                    whileHover={{ scale: 1.02 }}
-                  >
-                    <div className="flex items-start justify-between mb-2">
-                      <div className="text-2xl">{idiom.shorthand}</div>
-                      <button
-                        onClick={() => toggleIdiomLock(idiom)}
-                        className={`p-1.5 rounded-lg transition-colors ${
-                          idiom.lockedToSeed ? 'bg-cyan-500/20 text-cyan-400' : 'bg-slate-800 text-slate-500 hover:text-slate-400'
-                        }`}
-                        title={idiom.lockedToSeed ? 'Locked to seed (SMPbot)' : 'Lock as SMPbot'}
-                      >
-                        {idiom.lockedToSeed ? <Lock className="w-4 h-4" /> : <Unlock className="w-4 h-4" />}
-                      </button>
-                    </div>
-                    <p className="text-slate-400 text-sm mb-2">{idiom.meaning}</p>
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="text-green-400">{idiom.usageCount} uses</span>
-                      <span className="text-amber-400">-{idiom.tokenSavings}t</span>
-                    </div>
-                    {idiom.lockedToSeed && idiom.seed && (
-                      <div className="mt-2 text-xs text-cyan-400 flex items-center gap-1">
-                        <Hash className="w-3 h-3" />
-                        {idiom.seed}
-                      </div>
-                    )}
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
-            {/* Achievements */}
-            <div className="mt-6 bg-slate-800/50 rounded-2xl p-6 border border-slate-700/50">
-              <h2 className="text-lg font-semibold text-white flex items-center gap-2 mb-4">
-                <Trophy className="w-5 h-5 text-yellow-400" />
-                Achievements
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                {achievements.slice(0, 6).map(achievement => (
-                  <AchievementBadge key={achievement.id} achievement={achievement} />
-                ))}
-              </div>
+            <div className="flex items-center gap-4">
+              {userProfile && roleConfig && (
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: roleConfig.color + '30' }}>
+                    <roleConfig.icon className="w-4 h-4" style={{ color: roleConfig.color }} />
+                  </div>
+                  <div className="hidden sm:block">
+                    <div className="text-sm font-medium">{userProfile.displayName}</div>
+                    <div className="text-xs text-slate-500">Level {userProfile.level}</div>
+                  </div>
+                </div>
+              )}
+              
+              {/* Mobile menu */}
+              <button
+                className="md:hidden p-2 text-slate-400 hover:text-white"
+                onClick={() => setShowMobileMenu(!showMobileMenu)}
+              >
+                {showMobileMenu ? <X className="w-5 h-5" /> : <Layers className="w-5 h-5" />}
+              </button>
             </div>
           </div>
         </div>
-      </main>
+      </div>
 
-      {/* Custom Styles */}
-      <style jsx global>{`
-        .custom-scrollbar::-webkit-scrollbar {
-          width: 6px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: rgba(30, 41, 59, 0.5);
-          border-radius: 3px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: rgba(139, 92, 246, 0.3);
-          border-radius: 3px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: rgba(139, 92, 246, 0.5);
-        }
-        .line-clamp-2 {
-          display: -webkit-box;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-      `}</style>
+      {/* Mobile Navigation */}
+      <AnimatePresence>
+        {showMobileMenu && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-slate-900 border-b border-slate-800"
+          >
+            <div className="p-4 grid grid-cols-2 gap-2">
+              {[
+                { id: "play", label: "Play", icon: Gamepad2 },
+                { id: "synthesis", label: "Synthesis", icon: Merge },
+                { id: "mycelium", label: "Network", icon: Fungi },
+                { id: "distillation", label: "Distillation", icon: Brain },
+                { id: "learning", label: "ML Engine", icon: Cpu },
+                { id: "explorer", label: "Explorer", icon: Compass },
+                { id: "rounds", label: "Rounds", icon: Rocket },
+              ].map((section) => (
+                <button
+                  key={section.id}
+                  onClick={() => {
+                    setActiveSection(section.id as HubSection);
+                    setShowMobileMenu(false);
+                  }}
+                  className={`flex items-center gap-2 p-3 rounded-xl text-sm ${
+                    activeSection === section.id
+                      ? "bg-purple-500/20 text-purple-400"
+                      : "bg-slate-800 text-slate-400"
+                  }`}
+                >
+                  <section.icon className="w-4 h-4" />
+                  {section.label}
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-4 py-6">
+        <AnimatePresence mode="wait">
+          {/* PLAY SECTION */}
+          {activeSection === "play" && (
+            <motion.div
+              key="play"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="space-y-6"
+            >
+              {/* Role Selector */}
+              {showRoleSelector && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
+                  <motion.div
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    className="bg-slate-900 rounded-3xl p-8 max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto"
+                  >
+                    <h2 className="text-3xl font-bold text-white text-center mb-2">Welcome to LLN Playground!</h2>
+                    <p className="text-slate-400 text-center mb-8">Choose your adventure type to get started</p>
+                    
+                    <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                      {(Object.entries(USER_ROLE_CONFIG) as [UserRole, typeof USER_ROLE_CONFIG[UserRole]][]).map(([role, config]) => (
+                        <motion.button
+                          key={role}
+                          onClick={() => handleRoleSelect(role)}
+                          className="p-4 rounded-2xl border-2 border-slate-700 hover:border-slate-500 bg-slate-800/50 transition-all"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          <div
+                            className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-3"
+                            style={{ backgroundColor: config.color + '30' }}
+                          >
+                            <config.icon className="w-6 h-6" style={{ color: config.color }} />
+                          </div>
+                          <h3 className="text-white font-semibold text-sm text-center">{config.label}</h3>
+                          <p className="text-slate-500 text-xs text-center mt-1 line-clamp-2">{config.description}</p>
+                        </motion.button>
+                      ))}
+                    </div>
+                  </motion.div>
+                </div>
+              )}
+
+              {/* Game Mode Selector */}
+              <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700">
+                <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                  <Gamepad2 className="w-5 h-5 text-purple-400" />
+                  Game Mode
+                </h3>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                  {(Object.entries(GAME_MODES) as [GameMode, typeof GAME_MODES[GameMode]][]).map(([modeId, mode]) => (
+                    <motion.button
+                      key={modeId}
+                      onClick={() => setSelectedMode(modeId)}
+                      className={`p-4 rounded-xl border-2 transition-all text-left ${
+                        selectedMode === modeId
+                          ? 'border-purple-500 bg-purple-500/20'
+                          : 'border-slate-700 hover:border-slate-500 bg-slate-800/50'
+                      }`}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <div className="flex items-center gap-2 mb-2">
+                        <mode.icon className="w-5 h-5 text-purple-400" />
+                        <span className="text-white font-medium text-sm">{mode.label}</span>
+                      </div>
+                      <p className="text-slate-500 text-xs line-clamp-2">{mode.description}</p>
+                    </motion.button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Word Category & Constraints */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Categories */}
+                <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700">
+                  <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                    <Target className="w-5 h-5 text-amber-400" />
+                    Word Category
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {WORD_CATEGORIES.map(category => (
+                      <motion.button
+                        key={category.id}
+                        onClick={() => setSelectedCategory(category.id)}
+                        className={`px-4 py-2 rounded-xl border transition-all flex items-center gap-2 ${
+                          selectedCategory === category.id
+                            ? 'border-purple-500 bg-purple-500/20 text-white'
+                            : 'border-slate-700 hover:border-slate-500 bg-slate-800/50 text-slate-400'
+                        }`}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <span className="text-lg">{category.emoji}</span>
+                        <span className="text-sm">{category.name}</span>
+                      </motion.button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Constraints */}
+                <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700">
+                  <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                    <Lock className="w-5 h-5 text-rose-400" />
+                    Constraints
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {constraints.filter(c => c.unlocked || userProfile?.role === 'developer').map(constraint => (
+                      <motion.button
+                        key={constraint.id}
+                        onClick={() => toggleConstraint(constraint)}
+                        className={`px-3 py-1.5 rounded-lg border transition-all flex items-center gap-2 ${
+                          activeConstraints.find(c => c.id === constraint.id)
+                            ? 'border-rose-500 bg-rose-500/20 text-white'
+                            : 'border-slate-700 hover:border-slate-500 bg-slate-800/50 text-slate-400'
+                        }`}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <span>{constraint.emoji}</span>
+                        <span className="text-sm">{constraint.type}</span>
+                      </motion.button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Game Area */}
+              <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-lg font-semibold text-white">Game Arena</h3>
+                  <motion.button
+                    onClick={simulateRound}
+                    disabled={isPlaying}
+                    className="flex items-center gap-2 px-6 py-2 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium disabled:opacity-50"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {isPlaying ? (
+                      <>
+                        <RefreshCw className="w-4 h-4 animate-spin" />
+                        Playing...
+                      </>
+                    ) : (
+                      <>
+                        <Play className="w-4 h-4" />
+                        Start Round
+                      </>
+                    )}
+                  </motion.button>
+                </div>
+
+                {/* Messages */}
+                <div className="space-y-3 max-h-96 overflow-y-auto">
+                  {messages.length === 0 ? (
+                    <div className="text-center py-12 text-slate-500">
+                      <Gamepad2 className="w-12 h-12 mx-auto mb-2 opacity-50" />
+                      <p>Click "Start Round" to begin!</p>
+                    </div>
+                  ) : (
+                    messages.map(msg => {
+                      const agent = agents.find(a => a.id === msg.agentId);
+                      return (
+                        <motion.div
+                          key={msg.id}
+                          initial={{ x: -20, opacity: 0 }}
+                          animate={{ x: 0, opacity: 1 }}
+                          className={`p-3 rounded-xl ${
+                            msg.type === 'celebration' ? 'bg-yellow-500/20 border border-yellow-500' :
+                            msg.type === 'guess' ? 'bg-purple-500/10 border border-purple-500/30' :
+                            'bg-slate-900/50'
+                          }`}
+                        >
+                          <div className="flex items-center gap-3">
+                            <span className="text-xl">{agent?.emoji || "🤖"}</span>
+                            <div className="flex-1">
+                              <span className="font-medium text-white">{agent?.name}: </span>
+                              <span className="text-slate-300">{msg.content}</span>
+                            </div>
+                            <span className="text-xs text-amber-400">{msg.tokens}t</span>
+                          </div>
+                        </motion.div>
+                      );
+                    })
+                  )}
+                </div>
+              </div>
+
+              {/* Idioms */}
+              <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700">
+                <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                  <Sparkles className="w-5 h-5 text-amber-400" />
+                  Idiom Library ({idioms.length})
+                </h3>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+                  {idioms.map(idiom => (
+                    <motion.div
+                      key={idiom.id}
+                      className={`p-3 rounded-xl border cursor-pointer transition-all ${
+                        idiom.lockedToSeed ? 'border-amber-500/50 bg-amber-500/10' : 'border-slate-700 bg-slate-900/50'
+                      }`}
+                      whileHover={{ scale: 1.05 }}
+                      onClick={() => toggleIdiomLock(idiom)}
+                    >
+                      <div className="text-2xl text-center mb-2">{idiom.shorthand}</div>
+                      <div className="text-xs text-slate-400 text-center">{idiom.meaning}</div>
+                      <div className="flex items-center justify-center gap-2 mt-2">
+                        <span className="text-xs text-emerald-400">-{idiom.tokenSavings}t</span>
+                        {idiom.lockedToSeed && <Lock className="w-3 h-3 text-amber-400" />}
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          )}
+
+          {/* SYNTHESIS SECTION */}
+          {activeSection === "synthesis" && (
+            <motion.div
+              key="synthesis"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+            >
+              <SynthesisEngine onCombinationSelect={(combo) => console.log("Selected:", combo)} />
+            </motion.div>
+          )}
+
+          {/* MYCELIUM SECTION */}
+          {activeSection === "mycelium" && (
+            <motion.div
+              key="mycelium"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="space-y-6"
+            >
+              <MyceliumNetwork simulation={myceliumSimulation} />
+              <LifePrinciplesDisplay />
+            </motion.div>
+          )}
+
+          {/* DISTILLATION SECTION */}
+          {activeSection === "distillation" && (
+            <motion.div
+              key="distillation"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="space-y-6"
+            >
+              <OriginFirstDistillation
+                onSeedSelect={(seed) => console.log("Selected seed:", seed)}
+                onEnvironmentChange={(forces) => console.log("Environment forces:", forces)}
+              />
+              <BootstrapIntelligenceEngine />
+              <SuperInstanceWorkflow />
+            </motion.div>
+          )}
+
+          {/* ML LEARNING ENGINE SECTION */}
+          {activeSection === "learning" && (
+            <motion.div
+              key="learning"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="space-y-6"
+            >
+              <KnowledgeDistillationSystem
+                onJobComplete={(job) => console.log("Job completed:", job)}
+              />
+              <UserLearningEngineComponent
+                onPatternDetected={(pattern) => console.log("Pattern detected:", pattern)}
+                onSuggestionGenerated={(suggestion) => console.log("Suggestion:", suggestion)}
+              />
+            </motion.div>
+          )}
+
+          {/* EXPLORER SECTION */}
+          {activeSection === "explorer" && (
+            <motion.div
+              key="explorer"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+            >
+              <ExplorerHub />
+            </motion.div>
+          )}
+
+          {/* ROUNDS SECTION */}
+          {activeSection === "rounds" && (
+            <motion.div
+              key="rounds"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+            >
+              <ExtendedSynthesisRounds
+                onRoundSelect={(round) => console.log("Selected round:", round)}
+                completedRounds={[]}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* Footer Stats */}
+      <div className="border-t border-slate-800 bg-slate-900/50">
+        <div className="max-w-7xl mx-auto px-4 py-6">
+          <div className="grid grid-cols-4 md:grid-cols-8 gap-4">
+            <div className="text-center">
+              <div className="text-2xl font-bold text-purple-400">24</div>
+              <div className="text-xs text-slate-500">Synthesis Rounds</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-amber-400">15</div>
+              <div className="text-xs text-slate-500">Teaching Methods</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-cyan-400">24</div>
+              <div className="text-xs text-slate-500">Combination Tiles</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-emerald-400">14+</div>
+              <div className="text-xs text-slate-500">Cultures</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-rose-400">8</div>
+              <div className="text-xs text-slate-500">Debate Formats</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-violet-400">5</div>
+              <div className="text-xs text-slate-500">Seed Types</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-orange-400">127K+</div>
+              <div className="text-xs text-slate-500">ML Examples</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-pink-400">∞</div>
+              <div className="text-xs text-slate-500">Possibilities</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
