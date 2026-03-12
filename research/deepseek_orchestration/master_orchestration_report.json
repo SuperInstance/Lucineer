@@ -1,0 +1,434 @@
+{
+  "orchestration_summary": {
+    "total_deepseek_calls": 960,
+    "total_deepseek_tokens": 397542,
+    "deepseek_cost_usd": 0.07950840000000012,
+    "runtime_seconds": 805.539723,
+    "average_quality": 0.8973786464633665,
+    "signal_to_noise_ratio": 0.98125,
+    "calls_per_second": 1.1917475607841626
+  },
+  "domain_summaries": {
+    "thermal_physics": {
+      "domain": "thermal_physics",
+      "total_calls": 80,
+      "avg_quality": 0.9724272875816993,
+      "signal_ratio": 1.0,
+      "metrics_summary": {
+        "junction_temp_c": {
+          "mean": 86.03125,
+          "min": 78.2,
+          "max": 92.7,
+          "count": 80
+        },
+        "thermal_resistance_cw": {
+          "mean": 0.500875,
+          "min": 0.42,
+          "max": 0.55,
+          "count": 80
+        },
+        "power_density_wmm2": {
+          "mean": 0.2434375,
+          "min": 0.2,
+          "max": 0.45,
+          "count": 80
+        }
+      }
+    },
+    "vlsi_layout": {
+      "domain": "vlsi_layout",
+      "total_calls": 80,
+      "avg_quality": 0.983972619047619,
+      "signal_ratio": 1.0,
+      "metrics_summary": {
+        "area_mm2": {
+          "mean": 24.728125,
+          "min": 0.45,
+          "max": 25.8,
+          "count": 80
+        },
+        "routing_congestion": {
+          "mean": 0.7035,
+          "min": 0.62,
+          "max": 0.82,
+          "count": 80
+        },
+        "wirelength_mm": {
+          "mean": 149.33375,
+          "min": 8.2,
+          "max": 187.5,
+          "count": 80
+        },
+        "utilization_density_target": {
+          "mean": 0.65,
+          "min": 0.65,
+          "max": 0.65,
+          "count": 1
+        },
+        "standard_cell_utilization": {
+          "mean": 0.75,
+          "min": 0.75,
+          "max": 0.75,
+          "count": 1
+        },
+        "macro_utilization": {
+          "mean": 0.55,
+          "min": 0.55,
+          "max": 0.55,
+          "count": 1
+        },
+        "routing_resource_utilization": {
+          "mean": 0.82,
+          "min": 0.82,
+          "max": 0.82,
+          "count": 1
+        }
+      }
+    },
+    "power_analysis": {
+      "domain": "power_analysis",
+      "total_calls": 80,
+      "avg_quality": 0.954223511904762,
+      "signal_ratio": 1.0,
+      "metrics_summary": {
+        "total_power_w": {
+          "mean": 4.8432,
+          "min": 3.8,
+          "max": 5.2,
+          "count": 75
+        },
+        "dynamic_power_w": {
+          "mean": 3.3746666666666667,
+          "min": 2.8,
+          "max": 4.2,
+          "count": 75
+        },
+        "leakage_power_w": {
+          "mean": 1.4725333333333332,
+          "min": 0.8,
+          "max": 1.8,
+          "count": 75
+        },
+        "ir_drop_mv": {
+          "mean": 50.278666666666666,
+          "min": 35.0,
+          "max": 72.3,
+          "count": 75
+        },
+        "short_circuit_power_w": {
+          "mean": 0.39375,
+          "min": 0.35,
+          "max": 0.525,
+          "count": 8
+        },
+        "decoupling_capacitance_required_nf": {
+          "mean": 140.0,
+          "min": 35.0,
+          "max": 350.0,
+          "count": 3
+        },
+        "decoupling_capacitance_available_nf": {
+          "mean": 28.0,
+          "min": 28.0,
+          "max": 28.0,
+          "count": 2
+        },
+        "ir_drop_reduction_mv": {
+          "mean": 15.0,
+          "min": 15.0,
+          "max": 15.0,
+          "count": 1
+        },
+        "ir_drop_improvement_mv": {
+          "mean": 15.0,
+          "min": 15.0,
+          "max": 15.0,
+          "count": 1
+        },
+        "clock_tree_power_w": {
+          "mean": 1.05,
+          "min": 1.05,
+          "max": 1.05,
+          "count": 1
+        },
+        "clock_tree_percentage": {
+          "mean": 30.0,
+          "min": 30.0,
+          "max": 30.0,
+          "count": 1
+        },
+        "decoupling_capacitance_actual_nf": {
+          "mean": 280.0,
+          "min": 280.0,
+          "max": 280.0,
+          "count": 1
+        },
+        "decoupling_coverage_percent": {
+          "mean": 80.0,
+          "min": 80.0,
+          "max": 80.0,
+          "count": 1
+        }
+      }
+    },
+    "timing_closure": {
+      "domain": "timing_closure",
+      "total_calls": 80,
+      "avg_quality": 0.8645833333333334,
+      "signal_ratio": 1.0,
+      "metrics_summary": {
+        "setup_slack_ps": {
+          "mean": 24.4875,
+          "min": -85.0,
+          "max": 185.0,
+          "count": 80
+        },
+        "hold_slack_ps": {
+          "mean": 38.1375,
+          "min": 15.0,
+          "max": 85.0,
+          "count": 80
+        },
+        "clock_skew_ps": {
+          "mean": 27.325,
+          "min": 15.0,
+          "max": 45.0,
+          "count": 80
+        }
+      }
+    },
+    "memory_architecture": {
+      "domain": "memory_architecture",
+      "total_calls": 80,
+      "avg_quality": 0.9003173828125,
+      "signal_ratio": 1.0,
+      "metrics_summary": {
+        "sram_size_kb": {
+          "mean": 303.3424657534247,
+          "min": 256.0,
+          "max": 2048.0,
+          "count": 73
+        },
+        "bandwidth_gbps": {
+          "mean": 138.86849315068494,
+          "min": 128.0,
+          "max": 256.0,
+          "count": 73
+        },
+        "latency_cycles": {
+          "mean": 3.1232876712328768,
+          "min": 2.0,
+          "max": 4.0,
+          "count": 73
+        },
+        "hit_rate": {
+          "mean": 0.9517808219178082,
+          "min": 0.92,
+          "max": 0.97,
+          "count": 73
+        },
+        "sram_leakage_power_mw": {
+          "mean": 48.0875,
+          "min": 42.7,
+          "max": 85.2,
+          "count": 8
+        },
+        "sram_retention_power_mw": {
+          "mean": 20.2,
+          "min": 15.3,
+          "max": 42.6,
+          "count": 8
+        },
+        "total_sram_static_power_mw": {
+          "mean": 61.0,
+          "min": 61.0,
+          "max": 61.0,
+          "count": 2
+        },
+        "sram_static_power_percentage": {
+          "mean": 1.22,
+          "min": 1.22,
+          "max": 1.22,
+          "count": 1
+        }
+      }
+    },
+    "neuromorphic_computing": {
+      "domain": "neuromorphic_computing",
+      "total_calls": 80,
+      "avg_quality": 0.9708083333333334,
+      "signal_ratio": 1.0,
+      "metrics_summary": {
+        "spike_rate_hz": {
+          "mean": 851.5432500000001,
+          "min": 237.5,
+          "max": 1250.0,
+          "count": 80
+        },
+        "synaptic_density": {
+          "mean": 870308.33325,
+          "min": 200000.0,
+          "max": 1250000.0,
+          "count": 80
+        },
+        "energy_per_spike_pj": {
+          "mean": 8.285625,
+          "min": 2.1,
+          "max": 12.5,
+          "count": 80
+        }
+      }
+    },
+    "verification": {
+      "domain": "verification",
+      "total_calls": 80,
+      "avg_quality": 0.9997624269005848,
+      "signal_ratio": 1.0,
+      "metrics_summary": {
+        "code_coverage_pct": {
+          "mean": 87.99,
+          "min": 78.5,
+          "max": 96.5,
+          "count": 80
+        },
+        "functional_coverage_pct": {
+          "mean": 82.103125,
+          "min": 40.0,
+          "max": 92.0,
+          "count": 80
+        }
+      }
+    },
+    "reliability": {
+      "domain": "reliability",
+      "total_calls": 80,
+      "avg_quality": 0.6157208333333333,
+      "signal_ratio": 0.8875,
+      "metrics_summary": {
+        "mtbf_hours": {
+          "mean": 103041.25,
+          "min": 43800.0,
+          "max": 250000.0,
+          "count": 80
+        },
+        "esd_threshold_v": {
+          "mean": 2038.125,
+          "min": 1800.0,
+          "max": 3500.0,
+          "count": 80
+        },
+        "soft_error_rate": {
+          "mean": 3.3885,
+          "min": 1.0,
+          "max": 8.76,
+          "count": 80
+        }
+      }
+    },
+    "signal_integrity": {
+      "domain": "signal_integrity",
+      "total_calls": 80,
+      "avg_quality": 0.8703375,
+      "signal_ratio": 1.0,
+      "metrics_summary": {
+        "crosstalk_mv": {
+          "mean": 53.4,
+          "min": 42.0,
+          "max": 78.2,
+          "count": 80
+        },
+        "em_violations": {
+          "mean": 0.9625,
+          "min": 0.0,
+          "max": 3.0,
+          "count": 80
+        },
+        "sso_noise_mv": {
+          "mean": 106.985,
+          "min": 85.0,
+          "max": 142.8,
+          "count": 80
+        }
+      }
+    },
+    "process_variation": {
+      "domain": "process_variation",
+      "total_calls": 80,
+      "avg_quality": 0.9239225293132328,
+      "signal_ratio": 1.0,
+      "metrics_summary": {
+        "yield_pct": {
+          "mean": 99.284625,
+          "min": 98.7,
+          "max": 99.82,
+          "count": 80
+        },
+        "sigma_variation": {
+          "mean": 0.15789999999999998,
+          "min": 0.08,
+          "max": 1.8,
+          "count": 80
+        },
+        "pvt_coverage": {
+          "mean": 99.09875,
+          "min": 94.5,
+          "max": 100.0,
+          "count": 80
+        }
+      }
+    },
+    "system_integration": {
+      "domain": "system_integration",
+      "total_calls": 80,
+      "avg_quality": 0.8629055,
+      "signal_ratio": 1.0,
+      "metrics_summary": {
+        "noc_latency_cycles": {
+          "mean": 13.768749999999999,
+          "min": 8.0,
+          "max": 18.0,
+          "count": 80
+        },
+        "bandwidth_utilization_pct": {
+          "mean": 77.24375,
+          "min": 67.0,
+          "max": 92.5,
+          "count": 80
+        },
+        "packet_loss_rate": {
+          "mean": 0.01642875,
+          "min": 0.0,
+          "max": 0.3,
+          "count": 80
+        }
+      }
+    },
+    "ml_hardware": {
+      "domain": "ml_hardware",
+      "total_calls": 80,
+      "avg_quality": 0.8495625,
+      "signal_ratio": 0.8875,
+      "metrics_summary": {
+        "quantization_error": {
+          "mean": 0.0118125,
+          "min": 0.0082,
+          "max": 0.032,
+          "count": 80
+        },
+        "inference_latency_us": {
+          "mean": 91.23625,
+          "min": 42.0,
+          "max": 142.0,
+          "count": 80
+        },
+        "accuracy_loss_pct": {
+          "mean": 1.175875,
+          "min": 0.82,
+          "max": 2.8,
+          "count": 80
+        }
+      }
+    }
+  },
+  "timestamp": "2026-03-07T09:26:37.741253"
+}
