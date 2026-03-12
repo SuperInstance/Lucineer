@@ -18,13 +18,15 @@ import {
   Briefcase,
   Music,
   Brain,
-  Cube,
+  Layers,
   Factory,
   DollarSign,
   Code2,
   Bot,
   Box,
   Table,
+  Hexagon,
+  Atom,
 } from "lucide-react";
 
 const navItems = [
@@ -38,6 +40,13 @@ const navItems = [
     href: "/voxel-explorer",
     icon: Box,
     description: "Stephen Biesty inspired cross-sections and exploded views",
+    highlight: true,
+  },
+  {
+    label: "CRDT Lab",
+    href: "/crdt-lab",
+    icon: Atom,
+    description: "Conflict-free replicated data types simulation",
     highlight: true,
   },
   {
@@ -71,7 +80,7 @@ const navItems = [
   {
     label: "Math Universe",
     href: "/math-universe",
-    icon: Cube,
+    icon: Hexagon,
     description: "Interactive math visualizations for AI & humans",
     highlight: true,
   },

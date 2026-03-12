@@ -10,7 +10,7 @@ import {
   Factory,
   DollarSign,
   Code2,
-  Cube,
+  Box,
   Sparkles,
   Gamepad2,
   Brain,
@@ -77,7 +77,7 @@ const domains = [
   {
     id: "math",
     name: "Math Explorer Agent",
-    icon: Cube,
+    icon: Box,
     color: "from-amber-500 to-orange-600",
     description: "Agent explores mathematical concepts visually",
     goals: [
@@ -161,7 +161,7 @@ function LearningInsights() {
         </div>
 
         <div className="p-4 bg-green-500/10 rounded-xl border border-green-500/20">
-          <h4 className="font-medium text-green-400 mb-2">For All Ages</h5>
+          <h4 className="font-medium text-green-400 mb-2">For All Ages</h4>
           <p className="text-sm text-muted-foreground">
             A 5-year-old watches MIST agent learn. A 15-year-old directs RTL optimization.
             A professional architect multi-agent workflows. Same platform, different depths.
@@ -425,7 +425,7 @@ export default function AgentPlaygroundPage() {
                 href="/math-universe"
                 className="flex items-center gap-2 px-6 py-3 rounded-xl bg-card border border-border hover:border-indigo-500/50 transition-colors"
               >
-                <Cube className="w-5 h-5 text-amber-400" />
+                <Box className="w-5 h-5 text-amber-400" />
                 Math Universe
               </Link>
               <Link

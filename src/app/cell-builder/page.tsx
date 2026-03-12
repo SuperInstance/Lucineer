@@ -36,7 +36,7 @@ import {
   BookOpen,
   GraduationCap,
   Bot,
-  Cube,
+  Box,
   Workflow,
   SquareStack,
   BoxSelect,
@@ -1607,7 +1607,7 @@ export default function CellBuilderPage() {
                   href="/math-universe"
                   className="flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-xl font-medium hover:opacity-90 transition-opacity"
                 >
-                  <Cube className="w-5 h-5" />
+                  <Box className="w-5 h-5" />
                   Explore Math Universe
                 </Link>
                 <Link

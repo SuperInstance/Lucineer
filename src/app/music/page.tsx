@@ -13,7 +13,7 @@ import {
   Disc3,
   Sparkles,
   Brain,
-  Slider,
+  Sliders,
   RefreshCw,
   Download,
   Zap,
@@ -384,7 +384,7 @@ export default function MusicPage() {
             </div>
             <div className="bg-card rounded-2xl border border-border p-6">
               <div className="w-12 h-12 rounded-xl bg-purple-400/10 flex items-center justify-center mb-4">
-                <Slider className="w-6 h-6 text-purple-400" />
+                <Sliders className="w-6 h-6 text-purple-400" />
               </div>
               <h3 className="text-lg font-semibold mb-2">Constrain</h3>
               <p className="text-muted-foreground text-sm">

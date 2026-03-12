@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Clock,
-  TrafficLight,
+  Circle,
   Puzzle,
   Layers,
   Play,
@@ -33,7 +33,7 @@ const playgrounds = [
     id: "traffic",
     title: "Traffic Light Simulator",
     description: "Control timing sequences like a traffic engineer",
-    icon: TrafficLight,
+    icon: Circle,
     color: "text-red-400",
   },
   {
@@ -98,7 +98,11 @@ function TrafficLightSimulator() {
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-lg bg-red-400/10 flex items-center justify-center">
-            <TrafficLight className="w-5 h-5 text-red-400" />
+            <div className="flex flex-col gap-0.5">
+              <Circle className="w-2 h-2 text-red-400 fill-red-400" />
+              <Circle className="w-2 h-2 text-yellow-400 fill-yellow-400 opacity-30" />
+              <Circle className="w-2 h-2 text-green-400 fill-green-400 opacity-30" />
+            </div>
           </div>
           <div>
             <h3 className="font-semibold">Traffic Light Controller</h3>

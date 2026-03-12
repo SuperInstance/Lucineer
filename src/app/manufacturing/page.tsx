@@ -9,7 +9,6 @@ import {
   Beaker,
   Box,
   Cpu,
-  Cube,
   Database,
   Eye,
   Factory,
@@ -23,7 +22,7 @@ import {
   Target,
   Waves,
   Zap,
-  Radioactive,
+  AlertTriangle,
 } from "lucide-react";
 
 // Manufacturing Process Steps
@@ -107,7 +106,7 @@ const manufacturingSteps = [
     id: "ion-implantation",
     name: "Ion Implantation",
     subtitle: "Doping the Silicon",
-    icon: Radioactive,
+    icon: AlertTriangle,
     color: "from-yellow-500 to-orange-600",
     description: "Accelerated ions are shot into the silicon to modify its electrical properties",
     physics: [
@@ -322,7 +321,7 @@ function StepDetailModal({ step, onClose }: { step: typeof manufacturingSteps[0]
 
           <div className="bg-gradient-to-r from-emerald-500/10 to-cyan-400/10 rounded-xl p-4 border border-emerald-500/20">
             <h4 className="font-medium mb-2 flex items-center gap-2">
-              <Cube className="w-4 h-4 text-cyan-400" />
+              <Box className="w-4 h-4 text-cyan-400" />
               Voxel Experience
             </h4>
             <p className="text-muted-foreground">{step.voxelConcept}</p>
@@ -412,7 +411,7 @@ export default function ManufacturingPage() {
                   className="block bg-card rounded-2xl border border-border p-4 hover:border-emerald-500/50 transition-colors"
                 >
                   <div className="flex items-center gap-3">
-                    <Cube className="w-5 h-5 text-emerald-400" />
+                    <Box className="w-5 h-5 text-emerald-400" />
                     <span>Explore Math Universe →</span>
                   </div>
                 </Link>
