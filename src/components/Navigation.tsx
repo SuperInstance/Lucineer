@@ -28,6 +28,7 @@ import {
   Hexagon,
   Atom,
   Network,
+  Puzzle,
 } from "lucide-react";
 
 const navItems = [
@@ -55,6 +56,13 @@ const navItems = [
     href: "/lln-playground",
     icon: Network,
     description: "Large Language Networks - agents learning through play",
+    highlight: true,
+  },
+  {
+    label: "LLN Tiles",
+    href: "/lln-tiles",
+    icon: Puzzle,
+    description: "Tile-based programming for LLN - visual agent builder",
     highlight: true,
   },
   {
