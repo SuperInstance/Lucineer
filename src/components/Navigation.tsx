@@ -27,6 +27,7 @@ import {
   Table,
   Hexagon,
   Atom,
+  Network,
 } from "lucide-react";
 
 const navItems = [
@@ -47,6 +48,13 @@ const navItems = [
     href: "/crdt-lab",
     icon: Atom,
     description: "Conflict-free replicated data types simulation",
+    highlight: true,
+  },
+  {
+    label: "LLN Playground",
+    href: "/lln-playground",
+    icon: Network,
+    description: "Large Language Networks - agents learning through play",
     highlight: true,
   },
   {
