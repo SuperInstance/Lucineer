@@ -100,13 +100,14 @@ import {
   LayoutList,
   Database,
   Cpu,
-  Fungi,
   TreeDeciduous,
   FlaskConical,
   Globe,
   Merge,
-  Crystal,
   Hexagon,
+  Box,
+  GitMerge,
+  Diamond,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -118,6 +119,11 @@ import { KnowledgeDistillationSystem, OriginFirstDistillationEngine } from "./Kn
 import { UserLearningEngineComponent } from "./UserLearningEngine";
 import { ExplorerHub } from "./ExplorerHub";
 import { ExtendedSynthesisRounds, EXTENDED_SYNTHESIS_ROUNDS } from "./SynthesisRoundsExtended";
+import { RealTimeGameEngine } from "./RealTimeGameEngine";
+import { GameSimulationSwitcher } from "./GameSimulationSwitcher";
+import { MLUserActionTracker } from "./MLUserActionTracker";
+import { VoxelGameIntegrator } from "./VoxelGameIntegrator";
+import { SpeedLearningPath } from "./SpeedLearningPath";
 
 // ============================================================================
 // TYPES & INTERFACES
@@ -126,7 +132,7 @@ import { ExtendedSynthesisRounds, EXTENDED_SYNTHESIS_ROUNDS } from "./SynthesisR
 type UserRole = "kid" | "teen" | "developer" | "researcher" | "enterprise" | "educator" | "hobbyist" | "scientist" | "pm" | "artist";
 type GameMode = "charades" | "word-chain" | "story-build" | "riddle-battle" | "emoji-translate" | "concept-map" | "debate" | "improv";
 type DifficultyLevel = "beginner" | "intermediate" | "advanced" | "expert";
-type HubSection = "play" | "synthesis" | "mycelium" | "distillation" | "learning" | "explorer" | "rounds";
+type HubSection = "play" | "synthesis" | "mycelium" | "distillation" | "learning" | "explorer" | "rounds" | "voxel" | "speedrun";
 
 interface UserProfile {
   id: string;
@@ -741,12 +747,13 @@ export default function LLNPlayground() {
               <div className="hidden md:flex items-center gap-1 ml-6">
                 {[
                   { id: "play", label: "Play", icon: Gamepad2 },
+                  { id: "realtime", label: "Real-Time", icon: Zap },
+                  { id: "voxel", label: "Voxel Lab", icon: Box },
+                  { id: "speedrun", label: "Speed Learn", icon: Rocket },
                   { id: "synthesis", label: "Synthesis", icon: Merge },
-                  { id: "mycelium", label: "Network", icon: Fungi },
+                  { id: "mycelium", label: "Network", icon: TreeDeciduous },
                   { id: "distillation", label: "Distillation", icon: Brain },
                   { id: "learning", label: "ML Engine", icon: Cpu },
-                  { id: "explorer", label: "Explorer", icon: Compass },
-                  { id: "rounds", label: "Rounds", icon: Rocket },
                 ].map((section) => (
                   <motion.button
                     key={section.id}
@@ -803,12 +810,13 @@ export default function LLNPlayground() {
             <div className="p-4 grid grid-cols-2 gap-2">
               {[
                 { id: "play", label: "Play", icon: Gamepad2 },
+                { id: "realtime", label: "Real-Time", icon: Zap },
+                { id: "voxel", label: "Voxel Lab", icon: Box },
+                { id: "speedrun", label: "Speed Learn", icon: Rocket },
                 { id: "synthesis", label: "Synthesis", icon: Merge },
-                { id: "mycelium", label: "Network", icon: Fungi },
+                { id: "mycelium", label: "Network", icon: TreeDeciduous },
                 { id: "distillation", label: "Distillation", icon: Brain },
                 { id: "learning", label: "ML Engine", icon: Cpu },
-                { id: "explorer", label: "Explorer", icon: Compass },
-                { id: "rounds", label: "Rounds", icon: Rocket },
               ].map((section) => (
                 <button
                   key={section.id}
@@ -1124,6 +1132,69 @@ export default function LLNPlayground() {
               exit={{ opacity: 0, y: -20 }}
             >
               <ExplorerHub />
+            </motion.div>
+          )}
+
+          {/* REAL-TIME GAME ENGINE SECTION */}
+          {activeSection === "realtime" && (
+            <motion.div
+              key="realtime"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="space-y-6"
+            >
+              <RealTimeGameEngine
+                ageGroup={userProfile?.role === "kid" ? "child" : userProfile?.role === "teen" ? "teen" : "adult"}
+                onScoreUpdate={(score) => console.log("Score:", score)}
+                onAchievement={(achievement) => console.log("Achievement:", achievement)}
+                onPatternDetected={(pattern) => console.log("Pattern:", pattern)}
+              />
+              <GameSimulationSwitcher
+                ageGroup={userProfile?.role === "kid" ? "child" : userProfile?.role === "teen" ? "teen" : "adult"}
+                onComplete={(pathId, score) => console.log("Path complete:", pathId, score)}
+                onProgress={(stepId, progress) => console.log("Progress:", stepId, progress)}
+              />
+            </motion.div>
+          )}
+
+          {/* VOXEL GAME INTEGRATOR SECTION */}
+          {activeSection === "voxel" && (
+            <motion.div
+              key="voxel"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="space-y-6"
+            >
+              <VoxelGameIntegrator
+                ageLevel={userProfile?.role === "kid" ? "elementary" : userProfile?.role === "teen" ? "middle" : "high"}
+                onModuleSelect={(module) => console.log("Module:", module)}
+                onScoreUpdate={(score) => console.log("Voxel score:", score)}
+              />
+            </motion.div>
+          )}
+
+          {/* SPEED LEARNING PATH SECTION */}
+          {activeSection === "speedrun" && (
+            <motion.div
+              key="speedrun"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="space-y-6"
+            >
+              <SpeedLearningPath
+                subject="ai-basics"
+                onProgress={(progress) => console.log("Learning progress:", progress)}
+                onConceptMastered={(conceptId) => console.log("Mastered:", conceptId)}
+                onChallengeComplete={(id, correct) => console.log("Challenge:", id, correct)}
+              />
+              <MLUserActionTracker
+                onPatternDetected={(pattern) => console.log("ML Pattern:", pattern)}
+                onInsightGenerated={(insight) => console.log("Insight:", insight)}
+                enableRealTimeTracking={true}
+              />
             </motion.div>
           )}
 

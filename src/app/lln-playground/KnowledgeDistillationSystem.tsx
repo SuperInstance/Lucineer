@@ -33,7 +33,7 @@ import {
   Circle,
   Infinity,
   TreeDeciduous,
-  Seed,
+  Sprout,
   Sun,
   Wind,
   Droplet,

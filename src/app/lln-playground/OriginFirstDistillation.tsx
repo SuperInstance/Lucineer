@@ -6,7 +6,6 @@
 
 import { motion } from "framer-motion";
 import {
-  TreeDeciduous,
   Sparkles,
   Network,
   Zap,
@@ -22,16 +21,16 @@ import {
   Merge,
   RefreshCw,
   Brain,
-  Seed,
+  Sprout,
   Sun,
   Wind,
   Cloud,
   Leaf,
   TreePine,
-  Fungi,
+  TreeDeciduous,
   Dna,
   Atom,
-  Crystal,
+  Diamond,
   Circle,
   Box,
   Workflow,
@@ -440,7 +439,7 @@ export function OriginFirstDistillation({
         {/* Core Philosophy */}
         <div className="grid grid-cols-3 gap-4">
           <div className="p-4 bg-slate-900/50 rounded-xl">
-            <Seed className="w-6 h-6 text-amber-400 mb-2" />
+            <Sprout className="w-6 h-6 text-amber-400 mb-2" />
             <h4 className="text-white font-medium mb-1">The Seed is Not Random</h4>
             <p className="text-sm text-slate-400">
               A seed is a crystal growing from innate properties. It contains 
@@ -458,7 +457,7 @@ export function OriginFirstDistillation({
             </p>
           </div>
           <div className="p-4 bg-slate-900/50 rounded-xl">
-            <Fungi className="w-6 h-6 text-purple-400 mb-2" />
+            <TreeDeciduous className="w-6 h-6 text-purple-400 mb-2" />
             <h4 className="text-white font-medium mb-1">Cooperation Through Networks</h4>
             <p className="text-sm text-slate-400">
               Mycelium networks connect trees. They warn of pests, share 
@@ -470,7 +469,7 @@ export function OriginFirstDistillation({
       </div>
 
       {/* Seed Library */}
-      <SeedLibraryDisplay seeds={SEED_LIBRARY} onSelect={onSeedSelect} />
+      <SproutLibraryDisplay seeds={SEED_LIBRARY} onSelect={onSeedSelect} />
 
       {/* Environmental Forces */}
       <EnvironmentalForcesDisplay onChange={onEnvironmentChange} />
@@ -543,7 +542,7 @@ function SeedLibraryDisplay({
                 {seed.geometricEncoding.type}
               </span>
               <span className="text-slate-500">
-                {((1 - seed.geometricEncoding.compressionRatio) * 100).toFixed(0}% compressed
+                {((1 - seed.geometricEncoding.compressionRatio) * 100).toFixed(0)}% compressed
               </span>
             </div>
 
@@ -702,7 +701,7 @@ function MyceliumNetworkDisplay() {
   return (
     <div className="bg-slate-800/50 rounded-2xl p-6 border border-purple-500/30">
       <div className="flex items-center gap-2 mb-4">
-        <Fungi className="w-5 h-5 text-purple-400" />
+        <TreeDeciduous className="w-5 h-5 text-purple-400" />
         <h3 className="text-lg font-semibold text-white">Mycelium Network</h3>
         <span className="text-xs text-slate-500 ml-2">Cooperative Intelligence</span>
       </div>

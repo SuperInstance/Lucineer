@@ -42,7 +42,7 @@ import {
   Network,
   TreeDeciduous,
   Flame,
-  Crystal,
+  Diamond,
   Hexagon,
 } from "lucide-react";
 
@@ -871,7 +871,7 @@ export function SynthesisEngine({ onCombinationSelect }: SynthesisEngineProps) {
       {/* Combination Tiles Grid */}
       <div className="bg-slate-800/50 rounded-2xl p-6 border border-slate-700">
         <h4 className="text-white font-medium mb-4 flex items-center gap-2">
-          <Crystal className="w-4 h-4 text-cyan-400" />
+          <Diamond className="w-4 h-4 text-cyan-400" />
           Combination Tiles (Higher-Order Abstractions)
         </h4>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
