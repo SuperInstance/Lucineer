@@ -17,6 +17,7 @@ node_modules
 /.next/
 /out/
 /.open-next/
+build-temp.db
 
 # production
 /build
