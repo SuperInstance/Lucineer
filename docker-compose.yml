@@ -1,0 +1,47 @@
+services:
+  lucineer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runner
+    image: lucineer:local
+    container_name: lucineer-app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env.local       # create this from .env.example
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: file:/app/data/lucineer.db
+    volumes:
+      # SQLite database persists across restarts
+      - lucineer-data:/app/data
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/api"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+  # Optional: Caddy reverse proxy with HTTPS (matches existing Caddyfile structure)
+  # Uncomment if running locally with a domain
+  # caddy:
+  #   image: caddy:2-alpine
+  #   container_name: lucineer-caddy
+  #   restart: unless-stopped
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - ./Caddyfile.docker:/etc/caddy/Caddyfile
+  #     - caddy-data:/data
+  #     - caddy-config:/config
+  #   depends_on:
+  #     - lucineer
+
+volumes:
+  lucineer-data:
+    driver: local
+  # caddy-data:
+  # caddy-config:

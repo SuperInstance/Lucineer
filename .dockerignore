@@ -1,13 +1,58 @@
 Dockerfile
 .dockerignore
+docker-compose.yml
+
+# Dependencies (rebuilt in Docker)
 node_modules
-npm-debug.log
-README.md
+
+# Build output (rebuilt in Docker)
 .next
+
+# Git
 .git
+.gitignore
+.gitattributes
+
+# Lockfile variants (we use bun.lock)
 package-lock.json
 yarn.lock
 pnpm-lock.yaml
-test
+npm-debug.log
+
+# Env files — never bake secrets into image
+.env
+.env.local
+.env.development
+.env.production
+.env.*.local
+
+# Local database — runtime data, use Docker volume instead
+db/
+prisma/*.db
+prisma/*.db-journal
+
+# Large research/asset folders not needed at runtime
+research/
+download/
+final_delivery/
+upload/
+examples/
+docs/
+
+# Misc project files not needed in container
+*.md
+!README.md
 *.log
-local-*
+*.zip
+*.pdf
+*.docx
+*.py
+agent-journal.md
+worklog.md
+mask_locked_*.txt
+*.json5
+Caddyfile
+customer_validation_research/
+mini-services/
+scripts/
+thermal_simulation/

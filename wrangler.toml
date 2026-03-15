@@ -1,0 +1,75 @@
+# ─────────────────────────────────────────────────────────────────
+# Lucineer — Cloudflare Deployment Config
+# ─────────────────────────────────────────────────────────────────
+# TWO deployment paths are configured here:
+#
+#   Path A (Containers) — Docker image, spin-up/spin-down, use this
+#                         if z-ai-web-dev-sdk has Node.js requirements
+#
+#   Path B (Workers)    — Serverless edge runtime, no Docker needed,
+#                         use this once API routes are verified
+#                         compatible with the Cloudflare edge runtime
+#
+# Start with Path A — it's the most reliable.
+# ─────────────────────────────────────────────────────────────────
+
+name = "lucineer"
+compatibility_date = "2025-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+# ── Path A: Cloudflare Containers ────────────────────────────────
+# Runs the Docker image. Spins up on request, spins down when idle.
+# Requires: docker push to registry first (see deploy instructions)
+
+[[containers]]
+# Replace with your registry URL after: docker push
+# Option 1 — Docker Hub:   "yourdockerhubuser/lucineer:latest"
+# Option 2 — CF Registry:  "registry.cloudflare.com/lucineer/lucineer:latest"
+image = "yourdockerhubuser/lucineer:latest"
+
+max_instances = 3        # Scale ceiling (3 concurrent containers max)
+min_instances = 0        # Scale to zero when idle — saves money
+instance_type = "dev"    # Smallest: 256MB RAM, shared CPU
+
+# ── Path B: Workers (serverless — enable once tested) ────────────
+# main = "src/worker-entry.js"   # uncomment when edge-compatible
+
+# ── D1 Database (replaces SQLite file when in Workers mode) ──────
+# Provision with: wrangler d1 create lucineer
+# Then fill in database_id below
+[[d1_databases]]
+binding = "DB"
+database_name = "lucineer"
+database_id = "REPLACE_AFTER_wrangler_d1_create"
+
+# ── R2 Storage (assets, user uploads) ────────────────────────────
+# Provision with: wrangler r2 bucket create lucineer-assets
+[[r2_buckets]]
+binding = "ASSETS"
+bucket_name = "lucineer-assets"
+
+# ── KV (session cache, feature flags) ────────────────────────────
+# Provision with: wrangler kv:namespace create LUCINEER_CACHE
+[[kv_namespaces]]
+binding = "CACHE"
+id = "REPLACE_AFTER_wrangler_kv_create"
+
+# ── Public Environment Variables ─────────────────────────────────
+[vars]
+NODE_ENV = "production"
+NEXT_PUBLIC_APP_URL = "https://lucineer.com"
+
+# ── Secrets (set via CLI, never stored here) ──────────────────────
+# Run these once:
+#   wrangler secret put ZAI_API_KEY
+#   wrangler secret put ANTHROPIC_API_KEY
+#   wrangler secret put NEXTAUTH_SECRET
+
+# ── Custom Domain ─────────────────────────────────────────────────
+# Set in Cloudflare dashboard under Workers & Pages → your project
+# → Custom Domains → Add lucineer.com
+
+# ── Preview Environment ───────────────────────────────────────────
+[env.preview]
+name = "lucineer-preview"
+vars = { NODE_ENV = "preview", NEXT_PUBLIC_APP_URL = "https://preview.lucineer.workers.dev" }
