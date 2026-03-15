@@ -42,3 +42,16 @@ NEXT_PUBLIC_APP_URL = "https://lucineer.com"
 [env.preview]
 name = "lucineer-preview"
 vars = { NODE_ENV = "preview", NEXT_PUBLIC_APP_URL = "https://lucineer-preview.pages.dev" }
+
+[[env.preview.d1_databases]]
+binding = "DB"
+database_name = "lucineer"
+database_id = "REPLACE_AFTER_wrangler_d1_create"
+
+[[env.preview.r2_buckets]]
+binding = "STORAGE"
+bucket_name = "lucineer-assets"
+
+[[env.preview.kv_namespaces]]
+binding = "CACHE"
+id = "REPLACE_AFTER_wrangler_kv_create"
