@@ -1,0 +1,54 @@
+{
+  "name": "Lucineer — Chip Explorer",
+  "short_name": "Lucineer",
+  "description": "Learn how computers work by building them. An educational voxel game for all ages.",
+  "start_url": "/voxel-explorer?source=pwa",
+  "scope": "/",
+  "display": "fullscreen",
+  "display_override": ["fullscreen", "standalone", "minimal-ui", "browser"],
+  "orientation": "any",
+  "background_color": "#0a0a0f",
+  "theme_color": "#22c55e",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["education", "games"],
+
+  "icons": [
+    { "src": "/logo.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/logo.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ],
+
+  "shortcuts": [
+    {
+      "name": "Voxel Explorer",
+      "short_name": "Voxel",
+      "description": "Explore chips from the inside",
+      "url": "/voxel-explorer",
+      "icons": [{ "src": "/logo.svg", "sizes": "any" }]
+    },
+    {
+      "name": "LLN Playground",
+      "short_name": "LLN",
+      "description": "AI debate and synthesis",
+      "url": "/lln-playground",
+      "icons": [{ "src": "/logo.svg", "sizes": "any" }]
+    },
+    {
+      "name": "MIST Game",
+      "short_name": "MIST",
+      "description": "Learn AI through play",
+      "url": "/mist",
+      "icons": [{ "src": "/logo.svg", "sizes": "any" }]
+    }
+  ],
+
+  "related_applications": [],
+  "prefer_related_applications": false,
+
+  "protocol_handlers": [
+    {
+      "protocol": "web+lucineer",
+      "url": "/share?data=%s"
+    }
+  ]
+}
