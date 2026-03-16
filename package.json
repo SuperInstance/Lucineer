@@ -12,7 +12,7 @@
     "db:migrate": "prisma migrate dev",
     "db:reset": "prisma migrate reset",
     "build:cf": "DATABASE_URL=file:./build-temp.db bunx opennextjs-cloudflare build",
-    "deploy:cf": "bun run build:cf && wrangler pages deploy .open-next/assets --project-name lucineer --branch main",
+    "deploy:cf": "bun run build:cf && cp .open-next/worker.js .open-next/assets/_worker.js && wrangler pages deploy .open-next/assets --project-name lucineer --branch main",
     "docker:build": "docker build -t lucineer:latest .",
     "docker:up": "docker compose up -d",
     "docker:down": "docker compose down",
