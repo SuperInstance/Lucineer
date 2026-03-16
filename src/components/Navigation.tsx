@@ -33,6 +33,9 @@ import {
   Radio,
   Clock,
   Database,
+  Package,
+  Shield,
+  TestTube2,
 } from "lucide-react";
 
 // ── Menu structure: 4 top-level groups + About ──────────────────
@@ -75,6 +78,9 @@ const menuGroups = [
       { label: "Process Tech",     href: "/process-tech",     icon: Atom,         description: "FinFET scaling, I-V curves, doping" },
       { label: "Memory Hierarchy", href: "/memory-hierarchy", icon: Database,     description: "SRAM, cache AMAT, roofline model" },
       { label: "Clock & Timing",   href: "/clock-power",      icon: Clock,        description: "CTS, slack waterfall, PLL, gating" },
+      { label: "Packaging",        href: "/packaging",        icon: Package,      description: "Flip-chip, TSV, chiplet topology" },
+      { label: "Verification",     href: "/verification",     icon: Shield,       description: "FSM coverage, formal, timing closure" },
+      { label: "DFT",              href: "/dft",              icon: TestTube2,    description: "Scan chains, BIST, ATPG, yield model" },
       { label: "Fluid Cooling",    href: "/fluid-cooling",    icon: Droplets,     description: "Liquid cooling, heat pipes, vapor chambers" },
       { label: "HW-SW Co-Opt",     href: "/hw-sw-coopt",      icon: Activity,     description: "Timing, waveforms, quantization" },
       { label: "EM & Signal",      href: "/em-integrity",     icon: Radio,        description: "Parasitics, crosstalk, eye diagram, ESD" },
