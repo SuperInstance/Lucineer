@@ -1,0 +1,56 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  # ── Build & lint ───────────────────────────────────────────────
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Lint
+        run: bun run lint
+        continue-on-error: true   # don't block deploy on lint warnings
+
+      - name: Build for Cloudflare
+        run: bun run build:cf
+        env:
+          DATABASE_URL: file:./build-temp.db
+
+      - name: Stage assets for deploy
+        run: |
+          cp -r .open-next/cloudflare .open-next/assets/ 2>/dev/null || true
+          cp -r .open-next/middleware .open-next/assets/ 2>/dev/null || true
+          cp -r .open-next/server-functions .open-next/assets/ 2>/dev/null || true
+          cp -r .open-next/.build .open-next/assets/ 2>/dev/null || true
+          cp .open-next/worker.js .open-next/assets/_worker.js
+
+      # ── Preview deploy (pull requests) ──────────────────────────
+      - name: Deploy preview
+        if: github.event_name == 'pull_request'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy .open-next/assets --project-name lucineer --branch preview
+
+      # ── Production deploy (push to main) ────────────────────────
+      - name: Deploy production
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy .open-next/assets --project-name lucineer --branch main

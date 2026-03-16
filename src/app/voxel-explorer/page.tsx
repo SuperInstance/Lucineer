@@ -35,6 +35,7 @@ import {
   Compass,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { FullscreenButton } from "@/components/pwa/FullscreenButton";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
@@ -1940,6 +1941,7 @@ export default function VoxelExplorerPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      <FullscreenButton />
       {/* Header */}
       <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="max-w-7xl mx-auto px-4 py-3 sm:py-4">

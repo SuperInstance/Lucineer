@@ -7,211 +7,88 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   Menu,
   X,
-  Home,
-  BookOpen,
-  Clock,
   Cpu,
-  Users,
   ChevronDown,
-  Sparkles,
-  GraduationCap,
-  Briefcase,
+  Box,
+  Gamepad2,
   Music,
   Brain,
-  Layers,
+  BookOpen,
   Factory,
-  DollarSign,
-  Code2,
-  Bot,
-  Box,
-  Table,
   Hexagon,
-  Atom,
+  Layers,
   Network,
   Puzzle,
+  Table,
+  Atom,
+  Code2,
+  DollarSign,
+  GraduationCap,
+  Sparkles,
+  Users,
 } from "lucide-react";
 
-const navItems = [
+// ── Menu structure: 4 top-level groups + About ──────────────────
+const menuGroups = [
   {
-    label: "Home",
-    href: "/",
-    icon: Home,
-  },
-  {
-    label: "Voxel Explorer",
-    href: "/voxel-explorer",
-    icon: Box,
-    description: "Stephen Biesty inspired cross-sections and exploded views",
-    highlight: true,
-  },
-  {
-    label: "CRDT Lab",
-    href: "/crdt-lab",
-    icon: Atom,
-    description: "Conflict-free replicated data types simulation",
-    highlight: true,
-  },
-  {
-    label: "LLN Playground",
-    href: "/lln-playground",
-    icon: Network,
-    description: "Large Language Networks - agents learning through play",
-    highlight: true,
-  },
-  {
-    label: "LLN Tiles",
-    href: "/lln-tiles",
-    icon: Puzzle,
-    description: "Tile-based programming for LLN - visual agent builder",
-    highlight: true,
-  },
-  {
-    label: "Agent Cells",
-    href: "/agent-cells",
-    icon: Layers,
-    description: "Hierarchical real-time AI with confidence-based autonomy",
-    highlight: true,
-  },
-  {
-    label: "Cell Builder",
-    href: "/cell-builder",
-    icon: Table,
-    description: "Spreadsheet AI - build neural networks in cells",
-    highlight: true,
-  },
-  {
-    label: "Tile Intelligence",
-    href: "/tile-intelligence",
-    icon: Box,
-    description: "POLLN Tile concepts - inspectable AI",
-    highlight: true,
-  },
-  {
-    label: "Mist Game",
-    href: "/mist",
-    icon: Sparkles,
-    description: "Sheepdog puppy adventure for ages 5-10",
-    highlight: true,
-  },
-  {
-    label: "Math Universe",
-    href: "/math-universe",
-    icon: Hexagon,
-    description: "Interactive math visualizations for AI & humans",
-    highlight: true,
-  },
-  {
-    label: "RTL Studio",
-    href: "/rtl-studio",
-    icon: Code2,
-    description: "RTL to GDSII design flow",
-    highlight: true,
-  },
-  {
-    label: "Manufacturing",
-    href: "/manufacturing",
-    icon: Factory,
-    description: "From sand to silicon - fab floor walkthrough",
-    highlight: true,
-  },
-  {
-    label: "Chip Studio",
-    href: "/professional",
-    icon: Cpu,
-    description: "Design inference chips",
-    subItems: [
-      { label: "Design Studio", href: "/professional#design" },
-      { label: "CDC Visualization", href: "/professional#cdc" },
-      { label: "Pipeline Designer", href: "/professional#pipeline" },
-      { label: "Resource Calculator", href: "/professional#calculator" },
+    label: "Explore",
+    items: [
+      {
+        label: "Voxel Explorer",
+        href: "/voxel-explorer",
+        icon: Box,
+        description: "Cross-sections of chips, CPUs & networks",
+        featured: true,
+      },
+      { label: "MIST Game",        href: "/mist",          icon: Gamepad2,     description: "AI through play, ages 5-10" },
+      { label: "Math Universe",    href: "/math-universe", icon: Hexagon,      description: "Visualise AI maths" },
+      { label: "Manufacturing",    href: "/manufacturing", icon: Factory,      description: "Sand → silicon walkthrough" },
+      { label: "Music Playground", href: "/music",         icon: Music,        description: "Generative MIDI AI" },
+      { label: "Learning Hub",     href: "/learning",      icon: BookOpen,     description: "Self-paced tutorials" },
     ],
   },
   {
-    label: "Economics",
-    href: "/economics",
-    icon: DollarSign,
-    description: "Market simulation and pricing",
+    label: "Build",
+    items: [
+      { label: "LLN Playground", href: "/lln-playground",    icon: Network,  description: "Agents learning through play", featured: true },
+      { label: "Agent Cells",    href: "/agent-cells",       icon: Layers,   description: "Hierarchical AI architecture" },
+      { label: "Cell Builder",   href: "/cell-builder",      icon: Table,    description: "Spreadsheet-style neural nets" },
+      { label: "LLN Tiles",      href: "/lln-tiles",         icon: Puzzle,   description: "Visual agent builder" },
+      { label: "CRDT Lab",       href: "/crdt-lab",          icon: Atom,     description: "Conflict-free data types" },
+    ],
   },
   {
-    label: "Specs",
-    href: "/specs",
-    icon: GraduationCap,
-    description: "Technical specifications and math",
-  },
-  {
-    label: "Music",
-    href: "/music",
-    icon: Music,
-    description: "Generative MIDI playground",
-  },
-  {
-    label: "Tabula Rosa",
-    href: "/tabula-rosa",
-    icon: Brain,
-    description: "Specialist model research",
-  },
-  {
-    label: "Learning",
-    href: "/learning",
-    icon: BookOpen,
-    description: "Interactive educational content",
-  },
-  {
-    label: "About",
-    href: "/about",
-    icon: Users,
-  },
-];
-
-const ageGroups = [
-  {
-    label: "Young Learners",
-    href: "/learning?age=young",
-    icon: Sparkles,
-    color: "text-green-400",
-    age: "Ages 5-10",
-  },
-  {
-    label: "Middle School",
-    href: "/learning?age=middle",
-    icon: GraduationCap,
-    color: "text-blue-400",
-    age: "Ages 11-14",
-  },
-  {
-    label: "High School",
-    href: "/learning?age=high",
-    icon: BookOpen,
-    color: "text-amber-400",
-    age: "Ages 15-18",
-  },
-  {
-    label: "Professional",
-    href: "/professional",
-    icon: Briefcase,
-    color: "text-purple-400",
-    age: "18+",
+    label: "Design",
+    items: [
+      { label: "Chip Studio",      href: "/professional",     icon: Cpu,          description: "Mask-locked inference chips", featured: true },
+      { label: "RTL Studio",       href: "/rtl-studio",       icon: Code2,        description: "RTL → GDSII flow" },
+      { label: "Tile Intelligence",href: "/tile-intelligence", icon: Sparkles,    description: "Inspectable AI concepts" },
+      { label: "Tabula Rosa",      href: "/tabula-rosa",      icon: Brain,        description: "Blank-slate model research" },
+      { label: "Specs",            href: "/specs",            icon: GraduationCap,description: "Technical specifications" },
+      { label: "Economics",        href: "/economics",        icon: DollarSign,   description: "Market simulation" },
+    ],
   },
 ];
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [activeGroup, setActiveGroup] = useState<string | null>(null);
   const pathname = usePathname();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
+
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
+          <Link href="/" className="flex items-center gap-3 group flex-shrink-0">
             <motion.div
               className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <Cpu className="text-primary-foreground w-5 h-5" />
-              <div className="absolute inset-0 rounded-xl bg-primary/20 animate-ping" style={{ animationDuration: '3s' }} />
+              <div className="absolute inset-0 rounded-xl bg-primary/20 animate-ping" style={{ animationDuration: "3s" }} />
             </motion.div>
             <div className="flex flex-col">
               <span className="font-bold text-lg gradient-text">Lucineer</span>
@@ -219,51 +96,56 @@ export default function Navigation() {
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation — grouped dropdowns */}
           <div className="hidden lg:flex items-center gap-1">
-            {navItems.map((item) => (
+            {menuGroups.map((group) => (
               <div
-                key={item.label}
+                key={group.label}
                 className="relative"
-                onMouseEnter={() => item.subItems && setActiveDropdown(item.label)}
-                onMouseLeave={() => setActiveDropdown(null)}
+                onMouseEnter={() => setActiveGroup(group.label)}
+                onMouseLeave={() => setActiveGroup(null)}
               >
-                <Link
-                  href={item.href}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 ${
-                    pathname === item.href
+                <button
+                  className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    activeGroup === group.label
                       ? "text-primary bg-primary/10"
                       : "text-muted-foreground hover:text-foreground hover:bg-muted"
                   }`}
                 >
-                  <item.icon className="w-4 h-4" />
-                  <span className="font-medium">{item.label}</span>
-                  {item.subItems && <ChevronDown className="w-3 h-3" />}
-                </Link>
+                  {group.label}
+                  <ChevronDown className={`w-3.5 h-3.5 transition-transform ${activeGroup === group.label ? "rotate-180" : ""}`} />
+                </button>
 
-                {/* Dropdown */}
+                {/* Megamenu dropdown */}
                 <AnimatePresence>
-                  {activeDropdown === item.label && item.subItems && (
+                  {activeGroup === group.label && (
                     <motion.div
-                      initial={{ opacity: 0, y: 10 }}
+                      initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
+                      exit={{ opacity: 0, y: 8 }}
                       transition={{ duration: 0.15 }}
-                      className="absolute top-full left-0 mt-2 w-56 bg-card rounded-xl shadow-xl border border-border overflow-hidden"
+                      className="absolute top-full left-0 mt-2 w-72 bg-card rounded-2xl shadow-2xl border border-border overflow-hidden"
                     >
-                      <div className="p-3 border-b border-border bg-muted/50">
-                        <p className="text-xs text-muted-foreground">
-                          {item.description}
-                        </p>
-                      </div>
-                      <div className="py-1">
-                        {item.subItems.map((subItem) => (
+                      <div className="p-2">
+                        {group.items.map((item) => (
                           <Link
-                            key={subItem.label}
-                            href={subItem.href}
-                            className="block px-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+                            key={item.href}
+                            href={item.href}
+                            className={`flex items-start gap-3 px-3 py-2.5 rounded-xl transition-colors group ${
+                              pathname === item.href
+                                ? "bg-primary/10 text-primary"
+                                : "hover:bg-muted text-foreground"
+                            } ${item.featured ? "border border-primary/20 mb-1" : ""}`}
                           >
-                            {subItem.label}
+                            <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5 ${
+                              item.featured ? "bg-primary/20" : "bg-muted"
+                            }`}>
+                              <item.icon className={`w-4 h-4 ${item.featured ? "text-primary" : "text-muted-foreground group-hover:text-foreground"}`} />
+                            </div>
+                            <div>
+                              <p className={`text-sm font-medium ${item.featured ? "text-primary" : ""}`}>{item.label}</p>
+                              <p className="text-xs text-muted-foreground">{item.description}</p>
+                            </div>
                           </Link>
                         ))}
                       </div>
@@ -272,28 +154,37 @@ export default function Navigation() {
                 </AnimatePresence>
               </div>
             ))}
+
+            {/* About — standalone */}
+            <Link
+              href="/about"
+              className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                pathname === "/about"
+                  ? "text-primary bg-primary/10"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted"
+              }`}
+            >
+              <Users className="w-4 h-4" />
+              About
+            </Link>
           </div>
 
-          {/* Age Group Pills - Desktop */}
-          <div className="hidden lg:flex items-center gap-2">
-            {ageGroups.map((group) => (
-              <Link
-                key={group.label}
-                href={group.href}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium border transition-all duration-200 hover:scale-105 ${
-                  group.color
-                } border-current/30 hover:border-current bg-current/5`}
-              >
-                <group.icon className="w-3 h-3" />
-                <span className="hidden xl:inline">{group.age}</span>
-              </Link>
-            ))}
+          {/* Desktop right: Voxel Explorer CTA */}
+          <div className="hidden lg:flex items-center gap-3">
+            <Link
+              href="/voxel-explorer"
+              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-primary/10 hover:bg-primary/20 border border-primary/30 text-primary text-sm font-semibold transition-colors"
+            >
+              <Box className="w-4 h-4" />
+              Voxel Explorer
+            </Link>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile hamburger */}
           <button
             className="lg:hidden p-2 text-muted-foreground hover:text-foreground transition-colors"
             onClick={() => setIsOpen(!isOpen)}
+            aria-label={isOpen ? "Close menu" : "Open menu"}
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -310,56 +201,54 @@ export default function Navigation() {
             transition={{ duration: 0.2 }}
             className="lg:hidden bg-card border-t border-border overflow-hidden"
           >
-            <div className="px-4 py-4 space-y-2">
-              {navItems.map((item) => (
-                <div key={item.label}>
-                  <Link
-                    href={item.href}
-                    className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
-                      pathname === item.href
-                        ? "text-primary bg-primary/10"
-                        : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                    }`}
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <item.icon className="w-5 h-5" />
-                    <span className="font-medium">{item.label}</span>
-                  </Link>
-                  {item.subItems && (
-                    <div className="ml-8 mt-1 space-y-1">
-                      {item.subItems.map((subItem) => (
-                        <Link
-                          key={subItem.label}
-                          href={subItem.href}
-                          className="block px-4 py-2 text-sm text-muted-foreground hover:text-foreground"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          {subItem.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
+            <div className="px-4 py-4 space-y-1">
+              {/* Voxel Explorer featured at top on mobile */}
+              <Link
+                href="/voxel-explorer"
+                className="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 border border-primary/20 text-primary font-semibold mb-3"
+                onClick={() => setIsOpen(false)}
+              >
+                <Box className="w-5 h-5" />
+                <div>
+                  <p className="text-sm font-bold">Voxel Explorer</p>
+                  <p className="text-xs text-primary/70">Cross-sections of chips & networks</p>
+                </div>
+              </Link>
+
+              {menuGroups.map((group) => (
+                <div key={group.label}>
+                  <p className="px-4 pt-3 pb-1 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                    {group.label}
+                  </p>
+                  {group.items
+                    .filter((i) => i.href !== "/voxel-explorer") // already shown above
+                    .map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className={`flex items-center gap-3 px-4 py-2.5 rounded-lg transition-colors ${
+                          pathname === item.href
+                            ? "text-primary bg-primary/10"
+                            : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                        }`}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <item.icon className="w-4 h-4 flex-shrink-0" />
+                        <span className="text-sm">{item.label}</span>
+                      </Link>
+                    ))}
                 </div>
               ))}
 
-              {/* Mobile Age Groups */}
-              <div className="border-t border-border pt-4 mt-4">
-                <p className="px-4 text-xs text-muted-foreground mb-2 uppercase tracking-wider">
-                  Age Groups
-                </p>
-                <div className="grid grid-cols-2 gap-2 px-2">
-                  {ageGroups.map((group) => (
-                    <Link
-                      key={group.label}
-                      href={group.href}
-                      className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm ${group.color} bg-current/5 border border-current/20`}
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <group.icon className="w-4 h-4" />
-                      <span>{group.label}</span>
-                    </Link>
-                  ))}
-                </div>
+              <div className="border-t border-border pt-3 mt-2">
+                <Link
+                  href="/about"
+                  className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <Users className="w-4 h-4" />
+                  <span className="text-sm">About</span>
+                </Link>
               </div>
             </div>
           </motion.div>
