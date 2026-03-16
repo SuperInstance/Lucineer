@@ -1,5 +1,22 @@
 import { NextResponse } from "next/server";
+import { prisma } from "@/lib/db";
+
+export const runtime = "nodejs";
 
 export async function GET() {
-  return NextResponse.json({ message: "Hello, world!" });
+  let dbStatus: "ok" | "error" = "ok";
+  try {
+    await prisma.$queryRaw`SELECT 1`;
+  } catch {
+    dbStatus = "error";
+  }
+
+  return NextResponse.json({
+    version: process.env.npm_package_version ?? "0.2.0",
+    environment: process.env.NODE_ENV ?? "development",
+    status: "ok",
+    db: dbStatus,
+    storage: "local",
+    timestamp: new Date().toISOString(),
+  });
 }

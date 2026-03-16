@@ -26,6 +26,7 @@ import {
   GraduationCap,
   Sparkles,
   Users,
+  Settings,
 } from "lucide-react";
 
 // ── Menu structure: 4 top-level groups + About ──────────────────
@@ -169,7 +170,7 @@ export default function Navigation() {
             </Link>
           </div>
 
-          {/* Desktop right: Voxel Explorer CTA */}
+          {/* Desktop right: Voxel Explorer CTA + Settings */}
           <div className="hidden lg:flex items-center gap-3">
             <Link
               href="/voxel-explorer"
@@ -177,6 +178,17 @@ export default function Navigation() {
             >
               <Box className="w-4 h-4" />
               Voxel Explorer
+            </Link>
+            <Link
+              href="/settings"
+              className={`p-2 rounded-lg transition-colors ${
+                pathname === "/settings"
+                  ? "text-primary bg-primary/10"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted"
+              }`}
+              aria-label="Settings"
+            >
+              <Settings className="w-4 h-4" />
             </Link>
           </div>
 
@@ -240,7 +252,7 @@ export default function Navigation() {
                 </div>
               ))}
 
-              <div className="border-t border-border pt-3 mt-2">
+              <div className="border-t border-border pt-3 mt-2 space-y-1">
                 <Link
                   href="/about"
                   className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
@@ -248,6 +260,18 @@ export default function Navigation() {
                 >
                   <Users className="w-4 h-4" />
                   <span className="text-sm">About</span>
+                </Link>
+                <Link
+                  href="/settings"
+                  className={`flex items-center gap-3 px-4 py-2.5 rounded-lg transition-colors ${
+                    pathname === "/settings"
+                      ? "text-primary bg-primary/10"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  <Settings className="w-4 h-4" />
+                  <span className="text-sm">Settings</span>
                 </Link>
               </div>
             </div>

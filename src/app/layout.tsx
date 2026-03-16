@@ -7,6 +7,8 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { ServiceWorkerRegistration } from "@/components/pwa/ServiceWorkerRegistration";
 import { InstallPrompt } from "@/components/pwa/InstallPrompt";
+import { AdProvider } from "@/components/ads/AdProvider";
+import { AdConsent } from "@/components/ads/AdConsent";
 
 const geistSans = GeistSans;
 const geistMono = GeistMono;
@@ -57,13 +59,16 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground min-h-screen flex flex-col`}
       >
         <ServiceWorkerRegistration />
-        <Navigation />
-        <main className="flex-1 pt-16">
-          {children}
-        </main>
-        <Footer />
-        <Toaster />
-        <InstallPrompt />
+        <AdProvider>
+          <Navigation />
+          <main className="flex-1 pt-16">
+            {children}
+          </main>
+          <Footer />
+          <Toaster />
+          <InstallPrompt />
+          <AdConsent />
+        </AdProvider>
       </body>
     </html>
   );
