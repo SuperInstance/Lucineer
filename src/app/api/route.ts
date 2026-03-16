@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/db";
+import { db } from "@/lib/db";
 
 export const runtime = "nodejs";
 
 export async function GET() {
   let dbStatus: "ok" | "error" = "ok";
   try {
-    await prisma.$queryRaw`SELECT 1`;
+    await db.$queryRaw`SELECT 1`;
   } catch {
     dbStatus = "error";
   }

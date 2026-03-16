@@ -1,6 +1,6 @@
 import fs from "fs/promises";
 import path from "path";
-import { prisma } from "@/lib/db";
+import { db } from "@/lib/db";
 import type {
   AssetMeta,
   StorageAdapter,
@@ -54,7 +54,7 @@ export class LocalStorageAdapter implements StorageAdapter {
   // ── Structured data — delegated to Prisma/SQLite ─────────────
   // Uses a generic KeyValueStore model; collections map to a namespace prefix.
   async get<T>(collection: string, id: string): Promise<T | null> {
-    const record = await (prisma as any).keyValueStore?.findUnique?.({
+    const record = await (db as any).keyValueStore?.findUnique?.({
       where: { key: `${collection}:${id}` },
     });
     if (!record) return null;
@@ -64,7 +64,7 @@ export class LocalStorageAdapter implements StorageAdapter {
   async put<T>(collection: string, id: string, data: T): Promise<void> {
     const key = `${collection}:${id}`;
     const value = JSON.stringify(data);
-    await (prisma as any).keyValueStore?.upsert?.({
+    await (db as any).keyValueStore?.upsert?.({
       where: { key },
       create: { key, value },
       update: { value },
@@ -72,13 +72,13 @@ export class LocalStorageAdapter implements StorageAdapter {
   }
 
   async delete(collection: string, id: string): Promise<void> {
-    await (prisma as any).keyValueStore?.delete?.({
+    await (db as any).keyValueStore?.delete?.({
       where: { key: `${collection}:${id}` },
     }).catch(() => {});
   }
 
   async query<T>(collection: string, _filter?: Record<string, unknown>): Promise<T[]> {
-    const records = await (prisma as any).keyValueStore?.findMany?.({
+    const records = await (db as any).keyValueStore?.findMany?.({
       where: { key: { startsWith: `${collection}:` } },
     }) ?? [];
     return records.map((r: { value: string }) => JSON.parse(r.value) as T);
@@ -86,7 +86,7 @@ export class LocalStorageAdapter implements StorageAdapter {
 
   // ── KV ───────────────────────────────────────────────────────
   async kvGet(key: string): Promise<string | null> {
-    const record = await (prisma as any).keyValueStore?.findUnique?.({
+    const record = await (db as any).keyValueStore?.findUnique?.({
       where: { key: `kv:${key}` },
     });
     if (!record) return null;
@@ -102,7 +102,7 @@ export class LocalStorageAdapter implements StorageAdapter {
     const expiresAt = ttlSeconds
       ? new Date(Date.now() + ttlSeconds * 1000).toISOString()
       : null;
-    await (prisma as any).keyValueStore?.upsert?.({
+    await (db as any).keyValueStore?.upsert?.({
       where: { key: k },
       create: { key: k, value, expiresAt },
       update: { value, expiresAt },
@@ -110,7 +110,7 @@ export class LocalStorageAdapter implements StorageAdapter {
   }
 
   async kvDelete(key: string): Promise<void> {
-    await (prisma as any).keyValueStore?.delete?.({
+    await (db as any).keyValueStore?.delete?.({
       where: { key: `kv:${key}` },
     }).catch(() => {});
   }
@@ -137,7 +137,7 @@ export class LocalStorageAdapter implements StorageAdapter {
   // ── Health ────────────────────────────────────────────────────
   async ping(): Promise<boolean> {
     try {
-      await prisma.$queryRaw`SELECT 1`;
+      await db.$queryRaw`SELECT 1`;
       return true;
     } catch {
       return false;
