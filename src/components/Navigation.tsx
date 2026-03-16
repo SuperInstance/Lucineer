@@ -28,6 +28,9 @@ import {
   Users,
   Settings,
   Zap,
+  Droplets,
+  Activity,
+  Radio,
 } from "lucide-react";
 
 // ── Menu structure: 4 top-level groups + About ──────────────────
@@ -67,6 +70,9 @@ const menuGroups = [
       { label: "Tile Intelligence",href: "/tile-intelligence", icon: Sparkles,    description: "Inspectable AI concepts" },
       { label: "Tabula Rosa",      href: "/tabula-rosa",      icon: Brain,        description: "Blank-slate model research" },
       { label: "Thermal & Power",  href: "/thermal-power",    icon: Zap,          description: "Heat maps, PDN, junction temp" },
+      { label: "Fluid Cooling",    href: "/fluid-cooling",    icon: Droplets,     description: "Liquid cooling, heat pipes, vapor chambers" },
+      { label: "HW-SW Co-Opt",     href: "/hw-sw-coopt",      icon: Activity,     description: "Timing, waveforms, quantization" },
+      { label: "EM & Signal",      href: "/em-integrity",     icon: Radio,        description: "Parasitics, crosstalk, eye diagram, ESD" },
       { label: "Specs",            href: "/specs",            icon: GraduationCap,description: "Technical specifications" },
       { label: "Economics",        href: "/economics",        icon: DollarSign,   description: "Market simulation" },
     ],
