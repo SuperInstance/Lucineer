@@ -36,6 +36,9 @@ import {
   Package,
   Shield,
   TestTube2,
+  Battery,
+  Grid3X3,
+  Waves,
 } from "lucide-react";
 
 // ── Menu structure: 4 top-level groups + About ──────────────────
@@ -81,6 +84,9 @@ const menuGroups = [
       { label: "Packaging",        href: "/packaging",        icon: Package,      description: "Flip-chip, TSV, chiplet topology" },
       { label: "Verification",     href: "/verification",     icon: Shield,       description: "FSM coverage, formal, timing closure" },
       { label: "DFT",              href: "/dft",              icon: TestTube2,    description: "Scan chains, BIST, ATPG, yield model" },
+      { label: "Power Intent",     href: "/power-intent",     icon: Battery,      description: "UPF islands, retention, isolation, DVFS" },
+      { label: "Physical Design",  href: "/physical-design",  icon: Grid3X3,      description: "Density, congestion, wirelength, DRC" },
+      { label: "Analog & Mixed",   href: "/analog-mixed",     icon: Waves,        description: "Op-amp, ADC ENOB, charge pump, bandgap" },
       { label: "Fluid Cooling",    href: "/fluid-cooling",    icon: Droplets,     description: "Liquid cooling, heat pipes, vapor chambers" },
       { label: "HW-SW Co-Opt",     href: "/hw-sw-coopt",      icon: Activity,     description: "Timing, waveforms, quantization" },
       { label: "EM & Signal",      href: "/em-integrity",     icon: Radio,        description: "Parasitics, crosstalk, eye diagram, ESD" },
