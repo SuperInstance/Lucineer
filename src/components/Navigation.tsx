@@ -39,6 +39,9 @@ import {
   Battery,
   Grid3X3,
   Waves,
+  ShieldAlert,
+  GitFork,
+  Signal,
 } from "lucide-react";
 
 // ── Menu structure: 4 top-level groups + About ──────────────────
@@ -87,6 +90,9 @@ const menuGroups = [
       { label: "Power Intent",     href: "/power-intent",     icon: Battery,      description: "UPF islands, retention, isolation, DVFS" },
       { label: "Physical Design",  href: "/physical-design",  icon: Grid3X3,      description: "Density, congestion, wirelength, DRC" },
       { label: "Analog & Mixed",   href: "/analog-mixed",     icon: Waves,        description: "Op-amp, ADC ENOB, charge pump, bandgap" },
+      { label: "HW Security",      href: "/hw-security",      icon: ShieldAlert,  description: "Trojans, DPA/SPA, secure boot, PUF, fault injection" },
+      { label: "Network-on-Chip",  href: "/network-on-chip",  icon: GitFork,      description: "Mesh/torus, flit routing, deadlock, NoC power" },
+      { label: "High-Speed I/O",   href: "/high-speed-io",    icon: Signal,       description: "SerDes, CTLE/DFE, jitter budget, FEC, PAM4" },
       { label: "Fluid Cooling",    href: "/fluid-cooling",    icon: Droplets,     description: "Liquid cooling, heat pipes, vapor chambers" },
       { label: "HW-SW Co-Opt",     href: "/hw-sw-coopt",      icon: Activity,     description: "Timing, waveforms, quantization" },
       { label: "EM & Signal",      href: "/em-integrity",     icon: Radio,        description: "Parasitics, crosstalk, eye diagram, ESD" },
