@@ -1,17 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useAds } from "./AdProvider";
 import { Button } from "@/components/ui/button";
 
 export function AdConsent() {
   const { hasConsent, setConsent } = useAds();
-  const [dismissed, setDismissed] = useState(false);
-
-  useEffect(() => {
-    const stored = localStorage.getItem("lucineer_ad_consent");
-    if (stored !== null) setDismissed(true);
-  }, []);
+  const [dismissed, setDismissed] = useState(
+    () => typeof window !== "undefined" && localStorage.getItem("lucineer_ad_consent") !== null
+  );
 
   if (dismissed || hasConsent) return null;
 

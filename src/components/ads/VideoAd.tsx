@@ -38,7 +38,7 @@ export function VideoAd({ onComplete, onSkip }: VideoAdProps) {
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []);
 
   if (!canShowAd("preRoll")) return null;
 

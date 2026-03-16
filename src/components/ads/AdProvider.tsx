@@ -35,13 +35,14 @@ export function useAds() {
 
 declare global {
   interface Window {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    CrazyGames?: any;
+    CrazyGames?: unknown;
   }
 }
 
 export function AdProvider({ children }: { children: React.ReactNode }) {
-  const [hasConsent, setHasConsent] = useState(false);
+  const [hasConsent, setHasConsent] = useState(
+    () => typeof window !== "undefined" && localStorage.getItem("lucineer_ad_consent") === "true"
+  );
   const [isByocUser] = useState(false); // wired up by StorageAdapter later
   const [sessionAdShown, setSessionAdShown] = useState(false);
   const sdkLoaded = useRef(false);
@@ -50,12 +51,6 @@ export function AdProvider({ children }: { children: React.ReactNode }) {
     adConfig.network !== "none" &&
     !isByocUser &&
     (!adConfig.requireConsent || hasConsent);
-
-  // Load consent from localStorage on mount
-  useEffect(() => {
-    const stored = localStorage.getItem("lucineer_ad_consent");
-    if (stored === "true") setHasConsent(true);
-  }, []);
 
   // Load CrazyGames SDK once consent is given
   useEffect(() => {

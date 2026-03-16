@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { loadConfig, saveConfig, type StorageMode } from "@/lib/config";
 
 const OPTIONS: { value: StorageMode; label: string; description: string }[] = [
@@ -23,11 +23,9 @@ const OPTIONS: { value: StorageMode; label: string; description: string }[] = [
 ];
 
 export function StorageModeSelector() {
-  const [mode, setMode] = useState<StorageMode>("local");
-
-  useEffect(() => {
-    setMode(loadConfig().storageMode);
-  }, []);
+  const [mode, setMode] = useState<StorageMode>(
+    () => (typeof window === "undefined" ? "local" : loadConfig().storageMode)
+  );
 
   function handleChange(value: StorageMode) {
     setMode(value);
