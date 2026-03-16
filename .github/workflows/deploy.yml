@@ -2,9 +2,12 @@ name: Deploy to Cloudflare Pages
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+      - 'claude/**'   # deploy feature branches too (preview)
   pull_request:
     branches: [main]
+  workflow_dispatch:    # manual trigger from GitHub UI
 
 jobs:
   # ── Build & lint ───────────────────────────────────────────────
@@ -37,20 +40,21 @@ jobs:
           cp -r .open-next/.build .open-next/assets/ 2>/dev/null || true
           cp .open-next/worker.js .open-next/assets/_worker.js
 
-      # ── Preview deploy (pull requests) ──────────────────────────
+      # ── Production deploy (main branch) ─────────────────────────
+      - name: Deploy production
+        if: github.ref == 'refs/heads/main'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy .open-next/assets --project-name lucineer --branch main
+
+      # ── Preview deploy (claude/* branches + PRs) ─────────────────
       - name: Deploy preview
-        if: github.event_name == 'pull_request'
+        if: github.ref != 'refs/heads/main'
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy .open-next/assets --project-name lucineer --branch preview
 
-      # ── Production deploy (push to main) ────────────────────────
-      - name: Deploy production
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy .open-next/assets --project-name lucineer --branch main
