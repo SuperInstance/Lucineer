@@ -8,6 +8,7 @@ import {
   Zap,
   Layers,
   Shield,
+  Box,
   Music,
   Sparkles,
   ArrowRight,
@@ -53,6 +54,18 @@ const staggerContainer = {
 
 // Education features - with parent-facing descriptions and learning outcomes
 const educationFeatures = [
+  {
+    icon: Box,
+    title: "Voxel Explorer",
+    tagline: "See Inside the Machine",
+    description: "Stephen Biesty-style cross-sections of transistors, CPUs, memory, and networks — guided by characters at every age level",
+    parentNote: "Ages 5-18 • Three learning levels • Works offline",
+    learningOutcomes: ["How transistors switch", "CPU fetch–decode–execute", "How the internet routes packets"],
+    href: "/voxel-explorer",
+    color: "text-emerald-400",
+    bgColor: "bg-emerald-400/10",
+    borderColor: "border-emerald-400/30",
+  },
   {
     icon: Gamepad2,
     title: "MIST Game",
@@ -550,7 +563,7 @@ export default function Home() {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {educationFeatures.map((feature) => (
               <motion.div
