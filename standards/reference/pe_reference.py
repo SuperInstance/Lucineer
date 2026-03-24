@@ -184,7 +184,12 @@ class TernaryMACArray:
                 activation = activations[j]
                 self.macs[i][j].mac_cycle(weight, activation)
 
-        return [self.macs[i][0].accumulator for i in range(self.rows)]
+        # Sum all columns in each row to get final result
+        results = []
+        for i in range(self.rows):
+            row_sum = sum(self.macs[i][j].accumulator for j in range(self.cols))
+            results.append(row_sum)
+        return results
 
     def __repr__(self):
         return f"TernaryMACArray({self.rows}×{self.cols})"
