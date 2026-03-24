@@ -1,38 +1,41 @@
-# Mask-Lock Inference Chip — SuperInstance
+# SuperInstance Ranch
 
-**Intelligence as a physical component, not a software service.**
+```
+        ____
+       /    \        ~ LLM Alpha ~   ~ LLM Beta ~   ~ LLM Gamma ~
+      | o  o |            🐄               🐄               🐄
+       \  __ /       ________________________________________________
+        |    |      |                                                |
+    /|  |    |  |\  |           M E M O R Y   P A S T U R E        |
+   / |  |____|  | \ |________________________________________________|
+  /  |   ||||   |  \           |           |           |
+     |___|  |___|            breed       breed       breed
+         \\//                  \           |           /
+          \/                    \_________\|/_________/
+     [ COLLIE ]                    BREEDING ENGINE
+    ORCHESTRATOR  <-----------------------------------------
+         |                                                  |
+         |---> [ LLN Playground ] --> [ CRDT Lab ] -------->|
+         |---> [ Agent Cells    ] --> [ Voxel Explorer ] -->|
+         |---> [ Night School   ] --> [ Memory Pasture ] -->|
+```
 
-SuperInstance is a **mask-locked AI inference chip** — neural network weights are encoded permanently into silicon metal interconnect layers at manufacture. No memory access. No drivers. No software stack. Plug in, get intelligence.
+**A self-evolving AI Ranch on your $499 Jetson. Local LLM agents breed, debate, and synthesize knowledge while you sleep.**
 
-> "The Nintendo of AI. Different cartridges, different models. Same console."
+[![CI](https://github.com/SuperInstance/Lucineer/actions/workflows/ci.yml/badge.svg)](https://github.com/SuperInstance/Lucineer/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ---
 
-## Who Should Read What
+## Quick Start
 
-| You are | Start here |
-|---|---|
-| **Hardware / ASIC engineer** | [Architecture deep-dive](#architecture) → `docs/01-architecture.md` → `thermal_simulation/` |
-| **ML / AI engineer** | [Quantization strategy](#quantization) → `docs/02-quantization.md` → `research/Ternary_Binary_Neural_Networks_Research_Report.md` |
-| **Software developer** | [Developer quickstart](#developer-quickstart) → `ONBOARDING.md` → `src/app/` |
-| **Investor / exec** | [Why now](#why-now) → `SuperInstance_Executive_Summary.md` → `docs/07-business-model.md` |
-| **Researcher** | [Research index](#research-index) → `docs/` → `research/` |
-
----
-
-## The Core Idea
-
-Traditional AI chips **load weights from memory** at runtime. Memory access is the bottleneck:
-
-```
-Traditional NPU:
-  DRAM → Bus → Compute unit    (latency + energy per weight access)
-
-Mask-Locked Chip:
-  Weight IS the metal layer → Compute unit    (zero access cost, always present)
+```bash
+git clone https://github.com/SuperInstance/Lucineer && cd Lucineer
+cp .env.example .env && bun install && bunx prisma db push
+make run
 ```
 
-The tradeoff: changing weights requires a new chip. For edge inference with stable models, this is an enormous win. You gain **zero memory bandwidth overhead, zero access latency, and 10–50x power efficiency** — in exchange for model flexibility you don't need.
+Open http://localhost:3000 — your Ranch is live.
 
 ---
 
@@ -40,371 +43,195 @@ The tradeoff: changing weights requires a new chip. For edge inference with stab
 
 ```mermaid
 graph TB
-    subgraph "SuperInstance Chip Die"
-        A[Token Input<br/>USB / PCIe / M.2] --> B[Tokenizer Buffer<br/>On-chip SRAM]
-        B --> C[Attention Layer<br/>Systolic Array]
-        C --> D[FFN Layer<br/>Systolic Array]
-        D --> E[Layer Norm<br/>Fixed-function]
-        E --> F[KV Cache<br/>SRAM]
-        F --> C
-        D --> G[Output Logits<br/>Activation SRAM]
-        G --> H[Token Output]
+    C[Collie Orchestrator<br/>Lock-free queue, CUDA kernels]
+    C --> LLN[LLN Playground<br/>127k synthetic samples]
+    C --> CRDT[CRDT Lab<br/>Conflict-free memory]
+    C --> VX[Voxel Explorer<br/>3D memory viz]
+    C --> AC[Agent Cells<br/>Herd management]
 
-        subgraph "Weight Storage — Metal Layers M1-M6"
-            W1[Attention Weights<br/>~700M params]
-            W2[FFN Weights<br/>~1.3B params]
-            W3[Embedding Table<br/>~150M params]
-        end
+    LLN --> MP[Memory Pasture<br/>Prisma/SQLite + RAG]
+    CRDT --> MP
+    VX --> MP
+    AC --> MP
 
-        W1 -.->|hardwired| C
-        W2 -.->|hardwired| D
-        W3 -.->|hardwired| B
-    end
-
-    style W1 fill:#2d5016,color:#fff
-    style W2 fill:#2d5016,color:#fff
-    style W3 fill:#2d5016,color:#fff
-```
-
-### How Weight Encoding Works
-
-```mermaid
-graph LR
-    subgraph "Software World"
-        A[Trained Model<br/>PyTorch .ckpt] --> B[Quantization<br/>INT4 / Ternary]
-        B --> C[Weight Compiler<br/>→ GDSII metal patterns]
-    end
-
-    subgraph "Silicon"
-        C --> D[Metal Layer M1<br/>Via = weight +1]
-        C --> E[Metal Layer M2<br/>No via = weight 0]
-        C --> F[Metal Layer M3<br/>Inverted via = weight -1]
-        D & E & F --> G[Permanent<br/>Inference Engine]
-    end
-
-    style G fill:#1a3a5c,color:#fff
-```
-
-### Chip Signal Flow (Per Token)
-
-```mermaid
-sequenceDiagram
-    participant Host as Host Device
-    participant IO as I/O Interface
-    participant SRAM as Activation SRAM
-    participant SA as Systolic Array
-    participant Metal as Metal Weights<br/>(M1-M6)
-
-    Host->>IO: Token embedding (512-dim)
-    IO->>SRAM: Buffer input activations
-    loop Per transformer layer (24x)
-        SRAM->>SA: Load activations
-        Metal-->>SA: Weights always present (zero latency)
-        SA->>SA: Ternary MAC (add/subtract only)
-        SA->>SRAM: Write output activations
-    end
-    SRAM->>IO: Output logits
-    IO->>Host: Next token
+    MP --> BE[Breeding Engine<br/>LoRA federation + Night School]
+    BE --> C
 ```
 
 ---
 
-## Quantization
+## Cloud vs Ranch
 
-Ternary weights — `{-1, 0, +1}` — are the key to making mask-locking practical at scale.
-
-```mermaid
-graph TD
-    A[Model Weights<br/>FP32 / BF16] --> B{Quantization<br/>Strategy}
-    B --> C[INT4<br/>4-bit signed<br/>Baseline quality]
-    B --> D[Ternary / 1.58-bit<br/>BitNet b1.58<br/>Preferred target]
-    B --> E[Complex C₄<br/>iFairy ±1, ±i<br/>Advanced / experimental]
-
-    C --> F[MAC unit<br/>INT4 multiply]
-    D --> G[TLMM<br/>Table-Lookup MatMul<br/>No multipliers needed]
-    E --> H[Phase-rotation<br/>element swaps only]
-
-    F --> I[~40 TOPS @ 3W]
-    G --> J[80-150 tok/s @ 2W]
-    H --> K[Research stage]
-
-    style D fill:#1a5c1a,color:#fff
-    style G fill:#1a5c1a,color:#fff
-    style J fill:#1a5c1a,color:#fff
-```
-
-**Why ternary?** When weights are `{-1, 0, +1}`, multiplication reduces to:
-- `+1 → pass the activation through`
-- `-1 → negate the activation`
-- `0 → contribute nothing`
-
-No multipliers. Just adders and sign-flips — exactly what metal interconnects are good at.
-
-**BitNet b1.58-2B-4T** benchmarks:
-| Platform | Speedup vs FP16 | Energy Reduction |
+| Feature | Cloud GPT-4 | Jetson Ranch |
 |---|---|---|
-| x86 CPU | 2.37x – 6.17x | 71.9% – 82.2% |
-| ARM CPU | 1.37x – 5.07x | 55.4% – 70.0% |
-| **Mask-locked ASIC** | **10–50x (projected)** | **~90%** |
+| Cost/month | $100–$500+ | $0 (after hardware) |
+| Privacy | Your data on their servers | 100% local, air-gapped |
+| Latency | 800ms–3s (network) | <50ms (local CUDA) |
+| Agent scale | API rate-limited | 10k+ concurrent |
+| Memory persistence | None (stateless) | CRDT pasture survives reboots |
+| Offline | No | Yes, fully offline |
+| Breeding/evolution | No | Nightly LoRA synthesis |
+| Determinism | Non-deterministic | Geometric manifold snapping |
 
 ---
 
-## Competitive Landscape
+## Why This Exists
 
-```mermaid
-quadrantChart
-    title Edge AI: LLM Performance vs. Price
-    x-axis Low Price --> High Price
-    y-axis Low LLM Throughput --> High LLM Throughput
-    quadrant-1 Premium Performance
-    quadrant-2 SuperInstance Target Zone
-    quadrant-3 Legacy / Limited
-    quadrant-4 Overpowered & Expensive
+There is a utility curve for AI models: GPT-4 sits at the top of general capability but far right on the cost-privacy tradeoff. For most production workloads — internal knowledge, code review, document analysis, automation — a smaller model *trained on your data* running *on your hardware* beats a large generic model on every dimension except raw benchmark scores.
 
-    SuperInstance: [0.2, 0.85]
-    Hailo-10H: [0.45, 0.12]
-    Jetson Orin Nano: [0.75, 0.22]
-    Google Coral: [0.3, 0.02]
-    Axelera Metis Nano: [0.4, 0.08]
-    Quadric QB1: [0.65, 0.10]
-    Taalas HC1: [0.95, 0.99]
-```
-
-| Chip | Throughput | Power | Price | LLM Focus | Verdict |
-|---|---|---|---|---|---|
-| **SuperInstance** | **80-150 tok/s** | **2-3W** | **$35-60** | ✅ Primary | — |
-| Hailo-10H | 5-10 tok/s | 5W | $70-90 | ⚠️ Partial | 10x slower, 2x price |
-| Jetson Orin Nano | 20-30 tok/s | 10-15W | $249 | ⚠️ Flexible | 5-7x more power |
-| Google Coral | <1 tok/s | <2W | $25-60 | ❌ None | No LLM |
-| Taalas HC1 | 17,000 tok/s | 200W+ | API only | ✅ Data center | Different market |
-| Axelera Metis Nano | Unknown | ~2W | $50-80 | ⚠️ Emerging | Not benchmarked |
-
-**Taalas validates the approach.** They raised $219M for data center mask-locked chips (200W+, API pricing, 53B transistors). SuperInstance is the **edge version**: sub-$60, sub-5W, cartridge-swappable. Zero market overlap.
+SuperInstance Ranch inverts the cloud model. Instead of renting intelligence, you breed it. Your agents learn your codebase, your domain vocabulary, your team's reasoning patterns. Every night they synthesize what they learned into tighter LoRA weights. After 30 days, you have something GPT-4 cannot replicate: a model that thinks like your organization.
 
 ---
 
-## Development Roadmap
+## Features
 
-```mermaid
-gantt
-    title SuperInstance Development Timeline
-    dateFormat  YYYY-MM
-    section Gate 0 — FPGA Prototype
-    AMD KV260 platform setup     :2026-03, 3w
-    TLMM core implementation     :2026-04, 4w
-    BitNet weight integration    :2026-04, 3w
-    25 tok/s validation          :2026-05, 2w
-    section Gate 1 — First Silicon
-    Architecture freeze          :2026-06, 4w
-    RTL development (Verilog)    :2026-06, 12w
-    Verification & formal proofs :2026-08, 8w
-    FPGA final prototype         :2026-09, 4w
-    MPW tapeout (28nm)           :2026-10, 4w
-    First silicon back           :2027-01, 1w
-    section Gate 2 — Production
-    Silicon validation           :2027-01, 6w
-    Production ramp (10K units)  :2027-03, 8w
-    First revenue                :2027-05, 1w
-```
+### GPU Collie Orchestrator
+Coordinates thousands of agents using a lock-free work queue with CUDA persistent kernels. The Collie routes tasks, manages agent lifecycles, and enforces herd topology — all without a central bottleneck. Scales from 1 to 10,000+ agents on a single Jetson.
 
-### Gate Definitions
+### Geometric Breeding (LoRA)
+Agents breed via LoRA weight federation. Two agents with complementary knowledge merge in latent space using KD-tree snapping to geometric manifold boundaries — ensuring the offspring stays within valid reasoning territory. Night School runs this at 2am so you wake up to evolved agents.
 
-```mermaid
-flowchart LR
-    G0["🔬 Gate 0\nFPGA Prototype\n25 tok/s validated\nMonth 1-3"]
-    G1["📐 Gate 1\nArchitecture Freeze\nPatents filed\n15 LOIs\nMonth 4-6"]
-    G2["⚗️ Gate 1.5\nMPW Tapeout\nFirst silicon\nMonth 7-12"]
-    G3["🚀 Gate 2\nProduction\n10K units\nFirst revenue\nMonth 13-18"]
+### Memory Pasture (CRDT + RAG)
+Agent memory is stored as a CRDT (Conflict-free Replicated Data Type) — a mathematical structure that merges without conflicts even when multiple agents write simultaneously. The Pasture also indexes all memory for RAG (Retrieval Augmented Generation), giving agents instant access to the full knowledge corpus.
 
-    G0 -->|"$50K FPGA\nprototype"| G1
-    G1 -->|"$150K patent\n+ design"| G2
-    G2 -->|"$300K\nmanufacturing"| G3
+### LLN Playground (127k samples)
+The Local Learning Network contains 127,000+ synthetic training samples for bootstrapping agent knowledge. Browse, filter, and augment the dataset directly from the web UI. Export fine-tuning datasets in JSONL format compatible with `torchtune` and `llama.cpp`.
 
-    style G0 fill:#1a3a5c,color:#fff
-    style G1 fill:#2d5016,color:#fff
-    style G2 fill:#5c3a1a,color:#fff
-    style G3 fill:#5c1a2d,color:#fff
-```
+### Voxel Memory Visualizer
+3D visualization of your agents' memory pasture. Each voxel represents a knowledge cluster; color encodes recency, size encodes access frequency. Watch your herd's collective knowledge grow in real time.
+
+### Night School (Nightly Evolution)
+Configurable via `BREEDING_SCHEDULE` in `.env`. Default: 2am. Night School gathers agent performance logs, scores synthesis candidates, runs LoRA merges, validates offspring on held-out samples, and promotes winners to the active herd. Losers are composted into the Memory Pasture as training signal.
 
 ---
 
-## Product Line
+## Hardware Requirements
+
+| Device | Price | VRAM | TDP | Notes |
+|---|---|---|---|---|
+| Jetson Orin Nano 8GB | $499 | 8GB unified | 20W | Recommended entry point |
+| Jetson AGX Orin | $599+ | 64GB unified | 60W | Full production herd |
+| Any Linux + CUDA GPU | Varies | 6GB+ | Varies | Works on RTX 3060+ |
+
+Minimum: 8GB RAM, 4GB VRAM, Ubuntu 20.04+, CUDA 11.8+.
+
+---
+
+## Architecture Deep Dive
 
 ```mermaid
 graph LR
-    subgraph "SuperInstance Product Family"
-        N["Nano\n1B params\n100 tok/s\n<1W\n$15"]
-        M["Micro\n3B params\n80 tok/s\n2-3W\n$35"]
-        S["Standard\n7B params\n50 tok/s\n4-6W\n$60"]
-        P["Pro\n13B params\n30 tok/s\n8-12W\n$120"]
-    end
+    U[User Input] --> API[Next.js API Routes]
+    API --> CO[Collie Orchestrator]
 
-    N --> M --> S --> P
+    CO --> |"route task"| AH[Agent Herd<br/>N agents]
+    AH --> |"write memory"| MP[Memory Pasture<br/>CRDT state]
+    MP --> |"RAG retrieval"| AH
 
-    style N fill:#1a5c1a,color:#fff
-    style M fill:#1a3a5c,color:#fff
-    style S fill:#5c3a1a,color:#fff
-    style P fill:#5c1a2d,color:#fff
+    AH --> |"output"| SY[Synthesis Layer]
+    SY --> |"nightly"| BE[Breeding Engine]
+    BE --> |"new weights"| WS[Weight Store<br/>LoRA adapters]
+    WS --> |"load"| AH
+
+    CO --> |"3D viz"| VX[Voxel Explorer]
+    MP --> |"index"| VX
 ```
 
----
-
-## Why Now
-
-Three forces converge in 2026:
-
-```mermaid
-graph TB
-    A["1. Model Maturation\nBitNet b1.58 & iFairy\nachieve FP16 quality\nat 1.58-bit precision\n✅ Production ready"]
-    B["2. Architecture Validation\nTaalas raised $219M for\ndatacenter mask-locking\nProves the concept works\n✅ Market validated"]
-    C["3. Regulatory Push\nGDPR, HIPAA, AI governance\nmandating local processing\nfor sensitive data\n✅ Pull demand"]
-
-    A & B & C --> D["18-Month Window\nEdge mask-locking\nunclaimed\n$35-60 price point\nno competitor"]
-
-    style D fill:#1a3a5c,color:#fff
-```
-
-**Edge AI chip market**: $26B (2025) → $69B (2030). The sub-$100, sub-5W LLM segment is unclaimed.
+**Data flow:**
+1. User submits a task via the web UI
+2. Collie receives the task and routes it to the best-fit agent in the herd
+3. The agent retrieves relevant memories from the Pasture via RAG
+4. The agent produces output, which is written back to the CRDT Pasture
+5. At night, the Breeding Engine scores agents by output quality and breeds top performers via LoRA merge
+6. New LoRA adapters are validated and promoted; the herd wakes up smarter
 
 ---
 
-## Research Index
+## Install
 
-| Document | What it covers |
-|---|---|
-| `docs/01-architecture.md` | Full chip architecture, systolic arrays, control logic |
-| `docs/02-quantization.md` | Ternary/binary quantization, BitNet, iFairy, TOM accelerator |
-| `docs/03-thermal-engineering.md` | FEA models, heat equation derivations, PDN analysis |
-| `docs/04-competitive-landscape.md` | Taalas, Hailo, Jetson, Axelera, Groq, Etched deep-dives |
-| `docs/05-ip-strategy.md` | Patent filings, FTO analysis, prior art gaps |
-| `docs/06-fpga-prototype.md` | TLMM implementation, KV260 guide, 12-week plan |
-| `docs/07-business-model.md` | Cost structure, pricing, exit analysis |
-| `research/` | 20+ raw research cycles with Python simulations |
-| `thermal_simulation/` | FEA thermal solver codebase |
-
----
-
-## Developer Quickstart
+### One-command (Jetson / Linux)
 
 ```bash
-# Clone
-git clone https://github.com/SuperInstance/mask-lock-clips
-cd mask-lock-clips
+curl -sSL https://install.superinstance.ai | bash
+```
 
-# Visualizations (Next.js)
-npm install
-npm run dev
-# Open: http://localhost:3000/manufacturing  — chip manufacturing pipeline
-# Open: http://localhost:3000/rtl-studio     — Verilog design flow
-# Open: http://localhost:3000/specs          — ternary MAC comparisons
-# Open: http://localhost:3000/timing-playground
+Or clone and run locally:
 
-# Thermal simulations (Python)
-cd thermal_simulation
-pip install numpy scipy matplotlib
-python core_thermal.py          # FEA steady-state solver
-python transient_thermal.py     # Transient thermal response
-python geometry_optimization.py # Heat dissipation optimization
+```bash
+bash scripts/install_jetson.sh
+```
 
-# Research simulations
-cd research
-python run_all_simulations.py   # All 20 research cycles
-python cycle11_quantum_thermal.py  # Quantum thermal analysis
-python cycle17_side_channel.py     # Side-channel security
+See `scripts/install_jetson.sh` for the full annotated installer.
+
+### Manual
+
+```bash
+git clone https://github.com/SuperInstance/Lucineer && cd Lucineer
+cp .env.example .env
+# edit .env to set DATABASE_URL and RANCH_NAME
+bun install
+bunx prisma db push
+make build
+make start
 ```
 
 ---
 
-## Key Numbers
+## Makefile Targets
 
-| Metric | Value | Source |
-|---|---|---|
-| Target power | <3W inference | Architecture spec |
-| Throughput | 80-150 tok/s | BitNet + TLMM projections |
-| Process node | 28nm CMOS | NRE cost optimization |
-| NRE cost | $2-4M | 28nm mask set + design |
-| Unit cost @ 10K | $11-20 | Die + packaging + test |
-| Target retail price | $35-60 | 50-60% gross margin |
-| Model: BitNet b1.58-2B | 2.4B params, ternary | Microsoft Research |
-| Taalas comparison | 200W vs 2-3W | Different markets |
-| Seed ask | $500K | 18-month runway |
-
----
-
-## Repository Layout
-
-```
-mask-lock-chip/
-├── README.md                           ← You are here
-├── ONBOARDING.md                       ← Start here as a new contributor
-├── mask_locked_plan.txt                ← Complete developer plan (10 pages)
-├── mask_locked_deep_dive.md            ← Full technical analysis
-├── FPGA_Prototype_Implementation_Guide.md  ← Gate 0 FPGA plan
-├── neuromorphic_architecture_report.md     ← Bio-inspired 28nm design
-├── SuperInstance_Executive_Summary.md      ← Investor one-pager
-├── SuperInstance_Investor_Pitch.md         ← Full pitch deck
-│
-├── docs/                               ← Synthesized research documentation
-│   ├── 01-architecture.md
-│   ├── 02-quantization.md
-│   ├── 03-thermal-engineering.md
-│   ├── 04-competitive-landscape.md
-│   ├── 05-ip-strategy.md
-│   ├── 06-fpga-prototype.md
-│   └── 07-business-model.md
-│
-├── research/                           ← Raw research cycles (20+)
-│   ├── cycle1_*.md / cycle1_*.py
-│   ├── ...
-│   ├── cycle20_competitive_dynamics.*
-│   ├── Thermal_Dynamics_Mathematical_Framework.md
-│   ├── Ternary_Binary_Neural_Networks_Research_Report.md
-│   ├── Patent_IP_Strategy_DeepDive_Report.md
-│   ├── Edge_AI_Chip_Competitive_Intelligence_Report_2026.md
-│   └── twelve_round_framework/
-│
-├── thermal_simulation/                 ← Python FEA solvers
-│   ├── core_thermal.py
-│   ├── transient_thermal.py
-│   ├── geometry_optimization.py
-│   ├── mac_array.py
-│   ├── spine_geometry.py
-│   ├── biological_thermal.py
-│   └── materials.py
-│
-├── download/                           ← Execution plans, research packages
-│   ├── Mask_Locked_Chip_Execution_Plan_v5_Verified.pdf
-│   ├── Investment_Memorandum_v2.docx
-│   └── DeepResearch_*.md
-│
-├── final_delivery/                     ← Consolidated deliverables
-│   ├── core_documents/
-│   ├── production/
-│   ├── reviews/
-│   └── supporting_research/
-│
-└── src/app/                            ← Interactive visualizations (Next.js)
-    ├── manufacturing/                  ← Chip manufacturing pipeline
-    ├── rtl-studio/                     ← RTL → GDSII design flow
-    ├── specs/                          ← Ternary MAC comparisons
-    ├── timing-playground/              ← Circuit timing analysis
-    ├── cell-builder/                   ← Logic gate / cell editor
-    ├── voxel-explorer/                 ← 3D chip cross-sections
-    ├── math-universe/                  ← Mathematical foundations
-    ├── economics/                      ← Cost modeling
-    └── professional/                   ← Team & career info
-```
+| Target | Description |
+|---|---|
+| `make help` | Print all targets (default) |
+| `make install` | Run the Jetson installer |
+| `make run` | Start development server |
+| `make start` | Start production server |
+| `make build` | Build for production |
+| `make db-push` | Apply Prisma schema to DB |
+| `make db-reset` | Reset and re-migrate DB |
+| `make breed` | Trigger a manual breeding cycle |
+| `make night-school` | Launch Night School (nightly evolution) |
+| `make benchmark` | Run Ranch performance benchmarks |
+| `make lint` | Lint the codebase |
+| `make clean` | Remove build artifacts |
 
 ---
 
-## Academic Foundations
+## Screenshots
 
-- **Hardwired-Neurons LPU** — arXiv:2508.16151 — Foundational paper validating mask-locked approach (41-80x cost-effectiveness vs H100)
-- **BitNet b1.58** — arXiv:2402.17764 — Ternary weights matching FP16 quality
-- **TeLLMe / TLMM** — arXiv:2510.15926 — Table-lookup MatMul for FPGA ternary inference
-- **iFairy / Fairy±i** — arXiv:2508.05571 — Complex-valued 2-bit LLM (multiplication-free)
-- **TOM Accelerator** — arXiv:2602.20662 — Ternary ROM-SRAM hybrid, 3,306 TPS on BitNet-2B
+![TUI Dashboard](docs/assets/tui-dashboard.gif)
+![LLN Playground](docs/assets/lln-playground.png)
+![CRDT Lab](docs/assets/crdt-lab.png)
+![Voxel Memory Explorer](docs/assets/voxel-explorer.png)
+![Agent Cells Herd View](docs/assets/agent-cells.png)
+![Night School Breeding Log](docs/assets/night-school.png)
 
 ---
 
-*SuperInstance — Physical AI, Collectible Intelligence*
+## Research Foundations
+
+| Concept | Description |
+|---|---|
+| **LoRA federation** | Low-Rank Adaptation enables merging fine-tuned model deltas without full retraining, making agent breeding computationally tractable on edge hardware. |
+| **CRDT conflict-free state** | Conflict-free Replicated Data Types are mathematical structures that merge concurrent writes without coordination, making multi-agent shared memory correct by construction. |
+| **Geometric manifolds** | Neural network weight space has curved geometry; valid reasoning configurations cluster on low-dimensional manifolds, and KD-tree snapping keeps bred offspring inside these valid regions. |
+| **Evolutionary game theory** | Agent scoring uses replicator dynamics from evolutionary game theory — agents that produce higher-quality outputs reproduce more, driving population-level improvement over generations. |
+| **Synthetic data distillation** | The LLN Playground uses teacher-model distillation to generate 127k+ synthetic samples that preserve reasoning traces, enabling sample-efficient fine-tuning on domain-specific tasks. |
+
+---
+
+## Contributing
+
+1. Fork the repo
+2. Create a feature branch: `git checkout -b feat/my-feature`
+3. Run `make lint` before committing
+4. Open a PR against `main`
+
+See `docs/tutorials/` for architecture walkthroughs. See `examples/` for Ranch templates.
+
+---
+
+## License
+
+MIT — see [LICENSE](LICENSE).
+
+Copyright (c) 2024 SuperInstance
