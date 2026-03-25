@@ -1,0 +1,79 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//MLS Project//Community Calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:MLS Project Community Calendar
+X-WR-TIMEZONE:Etc/UTC
+
+BEGIN:VEVENT
+DTSTART:20260407T170000Z
+DTEND:20260407T180000Z
+RRULE:FREQ=WEEKLY;INTERVAL=2;BYDAY=TU
+SUMMARY:TSC Meeting
+DESCRIPTION:Technical Steering Committee bi-weekly meeting. Open to all Contributors. Agenda published 48h before.
+LOCATION:https://meet.jit.si/mls-tsc
+UID:tsc-meeting@mls-project.org
+END:VEVENT
+
+BEGIN:VEVENT
+DTSTART:20260406T160000Z
+DTEND:20260406T170000Z
+RRULE:FREQ=WEEKLY;BYDAY=MO
+SUMMARY:WG-Standards Meeting
+DESCRIPTION:Standards Working Group weekly meeting.
+LOCATION:https://meet.jit.si/mls-wg-standards
+UID:wg-standards@mls-project.org
+END:VEVENT
+
+BEGIN:VEVENT
+DTSTART:20260408T170000Z
+DTEND:20260408T180000Z
+RRULE:FREQ=WEEKLY;BYDAY=WE
+SUMMARY:WG-Tools Meeting
+DESCRIPTION:Tools Working Group weekly meeting. CLAWC compiler, CI, tooling.
+LOCATION:https://meet.jit.si/mls-wg-tools
+UID:wg-tools@mls-project.org
+END:VEVENT
+
+BEGIN:VEVENT
+DTSTART:20260409T180000Z
+DTEND:20260409T190000Z
+RRULE:FREQ=WEEKLY;INTERVAL=2;BYDAY=TH
+SUMMARY:WG-Education Meeting
+DESCRIPTION:Education Working Group bi-weekly meeting. Courses, labs, certifications.
+LOCATION:https://meet.jit.si/mls-wg-education
+UID:wg-education@mls-project.org
+END:VEVENT
+
+BEGIN:VEVENT
+DTSTART:20260410T160000Z
+DTEND:20260410T170000Z
+RRULE:FREQ=WEEKLY;BYDAY=FR
+SUMMARY:WG-Hardware Meeting
+DESCRIPTION:Hardware Working Group weekly meeting. Reference designs, FPGA prototypes.
+LOCATION:https://meet.jit.si/mls-wg-hardware
+UID:wg-hardware@mls-project.org
+END:VEVENT
+
+BEGIN:VEVENT
+DTSTART:20260407T150000Z
+DTEND:20260407T160000Z
+RRULE:FREQ=WEEKLY;INTERVAL=2;BYDAY=TU
+SUMMARY:WG-Security Meeting
+DESCRIPTION:Security Working Group bi-weekly meeting. Some sessions may be closed for sensitive topics.
+LOCATION:https://meet.jit.si/mls-wg-security
+UID:wg-security@mls-project.org
+END:VEVENT
+
+BEGIN:VEVENT
+DTSTART:20260501T170000Z
+DTEND:20260501T180000Z
+RRULE:FREQ=MONTHLY;BYDAY=1TU
+SUMMARY:Cross-WG Sync
+DESCRIPTION:Monthly coordination meeting for all Working Group Chairs.
+LOCATION:https://meet.jit.si/mls-cross-wg
+UID:cross-wg-sync@mls-project.org
+END:VEVENT
+
+END:VCALENDAR
