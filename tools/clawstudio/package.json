@@ -1,0 +1,200 @@
+{
+  "name": "clawstudio",
+  "displayName": "ClawStudio — Mask-Lock Chip Design",
+  "description": "VS Code extension for MLS chip design: SystemVerilog IntelliSense, one-click simulation, thermal visualization, cloud FPGA programming, and integrated learning.",
+  "version": "0.1.0",
+  "publisher": "superinstance",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/superinstance/lucineer"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Linters",
+    "Snippets",
+    "Visualization",
+    "Education"
+  ],
+  "keywords": [
+    "systemverilog",
+    "fpga",
+    "chip-design",
+    "mask-lock",
+    "ternary",
+    "mls",
+    "rtl",
+    "hardware"
+  ],
+  "activationEvents": [
+    "onLanguage:systemverilog",
+    "onLanguage:clawir",
+    "workspaceContains:**/*.sv",
+    "workspaceContains:**/*.svh",
+    "workspaceContains:**/*.v"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "systemverilog",
+        "aliases": ["SystemVerilog", "sv"],
+        "extensions": [".sv", ".svh", ".v", ".vh"],
+        "configuration": "./syntax/language-configuration.json"
+      },
+      {
+        "id": "clawir",
+        "aliases": ["ClawIR"],
+        "extensions": [".cir", ".clawir"],
+        "configuration": "./syntax/clawir-language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "systemverilog",
+        "scopeName": "source.systemverilog",
+        "path": "./syntax/systemverilog.tmLanguage.json"
+      },
+      {
+        "language": "clawir",
+        "scopeName": "source.clawir",
+        "path": "./syntax/clawir.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "systemverilog",
+        "path": "./syntax/mls-snippets.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "clawstudio.runSimulation",
+        "title": "ClawStudio: Run Simulation",
+        "icon": "$(play)"
+      },
+      {
+        "command": "clawstudio.synthesize",
+        "title": "ClawStudio: Synthesize for FPGA",
+        "icon": "$(circuit-board)"
+      },
+      {
+        "command": "clawstudio.toggleThermal",
+        "title": "ClawStudio: Toggle Thermal Overlay",
+        "icon": "$(flame)"
+      },
+      {
+        "command": "clawstudio.complianceCheck",
+        "title": "ClawStudio: MLS Compliance Check",
+        "icon": "$(check-all)"
+      },
+      {
+        "command": "clawstudio.openWaveform",
+        "title": "ClawStudio: Open Waveform Viewer",
+        "icon": "$(pulse)"
+      },
+      {
+        "command": "clawstudio.toggleAcademy",
+        "title": "ClawStudio: Toggle Academy Hints",
+        "icon": "$(mortar-board)"
+      }
+    ],
+    "keybindings": [
+      { "command": "clawstudio.runSimulation", "key": "ctrl+shift+r", "when": "editorLangId == systemverilog" },
+      { "command": "clawstudio.synthesize", "key": "ctrl+shift+s", "when": "editorLangId == systemverilog" },
+      { "command": "clawstudio.toggleThermal", "key": "ctrl+shift+t", "when": "editorLangId == systemverilog" },
+      { "command": "clawstudio.complianceCheck", "key": "ctrl+shift+c", "when": "editorLangId == systemverilog" },
+      { "command": "clawstudio.openWaveform", "key": "ctrl+shift+w", "when": "editorLangId == systemverilog" },
+      { "command": "clawstudio.toggleAcademy", "key": "ctrl+shift+h" }
+    ],
+    "configuration": {
+      "title": "ClawStudio",
+      "properties": {
+        "clawstudio.simulator": {
+          "type": "string",
+          "default": "verilator",
+          "enum": ["verilator", "icarus", "vivado"],
+          "description": "Preferred simulator for one-click simulation"
+        },
+        "clawstudio.lintOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Run Verilator lint on file save"
+        },
+        "clawstudio.thermalOverlay": {
+          "type": "boolean",
+          "default": false,
+          "description": "Show thermal power estimates in editor gutter"
+        },
+        "clawstudio.thermalTarget": {
+          "type": "string",
+          "default": "sky130",
+          "enum": ["sky130", "gf180", "generic"],
+          "description": "Target PDK for thermal/power estimation"
+        },
+        "clawstudio.cloudApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "API key for Compile Cloud service"
+        },
+        "clawstudio.cloudEndpoint": {
+          "type": "string",
+          "default": "https://api.clawcloud.dev",
+          "description": "Compile Cloud API endpoint"
+        },
+        "clawstudio.academyHints": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show Academy learning hints in editor"
+        },
+        "clawstudio.academyLevel": {
+          "type": "string",
+          "default": "intermediate",
+          "enum": ["beginner", "intermediate", "advanced"],
+          "description": "Academy hint detail level"
+        },
+        "clawstudio.fpgaTarget": {
+          "type": "string",
+          "default": "kv260",
+          "enum": ["kv260", "genesys2", "aws-f1"],
+          "description": "Default FPGA target for synthesis"
+        },
+        "clawstudio.fpgaConnection": {
+          "type": "string",
+          "default": "local",
+          "enum": ["local", "ssh", "cloud"],
+          "description": "FPGA connection type"
+        }
+      }
+    },
+    "menus": {
+      "editor/title": [
+        {
+          "command": "clawstudio.runSimulation",
+          "when": "editorLangId == systemverilog",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./tsconfig.json",
+    "watch": "tsc -watch -p ./tsconfig.json",
+    "test": "bun test",
+    "package": "vsce package",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.4.0",
+    "eslint": "^9.0.0",
+    "@vscode/vsce": "^2.24.0"
+  },
+  "dependencies": {
+    "vscode-languageclient": "^9.0.1"
+  }
+}
