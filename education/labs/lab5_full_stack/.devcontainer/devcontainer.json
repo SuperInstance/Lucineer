@@ -1,0 +1,34 @@
+{
+  "name": "MLS Lab 5 - Full-Stack Chip Design",
+  "image": "ghcr.io/superinstance/mls-lab-full:latest",
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": { "version": "3.11" },
+    "ghcr.io/devcontainers/features/nvidia-cuda:1": { "cudaVersion": "12.2" }
+  },
+  "postCreateCommand": "bash -c 'apt-get update && apt-get install -y verilator yosys klayout && pip install torch transformers datasets onnx onnxruntime numpy matplotlib scipy && pip install -e /workspace/compiler && echo Lab 5 environment ready'",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "mshr-h.veriloghdl",
+        "ms-python.python",
+        "ms-toolsai.jupyter",
+        "xilinx.xilinx",
+        "mhutchie.git-graph"
+      ],
+      "settings": {
+        "verilog.linting.linter": "verilator",
+        "python.defaultInterpreterPath": "/usr/bin/python3"
+      }
+    }
+  },
+  "hostRequirements": {
+    "gpu": "optional",
+    "cpus": 4,
+    "memory": "16gb"
+  },
+  "mounts": [
+    "source=/opt/Xilinx,target=/opt/Xilinx,type=bind,consistency=cached"
+  ],
+  "forwardPorts": [8888],
+  "remoteUser": "vscode"
+}

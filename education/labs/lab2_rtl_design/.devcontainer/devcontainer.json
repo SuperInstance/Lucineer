@@ -1,0 +1,18 @@
+{
+  "name": "MLS Lab 2 - RTL Design",
+  "image": "ghcr.io/superinstance/mls-lab-rtl:latest",
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": { "version": "3.11" }
+  },
+  "postCreateCommand": "bash -c 'apt-get update && apt-get install -y verilator yosys symbiyosys && pip install cocotb && echo Lab 2 environment ready'",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "mshr-h.veriloghdl",
+        "ms-python.python",
+        "hbenl.vscode-test-explorer"
+      ]
+    }
+  },
+  "remoteUser": "vscode"
+}

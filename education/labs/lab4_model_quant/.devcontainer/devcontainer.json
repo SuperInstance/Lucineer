@@ -1,0 +1,23 @@
+{
+  "name": "MLS Lab 4 - Model Quantization",
+  "image": "ghcr.io/superinstance/mls-lab-ml:latest",
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": { "version": "3.11" },
+    "ghcr.io/devcontainers/features/nvidia-cuda:1": { "cudaVersion": "12.2" }
+  },
+  "postCreateCommand": "pip install torch torchvision transformers datasets onnx onnxruntime numpy matplotlib && echo 'Lab 4 environment ready'",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter",
+        "mhutchie.git-graph"
+      ]
+    }
+  },
+  "hostRequirements": {
+    "gpu": "optional"
+  },
+  "forwardPorts": [8888],
+  "remoteUser": "vscode"
+}

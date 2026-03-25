@@ -1,0 +1,24 @@
+{
+  "name": "MLS Lab 3 - FPGA Bringup",
+  "image": "ghcr.io/superinstance/mls-lab-fpga:latest",
+  "features": {
+    "ghcr.io/devcontainers/features/python:1": { "version": "3.11" }
+  },
+  "postCreateCommand": "bash -c 'apt-get update && apt-get install -y verilator yosys && pip install pynq numpy && echo Lab 3 environment ready'",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "mshr-h.veriloghdl",
+        "ms-python.python",
+        "xilinx.xilinx"
+      ],
+      "settings": {
+        "verilog.linting.linter": "verilator"
+      }
+    }
+  },
+  "remoteUser": "vscode",
+  "mounts": [
+    "source=/opt/Xilinx,target=/opt/Xilinx,type=bind,consistency=cached"
+  ]
+}
