@@ -1,0 +1,40 @@
+{
+  "name": "AWS F1 (Xilinx UltraScale+)",
+  "role": "cloud_ci",
+  "description": "Cloud FPGA for nightly CI builds and benchmarking",
+  "board": {
+    "vendor": "AWS / Xilinx",
+    "part": "xcvu9p-flgb2104-2-i",
+    "family": "Virtex UltraScale+",
+    "instance_type": "f1.2xlarge"
+  },
+  "resources": {
+    "luts": 1182240,
+    "flip_flops": 2364480,
+    "bram_36k": 2160,
+    "dsp48e2": 6840,
+    "hbm": false
+  },
+  "mls_config": {
+    "mac_array": "256x256",
+    "mac_count": 65536,
+    "clock_mhz": 250,
+    "kv_cache_kb": 4096,
+    "model_params_max": "7B (ternary)"
+  },
+  "interfaces": {
+    "host": "PCIe Gen3 x16 (Shell), DRAM DDR4 64GB",
+    "cascade": "PCIe BAR or AXI streaming",
+    "debug": "AWS FPGA Management Tools, Virtual JTAG"
+  },
+  "cost": {
+    "hourly_usd": 1.65,
+    "monthly_ci_estimate_usd": 120,
+    "notes": "Only used for nightly CI and weekly benchmarks"
+  },
+  "ci_config": {
+    "nightly_sim_hours": 0.5,
+    "weekly_benchmark_hours": 2,
+    "monthly_hours_estimate": 23
+  }
+}

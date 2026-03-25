@@ -1,0 +1,47 @@
+{
+  "name": "Xilinx Kria KV260",
+  "role": "primary_dev",
+  "description": "Primary development platform for MLS prototyping",
+  "board": {
+    "vendor": "Xilinx / AMD",
+    "part": "xck26-sfvc784-2LV-c",
+    "family": "Zynq UltraScale+",
+    "board_part": "xilinx.com:kv260:part0:1.4"
+  },
+  "resources": {
+    "luts": 148600,
+    "flip_flops": 297200,
+    "bram_36k": 288,
+    "bram_18k": 600,
+    "dsp48e2": 1248,
+    "uram": 64,
+    "ps_cores": "4× Cortex-A53, 2× Cortex-R5F"
+  },
+  "mls_config": {
+    "mac_array": "32x32",
+    "mac_count": 1024,
+    "clock_mhz": 200,
+    "kv_cache_kb": 256,
+    "model_params_max": "50M (ternary)"
+  },
+  "interfaces": {
+    "host": "PS-PL AXI4, Gigabit Ethernet, USB 3.0",
+    "cascade": "PMOD headers (UART bridge)",
+    "debug": "JTAG, UART console"
+  },
+  "power": {
+    "source": "12V barrel jack or USB-C PD",
+    "ps_power_w": 5,
+    "pl_power_w": 8,
+    "total_w": 15
+  },
+  "software": {
+    "os": "PetaLinux 2024.1",
+    "driver": "AXI UIO or custom kernel module",
+    "python": "PYNQ overlay support"
+  },
+  "cost": {
+    "board_usd": 249,
+    "som_only_usd": 199
+  }
+}

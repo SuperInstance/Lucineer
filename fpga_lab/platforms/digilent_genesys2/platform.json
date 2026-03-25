@@ -1,0 +1,34 @@
+{
+  "name": "Digilent Genesys 2",
+  "role": "large_model_prototyping",
+  "description": "Larger fabric for 7B+ models and cascade testing",
+  "board": {
+    "vendor": "Digilent",
+    "part": "xc7k325t-2ffg900c",
+    "family": "Kintex-7",
+    "board_part": "digilentinc.com:genesys2:part0:1.1"
+  },
+  "resources": {
+    "luts": 326080,
+    "flip_flops": 652160,
+    "bram_36k": 445,
+    "bram_18k": 890,
+    "dsp48e1": 840
+  },
+  "mls_config": {
+    "mac_array": "64x64",
+    "mac_count": 4096,
+    "clock_mhz": 200,
+    "kv_cache_kb": 512,
+    "model_params_max": "200M (ternary)"
+  },
+  "interfaces": {
+    "host": "USB-UART, Gigabit Ethernet, FMC HPC",
+    "cascade": "FMC → UART/SPI bridge to second board",
+    "debug": "JTAG, USB-UART"
+  },
+  "cost": {
+    "board_usd": 999
+  },
+  "notes": "Primarily used for multi-FPGA cascade testing (2× boards)"
+}
