@@ -1,117 +1,135 @@
+#!/usr/bin/env python3
 """
-clawc — Mask-Lock Inference Compiler
-CLI entry point.
+CLAWC - Mask-Lock Inference Compiler
+CLI Entry Point
 
 Usage:
-    clawc model.onnx -o out/ --target=sky130
-    clawc model.gguf -o out/ --target=fpga-kv260
-    clawc --list-targets
+  clawc model.onnx -o chip.gds --target=sky130
+  clawc model.gguf -o output/ --target=fpga-kv260 --quantize=ternary
+  clawc --list-targets
+  clawc --help
 """
 
 import argparse
 import sys
-import json
 from pathlib import Path
 
-from clawc.utils.logger import get_logger
-from clawc.compiler import Compiler, CompilerConfig
+from .compiler import Compiler
+from .utils.logger import setup_logger
 
-log = get_logger("clawc")
+logger = setup_logger(__name__)
 
-TARGETS = {
-    "fpga-kv260":   "clawc.backend.targets.fpga_kv260",
-    "asic-sky130":  "clawc.backend.targets.mask_lock_std",
-    "asic-gf180":   "clawc.backend.targets.mask_lock_std",
-    "sim-verilator":"clawc.backend.targets.generic_ml",
-}
+AVAILABLE_TARGETS = [
+    "sim-verilator",      # Verilator simulation
+    "fpga-kv260",         # Xilinx Kria SOM
+    "asic-sky130",        # SkyWater 130nm
+    "asic-gf180",         # GlobalFoundries 180nm
+    "asic-generic",       # Generic systolic array
+]
+
+QUANTIZATION_FORMATS = [
+    "float32",            # No quantization (simulation)
+    "int8",               # 8-bit integer
+    "int4",               # 4-bit integer
+    "ternary",            # {-1, 0, +1} (MLS-native)
+]
 
 
-def parse_args(argv=None):
-    p = argparse.ArgumentParser(
-        prog="clawc",
-        description="Mask-Lock Inference Compiler — ONNX/GGUF → RTL/GDS",
+def parse_args():
+    """Parse command-line arguments."""
+    parser = argparse.ArgumentParser(
+        description="CLAWC: Mask-Lock Inference Compiler",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  clawc model.onnx -o output/ --target=sky130
+  clawc model.gguf -o output/ --target=fpga-kv260 --quantize=ternary
+  clawc --list-targets
+""",
     )
-    p.add_argument("input", nargs="?", help="Input model file (.onnx | .gguf | .pt)")
-    p.add_argument("-o", "--output", default="out/", help="Output directory (default: out/)")
-    p.add_argument("--target", default="sim-verilator",
-                   help="Backend target (use --list-targets to see options)")
-    p.add_argument("--list-targets", action="store_true", help="List available targets and exit")
-    p.add_argument("--opt-level", type=int, default=2, choices=[0, 1, 2, 3],
-                   help="Optimization level (0=none … 3=aggressive)")
-    p.add_argument("--quant", default="ternary", choices=["fp32", "int8", "int4", "ternary"],
-                   help="Weight quantization scheme")
-    p.add_argument("--cascade", type=int, default=1, metavar="N",
-                   help="Partition model across N chips")
-    p.add_argument("--emit", nargs="+",
-                   default=["rtl", "bitstream", "bom"],
-                   choices=["rtl", "gds", "bitstream", "bom", "sim"],
-                   help="Artifacts to emit")
-    p.add_argument("--pdk-root", default=None, help="PDK root path (required for GDS emission)")
-    p.add_argument("--verbose", "-v", action="store_true")
-    return p.parse_args(argv)
+
+    parser.add_argument("model", nargs="?", help="Model file (ONNX, GGUF, or PyTorch)")
+    parser.add_argument(
+        "-o", "--output", default="output/", help="Output directory (default: output/)"
+    )
+    parser.add_argument(
+        "--target",
+        default="sim-verilator",
+        choices=AVAILABLE_TARGETS,
+        help="Target architecture",
+    )
+    parser.add_argument(
+        "--quantize",
+        default="ternary",
+        choices=QUANTIZATION_FORMATS,
+        help="Quantization format",
+    )
+    parser.add_argument(
+        "--list-targets", action="store_true", help="List available targets and exit"
+    )
+    parser.add_argument(
+        "-v", "--verbose", action="store_true", help="Verbose output (debug)"
+    )
+
+    return parser.parse_args()
 
 
-def main(argv=None):
-    args = parse_args(argv)
+def main():
+    """Main CLI entry point."""
+    args = parse_args()
 
+    # List targets and exit
     if args.list_targets:
-        print("\nAvailable clawc targets:")
-        for name, module in TARGETS.items():
-            print(f"  {name:<20} ({module})")
-        print()
-        return 0
+        print("Available CLAWC targets:")
+        for target in AVAILABLE_TARGETS:
+            print(f"  {target}")
+        sys.exit(0)
 
-    if not args.input:
-        print("error: input model file required (or --list-targets)", file=sys.stderr)
-        return 1
+    # Require model file
+    if not args.model:
+        print("Error: model file required", file=sys.stderr)
+        sys.exit(1)
 
-    input_path = Path(args.input)
-    if not input_path.exists():
-        print(f"error: input file not found: {input_path}", file=sys.stderr)
-        return 1
+    model_path = Path(args.model)
+    if not model_path.exists():
+        print(f"Error: model file not found: {model_path}", file=sys.stderr)
+        sys.exit(1)
 
     output_dir = Path(args.output)
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    if args.target not in TARGETS:
-        print(f"error: unknown target '{args.target}'. Use --list-targets.", file=sys.stderr)
-        return 1
-
-    cfg = CompilerConfig(
-        input_path=input_path,
-        output_dir=output_dir,
-        target=args.target,
-        opt_level=args.opt_level,
-        quant_scheme=args.quant,
-        cascade_chips=args.cascade,
-        emit=set(args.emit),
-        pdk_root=Path(args.pdk_root) if args.pdk_root else None,
-        verbose=args.verbose,
-    )
-
-    log.info(f"clawc  input={input_path}  target={args.target}  opt={args.opt_level}")
+    logger.info("CLAWC v0.1.0")
+    logger.info(f"Compiling: {model_path}")
+    logger.info(f"Target: {args.target}")
+    logger.info(f"Quantization: {args.quantize}")
+    logger.info(f"Output: {output_dir}")
 
     try:
-        compiler = Compiler(cfg)
-        result = compiler.compile()
-    except Exception as exc:
-        log.error(f"Compilation failed: {exc}")
-        if args.verbose:
-            raise
-        return 1
+        # Create compiler instance
+        compiler = Compiler(
+            target=args.target,
+            quantize=args.quantize,
+            output_dir=output_dir,
+            verbose=args.verbose,
+        )
 
-    # Print summary
-    print(f"\nclawc — compilation complete  ({result.elapsed_ms:.0f} ms)")
-    print(f"  output: {output_dir}/")
-    for artifact, path in sorted(result.artifacts.items()):
-        size = Path(path).stat().st_size if Path(path).exists() else 0
-        print(f"    {artifact:<20} {path}  ({size:,} bytes)")
-    if result.bom:
-        total = result.bom.get("total_usd", 0)
-        print(f"  estimated BOM cost: ${total:.2f}")
-    print()
-    return 0
+        # Compile model
+        result = compiler.compile(model_path)
+
+        logger.info("✓ Compilation successful")
+        logger.info("Generated files:")
+        for filename in result["files"]:
+            logger.info(f"  - {filename}")
+
+        logger.info(f"Compilation complete. Output in: {output_dir}")
+
+    except Exception as e:
+        logger.error(f"Compilation failed: {e}")
+        if args.verbose:
+            import traceback
+            traceback.print_exc()
+        sys.exit(1)
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    main()

@@ -1,15 +1,21 @@
-"""clawc.utils.logger — Structured logging for the compiler pipeline."""
+"""Simple logging setup for CLAWC."""
 
 import logging
-import os
 import sys
 
-_LOG_LEVEL = os.environ.get("CLAWC_LOG", "INFO").upper()
-_FMT = "[%(levelname)-8s %(name)s] %(message)s"
 
-logging.basicConfig(stream=sys.stderr, format=_FMT,
-                    level=getattr(logging, _LOG_LEVEL, logging.INFO))
-
-
-def get_logger(name: str) -> logging.Logger:
-    return logging.getLogger(f"clawc.{name}")
+def setup_logger(name):
+    """Setup a logger with consistent formatting."""
+    logger = logging.getLogger(name)
+    if logger.handlers:
+        return logger
+    
+    logger.setLevel(logging.DEBUG)
+    handler = logging.StreamHandler(sys.stdout)
+    formatter = logging.Formatter(
+        fmt="[%(name)s] %(levelname)s: %(message)s"
+    )
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+    
+    return logger

@@ -1,34 +1,21 @@
-"""
-clawc.backend.targets.generic_ml — Generic systolic array target.
-
-Used for simulation (sim-verilator) and as a baseline reference.
-
-Array configuration: 8×8 PEs, 16-bit activations, 32-bit accumulators.
-No PDK-specific constraints.
-"""
-
-TARGET_NAME = "generic_ml"
-DISPLAY_NAME = "Generic ML Systolic Array (Simulation)"
-
-CONFIG = {
-    "array_rows":       8,
-    "array_cols":       8,
-    "act_width":        16,
-    "acc_width":        32,
-    "clk_period_ns":    10.0,    # 100 MHz
-    "rom_layers":       ["M1", "M2"],
-    "sram_kb":          256,
-    "supports_gds":     False,
-    "supports_bitstream": True,
-    "quant_native":     ["ternary", "int8"],
-    "target_power_mw":  None,    # no constraint
-    "note": "Simulation target — no PDK required. Use for Verilator/VCS RTL sim.",
-}
+"""Generic ML accelerator architecture (baseline systolic array)."""
 
 
-def get_liberty() -> None:
-    return None  # no std-cell library
+class GenericMLArch:
+    """Generic systolic array-based ML accelerator."""
 
+    def __init__(self):
+        """Initialize generic architecture."""
+        self.name = "Generic ML Systolic Array"
+        self.mac_rows = 256
+        self.mac_cols = 256
+        self.clock_mhz = 200
+        self.vdd_mv = 1000  # 1.0V
+        self.process_nm = 7
+        self.compute_power_mw = 200
+        self.area_mm2 = 50
+        self.interfaces = ["memory-mapped"]  # Just memory
+        self.quantization_support = ["float32", "int8", "int4", "ternary"]
 
-def get_lef() -> None:
-    return None
+    def __repr__(self):
+        return f"{self.name} ({self.mac_rows}×{self.mac_cols} @ {self.clock_mhz}MHz)"

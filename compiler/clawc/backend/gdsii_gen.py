@@ -1,171 +1,82 @@
-"""
-clawc.backend.gdsii_gen — GDSII mask generation using gdstk.
-
-Generates a simplified floor-plan GDSII for the chip:
-  - Core region: tiled PE array
-  - ROM stripes: mask-locked weight metal layers
-  - Pad ring: power/ground, I/O pads
-  - Fills: density fill to meet DRC requirements
-
-For real tapeout this would drive OpenROAD P&R; here we emit a
-schematic-level GDSII suitable for review and area estimation.
-
-Requires: pip install gdstk
-"""
-
-from __future__ import annotations
-
-import math
-from pathlib import Path
-from typing import List, Tuple
-
-from clawc.ir import IRModule, IRNode
-from clawc.utils.logger import get_logger
-
-log = get_logger("backend.gdsii_gen")
-
-# Layer map (sky130 / generic)
-_LAYER = {
-    "core_boundary": (0, 0),
-    "pe_array":      (1, 0),
-    "rom_metal":     (2, 0),
-    "sram":          (3, 0),
-    "io_pad":        (4, 0),
-    "power_ring":    (5, 0),
-    "label":         (6, 0),
-}
+"""GDSII mask generation backend (requires gdstk/gdspy)."""
 
 
 class GDSIIGenerator:
-    def __init__(self, cfg, ir: IRModule):
-        self.cfg = cfg
-        self.ir = ir
+    """Generate GDSII masks from RTL (using OpenROAD/PDK)."""
 
-    def emit(self, out_path: Path) -> Path:
+    def __init__(self, pdk=None):
+        """Initialize GDSII generator."""
+        self.pdk = pdk  # sky130, gf180mcu, etc.
+
+    def generate(self, graph, rtl_code):
+        """Generate GDSII file."""
+        if not self.pdk:
+            raise ValueError("PDK required for GDSII generation")
+
         try:
             import gdstk
         except ImportError:
-            raise ImportError("gdstk required: pip install gdstk")
+            raise ImportError(
+                "GDSII generation requires 'gdstk' package. "
+                "Install with: pip install gdstk"
+            )
 
-        lib = gdstk.Library(name="clawc_chip")
-        top = lib.new_cell("chip_top")
+        # Create library
+        lib = gdstk.Library()
 
-        # Compute floorplan
-        fp = self._compute_floorplan()
-        log.info(f"  GDSII floorplan: {fp['die_w']:.1f} × {fp['die_h']:.1f} µm  "
-                 f"(PE={fp['pe_w']:.1f}×{fp['pe_h']:.1f}  ROM={fp['rom_h']:.1f})")
+        # Create cell for mask-locked chip
+        cell = lib.new_cell("CHIP_TOP")
 
-        # Core boundary
-        top.add(gdstk.rectangle(
-            (0, 0), (fp["die_w"], fp["die_h"]),
-            layer=_LAYER["core_boundary"][0],
-            datatype=_LAYER["core_boundary"][1],
-        ))
+        # Create MAC array layout
+        self._layout_mac_array(cell, graph)
 
-        # Power ring
-        ring_w = 5.0
-        top.add(gdstk.rectangle(
-            (0, 0), (fp["die_w"], ring_w),
-            layer=_LAYER["power_ring"][0], datatype=0))
-        top.add(gdstk.rectangle(
-            (0, fp["die_h"] - ring_w), (fp["die_w"], fp["die_h"]),
-            layer=_LAYER["power_ring"][0], datatype=0))
-        top.add(gdstk.rectangle(
-            (0, 0), (ring_w, fp["die_h"]),
-            layer=_LAYER["power_ring"][0], datatype=0))
-        top.add(gdstk.rectangle(
-            (fp["die_w"] - ring_w, 0), (fp["die_w"], fp["die_h"]),
-            layer=_LAYER["power_ring"][0], datatype=0))
+        # Create power/ground distribution
+        self._layout_power_grid(cell)
 
-        # PE array tile grid
-        self._add_pe_array(top, fp)
+        # Export to GDS
+        gds_bytes = lib.write_gds()
+        return gds_bytes
 
-        # ROM stripes (mask-locked weights)
-        self._add_rom_stripes(top, fp)
+    def _layout_mac_array(self, cell, graph):
+        """Layout 256×256 ternary MAC array."""
+        # For reference: just create placeholder geometry
+        # Real implementation: use OpenROAD PDN/place & route
+        
+        # Parameters
+        cell_size = 10  # μm per MAC cell
+        rows, cols = 256, 256
 
-        # SRAM scratchpad
-        sram_x = fp["margin"] + fp["pe_w"] + fp["margin"]
-        sram_y = fp["margin"]
-        top.add(gdstk.rectangle(
-            (sram_x, sram_y),
-            (sram_x + fp["sram_w"], sram_y + fp["sram_h"]),
-            layer=_LAYER["sram"][0], datatype=0))
+        # Create array of cells (simplified)
+        for i in range(0, rows, 32):  # Sample every 32 rows
+            for j in range(0, cols, 32):  # Sample every 32 cols
+                x = j * cell_size
+                y = i * cell_size
+                # Placeholder rectangle
+                rect = self._create_rectangle(x, y, cell_size, cell_size)
+                cell.add(rect)
 
-        # I/O pads
-        self._add_io_pads(top, fp)
+    def _layout_power_grid(self, cell):
+        """Layout power distribution network (PDN)."""
+        # VDD/GND grid (simplified)
+        grid_pitch = 100  # μm
+        grid_width = 5    # μm
 
-        # Labels
-        top.add(gdstk.Label(
-            f"clawc/{self.cfg.target}", (fp["die_w"] / 2, fp["die_h"] / 2),
-            layer=_LAYER["label"][0]))
+        # Horizontal stripes (VDD)
+        for y in range(0, 2560, grid_pitch):
+            # Placeholder stripe
+            pass
 
-        lib.write_gds(str(out_path))
-        return out_path
+        # Vertical stripes (GND)
+        for x in range(0, 2560, grid_pitch):
+            # Placeholder stripe
+            pass
 
-    # ------------------------------------------------------------------
-
-    def _compute_floorplan(self) -> dict:
-        fn = self.ir.get_main()
-        n_params = self.ir.param_count()
-        n_frozen = sum(1 for n in fn.nodes if n.attrs.get("weight_frozen"))
-
-        # Area model: 0.05 µm² per ternary parameter (sky130 density)
-        rom_area_um2 = n_params * 0.05
-        pe_area_um2  = max(500.0, n_params / 1000 * 0.1)
-        sram_area    = 200.0
-
-        margin = 20.0
-        pe_side  = math.sqrt(pe_area_um2)
-        rom_side = math.sqrt(rom_area_um2)
-
-        die_w = pe_side + rom_side + sram_area ** 0.5 + 4 * margin
-        die_h = max(pe_side, rom_side) + 2 * margin + 40  # pad ring
-
-        return {
-            "die_w": die_w, "die_h": die_h,
-            "pe_w": pe_side, "pe_h": pe_side,
-            "rom_w": rom_side, "rom_h": rom_side,
-            "sram_w": math.sqrt(sram_area), "sram_h": math.sqrt(sram_area),
-            "margin": margin,
-            "n_frozen": n_frozen,
-        }
-
-    def _add_pe_array(self, cell, fp: dict):
-        import gdstk
-        x0, y0 = fp["margin"], fp["margin"]
-        # Draw tiled grid of PE cells
-        tile_size = 5.0
-        nx = max(1, int(fp["pe_w"] / tile_size))
-        ny = max(1, int(fp["pe_h"] / tile_size))
-        for ix in range(nx):
-            for iy in range(ny):
-                cell.add(gdstk.rectangle(
-                    (x0 + ix * tile_size + 0.5, y0 + iy * tile_size + 0.5),
-                    (x0 + (ix+1) * tile_size - 0.5, y0 + (iy+1) * tile_size - 0.5),
-                    layer=_LAYER["pe_array"][0], datatype=0))
-
-    def _add_rom_stripes(self, cell, fp: dict):
-        import gdstk
-        # ROM stripes represent the mask-locked metal layers
-        x0 = fp["margin"] + fp["pe_w"] + fp["margin"]
-        y0 = fp["margin"]
-        stripe_h = 2.0
-        stripe_gap = 0.5
-        n_stripes = max(1, int(fp["rom_h"] / (stripe_h + stripe_gap)))
-        for i in range(n_stripes):
-            y = y0 + i * (stripe_h + stripe_gap)
-            cell.add(gdstk.rectangle(
-                (x0, y), (x0 + fp["rom_w"], y + stripe_h),
-                layer=_LAYER["rom_metal"][0], datatype=0))
-
-    def _add_io_pads(self, cell, fp: dict):
-        import gdstk
-        pad_w, pad_h = 60.0, 80.0
-        pad_spacing = 20.0
-        n_pads_bottom = max(1, int(fp["die_w"] / (pad_w + pad_spacing)))
-        for i in range(n_pads_bottom):
-            x = (fp["die_w"] - n_pads_bottom * (pad_w + pad_spacing)) / 2 \
-                + i * (pad_w + pad_spacing)
-            cell.add(gdstk.rectangle(
-                (x, 0), (x + pad_w, pad_h),
-                layer=_LAYER["io_pad"][0], datatype=0))
+    def _create_rectangle(self, x, y, width, height, layer=10, datatype=0):
+        """Create a rectangle in GDS."""
+        try:
+            import gdstk
+            return gdstk.Rectangle(
+                (x, y), (x + width, y + height), layer=layer, datatype=datatype
+            )
+        except:
+            return None

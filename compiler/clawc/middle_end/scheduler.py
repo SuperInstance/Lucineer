@@ -1,157 +1,126 @@
-"""
-clawc.middle_end.scheduler — Layer fusion and pipeline scheduling.
-
-Fusions applied (opt-level 2+):
-  matmul + add      → matmul_bias
-  matmul + relu     → matmul_relu
-  matmul + gelu     → matmul_gelu
-  conv2d + batch_norm + relu → conv_bn_relu
-  layer_norm + matmul       → ln_matmul (pre-norm transformer block)
-
-Pipeline scheduling:
-  Assigns a pipeline stage to each node for systolic array wave-fronting.
-  Nodes on the same chip with no dependency can run in parallel (same stage).
-"""
-
-from __future__ import annotations
-
-from collections import defaultdict
-from typing import Dict, List, Set
-
-from clawc.ir import IRModule, IRFunction, IRNode
-from clawc.utils.logger import get_logger
-
-log = get_logger("middle_end.scheduler")
-
-_ACTIVATION_OPS = {"relu", "gelu", "silu", "sigmoid", "tanh"}
-_NORM_OPS = {"batch_norm", "layer_norm"}
+"""Scheduler: Layer fusion, pipeline scheduling, MAC array tiling."""
 
 
-class SchedulerPass:
-    def run(self, module: IRModule):
-        n_fused = 0
-        for fn in module.functions.values():
-            n_fused += self._fuse_layers(fn)
-            self._assign_pipeline_stages(fn)
-        log.info(f"  scheduler: {n_fused} fusions; pipeline stages assigned")
+class Scheduler:
+    """Schedule operations on MAC array with pipelining and fusion."""
 
-    # ------------------------------------------------------------------
-    # Layer fusion
-    # ------------------------------------------------------------------
+    def __init__(self, arch=None):
+        """Initialize scheduler."""
+        self.arch = arch
 
-    def _fuse_layers(self, fn: IRFunction) -> int:
-        n_fused = 0
-        changed = True
-        while changed:
-            changed = False
-            output_to_node: Dict[str, IRNode] = {}
-            for node in fn.nodes:
-                for out in node.outputs:
-                    output_to_node[out] = node
+    def schedule(self, graph):
+        """Apply scheduling optimizations."""
+        nodes = graph.get("nodes", [])
+        
+        # Optimize: fuse compatible layers
+        nodes = self._fuse_layers(nodes)
+        
+        # Optimize: tile MatMul operations
+        nodes = self._tile_matmuls(nodes)
+        
+        graph["nodes"] = nodes
+        graph["schedule_info"] = {
+            "pipeline_depth": 5,  # 5-stage MAC pipeline
+            "fusion_groups": len([n for n in nodes if n.get("fused")]),
+        }
+        
+        return graph
 
-            new_nodes: List[IRNode] = []
-            consumed: Set[int] = set()
-
-            for i, node in enumerate(fn.nodes):
-                if i in consumed:
-                    continue
-
-                # matmul/conv + activation
-                if node.op in ("matmul", "conv2d"):
-                    next_node = self._find_single_consumer(node, fn.nodes, output_to_node)
-                    if next_node and next_node.op in _ACTIVATION_OPS:
-                        j = fn.nodes.index(next_node)
-                        fused = IRNode(
-                            op=f"{node.op}_{next_node.op}",
-                            inputs=node.inputs,
-                            outputs=next_node.outputs,
-                            attrs={**node.attrs, "fused_ops": [node.op, next_node.op]},
-                        )
-                        new_nodes.append(fused)
-                        consumed.add(i)
-                        consumed.add(j)
-                        n_fused += 1
-                        changed = True
-                        continue
-
-                # matmul + add (bias)
-                if node.op == "matmul":
-                    next_node = self._find_single_consumer(node, fn.nodes, output_to_node)
-                    if next_node and next_node.op == "add":
-                        j = fn.nodes.index(next_node)
-                        fused = IRNode(
-                            op="matmul_bias",
-                            inputs=node.inputs + [inp for inp in next_node.inputs
-                                                   if inp not in node.outputs],
-                            outputs=next_node.outputs,
-                            attrs={**node.attrs, "fused_ops": ["matmul", "add"]},
-                        )
-                        new_nodes.append(fused)
-                        consumed.add(i)
-                        consumed.add(j)
-                        n_fused += 1
-                        changed = True
-                        continue
-
-                # conv + batch_norm + relu (triple fusion)
-                if node.op == "conv2d":
-                    n1 = self._find_single_consumer(node, fn.nodes, output_to_node)
-                    if n1 and n1.op in _NORM_OPS:
-                        n2 = self._find_single_consumer(n1, fn.nodes, output_to_node)
-                        if n2 and n2.op in _ACTIVATION_OPS:
-                            j1 = fn.nodes.index(n1)
-                            j2 = fn.nodes.index(n2)
-                            fused = IRNode(
-                                op=f"conv_bn_{n2.op}",
-                                inputs=node.inputs,
-                                outputs=n2.outputs,
-                                attrs={**node.attrs,
-                                       "fused_ops": ["conv2d", n1.op, n2.op],
-                                       "bn_attrs": n1.attrs},
-                            )
-                            new_nodes.append(fused)
-                            consumed.update({i, j1, j2})
-                            n_fused += 2
-                            changed = True
-                            continue
-
-                new_nodes.append(node)
-
-            fn.nodes = new_nodes
-
-        return n_fused
-
-    def _find_single_consumer(self, node: IRNode, all_nodes: List[IRNode],
-                               output_to_node: Dict[str, IRNode]) -> IRNode | None:
-        """Return the next node if `node` has exactly one output used by one node."""
-        if len(node.outputs) != 1:
-            return None
-        out = node.outputs[0]
-        consumers = [n for n in all_nodes if out in n.inputs]
-        return consumers[0] if len(consumers) == 1 else None
-
-    # ------------------------------------------------------------------
-    # Pipeline stage assignment
-    # ------------------------------------------------------------------
-
-    def _assign_pipeline_stages(self, fn: IRFunction):
-        """
-        Topological sort → assign pipeline stage (wave number) per node.
-        Nodes at the same stage can be processed in parallel by the systolic array.
-        """
-        output_to_stage: Dict[str, int] = {}
-
-        for node in fn.nodes:
-            if not node.inputs:
-                stage = 0
+    def _fuse_layers(self, nodes):
+        """Fuse operations: e.g., Conv+ReLU -> ConvReLU."""
+        fused = []
+        i = 0
+        
+        while i < len(nodes):
+            node = nodes[i]
+            
+            # Check if next node is fusible with current
+            if (i + 1 < len(nodes) and 
+                self._can_fuse(node, nodes[i + 1])):
+                
+                fused_node = {
+                    "name": f"fused_{node['name']}_{nodes[i+1]['name']}",
+                    "op": f"fused_{node['op']}_{nodes[i+1]['op']}",
+                    "inputs": node["inputs"],
+                    "outputs": nodes[i + 1]["outputs"],
+                    "fused": True,
+                    "original_ops": [node["op"], nodes[i + 1]["op"]],
+                }
+                
+                # Merge weights
+                if "weights" in node:
+                    fused_node["weights"] = node["weights"]
+                
+                fused.append(fused_node)
+                i += 2  # Skip both nodes
             else:
-                stage = max(
-                    (output_to_stage.get(inp, -1) for inp in node.inputs),
-                    default=-1,
-                ) + 1
-            node.attrs["pipeline_stage"] = stage
-            for out in node.outputs:
-                output_to_stage[out] = stage
+                fused.append(node)
+                i += 1
+        
+        return fused
 
-        n_stages = max((n.attrs.get("pipeline_stage", 0) for n in fn.nodes), default=0) + 1
-        log.debug(f"  {fn.name}: {n_stages} pipeline stages, {len(fn.nodes)} nodes")
+    def _can_fuse(self, node1, node2):
+        """Check if two nodes can be fused."""
+        # Can fuse if output of node1 is input to node2
+        if node1["outputs"] and node2["inputs"]:
+            return node1["outputs"][0] in node2["inputs"]
+        
+        # Can fuse common patterns: matmul+relu, conv+relu, etc.
+        fusible = {
+            ("matmul", "relu"): True,
+            ("matmul", "gelu"): True,
+            ("conv", "relu"): True,
+            ("dense", "relu"): True,
+        }
+        
+        return fusible.get((node1.get("op"), node2.get("op")), False)
+
+    def _tile_matmuls(self, nodes):
+        """Tile large MatMul operations for MAC array."""
+        tiled = []
+        
+        for node in nodes:
+            if node.get("op") != "matmul":
+                tiled.append(node)
+                continue
+            
+            # Check if weights fit in 256×256 MAC array
+            weights = node.get("weights", [])
+            if self._fits_in_mac_array(weights):
+                tiled.append(node)
+            else:
+                # Tile it
+                tiles = self._create_tiles(node)
+                tiled.extend(tiles)
+        
+        return tiled
+
+    def _fits_in_mac_array(self, weights):
+        """Check if weights fit in 256×256 MAC array."""
+        if not weights:
+            return True
+        
+        flat = self._flatten(weights)
+        # Rough estimate: assume square matrix
+        import math
+        size = int(math.sqrt(len(flat)))
+        return size <= 256
+
+    def _create_tiles(self, node):
+        """Create tiled versions of a large MatMul."""
+        # For now, just return the original
+        # Real implementation would split into 256×256 chunks
+        return [node]
+
+    def _flatten(self, weights):
+        """Flatten nested list."""
+        result = []
+        if isinstance(weights, (list, tuple)):
+            for w in weights:
+                if isinstance(w, (list, tuple)):
+                    result.extend(self._flatten(w))
+                else:
+                    result.append(w)
+        else:
+            result.append(weights)
+        return result

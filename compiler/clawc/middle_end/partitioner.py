@@ -1,99 +1,88 @@
-"""
-clawc.middle_end.partitioner — Split model across N chips (cascade).
-
-Strategy: balanced layer-wise partition.
-  - Count total matmul/conv2d nodes
-  - Assign consecutive groups to chip_id 0..N-1
-  - Each chip gets: input buffer, computation nodes, output buffer
-
-After partitioning each IRNode gets:
-    node.attrs["chip_id"] = 0..N-1
-    node.attrs["inter_chip_io"] = True  (on boundary nodes)
-"""
-
-from __future__ import annotations
-
-import math
-from typing import List
-
-from clawc.ir import IRModule, IRNode
-from clawc.utils.logger import get_logger
-
-log = get_logger("middle_end.partitioner")
-
-_COMPUTE_OPS = {"matmul", "conv2d", "conv1d", "conv2d_transpose", "attention"}
+"""Partitioner: Split model across multiple mask-locked chips (cascade)."""
 
 
-class PartitionerPass:
-    def __init__(self, n_chips: int = 2):
-        assert n_chips >= 1
-        self.n_chips = n_chips
+class Partitioner:
+    """Partition computation graph across multiple chips."""
 
-    def run(self, module: IRModule):
-        if self.n_chips == 1:
-            for fn in module.functions.values():
-                for node in fn.nodes:
-                    node.attrs["chip_id"] = 0
-            return
+    def __init__(self, arch=None):
+        """Initialize partitioner."""
+        self.arch = arch
 
-        for fn in module.functions.values():
-            compute_nodes = [n for n in fn.nodes if n.op in _COMPUTE_OPS]
-            n_compute = len(compute_nodes)
-            if n_compute == 0:
-                continue
+    def partition(self, graph):
+        """Partition graph into chip clusters."""
+        # For now, single-chip deployment
+        # In future: use layer costs to split across cascade
 
-            nodes_per_chip = math.ceil(n_compute / self.n_chips)
-            log.info(f"  partitioner: {n_compute} compute nodes → "
-                     f"{self.n_chips} chips (~{nodes_per_chip}/chip)")
+        nodes = graph.get("nodes", [])
+        
+        # Estimate chip capacity
+        mac_budget = 256 * 256  # 256×256 MAC array per MLS chip
+        
+        total_macs = 0
+        for node in nodes:
+            if node.get("op") == "matmul":
+                # Rough estimate: weight count ~= MAC count
+                weights = node.get("weights")
+                if weights:
+                    total_macs += self._count_macs(weights)
+        
+        if total_macs > mac_budget:
+            # Would need to partition across multiple chips
+            # Add cascade communication layers
+            graph["partitions"] = self._partition_layers(nodes, mac_budget)
+        else:
+            graph["partitions"] = [{"nodes": nodes, "chip_id": 0}]
+        
+        return graph
 
-            # Assign chip IDs to compute nodes
-            chip_map = {}
-            for i, node in enumerate(compute_nodes):
-                chip_id = min(i // nodes_per_chip, self.n_chips - 1)
-                node.attrs["chip_id"] = chip_id
-                chip_map[id(node)] = chip_id
+    def _partition_layers(self, nodes, budget):
+        """Partition layers to fit within budget per chip."""
+        partitions = []
+        current_partition = []
+        current_macs = 0
 
-            # Assign non-compute nodes to same chip as their producer
-            assigned = {id(n): n.attrs["chip_id"] for n in compute_nodes}
-            for node in fn.nodes:
-                if "chip_id" not in node.attrs:
-                    # Find nearest compute predecessor
-                    chip_id = self._infer_chip(node, fn, assigned)
-                    node.attrs["chip_id"] = chip_id
+        for node in nodes:
+            node_macs = 0
+            if node.get("op") == "matmul":
+                node_macs = self._count_macs(node.get("weights", []))
+            
+            if current_macs + node_macs > budget and current_partition:
+                # Start new partition
+                partitions.append({
+                    "nodes": current_partition,
+                    "chip_id": len(partitions),
+                })
+                current_partition = []
+                current_macs = 0
+            
+            current_partition.append(node)
+            current_macs += node_macs
 
-            # Mark inter-chip boundaries
-            self._mark_boundaries(fn)
+        if current_partition:
+            partitions.append({
+                "nodes": current_partition,
+                "chip_id": len(partitions),
+            })
 
-        per_chip = self._count_per_chip(module)
-        log.info(f"  partition summary: {per_chip}")
+        return partitions
 
-    def _infer_chip(self, node: IRNode, fn, assigned: dict) -> int:
-        # Find the chip of the first input that has an assignment
-        for inp in node.inputs:
-            for other in fn.nodes:
-                if inp in other.outputs and id(other) in assigned:
-                    return assigned[id(other)]
-        return 0
+    def _count_macs(self, weights):
+        """Count estimated MACs from weight shape."""
+        if not weights:
+            return 0
+        
+        flat = self._flatten(weights)
+        return len(flat)
 
-    def _mark_boundaries(self, fn):
-        output_to_chip = {}
-        for node in fn.nodes:
-            chip = node.attrs.get("chip_id", 0)
-            for out in node.outputs:
-                output_to_chip[out] = chip
-
-        for node in fn.nodes:
-            chip = node.attrs.get("chip_id", 0)
-            for inp in node.inputs:
-                src_chip = output_to_chip.get(inp)
-                if src_chip is not None and src_chip != chip:
-                    node.attrs["inter_chip_io"] = True
-                    break
-
-    def _count_per_chip(self, module: IRModule) -> dict:
-        counts = {}
-        for fn in module.functions.values():
-            for node in fn.nodes:
-                c = node.attrs.get("chip_id", 0)
-                counts[c] = counts.get(c, 0) + 1
-        return {f"chip{k}": v for k, v in sorted(counts.items())}
+    def _flatten(self, weights):
+        """Flatten nested structure."""
+        result = []
+        if isinstance(weights, (list, tuple)):
+            for w in weights:
+                if isinstance(w, (list, tuple)):
+                    result.extend(self._flatten(w))
+                else:
+                    result.append(w)
+        else:
+            result.append(weights)
+        return result
