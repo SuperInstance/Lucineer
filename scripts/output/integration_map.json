@@ -1,0 +1,242 @@
+[
+  {
+    "from": "SuperInstance/deckboss",
+    "to": "SuperInstance/cocapn",
+    "rel": "depends",
+    "why": "Flight deck control interface for the Cocapn agent runtime"
+  },
+  {
+    "from": "SuperInstance/deckboss",
+    "to": "SuperInstance/fleet-orchestrator",
+    "rel": "integrates",
+    "why": "Coordinates stateless edge orchestration for agent deployment"
+  },
+  {
+    "from": "SuperInstance/cudaclaw",
+    "to": "SuperInstance/SmartCRDT",
+    "rel": "depends",
+    "why": "Orchestrates 10K+ agents using SmartCRDT conflict resolution"
+  },
+  {
+    "from": "SuperInstance/bordercollie",
+    "to": "SuperInstance/cudaclaw",
+    "rel": "depends",
+    "why": "Herds local CUDA-based agents managed by Cudaclaw"
+  },
+  {
+    "from": "SuperInstance/flux-runtime",
+    "to": "SuperInstance/agentic-compiler",
+    "rel": "depends",
+    "why": "Self-assembling runtime built from compiled markdown bytecode"
+  },
+  {
+    "from": "SuperInstance/flux-runtime",
+    "to": "SuperInstance/constraint-theory-core",
+    "rel": "depends",
+    "why": "Uses deterministic geometric snapping for runtime assembly"
+  },
+  {
+    "from": "Lucineer/nexus-edge-runtime",
+    "to": "SuperInstance/flux-runtime",
+    "rel": "extends",
+    "why": "Edge-specific implementation of the Flux runtime bytecode VM"
+  },
+  {
+    "from": "SuperInstance/craftmind",
+    "to": "SuperInstance/ai-character-sdk",
+    "rel": "depends",
+    "why": "Autonomous player driven by unified AI character logic"
+  },
+  {
+    "from": "SuperInstance/craftmind",
+    "to": "SuperInstance/hierarchical-memory",
+    "rel": "depends",
+    "why": "Requires 6-tier cognitive memory system for autonomous play"
+  },
+  {
+    "from": "SuperInstance/ai-character-sdk",
+    "to": "SuperInstance/equipment-memory-hierarchy",
+    "rel": "integrates",
+    "why": "SDK utilizes the 4-tier memory hierarchy for character state"
+  },
+  {
+    "from": "SuperInstance/equipment-escalation-router",
+    "to": "SuperInstance/ai-character-sdk",
+    "rel": "depends",
+    "why": "Routes bot/brain/human LLM traffic based on character escalation"
+  },
+  {
+    "from": "SuperInstance/equipment-swarm-coordinator",
+    "to": "SuperInstance/equipment-escalation-router",
+    "rel": "integrates",
+    "why": "Swarm logic relies on router for multi-agent task distribution"
+  },
+  {
+    "from": "SuperInstance/polln",
+    "to": "SuperInstance/spreadsheet-moment",
+    "rel": "depends",
+    "why": "Visualized agents utilizing spreadsheet tile intelligence"
+  },
+  {
+    "from": "Lucineer/cuda-a2a",
+    "to": "Lucineer/a2a-protocol",
+    "rel": "extends",
+    "why": "Rust-based GPU implementation of the Agent-to-Agent protocol"
+  },
+  {
+    "from": "Lucineer/git-agent",
+    "to": "SuperInstance/cocapn",
+    "rel": "extends",
+    "why": "Repo-native agent implementation using Cocapn runtime concepts"
+  },
+  {
+    "from": "Lucineer/git-agent",
+    "to": "Lucineer/baton-ai",
+    "rel": "depends",
+    "why": "Uses generational context handoff for repo-native continuity"
+  },
+  {
+    "from": "Lucineer/baton-ai",
+    "to": "Lucineer/git-agent",
+    "rel": "integrates",
+    "why": "Context handoff system designed for repo-native agent lifecycle"
+  },
+  {
+    "from": "SuperInstance/Baton",
+    "to": "Lucineer/git-agent",
+    "rel": "integrates",
+    "why": "Context handoff mechanism integrated with repo-native agents"
+  },
+  {
+    "from": "Lucineer/cuda-deliberation",
+    "to": "Lucineer/tripartite-rs",
+    "rel": "depends",
+    "why": "Multi-agent consensus built on generic tripartite system"
+  },
+  {
+    "from": "Lucineer/cuda-deliberation",
+    "to": "Lucineer/confidence-cascade",
+    "rel": "depends",
+    "why": "Consensus logic driven by three-zone confidence propagation"
+  },
+  {
+    "from": "Lucineer/the-fleet",
+    "to": "Lucineer/context-broker",
+    "rel": "depends",
+    "why": "Central coordination requires goal-scoped context management"
+  },
+  {
+    "from": "Lucineer/fleet-orchestrator",
+    "to": "Lucineer/the-fleet",
+    "rel": "integrates",
+    "why": "Orchestrator manages the fleet coordination system"
+  },
+  {
+    "from": "Lucineer/fleet-orchestrator",
+    "to": "Lucineer/cuda-deliberation",
+    "rel": "depends",
+    "why": "Fleet decisions rely on multi-agent consensus mechanisms"
+  },
+  {
+    "from": "Lucineer/fleet-orchestrator",
+    "to": "Lucineer/a2a-protocol",
+    "rel": "depends",
+    "why": "Requires agent negotiation and discovery protocols"
+  },
+  {
+    "from": "Lucineer/craftmind-fishing",
+    "to": "SuperInstance/craftmind",
+    "rel": "extends",
+    "why": "Specific fishing bot implementation of the Minecraft AI"
+  },
+  {
+    "from": "Lucineer/collective-mind",
+    "to": "Lucineer/the-fleet",
+    "rel": "integrates",
+    "why": "Pattern discovery operates across distributed fleet vessels"
+  },
+  {
+    "from": "Lucineer/fishinglog-ai",
+    "to": "Lucineer/nexus-edge-runtime",
+    "rel": "depends",
+    "why": "Edge AI species classification runs on the Nexus Edge runtime"
+  },
+  {
+    "from": "SuperInstance/fishinglog-ai",
+    "to": "SuperInstance/cudaclaw",
+    "rel": "depends",
+    "why": "Jetson-powered vessel classification coordinated via Cudaclaw"
+  },
+  {
+    "from": "Lucineer/cheetahclaws",
+    "to": "Lucineer/git-agent",
+    "rel": "depends",
+    "why": "Personal assistant utilizes repo-native agent infrastructure"
+  },
+  {
+    "from": "Lucineer/boot-camp",
+    "to": "Lucineer/git-agent",
+    "rel": "integrates",
+    "why": "Training system creates living vessels from repo agents"
+  },
+  {
+    "from": "Lucineer/cocapn-ai",
+    "to": "SuperInstance/cocapn",
+    "rel": "extends",
+    "why": "Cloud service wrapper extending the core Cocapn runtime"
+  },
+  {
+    "from": "SuperInstance/Mycelium",
+    "to": "SuperInstance/cocapn",
+    "rel": "integrates",
+    "why": "Behavior capture/seeding integrates with agent execution"
+  },
+  {
+    "from": "SuperInstance/I-know-kung-fu",
+    "to": "SuperInstance/superpowers",
+    "rel": "depends",
+    "why": "Skill injection framework relies on agentic skills base"
+  },
+  {
+    "from": "SuperInstance/AIR",
+    "to": "SuperInstance/cocapn",
+    "rel": "integrates",
+    "why": "Asynchronous synthesis for agent communication"
+  },
+  {
+    "from": "SuperInstance/fleet-orchestrator",
+    "to": "Lucineer/a2a-protocol",
+    "rel": "depends",
+    "why": "Stateless coordination requires agent discovery protocols"
+  },
+  {
+    "from": "Lucineer/git-agent",
+    "to": "Lucineer/cuda-a2a",
+    "rel": "integrates",
+    "why": "Repo agents use Rust A2A protocol for communication"
+  },
+  {
+    "from": "SuperInstance/polln",
+    "to": "SuperInstance/flux-runtime",
+    "rel": "depends",
+    "why": "Spreadsheet agents run on the self-assembling Flux runtime"
+  },
+  {
+    "from": "SuperInstance/cocapn",
+    "to": "SuperInstance/SmartCRDT",
+    "rel": "integrates",
+    "why": "Runtime leverages CRDTs for self-improving AI state"
+  },
+  {
+    "from": "SuperInstance/craftmind",
+    "to": "SuperInstance/equipment-escalation-router",
+    "rel": "integrates",
+    "why": "Autonomous logic triggers LLM routing for complex decisions"
+  },
+  {
+    "from": "Lucineer/fishinglog-ai",
+    "to": "Lucineer/cuda-deliberation",
+    "rel": "depends",
+    "why": "Species classification confidence uses Bayesian consensus"
+  }
+]

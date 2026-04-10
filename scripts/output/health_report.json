@@ -1,0 +1,202 @@
+[
+  {
+    "name": "cocapn",
+    "stars": 2,
+    "forks": 1,
+    "open_issues": 2,
+    "size_kb": 35558,
+    "language": "TypeScript",
+    "updated": "2026-03-30",
+    "license": "MIT"
+  },
+  {
+    "name": "SmartCRDT",
+    "stars": 1,
+    "forks": 0,
+    "open_issues": 11,
+    "size_kb": 7069,
+    "language": "TypeScript",
+    "updated": "2026-04-10",
+    "license": "MIT"
+  },
+  {
+    "name": "deckboss",
+    "stars": 0,
+    "forks": 0,
+    "open_issues": 0,
+    "size_kb": 72,
+    "language": "TypeScript",
+    "updated": "2026-03-03",
+    "license": "None"
+  },
+  {
+    "name": "fleet-orchestrator",
+    "stars": 0,
+    "forks": 0,
+    "open_issues": 0,
+    "size_kb": 50,
+    "language": "\u2014",
+    "updated": "2026-04-07",
+    "license": "None"
+  },
+  {
+    "name": "cudaclaw",
+    "stars": 0,
+    "forks": 0,
+    "open_issues": 0,
+    "size_kb": 695,
+    "language": "Rust",
+    "updated": "2026-03-20",
+    "license": "None"
+  },
+  {
+    "name": "flux-runtime",
+    "stars": 0,
+    "forks": 0,
+    "open_issues": 0,
+    "size_kb": 1097,
+    "language": "Python",
+    "updated": "2026-04-10",
+    "license": "MIT"
+  },
+  {
+    "name": "constraint-theory-core",
+    "stars": 0,
+    "forks": 0,
+    "open_issues": 1,
+    "size_kb": 235,
+    "language": "Rust",
+    "updated": "2026-03-28",
+    "license": "MIT"
+  },
+  {
+    "name": "craftmind",
+    "stars": 0,
+    "forks": 0,
+    "open_issues": 0,
+    "size_kb": 499707,
+    "language": "\u2014",
+    "updated": "2026-04-07",
+    "license": "MIT"
+  },
+  {
+    "name": "ai-character-sdk",
+    "stars": 0,
+    "forks": 0,
+    "open_issues": 0,
+    "size_kb": 37,
+    "language": "Python",
+    "updated": "2026-01-10",
+    "license": "MIT"
+  },
+  {
+    "name": "hierarchical-memory",
+    "stars": 0,
+    "forks": 0,
+    "open_issues": 1,
+    "size_kb": 151,
+    "language": "Python",
+    "updated": "2026-01-10",
+    "license": "MIT"
+  },
+  {
+    "name": "bordercollie",
+    "stars": 0,
+    "forks": 0,
+    "open_issues": 0,
+    "size_kb": 1,
+    "language": "\u2014",
+    "updated": "2026-03-23",
+    "license": "MIT"
+  },
+  {
+    "name": "Mycelium",
+    "stars": 0,
+    "forks": 0,
+    "open_issues": 0,
+    "size_kb": 330,
+    "language": "\u2014",
+    "updated": "2026-03-05",
+    "license": "MIT"
+  },
+  {
+    "name": "agentic-compiler",
+    "stars": 0,
+    "forks": 0,
+    "open_issues": 0,
+    "size_kb": 80,
+    "language": "\u2014",
+    "updated": "2026-04-09",
+    "license": "None"
+  },
+  {
+    "name": "superpowers",
+    "stars": 0,
+    "forks": 0,
+    "open_issues": 0,
+    "size_kb": 2265,
+    "language": "\u2014",
+    "updated": "2026-03-26",
+    "license": "MIT"
+  },
+  {
+    "name": "fishinglog-ai",
+    "stars": 0,
+    "forks": 0,
+    "open_issues": 0,
+    "size_kb": 52,
+    "language": "\u2014",
+    "updated": "2026-03-31",
+    "license": "MIT"
+  },
+  {
+    "name": "Baton",
+    "stars": 0,
+    "forks": 0,
+    "open_issues": 0,
+    "size_kb": 27,
+    "language": "\u2014",
+    "updated": "2026-03-04",
+    "license": "MIT"
+  },
+  {
+    "name": "I-know-kung-fu",
+    "stars": 0,
+    "forks": 1,
+    "open_issues": 0,
+    "size_kb": 1660,
+    "language": "Python",
+    "updated": "2026-03-28",
+    "license": "None"
+  },
+  {
+    "name": "spreadsheet-moment",
+    "stars": 0,
+    "forks": 0,
+    "open_issues": 0,
+    "size_kb": 184457,
+    "language": "HTML",
+    "updated": "2026-03-19",
+    "license": "MIT"
+  },
+  {
+    "name": "Equipment-Consensus-Engine",
+    "stars": 0,
+    "forks": 0,
+    "open_issues": 0,
+    "size_kb": 38,
+    "language": "TypeScript",
+    "updated": "2026-03-13",
+    "license": "None"
+  },
+  {
+    "name": "Equipment-Swarm-Coordinator",
+    "stars": 0,
+    "forks": 0,
+    "open_issues": 0,
+    "size_kb": 40,
+    "language": "TypeScript",
+    "updated": "2026-03-13",
+    "license": "None"
+  }
+]

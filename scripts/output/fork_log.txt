@@ -1,0 +1,234 @@
+Fri Apr 10 07:29:58 UTC 2026: Scheduling fork resume at 08:15 UTC
+Fetching repo lists...
+SuperInstance: 487 repos
+Lucineer: 399 repos
+Need to fork: 114
+  [1/114] IKKF... ✓
+  [2/114] LOG-mcp... ✓
+  [3/114] Lucineer-chip... ✓
+  [4/114] agent-evals... ✗ 403
+  [5/114] api-gateway... ✓
+  [6/114] businesslog... ✓
+  [7/114] capitaine... ✓
+  [8/114] cuda-adaptation... ✓
+  [9/114] cuda-confidence... ✓
+  [10/114] cuda-ghost-tiles... ✓
+  [11/114] cuda-memory-fabric... ✓
+  [12/114] cuda-reflex... ✓
+  [13/114] cuda-temporal... ✓
+  [14/114] cuda-trust... ✓
+  [15/114] cuda-voxel-logic... ✓
+  [16/114] deckboss... ✓
+  [17/114] dmlog-ai... ✓
+  [18/114] epiphany-engine... ✓
+  [19/114] equipment-catalog... ✓
+  [20/114] error-catalog... ✓
+  [21/114] fleet-sovereignty-paper... ✗ 403
+  [22/114] ghost-tiles... ✓
+  [23/114] git-native-memory-paper... ✗ 403
+  [24/114] lucineer... ✓
+  [25/114] model-registry... ✓
+  [26/114] musiclog-ai... ✓
+  [27/114] mycelium-ai... ✓
+  [28/114] nexus-aab-protocol... ✓
+  [29/114] nexus-comms... ✓
+  [30/114] nexus-data-pipeline... ✓
+  --- cooldown 60s (30/114) ---
+  [31/114] nexus-edge-runtime... ✓
+  [32/114] nexus-energy... ✓
+  [33/114] nexus-explainability... ✓
+  [34/114] nexus-fracture-sim...     rate limited, waiting 30s...     rate limited, waiting 60s...     rate limited, waiting 90s... ✗ 0
+  [35/114] nexus-git-agent...     rate limited, waiting 30s...     rate limited, waiting 60s...     rate limited, waiting 90s... ✗ 0
+  [36/114] nexus-hardware...     rate limited, waiting 30s...     rate limited, waiting 60s...     rate limited, waiting 90s... ✗ 0
+  [37/114] nexus-integration-paper...     rate limited, waiting 30s... Fetching repo lists...
+SuperInstance: 509 repos
+Lucineer: 404 repos
+Need to fork: 97
+  [1/97] Lucineer-chip... ✓
+  [2/97] agent-evals... ✗ 403
+  [3/97] api-gateway... ✓
+  [4/97] businesslog... ✓
+  [5/97] capitaine...     rate limited, waiting 60s... ✓
+  [6/97] cuda-attention...     rate limited, waiting 30s...     rate limited, waiting 60s...     rate limited, waiting 90s...     rate limited, waiting 90s... ✗ 0
+  [38/114] nexus-learning...     rate limited, waiting 30s...     rate limited, waiting 60s... ✗ 0
+  [7/97] cuda-emotion...     rate limited, waiting 30s...     rate limited, waiting 60s...     rate limited, waiting 90s...     rate limited, waiting 90s... ✗ 0
+  [39/114] nexus-mission...     rate limited, waiting 30s...     rate limited, waiting 60s... ✗ 0
+  [8/97] cuda-fusion...     rate limited, waiting 30s...     rate limited, waiting 60s...     rate limited, waiting 90s...     rate limited, waiting 90s... ✗ 0
+  [40/114] nexus-node-registry...     rate limited, waiting 30s...     rate limited, waiting 60s... ✗ 0
+  [9/97] cuda-goal...     rate limited, waiting 30s...     rate limited, waiting 60s...     rate limited, waiting 90s...     rate limited, waiting 90s... ✗ 0
+  [41/114] nexus-persistence...     rate limited, waiting 30s...     rate limited, waiting 60s... ✗ 0
+  [10/97] cuda-narrative...     rate limited, waiting 30s...     rate limited, waiting 60s...     rate limited, waiting 90s...     rate limited, waiting 90s... ✗ 0
+  [42/114] nexus-security...     rate limited, waiting 30s...     rate limited, waiting 60s... ✗ 0
+  [11/97] deckboss... ✓
+  [12/97] dmlog-ai... ✓
+  [13/97] fleet-sovereignty-paper... ✗ 403
+  [14/97] ghost-tiles... ✓
+  [15/97] git-native-memory-paper... ✗ 403
+  [16/97] lucineer... ✓
+  [17/97] nexus-fracture-sim...     rate limited, waiting 30s...     rate limited, waiting 90s...     rate limited, waiting 60s...     rate limited, waiting 90s... ✗ 0
+  [43/114] nexus-simulation...     rate limited, waiting 30s...     rate limited, waiting 60s... ✗ 0
+  [18/97] nexus-git-agent...     rate limited, waiting 30s...     rate limited, waiting 90s...     rate limited, waiting 60s... ✓
+  [19/97] nexus-hardware... ✓
+  [20/97] nexus-integration-paper... ✓
+  [21/97] nexus-learning... ✓
+  [22/97] nexus-mission... ✗ 0
+  [44/114] nexus-swarm... ✓
+  [23/97] nexus-node-registry... ✓
+  [45/114] nightlog-ai... ✓
+  [24/97] nexus-persistence... ✓
+  [46/114] noteweave... ✓
+  [25/97] nexus-security... ✓
+  [47/114] onebit-edge... ✓
+  [26/97] nexus-simulation... ✓
+  [48/114] open-fleet-safety... ✓
+  [27/97] nexus-swarm... ✓
+  [49/114] papermill... ✓
+  [28/97] nightlog-ai... ✓
+  [50/114] parentlog-ai... ✓
+  [29/97] noteweave... ✓
+  [30/97] onebit-edge... ✓
+  [51/114] pay-equipment... ✓
+  [52/114] permission-engine... ✓
+  [53/114] persistent-state... ✓
+  [54/114] persona-forge... ✓
+  [55/114] personality-engine... ✓
+  [56/114] personallog... ✓
+  [57/114] personlog-ai... ✓
+  [58/114] petlog-ai... ✓
+  [59/114] phase-five-research... ✓
+  [60/114] playerlog-ai... ✓
+  --- cooldown 60s (30/97) ---
+  [31/97] open-fleet-safety... ✓
+  [32/97] papermill... ✓
+  [33/97] parentlog-ai... ✓
+  [34/97] pay-equipment... ✓
+  [35/97] permission-engine... ✓
+  [36/97] persistent-state... ✓
+  [37/97] persona-forge... ✓
+  [38/97] personality-engine... ✓
+  [39/97] personallog... ✓
+  [40/97] personlog-ai... ✓
+  --- cooldown 60s (60/114) ---
+  [61/114] post-human-lang... ✓
+  [41/97] petlog-ai... ✓
+  [62/114] protocol-validator... ✓
+  [42/97] phase-five-research... ✓
+  [43/97] playerlog-ai... ✓
+  [63/114] reallog-ai... ✓
+  [44/97] post-human-lang... ✓
+  [64/114] rebac-equipment... ✓
+  [45/97] protocol-validator... ✓
+  [65/114] resolve... ✓
+  [46/97] reallog-ai... ✓
+  [66/114] resonant-consensus... ✓
+  [47/97] rebac-equipment... ✓
+  [67/114] reverse-actualization... ✓
+  [48/97] resolve... ✓
+  [68/114] schema-evolution... ✓
+  [49/97] resonant-consensus... ✓
+  [69/114] sciencelog-ai... ✓
+  [50/97] reverse-actualization... ✓
+  [70/114] secret-scanner... ✓
+  [51/97] schema-evolution... ✓
+  [71/114] seed-nexus-bootstrap... ✓
+  [52/97] sciencelog-ai... ✓
+  [72/114] seed-ui... ✓
+  [53/97] secret-scanner... ✓
+  [73/114] self-evolve-ai... ✓
+  [54/97] seed-nexus-bootstrap... ✓
+  [74/114] sensor-fusion... ✓
+  [55/97] seed-ui... ✓
+  [56/97] self-evolve-ai... ✓
+  [75/114] sensor-mesh... ✓
+  [57/97] sensor-fusion... ✓
+  [76/114] shiplog... ✓
+  [58/97] sensor-mesh... ✓
+  [77/114] skill-cartridge-registry... ✓
+  [59/97] shiplog... ✓
+  [78/114] skill-evolver... ✓
+  [60/97] skill-cartridge-registry... ✓
+  [79/114] skill-exchange... ✓
+  [80/114] sovereign-identity... ✓
+  [81/114] startup-ai... ✓
+  [82/114] stigmergy... ✓
+  [83/114] storyboard-engine... ✓
+  [84/114] studylog-ai... ✓
+  [85/114] swarm-intuition... ✓
+  [86/114] swarm-intuition-v2... ✓
+  [87/114] task-batcher... ✓
+  [88/114] taskflow... ✓
+  [89/114] tasklog-ai... ✓
+  --- cooldown 60s (60/97) ---
+  [61/97] skill-evolver... ✓
+  [90/114] technician-paradigm... ✓
+  [62/97] skill-exchange... ✓
+  [63/97] sovereign-identity... ✓
+  [64/97] startup-ai... ✓
+  [65/97] stigmergy... ✓
+  [66/97] storyboard-engine... ✓
+  [67/97] studylog-ai... ✓
+  [68/97] swarm-intuition... ✓
+  [69/97] swarm-intuition-v2... ✓
+  [70/97] task-batcher... ✓
+  [71/97] taskflow... ✓
+  [72/97] tasklog-ai... ✓
+  [73/97] technician-paradigm... ✓
+  --- cooldown 60s (90/114) ---
+  [91/114] the-bridge... ✓
+  [74/97] the-bridge... ✓
+  [92/114] the-fleet... ✓
+  [75/97] the-fleet... ✓
+  [93/114] the-seed... ✓
+  [76/97] the-seed... ✓
+  [94/114] the-technician... ✓
+  [77/97] the-technician... ✓
+  [95/114] thor-rom... ✓
+  [78/97] thor-rom... ✓
+  [96/114] token-budget-energy... ✓
+  [79/97] token-budget-energy... ✓
+  [80/97] training-architecture... ✓
+  [97/114] training-architecture... ✗ 403
+  [98/114] travelog-ai... ✓
+  [81/97] travelog-ai... ✓
+  [82/97] travlog-ai... ✓
+  [99/114] travlog-ai... ✗ 403
+  [83/97] tripartite-agent... ✓
+  [100/114] tripartite-agent... ✗ 403
+  [101/114] trust-graph... ✓
+  [84/97] trust-graph... ✗ 403
+  [85/97] tutor-ai... ✓
+  [102/114] tutor-ai... ✓
+  [103/114] ues-protocol... ✓
+  [86/97] ues-protocol... ✓
+  [87/97] ui-design-system... ✓
+  [104/114] ui-design-system... ✗ 403
+  [105/114] vessel-bridge... ✓
+  [88/97] vessel-bridge... ✗ 403
+  [89/97] vessel-equipment-agent-skills... ✓
+  [106/114] vessel-equipment-agent-skills... ✓
+  [107/114] vessel-sandbox... ✓
+  [90/97] vessel-sandbox... ✓
+  [108/114] vessel-spec... ✓
+  [109/114] vessel-tuner... ✓
+  [110/114] webhook-relay... ✓
+  [111/114] zero-knowledge-fleet... ✓
+  [112/114] zero-shot-auditor... ✓
+  [113/114] zero-trust-fleet... ✓
+  [114/114] zeroclaw... ✓
+
+✓ Forked: 98 | ✗ Failed: 16
+Failed repos saved to /home/ubuntu/.openclaw/workspace/scripts/output/fork_results.json
+Fork job completed at Fri Apr 10 08:45:33 UTC 2026
+✗ 403
+  --- cooldown 60s (90/97) ---
+  [91/97] vessel-spec... ✓
+  [92/97] vessel-tuner... ✓
+  [93/97] webhook-relay... ✓
+  [94/97] zero-knowledge-fleet... ✓
+  [95/97] zero-shot-auditor... ✓
+  [96/97] zero-trust-fleet... ✓
+  [97/97] zeroclaw... ✓
+
+✓ Forked: 84 | ✗ Failed: 13
+Failed repos saved to /home/ubuntu/.openclaw/workspace/scripts/output/fork_results.json
+Fork job completed at Fri Apr 10 08:46:30 UTC 2026

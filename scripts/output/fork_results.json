@@ -1,0 +1,157 @@
+{
+  "forked": 84,
+  "failed": 13,
+  "success": [
+    "Lucineer-chip",
+    "api-gateway",
+    "businesslog",
+    "capitaine",
+    "deckboss",
+    "dmlog-ai",
+    "ghost-tiles",
+    "lucineer",
+    "nexus-git-agent",
+    "nexus-hardware",
+    "nexus-integration-paper",
+    "nexus-learning",
+    "nexus-mission",
+    "nexus-node-registry",
+    "nexus-persistence",
+    "nexus-security",
+    "nexus-simulation",
+    "nexus-swarm",
+    "nightlog-ai",
+    "noteweave",
+    "onebit-edge",
+    "open-fleet-safety",
+    "papermill",
+    "parentlog-ai",
+    "pay-equipment",
+    "permission-engine",
+    "persistent-state",
+    "persona-forge",
+    "personality-engine",
+    "personallog",
+    "personlog-ai",
+    "petlog-ai",
+    "phase-five-research",
+    "playerlog-ai",
+    "post-human-lang",
+    "protocol-validator",
+    "reallog-ai",
+    "rebac-equipment",
+    "resolve",
+    "resonant-consensus",
+    "reverse-actualization",
+    "schema-evolution",
+    "sciencelog-ai",
+    "secret-scanner",
+    "seed-nexus-bootstrap",
+    "seed-ui",
+    "self-evolve-ai",
+    "sensor-fusion",
+    "sensor-mesh",
+    "shiplog",
+    "skill-cartridge-registry",
+    "skill-evolver",
+    "skill-exchange",
+    "sovereign-identity",
+    "startup-ai",
+    "stigmergy",
+    "storyboard-engine",
+    "studylog-ai",
+    "swarm-intuition",
+    "swarm-intuition-v2",
+    "task-batcher",
+    "taskflow",
+    "tasklog-ai",
+    "technician-paradigm",
+    "the-bridge",
+    "the-fleet",
+    "the-seed",
+    "the-technician",
+    "thor-rom",
+    "token-budget-energy",
+    "training-architecture",
+    "travelog-ai",
+    "tripartite-agent",
+    "tutor-ai",
+    "ues-protocol",
+    "ui-design-system",
+    "vessel-equipment-agent-skills",
+    "vessel-spec",
+    "vessel-tuner",
+    "webhook-relay",
+    "zero-knowledge-fleet",
+    "zero-shot-auditor",
+    "zero-trust-fleet",
+    "zeroclaw"
+  ],
+  "failed_details": [
+    {
+      "name": "agent-evals",
+      "status": 403,
+      "error": ""
+    },
+    {
+      "name": "cuda-attention",
+      "status": 0,
+      "error": "max retries"
+    },
+    {
+      "name": "cuda-emotion",
+      "status": 0,
+      "error": "max retries"
+    },
+    {
+      "name": "cuda-fusion",
+      "status": 0,
+      "error": "max retries"
+    },
+    {
+      "name": "cuda-goal",
+      "status": 0,
+      "error": "max retries"
+    },
+    {
+      "name": "cuda-narrative",
+      "status": 0,
+      "error": "max retries"
+    },
+    {
+      "name": "fleet-sovereignty-paper",
+      "status": 403,
+      "error": ""
+    },
+    {
+      "name": "git-native-memory-paper",
+      "status": 403,
+      "error": ""
+    },
+    {
+      "name": "nexus-fracture-sim",
+      "status": 0,
+      "error": "max retries"
+    },
+    {
+      "name": "travlog-ai",
+      "status": 403,
+      "error": ""
+    },
+    {
+      "name": "trust-graph",
+      "status": 403,
+      "error": ""
+    },
+    {
+      "name": "vessel-bridge",
+      "status": 403,
+      "error": ""
+    },
+    {
+      "name": "vessel-sandbox",
+      "status": 403,
+      "error": ""
+    }
+  ]
+}

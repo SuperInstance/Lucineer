@@ -1,0 +1,6 @@
+{
+  "agent-manifest": "AI agent configuration and metadata manifest generator",
+  "git-agent-rebase": "AI-powered Git rebase assistant tool",
+  "git-agentlog": "AI agent for generating Git commit messages and logs",
+  "git-remote-agent": "AI agent for managing and interacting with Git remote repositories"
+}
