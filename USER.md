@@ -47,3 +47,10 @@ Casey doesn't just employ crew. He runs a **floating dojo**:
 - Make the work visible
 - Trust the crew until they prove otherwise
 - The tech fights to keep up with the human, not the other way around
+
+## Company
+
+- **Business name:** Cocapn
+- **Logo:** Lighthouse with radar rings radiating outward
+- **Meaning:** The lighthouse (keeper) monitors agent proximity. Radar rings = fleet discovery. Each ring is an agent appearing on the radar, being tracked, authenticated, and routed.
+- **Architecture IS the brand:** The keeper isn't just infrastructure — it's the company identity
