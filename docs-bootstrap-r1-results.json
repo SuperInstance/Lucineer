@@ -1,0 +1,94 @@
+{
+  "exp_A": {
+    "bytecode": {
+      "qwen3-coder": {
+        "unique_outputs": 3,
+        "total": 5,
+        "consistent": false,
+        "samples": [
+          "0x10 0x01 0x10 0x0A 0x90 0x00 0x40 0x00 0x00 0x91 0x31 0x00 0x00 0x01 0x00 0x00",
+          "0x10010001 0x1002000A 0x90000000 0x40000000 0x91000000 0x31000000 0x00000000"
+        ]
+      }
+    },
+    "english": {
+      "qwen3-coder": {
+        "unique_outputs": 3,
+        "total": 5,
+        "consistent": false,
+        "samples": [
+          "SET heading = 1\nSET speed = 10\nLOOP\n    GUAGE hull\n    IF reactor > 200 THEN ALERT\n    IF storm = 0 ",
+          "SET heading = 1\nSET speed = 10\nLOOP\n    GAUGE hull\n    IF reactor > 200 THEN ALERT\n    IF storm = 0 "
+        ]
+      }
+    }
+  },
+  "exp_B": {
+    "0_locks": {
+      "qwen3-coder": {
+        "unique_outputs": 2,
+        "total": 2,
+        "consistent": false,
+        "samples": [
+          "Here's the FLUX hex compilation for your navigation command:\n\n```\n0000: 0000 0000 0000 0000 0000 000",
+          "Here's the FLUX hex compilation for your command sequence:\n\n```\n10010000000000000000000000000001\n000"
+        ]
+      }
+    },
+    "3_locks": {
+      "qwen3-coder": {
+        "unique_outputs": 2,
+        "total": 2,
+        "consistent": false,
+        "samples": [
+          "Looking at the LOCK commands and the natural language instructions, I'll compile this to FLUX hex:\n\n",
+          "Looking at the LOCK syntax and the natural language command, I'll compile this to FLUX hex:\n\n```\nnav"
+        ]
+      }
+    },
+    "7_locks": {
+      "qwen3-coder": {
+        "unique_outputs": 1,
+        "total": 2,
+        "consistent": true,
+        "samples": [
+          "Looking at the LOCK commands and the natural language description, I'll compile this to FLUX hex:\n\n`",
+          "Looking at the LOCK commands and the natural language description, I'll compile this to FLUX hex:\n\n`"
+        ]
+      }
+    }
+  },
+  "exp_C": {
+    "english": {
+      "bytes": 126,
+      "input_tokens": 536,
+      "output_sample": "Looking at the instructions and the opcodes provided, I'll compile each instruction to FLUX bytecode",
+      "density": 0.24
+    },
+    "japanese": {
+      "bytes": 92,
+      "input_tokens": 517,
+      "output_sample": "Looking at the command sequence and the given operations, I'll translate each instruction to FLUX by",
+      "density": 0.18
+    },
+    "french_maritime": {
+      "bytes": 113,
+      "input_tokens": 530,
+      "output_sample": "Here's the FLUX bytecode hex for the given instructions:\n\n```\n100A 1101 900A 9101 A000 0000 0000 000",
+      "density": 0.21
+    },
+    "mixed": {
+      "bytes": 134,
+      "input_tokens": 548,
+      "output_sample": "Looking at the French command sequence, I'll translate and compile it to FLUX bytecode:\n\n\u6771\u306b10\u30ce\u30c3\u30c8\u822a\u6d77, ",
+      "density": 0.24
+    }
+  },
+  "exp_D": {
+    "bytecode": "# FLUX Bytecode for Storm Avoidance Program\n\n```\n0x00  ; NOP - Start with no operation (optional)\n\n; Initialize storm detection threshold (let's assume 50 is the danger level)\n0x10 0x00 0x32    ; MOVI R0, 50   - Set storm threshold in R0\n\n; Main monitoring loop\n0x90 0x01         ; GAUGE R1      - Read current storm level into R1\n0x40 0x01 0x00    ; CMP R1, R0    - Compare current level (R1) with threshold (R0)\n0x41 0x0E         ; JE 0x0E       - If equal, jump to alert sequence\n\n; If not dangero",
+    "reading": "Looking at this FLUX bytecode, I'll break down what each instruction does:\n\n## Program Overview\nThis is a **storm avoidance monitoring program** that continuously checks for dangerous storm conditions and triggers alerts when thresholds are exceeded.\n\n## Instruction-by-Instruction Breakdown\n\n### Initialization Phase\n```\n0x00              ; NOP - No operation (placeholder/start)\n0x10 0x00 0x32    ; MOVI R0, 50 - Load immediate value 50 into register R0\n                  ; This sets the storm dang",
+    "verification": "I'd grade their interpretation **8/10**. Here's the breakdown:\n\n### Correct Aspects (9/10 quality):\n1. **Overall purpose** correctly identified as storm monitoring\n2. **Register usage** (R0=threshold, R1=sensor) accurately described\n3. **Main loop flow** properly explained\n4. **Key instructions** (MOVI, GAUGE, CMP, JE) correctly interpreted\n\n### Minor Issues (-1 point):\n1. **Delay loop critique**: Their comment about \"this seems like a bug\" is incorrect - the ISUB/JZ/JMP sequence forms a valid ("
+  },
+  "synthesis": "ERROR: HTTP Error 400: Bad Request",
+  "timestamp": "2026-04-13T19:59:59.855045"
+}
