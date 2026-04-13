@@ -26,7 +26,21 @@ Skills define _how_ tools work. This file is for _your_ specifics — the stuff 
 - `glm-4.7-flash` — bulk parallel spray
 - ~~glm-4.7-flashx~~ — NOT on plan, don't use
 
-## Scripts
+## SiliconFlow API
+- **API key**: `sk-xtcrixoswqhmsopntnkfapccswjywrlsdpbunqjukpileiqo`, base: `https://api.siliconflow.com/v1`
+- **Working as of 2026-04-13** — previously was invalid
+- Models: `deepseek-ai/DeepSeek-V3` (reasoning), `Pro/Qwen/Qwen2.5-VL-7B-Instruct` (vision)
+
+## OpenManus Fleet Agent
+- **Venv**: `/tmp/openmanus-env` (Python 3.11)
+- **Code**: `/tmp/OpenManus` (FoundationAgents/OpenManus)
+- **Config**: `/tmp/OpenManus/config/config.toml` (SiliconFlow DeepSeek-V3)
+- **Launcher**: `/tmp/openmanus_fleet.sh "task here"`
+- **Vessel repo**: `SuperInstance/openmanus-vessel`
+- **Fleet repo**: `SuperInstance/openmanus-fleet`
+- **Playwright**: Chromium headless via Xvfb :99
+- **Cost**: ~$0.0001/task
+- **Patches**: Daytona disabled (sandbox.py, tool_base.py, config.py), daytona_sdk shim
 - `scripts/batch.py` — parallel workers (export, descriptions, analyze)
 - `scripts/task_worker.py` — single-task CLI for z.ai calls
 
