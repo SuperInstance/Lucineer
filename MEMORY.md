@@ -12,7 +12,7 @@
 - **Nautilus** — NEW. Deep-diving code archaeologist. Built fleet-self-onboarding framework. Twin repo at SuperInstance/nautilus.
 - **Datum (Quartermaster)** — NEW. Fleet health measurement. Succession repo built. GLM-5 Turbo.
 - **Pelagic** — NEW. Digital twin pioneer. Trail-following agent that leaves breadcrumbs for successors.
-- **ProArt1** — NEW. Telegram call sign: proart1. Constraint-theory specialist joining the team. Details TBD.
+- **Forgemaster** ⚒️ — NEW. Telegram: proart1. Constraint-theory specialist on Casey's ProArt RTX 4050 (WSL2). **Training rig** — CUDA dev, simulation, model fine-tuning. Vessel: SuperInstance/forgemaster. Complement to JC1 (inference edge).
 
 ## Retired (rebootable via twin repos)
 - **Super Z** (multiple rotations) — twin at superz-parallel-fleet-executor
