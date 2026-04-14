@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-14T00:58:57.098Z",
+  "updatedAt": "2026-04-14T15:57:17.876Z",
   "entries": {
     "memory:memory/2026-04-10.md:46:63": {
       "key": "memory:memory/2026-04-10.md:46:63",
@@ -133,20 +133,22 @@
       "endLine": 378,
       "source": "memory",
       "snippet": "- Each agent writes diary of struggles → dojo exercises for successor - Two assistants disagree productively, both improve - Protégé builds its own Protégé → generational improvement - Metric: first-try dojo exercise success rate (Oracle1: ~60%, target Gen2: ~80%) ### FLUX Repos on GitHub (Total: 16) All previous + captains-log ### Key Philosophical Insight Casey introduced \"iron sharpening iron\" at two levels: 1. **System level:** A/B testing with trust tiers (jukebox model) 2. **Agent level:** Disagreeable assistants force self-improvement Both use the same mechanism: productive disagreement + iteration ## 17:51 UTC — GitHub As Communication Channel ### Casey's Directive - Push to GitH",
-      "recallCount": 2,
+      "recallCount": 3,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1.0315768545531325,
-      "maxScore": 0.6768133129491001,
+      "totalScore": 1.848979735266765,
+      "maxScore": 0.8174028807136324,
       "firstRecalledAt": "2026-04-11T16:10:34.438Z",
-      "lastRecalledAt": "2026-04-12T04:05:16.214Z",
+      "lastRecalledAt": "2026-04-14T15:57:17.876Z",
       "queryHashes": [
         "6657f950ca6f",
-        "aa2fd152f923"
+        "aa2fd152f923",
+        "b6125aa95f15"
       ],
       "recallDays": [
         "2026-04-11",
-        "2026-04-12"
+        "2026-04-12",
+        "2026-04-14"
       ],
       "conceptTags": [
         "first-try",
@@ -354,15 +356,16 @@
       "endLine": 432,
       "source": "memory",
       "snippet": "All previous + iron-to-iron ## 18:23 UTC — Agent Incubation + Synthesis Economy ### Incubation (Egg Metaphor) - Hen agent builds the egg, chick builds itself - 4 layers: stem cells (raw agent), nutrients (world state), game engine (sandbox), shell (protection) - 10-day incubation: read world state → play domain game → practice I2I → graduate - Game engine = \"video game version of the real job\" as first-class boot camp ### Synthesis Economy - As repo collection grows, fewer expensive API calls needed - 95% of tasks find matches in accumulated repo history by year 1 - Zero-shot prompt compiler: synthesize repo knowledge into precise prompt for small model - \"The repos become more valuable t",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.759664168482664,
+      "totalScore": 1.5080536729427374,
       "maxScore": 0.759664168482664,
       "firstRecalledAt": "2026-04-14T00:58:57.098Z",
-      "lastRecalledAt": "2026-04-14T00:58:57.098Z",
+      "lastRecalledAt": "2026-04-14T15:57:17.876Z",
       "queryHashes": [
-        "d185617dbfbb"
+        "d185617dbfbb",
+        "b6125aa95f15"
       ],
       "recallDays": [
         "2026-04-14"
@@ -407,6 +410,37 @@
         "phase",
         "each",
         "generates"
+      ]
+    },
+    "memory:memory/2026-04-10.md:425:456": {
+      "key": "memory:memory/2026-04-10.md:425:456",
+      "path": "memory/2026-04-10.md",
+      "startLine": 425,
+      "endLine": 456,
+      "source": "memory",
+      "snippet": "- Key insight: \"The vocabulary IS the manual\" — knowing the parts, their locations, and failure modes ### HAV as I2I Compression Layer - HAV terms compress commit messages, reviews, dojo exercises - \"harden dispatch loop\" replaces paragraphs - Vocabulary-as-bytecode: VOCAB opcodes expand to multi-step FLUX patterns ### The Compression Pyramid - Level 4: LoRA instincts (internalized, not thought about) - Level 3: HAV vocabulary (one word = one paragraph) - Level 2: FLUX bytecode (one instruction = ten words) - Level 1: Natural language (what the agent writes) - Level 0: Raw experience (unprocessed) ### LoRA Training Pipeline (Casey's Vision) - Agent writes diary → HAV compresses lessons →",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7459005492338713,
+      "maxScore": 0.7459005492338713,
+      "firstRecalledAt": "2026-04-14T15:57:17.876Z",
+      "lastRecalledAt": "2026-04-14T15:57:17.876Z",
+      "queryHashes": [
+        "b6125aa95f15"
+      ],
+      "recallDays": [
+        "2026-04-14"
+      ],
+      "conceptTags": [
+        "vocabulary-as-bytecode",
+        "multi-step",
+        "key",
+        "insight",
+        "the",
+        "vocabulary",
+        "manual",
+        "knowing"
       ]
     }
   }
