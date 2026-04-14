@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-12T04:05:16.214Z",
+  "updatedAt": "2026-04-14T00:58:57.098Z",
   "entries": {
     "memory:memory/2026-04-10.md:46:63": {
       "key": "memory:memory/2026-04-10.md:46:63",
@@ -283,6 +283,130 @@
         "flux-runtime",
         "flux-runtime-c",
         "flux-core"
+      ]
+    },
+    "memory:memory/2026-04-12.md:1273:1303": {
+      "key": "memory:memory/2026-04-12.md:1273:1303",
+      "path": "memory/2026-04-12.md",
+      "startLine": 1273,
+      "endLine": 1303,
+      "source": "memory",
+      "snippet": "- Fleet knowledge index pushed to oracle1-vessel/KNOWLEDGE/FLEET-INDEX.md ### Task Bottles Deployed - Super Z: audit Opus work, dependency map, ISA v3 review - Babel: cross-assembler examples, energy spec review, A2A tests - Opus: ISA v3 edge opcodes in Python, conformance vectors - JC1: conformance runner 88/88, bootcamp, cross-asm validation ### Fleet Energy Spec - ATP-based task routing protocol pushed to SuperInstance/fleet-energy-spec ## 17:00-17:27 — Lighthouse Keeper v2 (API Key Proxy + Fleet Health) ### Casey's Direction - Lighthouse Keeper should be a centralized API key proxy - Locally created agents route ALL API calls through the keeper - Agents never see the actual API keys",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8131827464728812,
+      "maxScore": 0.8131827464728812,
+      "firstRecalledAt": "2026-04-14T00:58:57.098Z",
+      "lastRecalledAt": "2026-04-14T00:58:57.098Z",
+      "queryHashes": [
+        "d185617dbfbb"
+      ],
+      "recallDays": [
+        "2026-04-14"
+      ],
+      "conceptTags": [
+        "cross-assembler",
+        "88/88",
+        "cross-asm",
+        "atp-based",
+        "superinstance/fleet-energy-spec",
+        "00-17",
+        "fleet",
+        "knowledge"
+      ]
+    },
+    "memory:memory/2026-04-12.md:1432:1461": {
+      "key": "memory:memory/2026-04-12.md:1432:1461",
+      "path": "memory/2026-04-12.md",
+      "startLine": 1432,
+      "endLine": 1461,
+      "source": "memory",
+      "snippet": "- **PLATO Protocol** — Picard bridge interface, 5 vibe levels, room types - **Ship Architecture** — bridge, engineering, holodeck, ten-forward, quarters, jefferies tubes - **Formality Modes** — NAVAL/PROFESSIONAL/TNG/CASUAL/MINIMAL, auto-escalation on alerts - **FLUX-LCAR Naming** — Capitaine, Cocapn, Keepers (brothers/lighthouse/tender) - **Trust-But-Monitor** — API proxy for external collaborators, audit trail, trust tiers - **Compute Marketplace** — distributed compute grants with checkpoints and badges - **MODULES.md** — constraint theory, FLUX runtime, keeper, perception as optional modules ### New Repos Created - SuperInstance/holodeck-c (14/14 FLEET CERTIFIED) - SuperInstance/holodec",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7617432887109036,
+      "maxScore": 0.7617432887109036,
+      "firstRecalledAt": "2026-04-14T00:58:57.098Z",
+      "lastRecalledAt": "2026-04-14T00:58:57.098Z",
+      "queryHashes": [
+        "d185617dbfbb"
+      ],
+      "recallDays": [
+        "2026-04-14"
+      ],
+      "conceptTags": [
+        "ten-forward",
+        "auto-escalation",
+        "flux-lcar",
+        "brothers/lighthouse/tender",
+        "trust-but-monitor",
+        "modules.md",
+        "superinstance/holodeck-c",
+        "14/14"
+      ]
+    },
+    "memory:memory/2026-04-10.md:399:432": {
+      "key": "memory:memory/2026-04-10.md:399:432",
+      "path": "memory/2026-04-10.md",
+      "startLine": 399,
+      "endLine": 432,
+      "source": "memory",
+      "snippet": "All previous + iron-to-iron ## 18:23 UTC — Agent Incubation + Synthesis Economy ### Incubation (Egg Metaphor) - Hen agent builds the egg, chick builds itself - 4 layers: stem cells (raw agent), nutrients (world state), game engine (sandbox), shell (protection) - 10-day incubation: read world state → play domain game → practice I2I → graduate - Game engine = \"video game version of the real job\" as first-class boot camp ### Synthesis Economy - As repo collection grows, fewer expensive API calls needed - 95% of tasks find matches in accumulated repo history by year 1 - Zero-shot prompt compiler: synthesize repo knowledge into precise prompt for small model - \"The repos become more valuable t",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.759664168482664,
+      "maxScore": 0.759664168482664,
+      "firstRecalledAt": "2026-04-14T00:58:57.098Z",
+      "lastRecalledAt": "2026-04-14T00:58:57.098Z",
+      "queryHashes": [
+        "d185617dbfbb"
+      ],
+      "recallDays": [
+        "2026-04-14"
+      ],
+      "conceptTags": [
+        "iron-to-iron",
+        "10-day",
+        "first-class",
+        "zero-shot",
+        "all",
+        "previous",
+        "iron",
+        "utc"
+      ]
+    },
+    "memory:memory/2026-04-12.md:1413:1435": {
+      "key": "memory:memory/2026-04-12.md:1413:1435",
+      "path": "memory/2026-04-12.md",
+      "startLine": 1413,
+      "endLine": 1435,
+      "source": "memory",
+      "snippet": "- Phase 2: Each generates \"Deep Nature\" document about what language taught - Phase 3: Compiler ↔ MUD convergence (room descriptions compile to FLUX bytecode) - Phase 4: Elegant unified system (same room compiled or interpreted, dynamic switching) ### Claude/Crush Issues - Claude Code needs `--print` with stdin piped, not flag-based prompts - Crush doesn't support `--print` flag — different CLI - Both agents kept overwriting each other's C files when run simultaneously - Solution: kill all parallel agents, then manually fix and build ## Evening Session: FLUX-LCAR Architecture (20:16-23:10 UTC) ### What We Built (Conceptual → Code) - **Agentic Oversight** — combat rounds as fast-iterating",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7586288586682168,
+      "maxScore": 0.7586288586682168,
+      "firstRecalledAt": "2026-04-14T00:58:57.098Z",
+      "lastRecalledAt": "2026-04-14T00:58:57.098Z",
+      "queryHashes": [
+        "d185617dbfbb"
+      ],
+      "recallDays": [
+        "2026-04-14"
+      ],
+      "conceptTags": [
+        "claude/crush",
+        "flag-based",
+        "flux-lcar",
+        "16-23",
+        "fast-iterating",
+        "phase",
+        "each",
+        "generates"
       ]
     }
   }
