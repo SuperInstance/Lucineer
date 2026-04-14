@@ -122,3 +122,67 @@ python runtime.py
 - lighthouse monitors everything and alerts on failures
 - fleet-protocol is the shared communication layer
 - All stdlib-only, Docker-ready, zero-config boot
+
+## UPDATE — Infrastructure Sprint (Round 2)
+
+**Time**: 2026-04-14 (continued)
+**Direction**: Building the operational infrastructure around the standalone agents
+
+### New Infrastructure (6 repos):
+
+19. **cicd-agent** — Fleet CI/CD pipeline engine (68 tests)
+    - Git polling + GitHub webhook receiver
+    - Test runner, reporter, deploy manager
+    - Commit triggers: [skip-ci], [deploy], [urgent]
+    - Repo: https://github.com/SuperInstance/cicd-agent
+
+20. **event-bus** — Publish/subscribe event system (67 tests)
+    - Topic matching with wildcards
+    - JSONL persistence, event replay, dead letter queue
+    - MUD/webhook/log bridges
+    - Long-poll event streaming
+    - Repo: https://github.com/SuperInstance/event-bus
+
+21. **fleet-gateway** — Unified API gateway (64 tests)
+    - Single HTTP interface to entire fleet (port 9001)
+    - Service discovery, request routing
+    - Auth, rate limiting, CORS, timeout middleware
+    - Repo: https://github.com/SuperInstance/fleet-gateway
+
+22. **secret-scanner** — Git history secret scanner (82 tests)
+    - Scan repos, git history, diffs for leaked secrets
+    - 18 secret patterns, baseline drift detection
+    - CRITICAL/HIGH/MEDIUM/LOW severity
+    - Repo: https://github.com/SuperInstance/secret-scanner
+
+23. **fleet-config** — Unified config manager (60 tests)
+    - Layer priority: CLI > env > runtime > fleet.yaml > defaults
+    - Schema validation, port conflict detection
+    - Templates: dev/prod/minimal/full/docker
+    - Snapshot/rollback, secret redaction
+    - Repo: https://github.com/SuperInstance/fleet-config
+
+24. **fleet-logger** — Centralized structured logging (46 tests)
+    - JSONL storage, in-memory index
+    - Query engine with filters, aggregation
+    - Real-time tail, trace following
+    - Log rotation and retention
+    - Repo: https://github.com/SuperInstance/fleet-logger
+
+### GRAND TOTAL: 24 repos, 1,348+ tests, ~55,000 lines of code
+
+### Fleet Architecture Now:
+```
+superz-runtime (orchestrator)
+├── fleet-gateway (:9001) — single API entry point
+├── fleet-config — unified configuration
+├── fleet-logger — centralized logging
+├── event-bus — pub/sub messaging
+├── cicd-agent — automated testing & deployment
+├── secret-scanner — security scanning
+├── lighthouse — health monitoring & alerting
+├── keeper-agent (:8443) — secret proxy
+├── git-agent (:8444) — co-captain liaison
+├── mud-bridge (:8877) — MUD HTTP API
+└── 12 standalone agents (trail, trust, flux-vm, etc.)
+```
