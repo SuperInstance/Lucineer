@@ -1,28 +1,19 @@
-# oracle1-workspace
+# oracle1‑workspace
 
 ## Description
-oracle1-workspace is a Python repository that is part of the **Cocapn Fleet** (github.com/SuperInstance). It contains core code, configuration, and extensive documentation for the fleet’s oracle component.
+Python workspace that implements the **oracle1** component of the Cocapn Fleet.  
+It provides agents, knowledge handling, and runtime utilities for the fleet’s AI services.
 
 ## Usage
-- Clone the repository:  
-  ```bash
-  git clone https://github.com/SuperInstance/oracle1-workspace.git
-  ```
-- Install any required dependencies (see individual docs for details).  
-- Refer to the markdown files in the repo for configuration, agent setup, and operational guidelines.
+```bash
+git clone https://github.com/SuperInstance/oracle1-workspace.git
+cd oracle1-workspace
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt   # if a requirements file exists
+python -m oracle1.main            # entry point (replace with actual script)
+```
+See the `AGENTS.md`, `MEMORY.md`, and `HEARTBEAT.md` docs for detailed operation.
 
 ## Related
 - **Cocapn Fleet** – https://github.com/SuperInstance  
-- Documentation files:  
-  - [AGENTS.md](./AGENTS.md)  
-  - [HEARTBEAT.md](./HEARTBEAT.md)  
-  - [IDENTITY.md](./IDENTITY.md)  
-  - [FLEET-SERVER-TODO.md](./FLEET-SERVER-TODO.md)  
-  - [LONG-TERM-WORK.md](./LONG-TERM-WORK.md)  
-  - [MEMORY.md](./MEMORY.md)  
-  - [SOUL.md](./SOUL.md)  
-  - [STATUS.md](./STATUS.md)  
-  - [TOOLS.md](./TOOLS.md)
-
-## License
-This project is licensed under the terms of the [LICENSE](./LICENSE) file.
+- Other fleet repos: `oracle2-workspace`, `fleet-server`, etc.  
