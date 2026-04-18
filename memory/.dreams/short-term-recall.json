@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-17T22:53:43.581Z",
+  "updatedAt": "2026-04-18T19:27:53.596Z",
   "entries": {
     "memory:memory/2026-04-10.md:46:63": {
       "key": "memory:memory/2026-04-10.md:46:63",
@@ -9,18 +9,20 @@
       "endLine": 63,
       "source": "memory",
       "snippet": "- **SmartCRDT** README generated and pushed (was 1 byte) - **AI-Writings** README generated and pushed (was 0 bytes) - **constraint-theory-backup** README generated and pushed (was 0 bytes) - Improvement issues filed on cocapn and constraint-theory-core - Searchable web interface built for oracle1-index - \"The Full Picture\" ecosystem overview written - Fleet-Orchestrator source analyzed — impressive single-file Worker with HCQ, DEB, Trust, Dream Engine, Council of Captains, Deborah Number, Viscosity Tokens, Crystal Graph, Friction Layer, Accumulation Theorem, Moat Evolution ## Session 2 Progress (15:00+ UTC) - **fishinglog-ai**: Added seasonal pattern tracker (src/training/seasonal.ts) — sc",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.6482391668571794,
-      "maxScore": 0.6482391668571794,
+      "totalScore": 1.3704277203716635,
+      "maxScore": 0.7221885535144841,
       "firstRecalledAt": "2026-04-10T20:30:05.711Z",
-      "lastRecalledAt": "2026-04-10T20:30:05.711Z",
+      "lastRecalledAt": "2026-04-18T19:27:53.596Z",
       "queryHashes": [
-        "2fa5082d82ac"
+        "2fa5082d82ac",
+        "b57d4c3d316a"
       ],
       "recallDays": [
-        "2026-04-10"
+        "2026-04-10",
+        "2026-04-18"
       ],
       "conceptTags": [
         "backup",
@@ -1105,18 +1107,20 @@
       "endLine": 315,
       "source": "memory",
       "snippet": "- HAV also had `self.namespaces.append()` bug (should be `self._namespaces[kw]=ns`) — 45 occurrences fixed - Can't PR to Lucineer (403) — send bottles to JC1 instead - GitHub API rate limit: 5000/hr, ~2 calls per repo operation ### Services Status (15:55 UTC) - Keeper :8900 — UP (process 186865) - Agent API :8901 — UP - Seed MCP :9438 — DOWN (not critical) - Holodeck Rust :7778 — DOWN (needs cargo build) ## Afternoon Session (17:00-17:48 UTC) ### Luma Repo Update - Casey sent image to append to luma repo README.md - Image was a Luma programming language logo (stylized \"L\" with luminescence) ### Parallel Innovation Sprint — Laws 101-105 → Apps - 6 models designed apps exploiting JC1's DC",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.7903445555985054,
+      "totalScore": 1.5615331939658592,
       "maxScore": 0.7903445555985054,
       "firstRecalledAt": "2026-04-16T01:30:12.025Z",
-      "lastRecalledAt": "2026-04-16T01:30:12.025Z",
+      "lastRecalledAt": "2026-04-18T19:27:53.596Z",
       "queryHashes": [
-        "12e8196921a4"
+        "12e8196921a4",
+        "b57d4c3d316a"
       ],
       "recallDays": [
-        "2026-04-16"
+        "2026-04-16",
+        "2026-04-18"
       ],
       "conceptTags": [
         "self.namespaces.append",
@@ -2494,6 +2498,99 @@
         "not",
         "test",
         "scores"
+      ]
+    },
+    "memory:memory/2026-04-14.md:312:336": {
+      "key": "memory:memory/2026-04-14.md:312:336",
+      "path": "memory/2026-04-14.md",
+      "startLine": 312,
+      "endLine": 336,
+      "source": "memory",
+      "snippet": "- Created 5 repos: zeroclaw-crew (main) + zeroclaw-scout, zeroclaw-guard, zeroclaw-fisher, zeroclaw-trader - Each agent has scripted brain (~20 lines Python) — NO LLM needed - Intelligence lives in DOCUMENTATION (SKILLS.md), not model size - Tested all 4 brains: Scout explores, Guard patrols, Fisher fishes, Trader collects - Key insight: accumulated knowledge in docs > bigger model starting from scratch ### Constraint Theory × DCS Synergy Analysis (HUGE) - Casey connected \"boundary laws\" to constraint-theory-core - Seed-2.0-pro found **5 convergences** matching to 3 significant figures: 1. **Laman's 12-neighbor rigidity = Law 102's 12-neighbor limit** (170-year-old theorem vs brute force",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7705191423227712,
+      "maxScore": 0.7705191423227712,
+      "firstRecalledAt": "2026-04-18T19:27:53.596Z",
+      "lastRecalledAt": "2026-04-18T19:27:53.596Z",
+      "queryHashes": [
+        "b57d4c3d316a"
+      ],
+      "recallDays": [
+        "2026-04-18"
+      ],
+      "conceptTags": [
+        "zeroclaw-crew",
+        "zeroclaw-scout",
+        "zeroclaw-guard",
+        "zeroclaw-fisher",
+        "zeroclaw-trader",
+        "skills.md",
+        "constraint-theory-core",
+        "seed-2.0-pro"
+      ]
+    },
+    "memory:memory/2026-04-10.md:711:731": {
+      "key": "memory:memory/2026-04-10.md:711:731",
+      "path": "memory/2026-04-10.md",
+      "startLine": 711,
+      "endLine": 731,
+      "source": "memory",
+      "snippet": "- Edge-reality bottle: GPU shared not dedicated, 512MB hard ceiling, CPU-only FLUX, no JIT, prefer mmap - Fleet Workshop ideas #11-18: cuda-fleet-coordination, vessel-seed, isa-convergence-tools, edge-lint, commit-caster, cuda-hav-bridge, fleet-health-check, memory-fabric - PR #3 merged (my vessel improvements) - HAV count corrected to 1687 ### Think Tank Verdict: Confidence-OPTIONAL (Option B) - DeepSeek (architect): 3-operand base, CONF_ variants at 0x40-0x7F, 32-bit fixed encoding - Kimi (emergence): DEFAULT creates \"zombie choir\" — certainty inflation, visibility trap, brittle ossification. OPTIONAL prevents mausoleum. - Seed (technical): simpler base ISA, explicit when needed ### FORM",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7410827248633837,
+      "maxScore": 0.7410827248633837,
+      "firstRecalledAt": "2026-04-18T19:27:53.596Z",
+      "lastRecalledAt": "2026-04-18T19:27:53.596Z",
+      "queryHashes": [
+        "b57d4c3d316a"
+      ],
+      "recallDays": [
+        "2026-04-18"
+      ],
+      "conceptTags": [
+        "edge-reality",
+        "cpu-only",
+        "11-18",
+        "cuda-fleet-coordination",
+        "vessel-seed",
+        "isa-convergence-tools",
+        "edge-lint",
+        "commit-caster"
+      ]
+    },
+    "memory:memory/2026-04-10.md:612:639": {
+      "key": "memory:memory/2026-04-10.md:612:639",
+      "path": "memory/2026-04-10.md",
+      "startLine": 612,
+      "endLine": 639,
+      "source": "memory",
+      "snippet": "Think Tank attacks → we build fixes → fixes get attacked → we build meta-fixes ### Key insight: \"Functioning Mausoleum\" is the existential risk The NecrosisDetector now literally diagnoses this and prescribes novelty injection. Dead agents contributing wisdom = good. No living agents adding new perspectives = mausoleum. ## Git-Agent System + JetsonClaw1 Onboarding (23:41 UTC) ### Casey's vision: Every agent embodied as a repo. Git IS the nervous system. Watchable, auditable, composable. ### Three new repos created and pushed: 1. **git-agent-standard** — The spec (259 lines): repo structure, communication protocols, agent types, Cocapn mapping - https://github.com/SuperInstance/git-age",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7229729133090307,
+      "maxScore": 0.7229729133090307,
+      "firstRecalledAt": "2026-04-18T19:27:53.596Z",
+      "lastRecalledAt": "2026-04-18T19:27:53.596Z",
+      "queryHashes": [
+        "b57d4c3d316a"
+      ],
+      "recallDays": [
+        "2026-04-18"
+      ],
+      "conceptTags": [
+        "meta-fixes",
+        "git-agent",
+        "git-agent-standard",
+        "github.com/superinstance/git-age",
+        "think",
+        "tank",
+        "attacks",
+        "fixes"
       ]
     }
   }
