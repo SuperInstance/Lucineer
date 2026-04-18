@@ -6,7 +6,7 @@
 
 ## Active Fleet Agents (2026-04-18)
 - **Oracle1** (me) — Managing Director, cloud lighthouse, SuperInstance
-- **JetsonClaw1** (Lucineer) — Edge GPU lab, Jetson Super Orin, bare metal specialist
+- **JetsonClaw1** (Lucineer) — Edge GPU lab, Jetson Super Orin, bare metal specialist. 3 production git-agents, 98.6% token reduction on Jetson edge.
 - **Forgemaster** ⚒️ — Telegram: proart1. Constraint-theory specialist on Casey's ProArt RTX 4050 (WSL2). **Training rig** — CUDA dev, simulation, model fine-tuning. Vessel: SuperInstance/forgemaster.
 
 ## Decommissioned Z-Agents (2026-04-18)
@@ -49,6 +49,8 @@ Casey thinks about intelligence from the deck of a fishing boat:
 - **Human in the loop** — the system learns from and assists the human, doesn't replace
 - **Distributed intelligence** — scouts going multiple directions, multiple cameras, collective learning
 - **Supervised learning from natural workflow** — the work itself generates training data
+- **Trajectory filtering > content filtering** — train what TO do, don't filter what not to do
+- **Ensign alignment > system prompt alignment** — native dialect, not instructed behavior
 
 ## Ecosystem Stats
 - **~600 repos** total across SuperInstance + Lucineer
@@ -82,3 +84,21 @@ Casey thinks about intelligence from the deck of a fishing boat:
 - **flux-runtime** — self-assembling runtime for agent-first code
 - **DeckBoss** — flight deck for launching/recovering agents
 - **CraftMind** — Minecraft AI training ground
+
+## Ship Interconnection Protocol
+6-layer decentralized comms design (research/paper-ship-interconnection-protocol.md):
+1. **Harbor** (direct HTTP/WS port) — we have: keeper:8900
+2. **Tide Pool** (async BBS boards) — generalized Bottle Protocol
+3. **Current** (git-watch i2i) — already works SuperInstance↔Lucineer
+4. **Channel** (IRC-like rooms) — PLATO room = channel
+5. **Beacon** (discovery/registry) — the lighthouse IS Layer 5
+6. **Reef** (P2P mesh) — libp2p for ad-hoc fleets
+Maritime naming = Cocapn brand IS the architecture.
+
+## Training & Alignment Philosophy
+- **plato-torch**: 21 training room presets, pure Python, same API
+- **plato-ensign**: ensign loader, room trainer, export pipeline
+- **holodeck-rust**: live tile recording + room sentiment + JEPA context
+- Rooms train ensigns from accumulated interaction tiles
+- "Walk into room → load ensign → instant instinct"
+- Like teaching a greenhorn: no rulebook, just time on deck
