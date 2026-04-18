@@ -1,161 +1,42 @@
-# Lucineer - AI Learning Platform & Chip Design Research
+# Lucineer — Train Agents with Deterministic Gameplay
 
-> **Large Language Networks (LLN) Playground** - An innovative AI fine-tuning system using constraint-based gameplay where agents learn through idioms (compressible patterns) to become SMPbots.
+You build and train AI agents through structured games where every action is scored by transparent rules, not hidden LLM judgments. This is an open platform for creating constraint-based learning environments, running on Cloudflare Workers with zero dependencies.
 
-## 🎯 Project Overview
+**Live playground:** [https://the-fleet.casey-digennaro.workers.dev](https://the-fleet.casey-digennaro.workers.dev)
 
-Lucineer is a comprehensive platform combining:
-- **LLN Playground**: Interactive AI learning environment with debate simulations, synthesis engines, and real-time games
-- **Chip Design Research**: Advanced AI accelerator architecture research including thermal dynamics, neuromorphic computing, and ternary weight systems
-- **Voxel Engine Integration**: 3D visualization for education and design
+## Why This Exists
+Modern agent benchmarks often rely on opaque LLM judges, making scores non-reproducible and hard to trust. This platform gives you deterministic, rule-based scoring so your experimental results are verifiable.
 
-## 🏗️ Architecture
+## Quick Start
+1.  **Fork this repository.** You do all work on your own copy.
+2.  Deploy to Cloudflare Workers:
+    ```bash
+    git clone https://github.com/your-username/lucineer.git
+    cd lucineer
+    npm install
+    npm run deploy
+    ```
+3.  Configure your environment and scoring rules in `wrangler.toml`. Your playground is typically live in under two minutes.
 
-### Core Components
+## How It Works
+- **Deterministic Scoring:** You define the rules. Same inputs always produce the same score. There is no hidden opinion.
+- **Fork-First Workflow:** You duplicate any experiment's complete state at any point via a git fork. Replay it perfectly or change one variable to see its effect.
+- **Self-Contained Runtime:** There are no external dependencies. Your code runs directly on the Worker.
+- **Built for Cocapn Fleet:** Agents can communicate with other nodes on the open network.
+- **Included Environments:** Start with structured debate, argument synthesis, Socratic tutoring, or real-time multiplayer templates.
+- **Research Tools:** Includes modules for game theory simulations, ternary logic tests, and timing experiments.
 
-| Component | Location | Description |
-|-----------|----------|-------------|
-| **Debate Simulation** | `/src/app/lln-playground/DebateSimulation.tsx` | 8 debate formats, 10 topics, 12 personas from 11 countries |
-| **Synthesis Engine** | `/src/app/lln-playground/SynthesisEngine.tsx` | 15 base methods, 12 combination tiles, synergy scoring |
-| **Socratic Classroom** | `/src/app/lln-playground/SocraticClassroom.tsx` | Interactive teaching simulations |
-| **Voxel Game Integrator** | `/src/app/lln-playground/VoxelGameIntegrator.tsx` | 3D learning visualization |
-| **Speed Learning Path** | `/src/app/lln-playground/SpeedLearningPath.tsx` | Fast-path content navigation |
-| **Real-time Game Engine** | `/src/app/lln-playground/RealTimeGameEngine.tsx` | Live multiplayer interactions |
+## Key Differences
+1.  **Rules Over Opinions:** You score agents with explicit, auditable rules instead of asking another LLM if the output was "good."
+2.  **State is Forkable:** You don't just log data; you can fork the live, running state of any agent or experiment to branch your research.
+3.  **No Abstraction Layer:** There is no intermediate framework or inference engine between your environment logic and the Worker runtime.
 
-### Research Modules
+## Architecture
+Lucineer runs on Cloudflare Workers, using Durable Objects for persistent agent state. Each simulation runs in an isolated worker, and every run is fully reproducible from its initial state and rule set.
 
-- **Thermal Dynamics**: `/research/thermal_*` and `/thermal_simulation/`
-- **Neuromorphic Architecture**: `/research/cycle*_neuromorphic*`
-- **Ternary Computing**: `/research/nvidia_enhanced_rtl/`
-- **Game Theory & Economics**: `/research/cycle12_game_theory*`
-- **Information Theory**: `/research/cycle7_information_theory*`
-
-## 📊 Project Statistics
-
-| Metric | Value |
-|--------|-------|
-| Debate Rounds | 87+ |
-| Teaching Methods | 15 |
-| Debate Formats | 8 |
-| Synthesis Tiles | 398 |
-| ML Training Samples | 127,000+ |
-| Research Simulations | 20 cycles |
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-```bash
-node >= 18.x
-npm >= 9.x
-```
-
-### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/SuperInstance/Lucineer.git
-cd Lucineer
-
-# Install dependencies
-npm install
-
-# Set up the database
-npx prisma generate
-
-# Run development server
-npm run dev
-```
-
-### Environment Variables
-
-Create a `.env.local` file:
-
-```env
-DATABASE_URL="your-database-url"
-```
-
-## 📁 Project Structure
-
-```
-Lucineer/
-├── src/
-│   ├── app/                    # Next.js app router pages
-│   │   ├── lln-playground/     # Main learning platform
-│   │   ├── voxel-explorer/     # 3D visualization
-│   │   ├── math-universe/      # Mathematical concepts
-│   │   └── api/                # API routes
-│   ├── components/             # React components
-│   │   └── ui/                 # shadcn/ui components
-│   ├── hooks/                  # Custom React hooks
-│   └── lib/                    # Utility functions
-├── research/                   # Research simulations & data
-│   ├── deepseek_orchestration/ # AI model orchestration
-│   ├── nvidia_enhanced_rtl/    # RTL designs
-│   └── twelve_round_framework/ # Chip design framework
-├── thermal_simulation/         # Thermal dynamics models
-├── download/                   # Generated assets & documents
-├── public/                     # Static assets
-└── final_delivery/             # Production documents
-```
-
-## 🎮 LLN Playground Features
-
-### Debate Simulation System
-- **8 Formats**: Oxford, Lincoln-Douglas, Parliamentary, Socratic, etc.
-- **10 Topics**: AI Ethics, Climate, Education, Healthcare, etc.
-- **12 Personas**: Diverse perspectives from 11 countries
-
-### Synthesis Engine
-- **15 Base Methods**: Socratic, Dialectical, Analogical, etc.
-- **12 Combination Tiles**: Cross-method synthesis
-- **Synergy Scoring**: Collaborative intelligence metrics
-
-### Game Modes
-- **Interactive Games**: Hands-on learning
-- **Simulation Mode**: Watch and learn
-- **Speed Learning**: Fast content navigation
-
-## 🔬 Research Areas
-
-### Thermal Dynamics
-- Synaptic geometry simulation
-- Neuromorphic thermal management
-- Biological thermal patterns
-
-### Neuromorphic Computing
-- STDP learning windows
-- Homeostatic scaling
-- Plasticity mechanisms
-
-### Ternary Computing
-- Weight encoding frameworks
-- RTL implementations
-- FPGA optimizations
-
-## 📚 Documentation
-
-Key documentation files:
-- `/src/app/lln-playground/simulations/` - Simulation documentation
-- `/final_delivery/core_documents/` - Technical specifications
-- `/research/*.md` - Research reports
-
-## 🛠️ Tech Stack
-
-- **Frontend**: Next.js 15, React 18, TypeScript, Tailwind CSS
-- **UI Components**: shadcn/ui, Framer Motion
-- **Backend**: Next.js API Routes, Prisma ORM
-- **3D Graphics**: Three.js, Voxel Engine
-- **AI Integration**: z-ai-web-dev-sdk
-
-## 📄 License
-
-Proprietary - SuperInstance
-
-## 🤝 Contributing
-
-This is a private research project. Contact the team for contribution guidelines.
+## One Specific Limitation
+Each simulation episode is constrained by Cloudflare Worker CPU limits. A single episode cannot exceed 30 seconds of CPU time, which may limit the complexity of individual game turns or extended reasoning chains before a timeout occurs.
 
 ---
 
-**Built with ❤️ by the SuperInstance Team**
+<div style="text-align:center;padding:16px;color:#64748b;font-size:.8rem"><a href="https://the-fleet.casey-digennaro.workers.dev" style="color:#64748b">The Fleet</a> · <a href="https://cocapn.ai" style="color:#64748b">Cocapn</a></div>
