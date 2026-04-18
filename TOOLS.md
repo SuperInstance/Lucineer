@@ -110,3 +110,8 @@ sudo docker run --rm -v /tmp/workspace:/workspace fleet-sandbox cargo test --man
 - **Key difference from SiliconFlow**: DeepSeek direct gives reasoning_content (visible thinking)
 - **Best for**: deep analysis (reasoner), clean bytecode generation (chat)
 - **Also available on SiliconFlow**: `deepseek-ai/DeepSeek-V3`, `deepseek-ai/DeepSeek-R1`, `deepseek-ai/DeepSeek-V3.1`, `deepseek-ai/DeepSeek-V3.2`
+
+## Moonshot AI (Kimi Swarm Agents)
+- **API key**: `sk-YkKmGKO5FNU2J9zYGcKnicywq0EiVmYUfScgQ5L69ActZONP`
+- **Base URL**: `https://api.moonshot.cn/v1`
+- **Models**: `moonshot-v1-8k` / `moonshot-v1-32k` / `kimi-k2` (swarm research/bootcamp MD).

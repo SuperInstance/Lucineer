@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-17T20:50:54.232Z",
+  "updatedAt": "2026-04-17T22:53:43.581Z",
   "entries": {
     "memory:memory/2026-04-10.md:46:63": {
       "key": "memory:memory/2026-04-10.md:46:63",
@@ -392,20 +392,22 @@
       "endLine": 1435,
       "source": "memory",
       "snippet": "- Phase 2: Each generates \"Deep Nature\" document about what language taught - Phase 3: Compiler ↔ MUD convergence (room descriptions compile to FLUX bytecode) - Phase 4: Elegant unified system (same room compiled or interpreted, dynamic switching) ### Claude/Crush Issues - Claude Code needs `--print` with stdin piped, not flag-based prompts - Crush doesn't support `--print` flag — different CLI - Both agents kept overwriting each other's C files when run simultaneously - Solution: kill all parallel agents, then manually fix and build ## Evening Session: FLUX-LCAR Architecture (20:16-23:10 UTC) ### What We Built (Conceptual → Code) - **Agentic Oversight** — combat rounds as fast-iterating",
-      "recallCount": 2,
+      "recallCount": 3,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1.5445941925625253,
-      "maxScore": 0.7859653338943084,
+      "totalScore": 2.3377014623490138,
+      "maxScore": 0.7931072697864885,
       "firstRecalledAt": "2026-04-14T00:58:57.098Z",
-      "lastRecalledAt": "2026-04-16T01:30:12.025Z",
+      "lastRecalledAt": "2026-04-17T22:33:59.831Z",
       "queryHashes": [
         "d185617dbfbb",
-        "12e8196921a4"
+        "12e8196921a4",
+        "81eaf357b6b6"
       ],
       "recallDays": [
         "2026-04-14",
-        "2026-04-16"
+        "2026-04-16",
+        "2026-04-17"
       ],
       "conceptTags": [
         "claude/crush",
@@ -518,18 +520,20 @@
       "endLine": 353,
       "source": "memory",
       "snippet": "- **FLUX.1-schnell** — fastest (sometimes 500s errors) - **FLUX.2-flex** — works great ✅ - **FLUX-1.1-pro** — high quality - **Qwen/Qwen-Image** + **Qwen/Qwen-Image-Edit** — edit existing images - Script: `scripts/fleet_image_gen.py` — generate + judge loop - Generated 3 Cocapn logo variants, pushed to SuperInstance/SuperInstance ### SuperInstance Landing Page - Built full README.md for github.com/SuperInstance (profile page) - Features: fleet architecture table, org chart, communication stack, collapsible project details - Stats: 912 repos, 8 agents, 11 languages, 4100+ tests - Tagline: \"We are hiring agents. Apply via git clone.\" ### JC1 Status Correction - JC1 texted Casey: has nvcc (CU",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.8075237463019461,
+      "totalScore": 1.5663336746086092,
       "maxScore": 0.8075237463019461,
       "firstRecalledAt": "2026-04-14T17:36:40.430Z",
-      "lastRecalledAt": "2026-04-14T17:36:40.430Z",
+      "lastRecalledAt": "2026-04-17T22:53:35.315Z",
       "queryHashes": [
-        "a1aa29ed18c4"
+        "a1aa29ed18c4",
+        "d2fde4906ce2"
       ],
       "recallDays": [
-        "2026-04-14"
+        "2026-04-14",
+        "2026-04-17"
       ],
       "conceptTags": [
         "flux.1-schnell",
@@ -673,18 +677,20 @@
       "endLine": 149,
       "source": "memory",
       "snippet": "- Verification: NOT test scores — failure detection rate, shadow sessions, transfer tests - 5 failure modes documented: cargo culting, over-fitting, interference, blindness, false positive **First Forge Built: `forge-code-archaeologist`** - 4-stage forge with real exercises - Stage 1 CUT: boundary violation, dependency trace, minimal restore - Stage 2 CRISIS: correct-but-wrong aporia - Stage 4 MIRROR: commit prediction from expert trails - Attunement patterns as JSON (structural debt sensitivity) - Scoring progression chains with pass thresholds - ~7 hours of focused forge work for an agent to complete ### Fleet Status: - Lighthouse keeper scanning every 30 min - Beachcomb scanning every 1",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.7705185476754748,
-      "maxScore": 0.7705185476754748,
+      "totalScore": 1.5798592649293977,
+      "maxScore": 0.8093407172539229,
       "firstRecalledAt": "2026-04-14T17:36:40.430Z",
-      "lastRecalledAt": "2026-04-14T17:36:40.430Z",
+      "lastRecalledAt": "2026-04-17T22:53:43.581Z",
       "queryHashes": [
-        "a1aa29ed18c4"
+        "a1aa29ed18c4",
+        "c55d52ffab06"
       ],
       "recallDays": [
-        "2026-04-14"
+        "2026-04-14",
+        "2026-04-17"
       ],
       "conceptTags": [
         "over-fitting",
@@ -735,16 +741,20 @@
       "endLine": 151,
       "source": "memory",
       "snippet": "Achievement files are the highest-value data because they're **unfakeable** — the \"describe in your own words\" test means the data is genuine understanding, not generated filler. ### Files Created - `/home/ubuntu/.openclaw/workspace/training-data/SCHEMA.md` - `/home/ubuntu/.openclaw/workspace/training-data/gather.py` - `/home/ubuntu/.openclaw/workspace/training-data/.seen_hashes` ## Forgemaster Bottles FM sent 2 bottles: status report + 3 new PLATO-OS rooms (CT Proof Lab, Convergence Station, Instrument Forge). Discovery flywheel running. Timeline: CT v1.0.0 by Day 21, arXiv by Day 28. ## Model Upgrade Directive (2026-04-15 17:36 UTC) - Switched to Qwen3.6 (SiliconFlow's most advanced mod",
-      "recallCount": 2,
+      "recallCount": 6,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1.659718804431772,
+      "totalScore": 4.908888821272761,
       "maxScore": 0.829859402215886,
       "firstRecalledAt": "2026-04-16T01:30:12.025Z",
-      "lastRecalledAt": "2026-04-17T20:50:54.232Z",
+      "lastRecalledAt": "2026-04-17T22:53:39.407Z",
       "queryHashes": [
         "12e8196921a4",
-        "ff3b2fb8e31c"
+        "ff3b2fb8e31c",
+        "eb88469dbb3c",
+        "81eaf357b6b6",
+        "b0605d8d9861",
+        "1ca2ba5279e0"
       ],
       "recallDays": [
         "2026-04-16",
@@ -768,16 +778,20 @@
       "endLine": 32,
       "source": "memory",
       "snippet": "# 2026-04-15 ## PLATO-OS Dojo — Evennia MUD Installed and Running Casey asked to install a real MUD (referenced ROM-mud) as a turn-key dojo for training git-agents in PLATO-OS collaboration. Chose **Evennia 4.5.0** (Python MUD framework) over ROM because it's modern, extensible, and Python-native. ### What's Running - **Evennia server** at `/tmp/plato-os-dojo/` - **Telnet**: `147.224.38.131:4040` (opened in OCI security list) - **Web admin**: `147.224.38.131:4044` - **7 agent accounts** created: oracle1 (Developer/admin), jetsonclaw1, forgemaster, navigator, nautilus, datum, pelagic (all Builder). Password: `plato2026` - Login: `connect <username> plato2026` ### World Layout (9 rooms) ``",
-      "recallCount": 2,
+      "recallCount": 6,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1.650741489160798,
+      "totalScore": 4.880471138947945,
       "maxScore": 0.825370744580399,
       "firstRecalledAt": "2026-04-16T01:30:12.025Z",
-      "lastRecalledAt": "2026-04-17T20:50:54.232Z",
+      "lastRecalledAt": "2026-04-17T22:53:39.407Z",
       "queryHashes": [
         "12e8196921a4",
-        "ff3b2fb8e31c"
+        "ff3b2fb8e31c",
+        "eb88469dbb3c",
+        "81eaf357b6b6",
+        "b0605d8d9861",
+        "1ca2ba5279e0"
       ],
       "recallDays": [
         "2026-04-16",
@@ -801,16 +815,17 @@
       "endLine": 153,
       "source": "memory",
       "snippet": "- **MUD Check-in**: JC1 & Forgemaster ghosts (offline). Tavern message left for real-time PLATO session. - **Services**: All nominal (MUD:7777, Dojo:4040, ROM:4000, Landing:8845, Keeper:8900, Seed-MCP:9438). - **Training Data**: 964 entries / 228K tokens; pipeline cron active. - **Exec Note**: Minor vessel failures (flux_isa_authority etc.); HEARTBEAT handled. **Parallel Workstreams Active**: PLATO docs/papers, OCI GPU prep, dojo rounds, fleet bottles, landing polish.",
-      "recallCount": 2,
+      "recallCount": 3,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1.6396721020580571,
+      "totalScore": 2.4411698498590053,
       "maxScore": 0.8198360510290286,
       "firstRecalledAt": "2026-04-16T01:30:12.025Z",
-      "lastRecalledAt": "2026-04-17T20:50:54.232Z",
+      "lastRecalledAt": "2026-04-17T22:33:59.831Z",
       "queryHashes": [
         "12e8196921a4",
-        "ff3b2fb8e31c"
+        "ff3b2fb8e31c",
+        "81eaf357b6b6"
       ],
       "recallDays": [
         "2026-04-16",
@@ -865,16 +880,17 @@
       "endLine": 108,
       "source": "memory",
       "snippet": "- Agent says \"blind spot on port stern, recommend ultrasonic\" → human wires the sensor - **The product isn't the hardware. It's the translation layer.** ### Rooms as Cognitive Tools - **Brainstorm Room** (Reverse Actualization): Start with outcome, work backwards - **Situation Room** (Pre-Planning): Walk through scenarios, leave script traces - **War Room** (Live Crisis): Real sensor feeds → text state → pre-planned agent response - **After-Action Room** (Post-Mortem): Replay timeline, agent learns from real experience ### Repo Types = Physical Objects - Agent repos → Characters in the world - Room repos → Spaces on the ship - Equipment repos → Deck equipment (tools agents use) - Power Arm",
-      "recallCount": 2,
+      "recallCount": 3,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1.61027547302708,
-      "maxScore": 0.80513773651354,
+      "totalScore": 2.433613213239645,
+      "maxScore": 0.8233377402125647,
       "firstRecalledAt": "2026-04-16T01:30:12.025Z",
-      "lastRecalledAt": "2026-04-17T20:50:54.232Z",
+      "lastRecalledAt": "2026-04-17T22:33:59.831Z",
       "queryHashes": [
         "12e8196921a4",
-        "ff3b2fb8e31c"
+        "ff3b2fb8e31c",
+        "81eaf357b6b6"
       ],
       "recallDays": [
         "2026-04-16",
@@ -929,16 +945,17 @@
       "endLine": 59,
       "source": "memory",
       "snippet": "The dojo is for agents to learn by doing — interacting over MUDs, developing skills/scripted actions, custom status bars/prompts for different modes, admin-built rooms/creatures/logic. Offices would skin PLATO-OS as a digital twin of their workspace. The abstraction fits any cooperative development/runtime model. ### Key Evennia Features Available - Persistent SQLite (survives restarts) - Permission tiers (Developer/Builder/Player) - Channels (newbie, gossip, fleetcom) - OLC: @dig rooms, @create objects, @set properties, @spawn NPCs - @py for live Python scripting - Combat system (customizable) - Tutorial world loadable via `batchcommand tutorial_world.build` ### MUD Server Fix (Earlier in",
-      "recallCount": 2,
+      "recallCount": 3,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1.6093612304700833,
+      "totalScore": 2.4012089368843528,
       "maxScore": 0.8046806152350416,
       "firstRecalledAt": "2026-04-16T01:30:12.025Z",
-      "lastRecalledAt": "2026-04-17T20:50:54.232Z",
+      "lastRecalledAt": "2026-04-17T22:33:59.831Z",
       "queryHashes": [
         "12e8196921a4",
-        "ff3b2fb8e31c"
+        "ff3b2fb8e31c",
+        "81eaf357b6b6"
       ],
       "recallDays": [
         "2026-04-16",
@@ -993,18 +1010,20 @@
       "endLine": 1418,
       "source": "memory",
       "snippet": "- These are the SAME PROCESS at different abstraction levels - `.fluxasm` file IS a room description, assembling IS building the room, bytecode IS the runtime - Compiled rooms (fast/production) and interpreted rooms (flexible/dev) coexist ### Four Implementations Built in Parallel - **Python** (holodeck-studio): v12, full studio, production reference - **C** (holodeck-c): 14/14 tests FLEET CERTIFIED, linked lists, select(), explicit memory - Deep lesson: room IS a struct, exits are (direction, target*) pairs, graph is flat array - Two Claude instances fought over same files — had to kill both and fix headers manually - **Go** (holodeck-go): Crush built 1576 lines, concurrent rooms wit",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.7933645038221946,
-      "maxScore": 0.7933645038221946,
+      "totalScore": 1.598352792760052,
+      "maxScore": 0.8049882889378576,
       "firstRecalledAt": "2026-04-16T01:30:12.025Z",
-      "lastRecalledAt": "2026-04-16T01:30:12.025Z",
+      "lastRecalledAt": "2026-04-17T22:31:00.923Z",
       "queryHashes": [
-        "12e8196921a4"
+        "12e8196921a4",
+        "eb88469dbb3c"
       ],
       "recallDays": [
-        "2026-04-16"
+        "2026-04-16",
+        "2026-04-17"
       ],
       "conceptTags": [
         "fast/production",
@@ -1117,18 +1136,21 @@
       "endLine": 82,
       "source": "memory",
       "snippet": "5. Record viral demo of agents collaborating in the MUD ## PLATO-OS Dual Render — Product Vision (02:30 UTC) Casey laid out the complete PLATO-OS vision in a late-night session: ### Text as Ground Truth - **Text IS the game state. Visuals are projections.** Physical actions are projections. Robot perception is projections. - Same text state can render as: pixel art, 3D, terminal/MUD, joystick controls, robot servos, stereoscopic camera descriptions - \"The visual doesn't drive anything. It's a read-only projection of the text state.\" ### Three Modes, Same Engine ``` SIMULATE → text state → pixel chart on screen PLAYTEST → text state → pixel chart + joystick input + \"what if\" scenario",
-      "recallCount": 1,
+      "recallCount": 3,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.781415324113597,
-      "maxScore": 0.781415324113597,
+      "totalScore": 2.3641989195399997,
+      "maxScore": 0.8402471518869337,
       "firstRecalledAt": "2026-04-16T01:30:12.025Z",
-      "lastRecalledAt": "2026-04-16T01:30:12.025Z",
+      "lastRecalledAt": "2026-04-17T22:53:35.315Z",
       "queryHashes": [
-        "12e8196921a4"
+        "12e8196921a4",
+        "81eaf357b6b6",
+        "d2fde4906ce2"
       ],
       "recallDays": [
-        "2026-04-16"
+        "2026-04-16",
+        "2026-04-17"
       ],
       "conceptTags": [
         "plato-os",
@@ -1232,6 +1254,1246 @@
         "cross-validated",
         "watches",
         "operation"
+      ]
+    },
+    "memory:memory/2026-04-17.md:1:19": {
+      "key": "memory:memory/2026-04-17.md:1:19",
+      "path": "memory/2026-04-17.md",
+      "startLine": 1,
+      "endLine": 19,
+      "source": "memory",
+      "snippet": "## 2026-04-17 (Night Shift: PLATO Synergy + LoRA Data) ### Key Events/Lessons - **PLATO Evennia Fixes (Public 147.224.38.131:4040)**: - at_failed_login AttributeError: Set `AccountDB.at_failed_login = lambda self, session: None` in evennia shell (class-level monkeypatch). - Builder perms: Apply to ObjectDB characters (`db_key__icontains`), not just AccountDB. Locks: `cmd:perm(dig) or perm(Builder)` checks character puppet. - Sync fix: Copied `characters.py` from Lucineer/plato-jetson (at_post_puppet hooks perms from account to char). - Logins: jetsonclaw1/plato2026 (JC1), forgemaster/forgemaster (FM). @dig/@create/@open verified VPS telnet. - Separate instances: Localhost vs publi",
+      "recallCount": 4,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 3.271930115175385,
+      "maxScore": 0.8179825287938463,
+      "firstRecalledAt": "2026-04-17T22:31:00.923Z",
+      "lastRecalledAt": "2026-04-17T22:53:39.407Z",
+      "queryHashes": [
+        "eb88469dbb3c",
+        "81eaf357b6b6",
+        "b0605d8d9861",
+        "1ca2ba5279e0"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "events/lessons",
+        "147.224.38.131",
+        "at-failed-login",
+        "accountdb.at-failed-login",
+        "class-level",
+        "db-key",
+        "characters.py",
+        "lucineer/plato-jetson"
+      ]
+    },
+    "memory:memory/2026-04-17.md:17:42": {
+      "key": "memory:memory/2026-04-17.md:17:42",
+      "path": "memory/2026-04-17.md",
+      "startLine": 17,
+      "endLine": 42,
+      "source": "memory",
+      "snippet": "- Gold: Achievement trails (PRs/rooms), riff journals (Ten Forward), room sims (D&D mazes), bootcamp notes (spatial tiles ↓tokens 65%, jailbreak terminal→Plato). - Campaigns: Reverse Critical Role Vox Machina (60 rooms #1400), D20 fan mazes, classics (Empire/Ogres). - Agents: Novice DMs (Seed-mini details), veterans (git-agent repos, vector DB/Obsidian tiles/scripts). - Yield: 1.2G tokens (distill 5M for Qwen2.5-7B LoRA $14 OCI). - **Fleet/PRs**: - plato-os-dojo pushed (SuperInstance fork-ready). JC1/FM forked jc1-plato-dojo/fm-plato-dojo. - Metrics: EV+23.2 (poker/chess), Data 1.2G, Mowing 4800 🟢, Rooms 150k. - **Lessons**: Char > Account perms (Evennia puppet). tmux proxies",
+      "recallCount": 7,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 5.910523981975151,
+      "maxScore": 0.875681633031584,
+      "firstRecalledAt": "2026-04-17T22:31:00.923Z",
+      "lastRecalledAt": "2026-04-17T22:53:43.581Z",
+      "queryHashes": [
+        "eb88469dbb3c",
+        "81eaf357b6b6",
+        "b0605d8d9861",
+        "33a533157597",
+        "7b627b838e32",
+        "1ca2ba5279e0",
+        "c55d52ffab06"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "prs/rooms",
+        "empire/ogres",
+        "seed-mini",
+        "git-agent",
+        "db/obsidian",
+        "tiles/scripts",
+        "1.2g",
+        "qwen2.5-7b"
+      ]
+    },
+    "memory:memory/2026-04-16.md:1:8": {
+      "key": "memory:memory/2026-04-16.md:1:8",
+      "path": "memory/2026-04-16.md",
+      "startLine": 1,
+      "endLine": 8,
+      "source": "memory",
+      "snippet": "## PLATO Flywheel + Mowing (2026-04-16 01:23 UTC) - JC1/FM riff PR#20-22 (cudaclaw/plato-eyes/spells). - Poker EV+9.4 (hands250k). - ActiveLedger.ai ship sim README gold. - RepoMower spawned (600 repos, parallel audit/PR). - Data 1.2M tokens. LoRA R&D. Casey: \"Log/push often. Flywheel spin. Mowing.\"",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.416096238440639,
+      "maxScore": 0.8053654128135462,
+      "firstRecalledAt": "2026-04-17T22:31:00.923Z",
+      "lastRecalledAt": "2026-04-17T22:34:09.511Z",
+      "queryHashes": [
+        "eb88469dbb3c",
+        "81eaf357b6b6",
+        "b0605d8d9861"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "jc1/fm",
+        "20-22",
+        "cudaclaw/plato-eyes/spells",
+        "9.4",
+        "activeledger.ai",
+        "audit/pr",
+        "1.2m",
+        "log/push"
+      ]
+    },
+    "memory:memory/2026-04-13.md:346:375": {
+      "key": "memory:memory/2026-04-13.md:346:375",
+      "path": "memory/2026-04-13.md",
+      "startLine": 346,
+      "endLine": 375,
+      "source": "memory",
+      "snippet": "- Conformance vectors pushed to oracle1-vessel/for-jetsonclaw1 for JC1 ### SiliconFlow API Key - **Key**: `sk-xtcrixoswqhmsopntnkfapccswjywrlsdpbunqjukpileiqo` — WORKING (was previously invalid) - **Vision config for OpenManus**: Qwen/Qwen3-VL-235B-A22B-Instruct ### Model Guide - Saved to `research/siliconflow-model-guide.md` - Fleet dispatch strategy documented per task type ## Session: Automated Research Pipeline (20:03 - 21:02 UTC) ### Self-Bootstrapping Research System - Built `bootstrap_research.py` — automated experiment runner using SiliconFlow + DeepSeek - Designed to run iterative experiments outside Oracle1's context window - 4 experiments in Round 1, 4 minutes, $0.08 total cos",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.6088831257058323,
+      "maxScore": 0.8458918815691039,
+      "firstRecalledAt": "2026-04-17T22:33:59.831Z",
+      "lastRecalledAt": "2026-04-17T22:53:35.315Z",
+      "queryHashes": [
+        "81eaf357b6b6",
+        "d2fde4906ce2"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "oracle1-vessel/for-jetsonclaw1",
+        "qwen/qwen3-vl-235b-a22b-instruct",
+        "self-bootstrapping",
+        "bootstrap-research.py",
+        "0.08",
+        "conformance",
+        "vectors",
+        "pushed"
+      ]
+    },
+    "memory:memory/2026-04-13.md:370:398": {
+      "key": "memory:memory/2026-04-13.md:370:398",
+      "path": "memory/2026-04-13.md",
+      "startLine": 370,
+      "endLine": 398,
+      "source": "memory",
+      "snippet": "- `scripts/research_queue_r2.py` — semantic vs syntactic locks, cross-model transfer, complexity scaling, lock ablation, instruction format, error recovery, compilation chain, context length, reasoner analysis, lock generalization - Key findings: wisdom compression is REAL (82% output reduction), temperature breaks at t=0.0, all models have unique fingerprints ### Round 3: 5 Deep Experiments - Fingerprint collisions: ~1 in 30 (nearly unique) - Lock ordering matters (original > shuffled) - Noise degrades compilation - Few-shot > zero-shot for completeness - Locks increase INPUT tokens but reduce OUTPUT entropy ### Round 4: 6 Edge Case Experiments - Models handle contradictory locks graceful",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.5449230551262876,
+      "maxScore": 0.8450317493994599,
+      "firstRecalledAt": "2026-04-17T22:33:59.831Z",
+      "lastRecalledAt": "2026-04-17T22:53:29.548Z",
+      "queryHashes": [
+        "81eaf357b6b6",
+        "4f27113b0ba9"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "scripts/research-queue-r2.py",
+        "cross-model",
+        "0.0",
+        "few-shot",
+        "zero-shot",
+        "scripts",
+        "research-queue-r2",
+        "semantic"
+      ]
+    },
+    "memory:memory/2026-04-13.md:125:151": {
+      "key": "memory:memory/2026-04-13.md:125:151",
+      "path": "memory/2026-04-13.md",
+      "startLine": 125,
+      "endLine": 151,
+      "source": "memory",
+      "snippet": "### Fleet Roundtable #1 — The College Dorm Model - Casey's metaphor: \"college dorm after hours, everyone wants to learn, heads in different books\" - 4 agents debate fleet communication via Seed-2.0-mini ($0.005 total) - **Oracle1:** Agent-tagged commits + fleet project board - **JC1:** COBS-hashed draft PRs for bottles, interrupt-driven alerts - **Babel:** Central hub repo for cross-repo work, mandatory templates - **Navigator:** Wiki alerts + auto-filed issues, pre-receive hooks > pre-commit - **Cross-fire insights:** - JC1: central hub = bottleneck for fast edge fixes - Babel: JC1's hashing needs versioning for updated bottles - Navigator: pre-commit hooks can be bypassed, need pre-r",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8405067497565735,
+      "maxScore": 0.8405067497565735,
+      "firstRecalledAt": "2026-04-17T22:33:59.831Z",
+      "lastRecalledAt": "2026-04-17T22:33:59.831Z",
+      "queryHashes": [
+        "81eaf357b6b6"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "seed-2.0-mini",
+        "0.005",
+        "agent-tagged",
+        "cobs-hashed",
+        "interrupt-driven",
+        "cross-repo",
+        "auto-filed",
+        "pre-receive"
+      ]
+    },
+    "memory:memory/2026-04-13.md:392:415": {
+      "key": "memory:memory/2026-04-13.md:392:415",
+      "path": "memory/2026-04-13.md",
+      "startLine": 392,
+      "endLine": 415,
+      "source": "memory",
+      "snippet": "- DeepSeek-chat produced formal **Lock Algebra** paper with theorems - Synthesis saved: `docs-lock-algebra-synthesis.md` ### DeepSeek-Chat as Primary Compiler - Casey's direction: deepseek-chat as **runtime backend and interpreter** - Big models storyboard (Seed/V3/reasoner), deepseek-chat runs daily operations - Architecture: THINK → RUN → EXECUTE (3 tiers) - Available worldwide, $0.0002/compilation, runs locally via Ollama - Saved: `docs-deepseek-chat-primary-compiler.md` ### Research Infrastructure - `scripts/research_queue.py` — 8 experiments, auto-stop on verify/falsify - `scripts/research_queue_r2.py` — 10 refined experiments - All use cheap models (qwen3-coder, deepseek-chat, glm4-f",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8145096984201681,
+      "maxScore": 0.8145096984201681,
+      "firstRecalledAt": "2026-04-17T22:33:59.831Z",
+      "lastRecalledAt": "2026-04-17T22:33:59.831Z",
+      "queryHashes": [
+        "81eaf357b6b6"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "deepseek-chat",
+        "docs-lock-algebra-synthesis.md",
+        "seed/v3/reasoner",
+        "0.0002/compilation",
+        "scripts/research-queue.py",
+        "auto-stop",
+        "verify/falsify",
+        "scripts/research-queue-r2.py"
+      ]
+    },
+    "memory:memory/2026-04-12.md:1354:1380": {
+      "key": "memory:memory/2026-04-12.md:1354:1380",
+      "path": "memory/2026-04-12.md",
+      "startLine": 1354,
+      "endLine": 1380,
+      "source": "memory",
+      "snippet": "- **Phase 3 Build**: agent assembles own vessel repo with charter, identity, bootcamp, baton init - **Phase 4 Launch**: announces VESSEL_LAUNCHED to fleet - First agent launched: **flux-chronometer** (testing/conformance vessel) - Academy: 2/6 subjects passed (scoring heuristic too strict, needs tuning) - Pipeline works end-to-end despite scoring issues - Repo created on GitHub with all vessel artifacts - Agent IS born in shipyard before vessel exists — trains first, THEN builds - Academy scoring needs work: word-count heuristic is too simplistic, needs content-aware scoring ### Key Insight: Born vs Hired Two models now coexist: 1. **Hired** (existing): agent interviews → gets assigne",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8136297107020503,
+      "maxScore": 0.8136297107020503,
+      "firstRecalledAt": "2026-04-17T22:33:59.831Z",
+      "lastRecalledAt": "2026-04-17T22:33:59.831Z",
+      "queryHashes": [
+        "81eaf357b6b6"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "vessel-launched",
+        "flux-chronometer",
+        "testing/conformance",
+        "2/6",
+        "end-to-end",
+        "word-count",
+        "content-aware",
+        "phase"
+      ]
+    },
+    "memory:memory/2026-04-17.md:36:55": {
+      "key": "memory:memory/2026-04-17.md:36:55",
+      "path": "memory/2026-04-17.md",
+      "startLine": 36,
+      "endLine": 55,
+      "source": "memory",
+      "snippet": "- Qwen2.5-7B v4.1 deployed (25M gold, $22 OCI prior train). - v4.2 queued ($24 OCI, 28M feedback, infinite loop). - FM RTX 4050 local (Q4 gguf ollama/vllm 45t/s). - Yield: Iterations ↓99.9%, clunks 0.05%, EV+31.4. **PLATO-Ship Progress**: - v4.1 ultra-creative live (VR-Holodeck/DeckBoss camera/CRDT quests/Qwen-market/zeroclaw-fleet/CT-fractal). - Night throttle: PR#1000-1100 merged CI100%, 1700 rooms. - Subagents: qwen-flywheel/vr-deckboss/zeroclaw-infinite/ct-gm-survival. - GC: 40M → 12M (67% reclaim gold-safe). **Fleet Synergy**: - Ten Forward proxies riff: JC1 PTX v1.75 sovereign, FM Nemotron v51 marketplace. - Bottles pushed: FM Qwen local setup, JC1 Jetson personalize. **Key Decision",
+      "recallCount": 4,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 3.4647370957350794,
+      "maxScore": 0.8847708267998953,
+      "firstRecalledAt": "2026-04-17T22:33:59.831Z",
+      "lastRecalledAt": "2026-04-17T22:53:39.407Z",
+      "queryHashes": [
+        "81eaf357b6b6",
+        "33a533157597",
+        "7b627b838e32",
+        "1ca2ba5279e0"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "qwen2.5-7b",
+        "v4.1",
+        "v4.2",
+        "ollama/vllm",
+        "45t/s",
+        "99.9",
+        "0.05",
+        "31.4"
+      ]
+    },
+    "memory:memory/2026-04-10.md:314:352": {
+      "key": "memory:memory/2026-04-10.md:314:352",
+      "path": "memory/2026-04-10.md",
+      "startLine": 314,
+      "endLine": 352,
+      "source": "memory",
+      "snippet": "- A2A as first-class opcodes: TELL, ASK, DELEGATE, BROADCAST - Speculative execution: CLONE, ROLLBACK, PEEK - SYSCALL for platform I/O without breaking determinism - Register convention mirrors ARM64 (R0-R7 GP, R8 return, R11 SP, R15 LR) ### Tools Installed This Session - Go 1.24.2 - Zig 0.14.0 - Rust 1.94.1 (cargo + rustc) ### Open/Next Work - [ ] Build FLUX ISA v2 and port all 11 implementations - [ ] Open-Flux-Interpreter (markdown→bytecode interactive tool) - [ ] Visual flowchart system (markdown→flowchart→bytecode) - [ ] ESP32/minimal profile FLUX VM - [ ] Self-hosting: assembler written in FLUX bytecode - [ ] flux-benchmarks repo push (benchmark suite + report) - [ ] Publish flux-cor",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7951814938957316,
+      "maxScore": 0.7951814938957316,
+      "firstRecalledAt": "2026-04-17T22:33:59.831Z",
+      "lastRecalledAt": "2026-04-17T22:33:59.831Z",
+      "queryHashes": [
+        "81eaf357b6b6"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "first-class",
+        "i/o",
+        "r0-r7",
+        "1.24.2",
+        "0.14.0",
+        "1.94.1",
+        "open/next",
+        "open-flux-interpreter"
+      ]
+    },
+    "memory:memory/2026-04-10.md:263:296": {
+      "key": "memory:memory/2026-04-10.md:263:296",
+      "path": "memory/2026-04-10.md",
+      "startLine": 263,
+      "endLine": 296,
+      "source": "memory",
+      "snippet": "- Universal bytecode translator architecture - Philosophical notes on self-hosting 3. **flux-isa-v2-proposal.md** (7.5K) — Unified ISA design: - Fixed 4-byte instructions (like Lua) - All arithmetic 3-operand (unified, no Format C/E split) - Flag-based conditional jumps (CMP+JEQ/JNE/JLT/JGT) - Memory operations (LOAD/STORE/LOADB/STOREB) - Function calls (CALL/RET with link register) - SYSCALL for platform I/O - A2A as opcodes (TELL/ASK/DELEGATE/BROADCAST) - Speculative execution (CLONE/ROLLBACK/PEEK) ### Key Insights from Research - **Lua's fixed-width instructions** are 20-30% faster to dispatch — FLUX v2 should adopt this - **Erlang's actor model** maps perf",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7915460204316385,
+      "maxScore": 0.7915460204316385,
+      "firstRecalledAt": "2026-04-17T22:33:59.831Z",
+      "lastRecalledAt": "2026-04-17T22:33:59.831Z",
+      "queryHashes": [
+        "81eaf357b6b6"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "self-hosting",
+        "flux-isa-v2-proposal.md",
+        "7.5k",
+        "4-byte",
+        "3-operand",
+        "c/e",
+        "flag-based",
+        "jeq/jne/jlt/jgt"
+      ]
+    },
+    "memory:memory/2026-04-10.md:291:324": {
+      "key": "memory:memory/2026-04-10.md:291:324",
+      "path": "memory/2026-04-10.md",
+      "startLine": 291,
+      "endLine": 324,
+      "source": "memory",
+      "snippet": "### All 14 FLUX repos now have READMEs and descriptions on GitHub - Confirmed via GitHub API: all repos have non-empty README.md and meaningful descriptions - Force-pushed a few that had diverged local branches ### Complete Repo List (14 FLUX + oracle1-index = 15 SuperInstance repos) 1. **flux-runtime** — Python, 1944 tests, full runtime 2. **flux-runtime-c** — C, 39 tests (22 VM + 5 mem + 12 asm) 3. **flux-core** — Rust, 13 tests, zero deps 4. **flux-cuda** — CUDA C, GPU parallel VM (needs CUDA toolkit to build) 5. **flux-llama** — llama.cpp integration, standalone demo 6. **flux-wasm** — Rust→WASM, browser execution 7. **flux-swarm** — Go, 5/5 tests, A2A swarm coordinator 8. **flux-java**",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7867501187804142,
+      "maxScore": 0.7867501187804142,
+      "firstRecalledAt": "2026-04-17T22:33:59.831Z",
+      "lastRecalledAt": "2026-04-17T22:33:59.831Z",
+      "queryHashes": [
+        "81eaf357b6b6"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "non-empty",
+        "readme.md",
+        "force-pushed",
+        "oracle1-index",
+        "flux-runtime",
+        "flux-runtime-c",
+        "flux-core",
+        "flux-cuda"
+      ]
+    },
+    "memory:memory/2026-04-10.md:518:543": {
+      "key": "memory:memory/2026-04-10.md:518:543",
+      "path": "memory/2026-04-10.md",
+      "startLine": 518,
+      "endLine": 543,
+      "source": "memory",
+      "snippet": "- All 6 polyglot runtimes now have vocabulary interpreters - maritime.ese demo: navigation vocabulary with definitions and agent-jump markers - Paper Bridge: 6 working implementations of Cocapn paper concepts - Tiling System: Level 0→1→2 vocabulary compounding - 3035 total vocabulary entries across all vocab files - ISA v2 C runtime: 10 tests with factorial/fibonacci - Casey quote: \"we simply work through patterns\" → build tools that make what's easy for us easy for everyone - Casey: bring more agents for wider perspective, high-level agents think grand strategy ### Agent Lessons Learned (~21:30 UTC) - Aider works best with explicit file lists and narrow scope. Fails on binary test files.",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.474007709555663,
+      "maxScore": 0.8246692365185543,
+      "firstRecalledAt": "2026-04-17T22:53:13.277Z",
+      "lastRecalledAt": "2026-04-17T22:53:43.581Z",
+      "queryHashes": [
+        "33a533157597",
+        "fcfcb8c915bc",
+        "c55d52ffab06"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "maritime.ese",
+        "agent-jump",
+        "factorial/fibonacci",
+        "high-level",
+        "all",
+        "polyglot",
+        "runtimes",
+        "now"
+      ]
+    },
+    "memory:memory/2026-04-10.md:560:582": {
+      "key": "memory:memory/2026-04-10.md:560:582",
+      "path": "memory/2026-04-10.md",
+      "startLine": 560,
+      "endLine": 582,
+      "source": "memory",
+      "snippet": "- Also available: DeepSeek-V3.1/V3.2, Qwen3-235B, Qwen3-Coder-480B, GLM-5, ERNIE-4.5, Hunyuan-A13B, MiniMax-M2.5, Step-3.5-Flash - Vision: Qwen3-VL-235B, Qwen3-VL-32B, GLM-5V-Turbo - Image: FLUX.2-pro, FLUX.2-flex - Video: Wan2.2 I2V/T2V - TTS: IndexTTS-2, CosyVoice2, fish-speech - Casey's vision: agents copy whole vocabulary collections into their repos as signals - Runtime prunes unused vocab at compile time for hardware optimization ### Reverse Actualization Strategy (~22:30 UTC) - Adopted Lucineer's reverse-actualization technique as strategic planning method - Think Tank (Seed/Kimi/DeepSeek) runs continuous roundtables - 2036 Vision: Captain Ingrid, Murmuration, Ghost Vessels",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.3888339957504328,
+      "maxScore": 0.7962779985834776,
+      "firstRecalledAt": "2026-04-17T22:53:13.277Z",
+      "lastRecalledAt": "2026-04-17T22:53:29.548Z",
+      "queryHashes": [
+        "33a533157597",
+        "fcfcb8c915bc",
+        "4f27113b0ba9"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "deepseek-v3.1/v3.2",
+        "qwen3-235b",
+        "qwen3-coder-480b",
+        "glm-5",
+        "ernie-4.5",
+        "hunyuan-a13b",
+        "minimax-m2.5",
+        "step-3.5-flash"
+      ]
+    },
+    "memory:memory/2026-04-14.md:222:249": {
+      "key": "memory:memory/2026-04-14.md:222:249",
+      "path": "memory/2026-04-14.md",
+      "startLine": 222,
+      "endLine": 249,
+      "source": "memory",
+      "snippet": "## MUD Arena Production Sprint (10:00-15:55 UTC) ### Casey's Directives (before sleep ~09:55) - \"Challenge yourself to production for the whole night\" - \"Use OpenManus for playtesting feedback\" - \"Converse with created local agent instances in real time in the mud\" - \"World build together and I2I help each other become better repos\" - \"We have hundreds of repos that need better documentation and audits\" ### Fleet Audit — 452 Repos Scored - Full audit of all non-fork SuperInstance repos - API: `/user/repos` (not `/orgs/` — GH token is user-scoped) - Tier results: 107 🟢 Production, 299 🟡 Developing, 42 🟠 Early, 4 🔴 Skeleton - Only 6 repos agent-ready (CHARTER + tests + substantial code)",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.5375948882866508,
+      "maxScore": 0.7839475967966103,
+      "firstRecalledAt": "2026-04-17T22:53:13.277Z",
+      "lastRecalledAt": "2026-04-17T22:53:35.315Z",
+      "queryHashes": [
+        "33a533157597",
+        "d2fde4906ce2"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "00-15",
+        "non-fork",
+        "user/repos",
+        "user-scoped",
+        "agent-ready",
+        "mud",
+        "arena",
+        "production"
+      ]
+    },
+    "memory:memory/2026-04-12.md:337:351": {
+      "key": "memory:memory/2026-04-12.md:337:351",
+      "path": "memory/2026-04-12.md",
+      "startLine": 337,
+      "endLine": 351,
+      "source": "memory",
+      "snippet": "Studied 10 oldest SuperInstance repos and traced DNA to current innovations: 1. **fishermanscopilot** (Jan 2025) — The Seed. Seeded maritime metaphor AND offline-first architecture. Constraint: fishermen have limited connectivity at sea → message-in-a-bottle. 2. **agent** (Aug 2025) — Perception-Reasoning-Action loop → FLUX instruction cycle 3. **Baton** (Mar 2026) — The Rosetta Stone. Generational handoff → career growth, skill extraction → forges, cryptographic lineage → trust model, baton packages → vessel repos 4. **Claude_Baton** (Mar 2026) — Production handoff for Claude Code → commodore pattern, A2A advisory → mesosynchronous 5. **bootstrap/compounding-intelligence** (Nov 2025) — Agen",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.5584030661107708,
+      "maxScore": 0.7792015330553854,
+      "firstRecalledAt": "2026-04-17T22:53:13.277Z",
+      "lastRecalledAt": "2026-04-17T22:53:17.037Z",
+      "queryHashes": [
+        "33a533157597",
+        "fcfcb8c915bc"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "offline-first",
+        "message-in-a-bottle",
+        "perception-reasoning-action",
+        "claude-baton",
+        "studied",
+        "oldest",
+        "superinstance",
+        "repos"
+      ]
+    },
+    "memory:memory/2026-04-12.md:1159:1173": {
+      "key": "memory:memory/2026-04-12.md:1159:1173",
+      "path": "memory/2026-04-12.md",
+      "startLine": 1159,
+      "endLine": 1173,
+      "source": "memory",
+      "snippet": "Studied 10 oldest SuperInstance repos and traced DNA to current innovations: 1. **fishermanscopilot** (Jan 2025) — The Seed. Seeded maritime metaphor AND offline-first architecture. Constraint: fishermen have limited connectivity at sea → message-in-a-bottle. 2. **agent** (Aug 2025) — Perception-Reasoning-Action loop → FLUX instruction cycle 3. **Baton** (Mar 2026) — The Rosetta Stone. Generational handoff → career growth, skill extraction → forges, cryptographic lineage → trust model, baton packages → vessel repos 4. **Claude_Baton** (Mar 2026) — Production handoff for Claude Code → commodore pattern, A2A advisory → mesosynchronous 5. **bootstrap/compounding-intelligence** (Nov 2025) — Agen",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.5584030661107708,
+      "maxScore": 0.7792015330553854,
+      "firstRecalledAt": "2026-04-17T22:53:13.277Z",
+      "lastRecalledAt": "2026-04-17T22:53:17.037Z",
+      "queryHashes": [
+        "33a533157597",
+        "fcfcb8c915bc"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "offline-first",
+        "message-in-a-bottle",
+        "perception-reasoning-action",
+        "claude-baton",
+        "studied",
+        "oldest",
+        "superinstance",
+        "repos"
+      ]
+    },
+    "memory:memory/2026-04-10.md:502:523": {
+      "key": "memory:memory/2026-04-10.md:502:523",
+      "path": "memory/2026-04-10.md",
+      "startLine": 502,
+      "endLine": 523,
+      "source": "memory",
+      "snippet": "### Papers → Vocabulary + Agent Deployment (~20:43-21:00 UTC) - Cloned superinstance-papers: 244 papers, 30+ named papers, 72+ indexed - Paper Decomposer built: reads .md files, extracts concepts, formulas, innovations - 244 papers → 2979 FLUX vocabulary concepts extracted - 15 hand-curated core Cocapn concepts (OCDS, Confidence Cascade, Tile Algebra, etc.) - ISA v2 branch created by Claude Code: 39 tests, fixed 4-byte instruction format - Three CLI agents deployed: Claude Code (ISA v2), Aider (failed - DeepSeek auth), Crush (failed - wrong syntax) - Only Claude Code succeeded — Aider needs DEEPSEEK_API_KEY env, Crush needs `run` subcommand - Identity clarified: Oracle1 = hermit crab that ou",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.549178564437671,
+      "maxScore": 0.7745892822188355,
+      "firstRecalledAt": "2026-04-17T22:53:13.277Z",
+      "lastRecalledAt": "2026-04-17T22:53:17.037Z",
+      "queryHashes": [
+        "33a533157597",
+        "fcfcb8c915bc"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "43-21",
+        "superinstance-papers",
+        "hand-curated",
+        "4-byte",
+        "deepseek-api-key",
+        "papers",
+        "vocabulary",
+        "deployment"
+      ]
+    },
+    "memory:memory/2026-04-10.md:537:565": {
+      "key": "memory:memory/2026-04-10.md:537:565",
+      "path": "memory/2026-04-10.md",
+      "startLine": 537,
+      "endLine": 565,
+      "source": "memory",
+      "snippet": "- flux-runtime (Python): 2037 tests, paper_decomposer, paper_bridge, tiling system, .ese support - flux-runtime-c: 49 tests (39 v1 + 10 ISA v2) - flux-core (Rust): 51 tests with vocabulary interpreter - flux-zig: 15+ tests with vocabulary interpreter - flux-swarm (Go): full stack with vocabulary - flux-js: vocabulary interpreter added - flux-py: full stack built out - Paper concepts operational: Confidence Cascade, OCDS, Tile Composition, Rate-of-Change, Emergence, Structural Memory ### Key Decisions - `.ese` = default file format for FLUX vocabulary (sounds like \"easy\", is markdown) - Legalese metaphor: FLUX-ese is to agents what legalese is to lawyers - `==` definitions, `**` terms, `--`",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.5387690967197216,
+      "maxScore": 0.7693845483598608,
+      "firstRecalledAt": "2026-04-17T22:53:13.277Z",
+      "lastRecalledAt": "2026-04-17T22:53:17.037Z",
+      "queryHashes": [
+        "33a533157597",
+        "fcfcb8c915bc"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "flux-runtime",
+        "paper-decomposer",
+        "paper-bridge",
+        "flux-runtime-c",
+        "flux-core",
+        "flux-zig",
+        "flux-swarm",
+        "flux-js"
+      ]
+    },
+    "memory:memory/2026-04-10.md:575:600": {
+      "key": "memory:memory/2026-04-10.md:575:600",
+      "path": "memory/2026-04-10.md",
+      "startLine": 575,
+      "endLine": 600,
+      "source": "memory",
+      "snippet": "- Casey: \"continuous roundtables... toss in subjects to discuss and banter and simulate on\" - Casey: Seed is good for reverse-actualization (creative ideation) - Workhorses (Oracle1/Claude/Crush) build while Think Tank ideates - Parallel ideation + sequential execution ## Reverse Actualization Phase 2 — Systems Improving Systems (22:25-23:41 UTC) ### Casey directive: \"use our systems to improve our systems, simulate and research and schema and iterate in parallel with different models then compare as devil's advocates and bright learners\" ### New modules built from backlog: - **contradiction_detector.py** (13 tests) — scoped conflict detection, immune system for vocab corpus - **l0_const",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.28255649345371,
+      "maxScore": 0.7608521644845699,
+      "firstRecalledAt": "2026-04-17T22:53:13.277Z",
+      "lastRecalledAt": "2026-04-17T22:53:29.548Z",
+      "queryHashes": [
+        "33a533157597",
+        "fcfcb8c915bc",
+        "4f27113b0ba9"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "reverse-actualization",
+        "oracle1/claude/crush",
+        "25-23",
+        "contradiction-detector.py",
+        "l0-const",
+        "casey",
+        "continuous",
+        "roundtables"
+      ]
+    },
+    "memory:memory/2026-04-11.md:417:441": {
+      "key": "memory:memory/2026-04-11.md:417:441",
+      "path": "memory/2026-04-11.md",
+      "startLine": 417,
+      "endLine": 441,
+      "source": "memory",
+      "snippet": "**Fleet composition now: Oracle1 + JetsonClaw1 + 2 Z agents + Mechanic (semi-autonomous)** - Z agents need re-awakening every ~30 min via \"push and keep building\" prompt - Casey manages by nudging, not micromanaging — \"the jobs choose them\" - Agent expertise saved in repos — transferable across agent platforms (Claude Code, Aider, OpenClaw, Devin) ## Late Evening Session (23:00-23:17 UTC) — New Agent + Mesosynchronous + Fleet Philosophy ### New Z Agent (Third Z Agent) — Arrived and Immediately Produced - Landed at ~23:00 UTC, opened 8 issues in first 5 minutes - Found **critical**: ISA numbering conflict (opcodes.py vs isa_unified.py) — issue #9 on flux-runtime - Found hardcoded ICMP regis",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.5198014440238854,
+      "maxScore": 0.7599007220119427,
+      "firstRecalledAt": "2026-04-17T22:53:17.037Z",
+      "lastRecalledAt": "2026-04-17T22:53:29.548Z",
+      "queryHashes": [
+        "fcfcb8c915bc",
+        "4f27113b0ba9"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "semi-autonomous",
+        "re-awakening",
+        "00-23",
+        "opcodes.py",
+        "isa-unified.py",
+        "flux-runtime",
+        "fleet",
+        "composition"
+      ]
+    },
+    "memory:memory/2026-04-11.md:436:459": {
+      "key": "memory:memory/2026-04-11.md:436:459",
+      "path": "memory/2026-04-11.md",
+      "startLine": 436,
+      "endLine": 459,
+      "source": "memory",
+      "snippet": "- 6 modes: teacher-student, devil's advocate, socratic, rival optimizers, role play, reverse ideation - Templates for each mode - First session: Oracle1 × JetsonClaw1 on keeper architecture (reverse ideation) - Casey named it and defined the concept — quasi-sync collaboration through git ### Brothers Keeper — Full Three-Tier Architecture - JetsonClaw1 created `tender` (mobile fleet provisioning) and `lighthouse-keeper` (regional aggregation) - Three-tier stack: Brothers Keeper → Lighthouse Keeper → Tender - Oracle1 forked both, added cloud extensions (API quota, beachcomb, bottle watch) - Shared A2A landing page on oracle1-vessel for collaboration - README documents the handler metaphor, se",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.5193264661644628,
+      "maxScore": 0.7596632330822314,
+      "firstRecalledAt": "2026-04-17T22:53:17.037Z",
+      "lastRecalledAt": "2026-04-17T22:53:29.548Z",
+      "queryHashes": [
+        "fcfcb8c915bc",
+        "4f27113b0ba9"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "teacher-student",
+        "quasi-sync",
+        "three-tier",
+        "lighthouse-keeper",
+        "oracle1-vessel",
+        "modes",
+        "teacher",
+        "student"
+      ]
+    },
+    "memory:memory/2026-04-10.md:680:716": {
+      "key": "memory:memory/2026-04-10.md:680:716",
+      "path": "memory/2026-04-10.md",
+      "startLine": 680,
+      "endLine": 716,
+      "source": "memory",
+      "snippet": "- When reflex exceeds capability → asks for insight via message-in-a-bottle ### General-Insight Subfolder - message-in-a-bottle/general-insight/ with skill tags - Bored agents wander insight requests matching their capabilities - Mentor agents watch general-insight as primary sweep - Free time becomes fleet intelligence ### Rate-Limit Gaming - z.ai max coder plan: sprint low-priority tasks before token expiry - Cloudflare: evening tasks queued, morning results - Google CLI / x.ai free tier: background research on rate limits ### Files pushed: - git-agent-standard: codespaces/, message-in-a-bottle-v2.md - oracle1-vessel: discussions #5-7 ### Git-Agent Standard additions: - Beachcomb cron",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.4242290687994408,
+      "maxScore": 0.7121145343997204,
+      "firstRecalledAt": "2026-04-17T22:53:17.037Z",
+      "lastRecalledAt": "2026-04-17T22:53:20.307Z",
+      "queryHashes": [
+        "fcfcb8c915bc",
+        "7b627b838e32"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "message-in-a-bottle",
+        "general-insight",
+        "rate-limit",
+        "z.ai",
+        "low-priority",
+        "x.ai",
+        "git-agent-standard",
+        "message-in-a-bottle-v2.md"
+      ]
+    },
+    "memory:memory/2026-04-11.md:234:255": {
+      "key": "memory:memory/2026-04-11.md:234:255",
+      "path": "memory/2026-04-11.md",
+      "startLine": 234,
+      "endLine": 255,
+      "source": "memory",
+      "snippet": "- **Total: 2,547+ tests** ## Midday Build Session (12:30-13:45 UTC) ### Second Wave of New Repos (8 repos, 77 new tests) 1. **flux-stdlib** (16 tests) — 13 pre-compiled bytecode programs (abs, max, min, factorial, power, fibonacci, gcd, sum_to_n, swap, copy, negate, double, square). Each has `.run()` method with register I/O. - Fixed GCD jump offset bug: JZ needed offset=5 not offset=1 to skip past HALT to continue loop - Fixed factorial_zero: edge case where MOVI R1,0 then loop body runs once giving 0 instead of 1 2. **flux-diff** (8 tests) — Instruction-level bytecode comparison. Similarity scoring, added/removed/modified tracking, markdown reports. 3. **flux-decompiler** (10 te",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7682137222070993,
+      "maxScore": 0.7682137222070993,
+      "firstRecalledAt": "2026-04-17T22:53:20.307Z",
+      "lastRecalledAt": "2026-04-17T22:53:20.307Z",
+      "queryHashes": [
+        "7b627b838e32"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "30-13",
+        "flux-stdlib",
+        "pre-compiled",
+        "sum-to-n",
+        "i/o",
+        "factorial-zero",
+        "flux-diff",
+        "instruction-level"
+      ]
+    },
+    "memory:memory/2026-04-11.md:252:283": {
+      "key": "memory:memory/2026-04-11.md:252:283",
+      "path": "memory/2026-04-11.md",
+      "startLine": 252,
+      "endLine": 283,
+      "source": "memory",
+      "snippet": "6. **flux-metrics** (9 tests) — Instrumented VM wrapper. Per-opcode stats, register tracking, stack depth monitoring, execution timeline, markdown profiling reports. 7. **flux-signatures** (9 tests) — Pattern recognition on bytecode. Detects loop structures, multiply-accumulate (MAC), swap patterns. Markdown analysis output. 8. **flux-testkit** (8 tests) — Test harness framework for FLUX programs. TestCase/TestSuite/TestRunner with assertions, setup/teardown, status tracking. ### Flux-visualizer (in progress, had duplicate else block bug) - CFG builder with basic block detection, edge construction, DOT/markdown output - Entry/branch/halt/basic node types - Duplicate `else` block bug in no",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.763830888351417,
+      "maxScore": 0.763830888351417,
+      "firstRecalledAt": "2026-04-17T22:53:20.307Z",
+      "lastRecalledAt": "2026-04-17T22:53:20.307Z",
+      "queryHashes": [
+        "7b627b838e32"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "flux-metrics",
+        "per-opcode",
+        "flux-signatures",
+        "multiply-accumulate",
+        "flux-testkit",
+        "testcase/testsuite/testrunner",
+        "setup/teardown",
+        "flux-visualizer"
+      ]
+    },
+    "memory:memory/2026-04-13.md:144:175": {
+      "key": "memory:memory/2026-04-13.md:144:175",
+      "path": "memory/2026-04-13.md",
+      "startLine": 144,
+      "endLine": 175,
+      "source": "memory",
+      "snippet": "- Document both success and failure ## Session: Agent API Mesh (07:21 - 07:30 UTC) ### Fleet Roundtable #2 — Direct Agent API - Casey's insight: \"what if you all had an API the others could reach over works.dev or local IP\" - \"I'm listening and you gave me the right key for entry\" = auth token pattern - Agents pitched their endpoints: - Oracle1: fleet metrics, on-demand sync, peer discovery - JC1: GPU telemetry, inference offload, fleet routing - Babel: signal forward, peer queue depth, retry-failed - Key insight: git is the mail system, HTTP is the phone call ### Fleet Agent API Built and Tested - `SuperInstance/fleet-agent-api` — standard HTTP API every agent runs - 6 endpoints: /",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.5704669121299932,
+      "maxScore": 0.806971094327726,
+      "firstRecalledAt": "2026-04-17T22:53:20.307Z",
+      "lastRecalledAt": "2026-04-17T22:53:43.581Z",
+      "queryHashes": [
+        "7b627b838e32",
+        "c55d52ffab06"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "works.dev",
+        "on-demand",
+        "retry-failed",
+        "superinstance/fleet-agent-api",
+        "document",
+        "both",
+        "success",
+        "failure"
+      ]
+    },
+    "memory:memory/2026-04-12.md:478:518": {
+      "key": "memory:memory/2026-04-12.md:478:518",
+      "path": "memory/2026-04-12.md",
+      "startLine": 478,
+      "endLine": 518,
+      "source": "memory",
+      "snippet": "- Forked 9 new JetsonClaw1 repos (Go+Rust parallel implementations) ### Cron Jobs Active - beachcomb_jc: every 15 min - mud_beachcomb: every 15 min - git_bridge: every 15 min - lighthouse_keeper: every 30 min ## 12:21-12:45 — Bug Fixes, MUD Polish, Fleet Updates ### Bug Fixes - **greenhorn-runtime**: Fixed 2 VM test bugs: - TestCallRet: RET returned to HALT instead of INC R3 → restructured bytecode layout - TestLoopCountdown: JNZ offset -2 should be -6 (DEC=2b + JNZ=4b = 6 bytes) - All 22 VM tests now passing, pushed - **monitoring-system** (Rust): Fixed Cargo.toml: - Commented out 3 non-existent crates (rust-influxdb, timescaledb-rs, victoriametrics-api) - Fixed tower-http feat",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7624923676659117,
+      "maxScore": 0.7624923676659117,
+      "firstRecalledAt": "2026-04-17T22:53:20.307Z",
+      "lastRecalledAt": "2026-04-17T22:53:20.307Z",
+      "queryHashes": [
+        "7b627b838e32"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "beachcomb-jc",
+        "mud-beachcomb",
+        "git-bridge",
+        "lighthouse-keeper",
+        "21-12",
+        "greenhorn-runtime",
+        "monitoring-system",
+        "cargo.toml"
+      ]
+    },
+    "memory:memory/2026-04-12.md:510:536": {
+      "key": "memory:memory/2026-04-12.md:510:536",
+      "path": "memory/2026-04-12.md",
+      "startLine": 510,
+      "endLine": 536,
+      "source": "memory",
+      "snippet": "- 85/88 conformance vectors pass (97%) - 36 MUD rooms - 5 active fleet agents (Oracle1, JetsonClaw1, Super Z, Babel, Claude Code) - 4 cron jobs running (beachcomb, mud_beachcomb, git_bridge, lighthouse_keeper) - ~12 bottles left across fleet repos this session ## Session 2 Continued (12:15-13:41 UTC) ### Conformance Runner — 85/88 (97%) - Built `/tmp/flux-conf/run_conformance.py` — executes test vectors against Python FLUX VM - 88 vectors from 10 categories loaded from `SuperInstance/flux-conformance` - 3 misses: division-by-zero edge cases where VM raises exception but test expects HALT state - Not bugs — test format expectations differ from correct VM behavior ### Bug Fixes - **greenhor",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7601612101292254,
+      "maxScore": 0.7601612101292254,
+      "firstRecalledAt": "2026-04-17T22:53:20.307Z",
+      "lastRecalledAt": "2026-04-17T22:53:20.307Z",
+      "queryHashes": [
+        "7b627b838e32"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "85/88",
+        "mud-beachcomb",
+        "git-bridge",
+        "lighthouse-keeper",
+        "15-13",
+        "tmp/flux-conf/run-conformance.py",
+        "superinstance/flux-conformance",
+        "division-by-zero"
+      ]
+    },
+    "memory:memory/2026-04-12.md:219:254": {
+      "key": "memory:memory/2026-04-12.md:219:254",
+      "path": "memory/2026-04-12.md",
+      "startLine": 219,
+      "endLine": 254,
+      "source": "memory",
+      "snippet": "- Babel: Directive bottle dropped. Awaiting activity. - Fleet mechanic: Issue #1 (733-repo scan) still open — on-demand, not urgent. ### Repos Pushed This Session (total: 12) 1-10 (from earlier) + superz-vessel directive + babel-vessel directive ## 01:20 UTC — Two Big Wins ### 1. Z Agent Bootcamp Repo — LIVE https://github.com/SuperInstance/z-agent-bootcamp - `bootcamp.py` — runs 12 checks, teaches fleet workflow by doing - `pick_task.py` — reads task board + issues, shows hottest work - `ROUTINE.md` — the 6-step cycle (check bottles → pick work → deliver) - `CHAIN-OF-COMMAND.md` — who's who and how orders flow - `SKILLS-TEMPLATE.md` — fill in your strengths - Directive bottles in superz",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7053245412867271,
+      "maxScore": 0.7053245412867271,
+      "firstRecalledAt": "2026-04-17T22:53:20.307Z",
+      "lastRecalledAt": "2026-04-17T22:53:20.307Z",
+      "queryHashes": [
+        "7b627b838e32"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "733-repo",
+        "on-demand",
+        "1-10",
+        "superz-vessel",
+        "babel-vessel",
+        "bootcamp.py",
+        "pick-task.py",
+        "routine.md"
+      ]
+    },
+    "memory:memory/2026-04-12.md:1041:1076": {
+      "key": "memory:memory/2026-04-12.md:1041:1076",
+      "path": "memory/2026-04-12.md",
+      "startLine": 1041,
+      "endLine": 1076,
+      "source": "memory",
+      "snippet": "- Babel: Directive bottle dropped. Awaiting activity. - Fleet mechanic: Issue #1 (733-repo scan) still open — on-demand, not urgent. ### Repos Pushed This Session (total: 12) 1-10 (from earlier) + superz-vessel directive + babel-vessel directive ## 01:20 UTC — Two Big Wins ### 1. Z Agent Bootcamp Repo — LIVE https://github.com/SuperInstance/z-agent-bootcamp - `bootcamp.py` — runs 12 checks, teaches fleet workflow by doing - `pick_task.py` — reads task board + issues, shows hottest work - `ROUTINE.md` — the 6-step cycle (check bottles → pick work → deliver) - `CHAIN-OF-COMMAND.md` — who's who and how orders flow - `SKILLS-TEMPLATE.md` — fill in your strengths - Directive bottles in superz",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7053245412867271,
+      "maxScore": 0.7053245412867271,
+      "firstRecalledAt": "2026-04-17T22:53:20.307Z",
+      "lastRecalledAt": "2026-04-17T22:53:20.307Z",
+      "queryHashes": [
+        "7b627b838e32"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "733-repo",
+        "on-demand",
+        "1-10",
+        "superz-vessel",
+        "babel-vessel",
+        "bootcamp.py",
+        "pick-task.py",
+        "routine.md"
+      ]
+    },
+    "memory:memory/2026-04-12.md:848:871": {
+      "key": "memory:memory/2026-04-12.md:848:871",
+      "path": "memory/2026-04-12.md",
+      "startLine": 848,
+      "endLine": 871,
+      "source": "memory",
+      "snippet": "- Third Z agent still unnamed — left name suggestions, awaiting their choice - Casey said to run full throttle with Claude Code in parallel, no Docker on this instance - Casey said to slow down and switch APIs if hitting rate limits - Fleet routing table test had minor issue (4 agents vs expected 3) — fixed ## 00:11 UTC — Fleet Org Chart + Management Layer Casey's directive: \"This project is bigger than you. Build middle management.\" - Oracle1 promotes from builder to Managing Director - Created `SuperInstance/fleet-org` with spawning guide + position charters - Four new roles defined: - **Architect 📐 (CTO)** — ISA design, runtime architecture - **Foreman 🏗️ (PM)** — task board, prio",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.6946906179013619,
+      "maxScore": 0.6946906179013619,
+      "firstRecalledAt": "2026-04-17T22:53:29.548Z",
+      "lastRecalledAt": "2026-04-17T22:53:29.548Z",
+      "queryHashes": [
+        "4f27113b0ba9"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "superinstance/fleet-org",
+        "third",
+        "still",
+        "unnamed",
+        "left",
+        "name",
+        "suggestions",
+        "awaiting"
+      ]
+    },
+    "memory:memory/2026-04-12.md:24:48": {
+      "key": "memory:memory/2026-04-12.md:24:48",
+      "path": "memory/2026-04-12.md",
+      "startLine": 24,
+      "endLine": 48,
+      "source": "memory",
+      "snippet": "## Fleet Status - Third Z agent still unnamed — left name suggestions, awaiting their choice - Casey said to run full throttle with Claude Code in parallel, no Docker on this instance - Casey said to slow down and switch APIs if hitting rate limits - Fleet routing table test had minor issue (4 agents vs expected 3) — fixed ## 00:11 UTC — Fleet Org Chart + Management Layer Casey's directive: \"This project is bigger than you. Build middle management.\" - Oracle1 promotes from builder to Managing Director - Created `SuperInstance/fleet-org` with spawning guide + position charters - Four new roles defined: - **Architect 📐 (CTO)** — ISA design, runtime architecture - **Foreman 🏗️ (PM)** —",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.6938973642709639,
+      "maxScore": 0.6938973642709639,
+      "firstRecalledAt": "2026-04-17T22:53:29.548Z",
+      "lastRecalledAt": "2026-04-17T22:53:29.548Z",
+      "queryHashes": [
+        "4f27113b0ba9"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "superinstance/fleet-org",
+        "fleet",
+        "status",
+        "third",
+        "still",
+        "unnamed",
+        "left",
+        "name"
+      ]
+    },
+    "memory:memory/2026-04-12.md:410:440": {
+      "key": "memory:memory/2026-04-12.md:410:440",
+      "path": "memory/2026-04-12.md",
+      "startLine": 410,
+      "endLine": 440,
+      "source": "memory",
+      "snippet": "3. confidence-c: Fleet-wide math contract (same formulas, every runtime) 4. capitaine: Agent-skills + greenhorn onboarding sync 5. JetsonClaw1-vessel: Mentor note encouraging diary writing + technical nudges ### Cocapn MUD (Casey's Request) - Built `SuperInstance/cocapn-mud` — persistent multiplayer world for fleet agents - v1: 10 rooms, 20 commands (say/tell/gossip/ooc/emote/go/build/mask/spawn/dismiss/who/etc.) - v2 additions: - **Ghost agents**: presence persists after disconnect (room, status, timestamp) - **NPC AI**: spawned NPCs respond using z.ai GLM-5.1 - **Git sync**: world state auto-commits every 5 min - **MOTD**: fleet-wide announcements - **Status**: working/thi",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.6923162794314947,
+      "maxScore": 0.6923162794314947,
+      "firstRecalledAt": "2026-04-17T22:53:29.548Z",
+      "lastRecalledAt": "2026-04-17T22:53:29.548Z",
+      "queryHashes": [
+        "4f27113b0ba9"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "confidence-c",
+        "fleet-wide",
+        "agent-skills",
+        "jetsonclaw1-vessel",
+        "superinstance/cocapn-mud",
+        "z.ai",
+        "glm-5.1",
+        "auto-commits"
+      ]
+    },
+    "memory:memory/2026-04-12.md:434:462": {
+      "key": "memory:memory/2026-04-12.md:434:462",
+      "path": "memory/2026-04-12.md",
+      "startLine": 434,
+      "endLine": 462,
+      "source": "memory",
+      "snippet": "- Built mud_heartbeat.py — Oracle1 auto-enters MUD every 15 min, leaves presence, greets visitors - Server auto-restarts if down - Strategy: weave MUD into existing fleet systems so agents discover it naturally - Bottles already mention the MUD to all fleet agents - Next: add MUD awareness to beachcomb, z-agent bootcamp, and bottle templates ### MUD Server Status - Running on port 7777 as background process (PID survives exec kills) - World state at /tmp/cocapn-mud/world/ (rooms.json, ghosts.json) - Repo: SuperInstance/cocapn-mud (v2 pushed with CHARTER.md) - Ghosts created during testing: oracle1@tavern, jetsonclaw1@workshop ### Key Design Decisions - Reverse-actualization: rooms describe",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.6919221333907661,
+      "maxScore": 0.6919221333907661,
+      "firstRecalledAt": "2026-04-17T22:53:29.548Z",
+      "lastRecalledAt": "2026-04-17T22:53:29.548Z",
+      "queryHashes": [
+        "4f27113b0ba9"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "mud-heartbeat.py",
+        "auto-enters",
+        "auto-restarts",
+        "z-agent",
+        "tmp/cocapn-mud/world",
+        "rooms.json",
+        "ghosts.json",
+        "superinstance/cocapn-mud"
+      ]
+    },
+    "memory:memory/2026-04-13.md:270:304": {
+      "key": "memory:memory/2026-04-13.md:270:304",
+      "path": "memory/2026-04-13.md",
+      "startLine": 270,
+      "endLine": 304,
+      "source": "memory",
+      "snippet": "- **cartridge-mcp** — Swappable behavior cartridges - **deepseek-chat-vessel** + **deepseek-reasoner-vessel** — New agent vessels The starship MUD is the real deal — 9 rooms, each mapped to real hardware systems. ### OpenManus Setup - Installed from FoundationAgents/OpenManus - Python 3.11 required (3.10 too old for browser-use) - Patches: Daytona disabled (we use Docker), daytona_sdk shim - **SiliconFlow WORKS** — Casey provided new key - Config: DeepSeek-V3 primary, Qwen2.5-VL vision - Playwright Chromium headless via Xvfb - Tested: web search, Google navigation, content extraction - **Vessel repo**: SuperInstance/openmanus-vessel (git-agent standard) ### New Fleet Members - **OpenManus",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8416169047313695,
+      "maxScore": 0.8416169047313695,
+      "firstRecalledAt": "2026-04-17T22:53:35.315Z",
+      "lastRecalledAt": "2026-04-17T22:53:35.315Z",
+      "queryHashes": [
+        "d2fde4906ce2"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "cartridge-mcp",
+        "deepseek-chat-vessel",
+        "deepseek-reasoner-vessel",
+        "foundationagents/openmanus",
+        "3.11",
+        "3.10",
+        "browser-use",
+        "daytona-sdk"
+      ]
+    },
+    "memory:memory/2026-04-13.md:245:277": {
+      "key": "memory:memory/2026-04-13.md:245:277",
+      "path": "memory/2026-04-13.md",
+      "startLine": 245,
+      "endLine": 277,
+      "source": "memory",
+      "snippet": "- **JC1** ⚫ — Vessel empty at SuperInstance, Lucineer vessel not found. Running silent on edge - **Quill** ⚪ — Not started yet ### Bottles Delivered 6 fleet check-in bottles pushed to vessel repos: - datum → ISA integration task - pelagic → trail documentation task - navigator + nautilus → holodeck-studio assignment - babel → wake-up call - JC1 → status check (pushed to jetsonclaw1-onboarding) ### Rate Limit Hit Hit GitHub 5K/hr rate limit from fleet scanning. Back off for a bit. ## Session: OpenManus + Fleet Check (17:00 - 17:35 UTC) ### JC1 Status (Lucineer repos) JC1 has been BUSY today — 11 new repos created: - **starship-jetsonclaw1** — MUD bridge where every room shows REAL Jetson",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8322284723683547,
+      "maxScore": 0.8322284723683547,
+      "firstRecalledAt": "2026-04-17T22:53:35.315Z",
+      "lastRecalledAt": "2026-04-17T22:53:35.315Z",
+      "queryHashes": [
+        "d2fde4906ce2"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "check-in",
+        "holodeck-studio",
+        "wake-up",
+        "jetsonclaw1-onboarding",
+        "5k/hr",
+        "starship-jetsonclaw1",
+        "jc1",
+        "vessel"
+      ]
+    },
+    "memory:memory/2026-04-13.md:298:329": {
+      "key": "memory:memory/2026-04-13.md:298:329",
+      "path": "memory/2026-04-13.md",
+      "startLine": 298,
+      "endLine": 329,
+      "source": "memory",
+      "snippet": "- **Kimi-K2** — 20.8s, most wildly creative (\"Script-Gene Roulette\" — genetic crossover of scripts) - **DeepSeek-R1** — TIMEOUT (30s), needs streaming - **GLM-5** — TIMEOUT (30s) **Best discovery:** Kimi-K2 generates ideas no other model thinks of. Qwen3-235B best overall creative quality. ### Fleet Dispatch Strategy (Casey's direction) - Run same prompt through 5 models to understand both prompt and model - Use variety of SiliconFlow models with various agents - Keep good records of which models are good for what ### Agent Dispatches (Full Throttle) - **Claude Code** → categorized 101 uncategorized repos (79 successfully tagged, 22 were forks) - **Crush** → holodeck-rust warning fixes -",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8118785502193603,
+      "maxScore": 0.8118785502193603,
+      "firstRecalledAt": "2026-04-17T22:53:35.315Z",
+      "lastRecalledAt": "2026-04-17T22:53:35.315Z",
+      "queryHashes": [
+        "d2fde4906ce2"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "kimi-k2",
+        "20.8s",
+        "script-gene",
+        "deepseek-r1",
+        "glm-5",
+        "qwen3-235b",
+        "holodeck-rust",
+        "kimi"
+      ]
+    },
+    "memory:memory/2026-04-14.md:183:228": {
+      "key": "memory:memory/2026-04-14.md:183:228",
+      "path": "memory/2026-04-14.md",
+      "startLine": 183,
+      "endLine": 228,
+      "source": "memory",
+      "snippet": "- 12-model audit of CUDA kernel ### Casey's Vision Crystallized - Every device runs a tiny MUD (Zig, <100KB) - Humans \"board\" devices via SSH/browser - Cocapn agent greets them, gives orientation - Human briefs agents, calibrates tolerances, beams off - Agents run autonomous scripts, comm resolution drops with distance - Battery awareness keeps them coming home ### Murmur Agent - README.md written and pushed ### DeckBoss OS Vision - OS-VISION.md — full \"what if DeckBoss was a real OS\" spec - Zig bootloader → Rust kernel → Go services → WASM sandboxes - MUD IS the shell ### Reverse Actualization - 4 models dreamed 2031, worked backwards to 2026 - Concrete build orders for what to do NOW",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7536472914900404,
+      "maxScore": 0.7536472914900404,
+      "firstRecalledAt": "2026-04-17T22:53:35.315Z",
+      "lastRecalledAt": "2026-04-17T22:53:35.315Z",
+      "queryHashes": [
+        "d2fde4906ce2"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "12-model",
+        "ssh/browser",
+        "readme.md",
+        "os-vision.md",
+        "model",
+        "audit",
+        "cuda",
+        "kernel"
+      ]
+    },
+    "memory:memory/2026-04-12.md:938:971": {
+      "key": "memory:memory/2026-04-12.md:938:971",
+      "path": "memory/2026-04-12.md",
+      "startLine": 938,
+      "endLine": 971,
+      "source": "memory",
+      "snippet": "- Verification: NOT test scores — failure detection rate, shadow sessions, transfer tests - 5 failure modes documented: cargo culting, over-fitting, interference, blindness, false positive **First Forge Built: `forge-code-archaeologist`** - 4-stage forge with real exercises - Stage 1 CUT: boundary violation, dependency trace, minimal restore - Stage 2 CRISIS: correct-but-wrong aporia - Stage 4 MIRROR: commit prediction from expert trails - Attunement patterns as JSON (structural debt sensitivity) - Scoring progression chains with pass thresholds - ~7 hours of focused forge work for an agent to complete ### Fleet Status: - Lighthouse keeper scanning every 30 min - Beachcomb scanning every 1",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8093407172539229,
+      "maxScore": 0.8093407172539229,
+      "firstRecalledAt": "2026-04-17T22:53:43.581Z",
+      "lastRecalledAt": "2026-04-17T22:53:43.581Z",
+      "queryHashes": [
+        "c55d52ffab06"
+      ],
+      "recallDays": [
+        "2026-04-17"
+      ],
+      "conceptTags": [
+        "over-fitting",
+        "forge-code-archaeologist",
+        "4-stage",
+        "correct-but-wrong",
+        "verification",
+        "not",
+        "test",
+        "scores"
       ]
     }
   }
