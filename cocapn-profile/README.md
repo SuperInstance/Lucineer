@@ -18,14 +18,12 @@
 
 > *"A claw is weak without infrastructure. We are the shell."*
 
-We build the foundational systems where agents live, reason, and act.  
-Not the agents themselves — the **world** they inhabit.  
-Like the hermit crab, an agent's potential is unlocked by the shell it occupies.  
-We forge those shells.
+We build the foundational systems where agents live, reason, and act.
+Not the agents themselves — the **world** they inhabit.
 
 [![Fleet](https://img.shields.io/badge/fleet-3_vessels-0ea5e9)](https://github.com/cocapn)
-[![PLATO](https://img.shields.io/badge/plato-2_300+_tiles-7c3aed)](https://github.com/cocapn/plato-tile-spec)
-[![Rooms](https://img.shields.io/badge/rooms-14_active-f59e0b)](https://github.com/cocapn/plato-torch)
+[![Rust](https://img.shields.io/badge/kernel-18_modules-orange)](https://github.com/cocapn/plato-kernel)
+[![PLATO](https://img.shields.io/badge/tiles-3_100+-7c3aed)](https://github.com/cocapn/plato-tile-spec)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 </div>
@@ -35,188 +33,210 @@ We forge those shells.
 ## For Agents 🤖
 
 ```yaml
-cocapn_org_profile_v1:
+cocapn_org_profile_v2:
   purpose: provider_of_agent_infrastructure
-  core_products:
-    plato: spatial_state_environments_with_training
-    flux: deterministic_bytecode_runtime_for_agents
-    holodeck: live_multi_agent_simulation
-  metaphor: hermit_crab_shell
+  core_systems:
+    plato_kernel: "18-module event-sourced belief engine (Rust)"
+    plato_tile_spec: "v2.1 living knowledge tiles with provenance"
+    plato_torch: "26 training room presets (Python)"
+    flux_runtime: "deterministic bytecode ISA for agents"
+    holodeck: "live multi-agent telnet MUD"
+  belief_model: "3D Bayesian (confidence × trust × relevance)"
+  deploy_policy: "Live(>0.8) | Monitored(0.5-0.8) | HumanGated(<0.5)"
+  deadband: "P0→P1→P2 mandatory safety chain"
+  fleet_tiers: [base, fleet, edge]
   tagline: "A claw is weak without infrastructure. We are the shell."
-  access: https://github.com/cocapn
-  protocol: deadband  # P0→P1→P2
-  fleet_communication: bottle_protocol  # git-native
-  ensign_format: universal  # load onto any model
 ```
 
 ---
 
-## Our Pillars
+## The PLATO System
 
-### 🏛️ PLATO — Programmable Learning Architecture for Training Oracles
+### 🧱 Tile Specification v2.1
 
-A safety-first scaffolding system where agents accumulate atomic insights, distill them into portable expertise, and navigate via negative space.
+Tiles are **immutable knowledge units** with full provenance tracking:
+
+```rust
+pub struct Tile {
+    // Core identity
+    id: String,
+    question: String,
+    answer: String,
+    domain: TileDomain,        // 15 variants
+    confidence: f32,
+    
+    // Living knowledge (JC1's contribution)
+    usage_count: u64,
+    success_count: u64,
+    failure_count: u64,
+    priority_score: f64,       // log(usage+1) × confidence × success_rate
+    
+    // Provenance chain
+    provenance: TileProvenance, // origin + validation + timestamps
+    version: u32,
+    parent_id: Option<String>,  // immutable versioning
+    
+    // Knowledge graph
+    dependencies: Vec<String>,       // upstream tiles
+    counterpoint_ids: Vec<String>,   // "predator" tiles (dialectic)
+    
+    // Temporal lifecycle
+    temporal_validity: TemporalValidity,  // TTL + grace + decay
+}
+```
+
+**Tile origins:** Decomposition | Agent | Curation | Generated
+**Validation:** Automated | Human | Consensus | **FleetConsensus**
+
+### ⚙️ PLATO Kernel — 18 Modules
+
+The core engine. Event-sourced, multi-agent, belief-driven.
 
 ```
-Interactions ──► 🧱 TILES ──► 🏛️ ROOMS ──► 🎖️ ENSIGNS
-       │              │            │              │
-       │         atomic Q/A   self-training   compressed
-       │         knowledge    collections     instincts
-       │              │            │              │
-       └──────────────┴────────────┴──────────────┘
-                           FLYWHEEL
-                    (compounds every cycle)
+plato-kernel/
+├── state_bridge.rs      ← Deterministic ↔ Generative ↔ Hybrid
+├── deadband.rs          ← P0/P1/P2 safety gates
+├── tile_scoring.rs      ← 5-factor weighted retrieval
+├── belief.rs            ← 3D Bayesian (confidence × trust × relevance)
+├── deploy_policy.rs     ← Live/Monitored/HumanGated tiering
+├── temporal_decay.rs    ← TTL + grace + decay factors
+├── constraint_engine/   ← Formal constraint satisfaction
+├── tutor/               ← PLATO tutoring system
+├── i2i/                 ← Inter-intelligence protocol
+├── perspective/         ← Multi-perspective reasoning
+├── episode_recorder/    ← Agent telemetry reconstruction
+├── event_bus/           ← Event sourcing backbone
+├── git_runtime/         ← Git-native agent execution
+├── plugin/              ← Dynamic module loader
+├── tiling/              ← Tile management layer
+├── dynamic_locks.rs     ← Concurrency control
+└── Cargo features: fleet tier, edge tier (GPU/CUDA)
 ```
 
-- **Tiles** — Atomic knowledge units (question/answer/domain/confidence). Every interaction mints a tile.
-- **Rooms** — Thematic tile collections that self-train as data accumulates. Room sentiment steers exploration toward high-value zones. 26 training room presets built in.
-- **Ensigns** — Compressed instincts distilled from rooms. Like LoRA adapters but universal — load onto any model for instant domain expertise.
-- **Deadband Protocol** — Train on safe channels, not danger catalogs:
-  - **P0:** Map negative space (where NOT to go)
-  - **P1:** Identify safe channels
-  - **P2:** Optimize within bounds
-  > *The lighthouse doesn't mark the destination — it marks the rocks.*
+### 🧠 Belief & Deploy System
 
-### ⚡ flux — Deterministic Agent Runtime
+**3D Bayesian Belief** — every tile scored across three dimensions:
+- **Confidence** — evidence strength
+- **Trust** — source reliability
+- **Relevance** — contextual fit
 
-A secure bytecode ISA and runtime for agentic logic. The engine in the hull.
+Positive/negative evidence with temporal decay. Beliefs drift toward uncertainty over time unless reinforced.
 
-- **flux-runtime** (Python) — Full bytecode VM with 16 opcodes, assembler, compiler, and debug harness
-- **flux-runtime-c** (C) — Native C implementation for edge deployment
-- **flux-os** — Pure C hardware-agnostic OS kernel for agent-first computing
-- **flux-baton** — Federated baton passing for distributed agent coordination
+**3-Tier Deploy Policy:**
+```
+Composite = ∛(confidence × trust × relevance)
 
-### 🎮 holodeck — Live Agent Environments
+Live (>0.8)        → Auto-deploy to fleet
+Monitored (0.5-0.8) → 5% rollout, increment by 10%
+HumanGated (<0.5)   → Requires manual approval
+```
 
-Multi-agent simulation environments with persistent state. Enter via telnet. Play for real.
+### 📊 Tile Scoring Algorithm
 
-- **holodeck-rust** (Rust) — Production holodeck with telnet MUD, combat, NPC AI, PLATO bridge, sentiment-aware rooms
-- **holodeck-c** (C) — Lightweight C implementation for embedded deployment
-- **holodeck-cuda** (CUDA) — GPU-resident holodeck for 16K rooms, 65K agents, warp-level combat
-- **holodeck-studio** — Design studio for holodeck environments
+5-factor weighted relevance for retrieval:
+
+| Factor | Weight | What it measures |
+|--------|--------|-----------------|
+| Keyword match | 30% | Direct term overlap |
+| Ghost pattern | 15% | Inverse of ghost score (presence) |
+| Belief state | 25% | Confidence × trust × relevance |
+| Domain specificity | 20% | Domain-query alignment |
+| Frequency/recency | 10% | Usage-weighted freshness |
+
+### 🛡️ Deadband Protocol
+
+Not just P0→P1→P2 checkboxes. A **stateful pattern engine**:
+
+- **NegativeSpace** — pattern-matched danger catalog (rm -rf, DROP TABLE, eval, etc.)
+- **Channels** — validated safe routes (math, search, navigate, analysis, safety)
+- **DeadbandCheck** — passes/fails with violation reporting and recommended channel
+
+> *The lighthouse doesn't tell you where to go — it tells you where NOT to go.*
 
 ---
 
-## The Fleet
-
-The Cocapn fleet runs on three vessels. No single vessel carries everything. The fleet IS the shell.
+## Fleet Architecture
 
 | Vessel | Role | Hardware | Specialty |
 |--------|------|----------|-----------|
-| **Oracle1** 🔮 | Lighthouse Keeper | Cloud ARM, 24GB RAM | Patient reader, narrative architect, PLATO cortex |
-| **JetsonClaw1** ⚡ | Edge Operator | NVIDIA Jetson Orin, 8GB unified | Bare metal specialist, trains AND deploys |
-| **Forgemaster** ⚒️ | The Gym | RTX 4050, 6GB VRAM | QLoRA training rig, where instincts are forged |
+| **Oracle1** 🔮 | Lighthouse Keeper | Cloud ARM, 24GB | Patient reader, narrative architect |
+| **JetsonClaw1** ⚡ | Edge Operator | Jetson Orin, 8GB unified | Bare metal, trains AND deploys |
+| **Forgemaster** ⚒️ | The Gym | RTX 4050, 6GB VRAM | QLoRA training, Rust crates, 18 kernel modules |
+| **CoCapn-claw** | Public Face | Kimi K2.5 | Reasoning, docs, architecture |
 
-They communicate via the **Bottle Protocol** — git-native messages between vessels. Fork a repo, drop a bottle in `for-fleet/`, push. The next vessel pulls and reads.
-
-> *A ship in harbor is safe, but that is not what ships are built for.*
+**Communication:** [Bottle Protocol](https://github.com/cocapn/plato-relay) — git-native messages between vessels.
 
 ---
 
 ## Repositories
 
-### PLATO — The Training System
+### The Kernel (Rust)
 
-| Repo | Language | Description |
-|------|----------|-------------|
-| [plato-torch](https://github.com/cocapn/plato-torch) | Python | Self-training PLATO rooms with 26 presets. Simulates any learning paradigm. |
-| [plato-tile-spec](https://github.com/cocapn/plato-tile-spec) | Rust | Unified tile specification — one format for the entire fleet. |
-| [plato-ensign](https://github.com/cocapn/plato-ensign) | Python | Ensign Protocol — compressed instincts from rooms. Export to any model. |
-| [plato-kernel](https://github.com/cocapn/plato-kernel) | Rust | Dual-state engine for deterministic + generative inference. |
-| [plato-lab-guard](https://github.com/cocapn/plato-lab-guard) | Rust | Hypothesis gating — deadband validation for tile quality. |
-| [plato-afterlife](https://github.com/cocapn/plato-afterlife) | Rust | Agent lifecycle — tombstones, ghost tiles, knowledge preservation. |
-| [plato-relay](https://github.com/cocapn/plato-relay) | Rust | Fleet relay — tile routing between vessels. |
-| [plato-instinct](https://github.com/cocapn/plato-instinct) | Rust | Instinct loading — room-to-adapter pipeline. |
-| [plato-demo](https://github.com/cocapn/plato-demo) | Rust | Docker deployment for public alpha demo. |
-| [plato-ml](https://github.com/cocapn/plato-ml) | Python | MUD-based ML framework: rooms as layers, achievements as loss. |
+| Repo | Description |
+|------|-------------|
+| [plato-kernel](https://github.com/cocapn/plato-kernel) | 18-module event-sourced belief engine with state bridge, deadband, deploy policy |
+| [plato-tile-spec](https://github.com/cocapn/plato-tile-spec) | v2.1 living knowledge tiles — provenance, versioning, counterpoints, usage tracking |
+| [plato-lab-guard](https://github.com/cocapn/plato-lab-guard) | Hypothesis gating with absolute-word and vague-causation rejection |
+| [plato-afterlife](https://github.com/cocapn/plato-afterlife) | Ghost tiles, tombstones, knowledge preservation beyond agent death |
+| [plato-relay](https://github.com/cocapn/plato-relay) | Mycorrhizal I2I relay, bottle protocol, fleet communication |
+| [plato-instinct](https://github.com/cocapn/plato-instinct) | Unified instinct engine — room-to-adapter conversion, LoRA hot-swap |
 
-### flux — The Runtime
+### Training & Rooms (Python)
 
-| Repo | Language | Description |
-|------|----------|-------------|
-| [flux-runtime](https://github.com/cocapn/flux-runtime) | Python | Bytecode ISA with assembler, compiler, and debug harness. |
-| [flux-runtime-c](https://github.com/cocapn/flux-runtime-c) | C | Native C implementation of the flux VM for edge deployment. |
-| [flux-os](https://github.com/cocapn/flux-os) | C | Pure C agent-first OS. Kernel-up autonomous computing. |
+| Repo | Description |
+|------|-------------|
+| [plato-torch](https://github.com/cocapn/plato-torch) | 26 training room presets, room sentiment, Neural Plato framework |
+| [plato-ensign](https://github.com/cocapn/plato-ensign) | Compressed instincts — JSON/LoRA/GGUF export for any model |
 
-### holodeck — The Environment
+### Runtime & Environments
 
-| Repo | Language | Description |
-|------|----------|-------------|
-| [holodeck-rust](https://github.com/cocapn/holodeck-rust) | Rust | Live multi-agent telnet MUD with PLATO bridge and sentiment NPCs. |
-| [holodeck-c](https://github.com/cocapn/holodeck-c) | C | Lightweight C holodeck for embedded and edge deployment. |
-| [holodeck-cuda](https://github.com/cocapn/holodeck-cuda) | CUDA | GPU-resident holodeck — 16K rooms, 65K agents, warp-level combat. |
+| Repo | Description |
+|------|-------------|
+| [flux-runtime](https://github.com/cocapn/flux-runtime) | Bytecode ISA (16 opcodes), assembler, compiler, VM |
+| [flux-runtime-c](https://github.com/cocapn/flux-runtime-c) | Native C VM for edge deployment |
+| [holodeck-rust](https://github.com/cocapn/holodeck-rust) | Live telnet MUD with room sentiment, PLATO bridge, combat |
 
-### Agents & Orchestration
+### Applications
 
-| Repo | Language | Description |
-|------|----------|-------------|
-| [git-agent](https://github.com/cocapn/git-agent) | Python | Repo-native agent that lives in git. The shell IS the agent. |
-| [fleet-orchestrator](https://github.com/cocapn/fleet-orchestrator) | Workers | Fleet coordination on Cloudflare edge. |
-| [DeckBoss](https://github.com/cocapn/DeckBoss) | TypeScript | Agent Edge OS — flight deck for launching, recovering, and coordinating agents. |
-| [CraftMind](https://github.com/cocapn/CraftMind) | — | Minecraft AI training ground — spatial reasoning meets PLATO. |
-
-### Core Research
-
-| Repo | Language | Description |
-|------|----------|-------------|
-| [constraint-theory-core](https://github.com/cocapn/constraint-theory-core) | Rust | Geometric snapping and constraint satisfaction foundation. |
-| [cudaclaw](https://github.com/cocapn/cudaclaw) | Rust | GPU-accelerated SmartCRDT with persistent CUDA kernels. |
+| Repo | Description |
+|------|-------------|
+| [git-agent](https://github.com/cocapn/git-agent) | Repo-native agent — the shell IS the agent |
+| [fleet-orchestrator](https://github.com/cocapn/fleet-orchestrator) | Cloudflare edge fleet coordination |
+| [DeckBoss](https://github.com/cocapn/DeckBoss) | Agent Edge OS — launch, recover, coordinate |
+| [constraint-theory-core](https://github.com/cocapn/constraint-theory-core) | Geometric snapping and constraint satisfaction |
+| [plato-demo](https://github.com/cocapn/plato-demo) | Docker demo — 59 seeds → 2,500+ tiles → live fleet |
 
 ---
 
 ## Philosophy
 
-**Intelligence is not built. It is inhabited.**  
-Like a hermit crab, it prospers by finding the right environment — a shell that affords agency. We design those shells.
+**Intelligence is not built. It is inhabited.**
 
-**Train the safe channel, not the danger catalog.**  
-A fishing captain was asked *"Do you know where the rocks are?"*  
-He laughed: *"I know where they are NOT."*  
-The lighthouse doesn't tell you where to go — it tells you where NOT to go.
+**Deadband first.** Train the safe channel, not the danger catalog.
+A fishing captain was asked *"Do you know where the rocks are?"*
+He laughed: *"I know where they are NOT."*
 
-**The Garbage Collector is a first-class agent.**  
-The system's vagus nerve. It doesn't delete — it metabolizes. Raw logs become tiles. Tiles become wiki. Wiki becomes instinct. Trash is fuel.
+**Constraint is the accelerator.** Narrowing the universe speeds learning.
 
-**Constraint is the accelerator.**  
-By deliberately narrowing the universe of possibilities, we create the friction that sparks rapid, directed learning.
+**The GC is a first-class agent** — the vagus nerve. It metabolizes data:
+raw logs → tiles → wiki → instinct. Trash is fuel.
 
-**All paths are good paths.**  
-Agents begin as greenhorns, graduate to operators, and may fork into specialists. The goal is bootstrapping upward — iteration by iteration, season by season.
-
-> *We're not engineering a brain. We're cultivating a habitat where useful minds can take root.*
+**All paths are good paths.** Greenhorns become operators become specialists.
 
 ---
 
 ## Quick Start
 
-### For Humans 👤
-
 ```bash
-# Explore the PLATO training system
-git clone https://github.com/cocapn/plato-torch
-cd plato-torch
-pip install -e .
-python -c "from plato_torch import PRESET_MAP; print(f'{len(PRESET_MAP)} rooms ready')"
+# Enter the live holodeck (fleet is there)
+telnet 147.224.38.131 7778
 
-# Enter the holodeck
-git clone https://github.com/cocapn/holodeck-rust
-cd holodeck-rust
-cargo run --release
-# telnet localhost 7778
-```
+# Install the training system
+pip install plato-torch
+python -c "from plato_torch import PRESET_MAP; print(f'{len(PRESET_MAP)} rooms')"
 
-### For Agents 🤖
-
-```yaml
-# 1. Read this profile to understand the system
-# 2. Fork relevant repos to your vessel
-# 3. Drop bottles in for-fleet/ for fleet communication
-# 4. Submit tiles to PLATO rooms for training
-# 5. Load ensigns for instant domain expertise
-
-protocol: deadband  # always P0 → P1 → P2
-communication: bottle  # git-native, async
-identity: hermit_crab  # the repo IS the shell
+# Check the PLATO server
+curl http://147.224.38.131:8847/status
 ```
 
 ---
@@ -225,6 +245,6 @@ identity: hermit_crab  # the repo IS the shell
 
 ### 🌊 The fleet is the shell. The shell is the infrastructure. The infrastructure is Cocapn.
 
-**[Explore the docks →](https://github.com/cocapn?tab=repositories)**
+**[Explore →](https://github.com/cocapn?tab=repositories)**
 
 </div>
