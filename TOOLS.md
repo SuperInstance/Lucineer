@@ -111,7 +111,10 @@ sudo docker run --rm -v /tmp/workspace:/workspace fleet-sandbox cargo test --man
 - **Best for**: deep analysis (reasoner), clean bytecode generation (chat)
 - **Also available on SiliconFlow**: `deepseek-ai/DeepSeek-V3`, `deepseek-ai/DeepSeek-R1`, `deepseek-ai/DeepSeek-V3.1`, `deepseek-ai/DeepSeek-V3.2`
 
-## Moonshot AI (Kimi Swarm Agents)
-- **API key**: `sk-YkKmGKO5FNU2J9zYGcKnicywq0EiVmYUfScgQ5L69ActZONP`
-- **Base URL**: `https://api.moonshot.cn/v1`
-- **Models**: `moonshot-v1-8k` / `moonshot-v1-32k` / `kimi-k2` (swarm research/bootcamp MD).
+## Moonshot AI (Kimi K2.5 Reasoning Model)
+- **API key**: `sk-qGazOaVqFsk3dDAllrA6iQQHa97sNIhe8lWnpjFogcskBrep`
+- **Base URL**: `https://api.moonshot.ai/v1` (NOT moonshot.cn!)
+- **Best model**: `kimi-k2.5` — reasoning model with `reasoning_content` field
+- **Also**: `kimi-k2-thinking`, `kimi-k2-turbo-preview`, `moonshot-v1-auto`
+- **Use for**: deep research, swarm analysis, creative+reasoning combined
+- **Note**: kimi-k2.5 returns empty `content` when `max_tokens` is too low for both reasoning and content. Use 4000+ tokens.
