@@ -1,0 +1,14 @@
+{
+  "room_id": "test-multitask",
+  "preset": "multitask",
+  "timestamp": "2026-04-19T04:06:17.102070Z",
+  "state": "",
+  "action": "",
+  "outcome": "",
+  "agent_id": "unknown",
+  "context": {
+    "task": "default"
+  },
+  "reward": 0.0,
+  "state_hash": "d41d8cd9"
+}

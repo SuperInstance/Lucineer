@@ -1,0 +1,12 @@
+{
+  "room_id": "test-evolve",
+  "preset": "evolve",
+  "timestamp": "2026-04-19T03:58:15.835062Z",
+  "state": "",
+  "action": "",
+  "outcome": "",
+  "agent_id": "unknown",
+  "context": {},
+  "reward": 0.0,
+  "state_hash": "d41d8cd9"
+}

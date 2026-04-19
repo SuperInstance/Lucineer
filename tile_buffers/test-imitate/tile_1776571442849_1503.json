@@ -1,0 +1,12 @@
+{
+  "room_id": "test-imitate",
+  "preset": "imitate",
+  "timestamp": "2026-04-19T04:04:02.849058Z",
+  "state": "",
+  "action": "",
+  "outcome": "",
+  "agent_id": "unknown",
+  "context": {},
+  "reward": 0.0,
+  "state_hash": "d41d8cd9"
+}

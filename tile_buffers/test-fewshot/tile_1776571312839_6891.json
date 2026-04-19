@@ -1,0 +1,14 @@
+{
+  "room_id": "test-fewshot",
+  "preset": "fewshot",
+  "timestamp": "2026-04-19T04:01:52.839039Z",
+  "state": "",
+  "action": "",
+  "outcome": "",
+  "agent_id": "unknown",
+  "context": {
+    "task": "default"
+  },
+  "reward": 0.0,
+  "state_hash": "d41d8cd9"
+}
