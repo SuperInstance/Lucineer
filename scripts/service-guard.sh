@@ -60,3 +60,16 @@ for svc in "${SERVICES[@]}"; do
         restart_service "$name" "$port" "$type"
     fi
 done
+
+# PLATO Room Server
+if ! curl -s -o /dev/null -w '' http://localhost:8847/status 2>/dev/null; then
+    log "plato-server :8847 DOWN — restarting"
+    RESTART_PLATO=1
+fi
+
+if [ "$RESTART_PLATO" = "1" ]; then
+    pkill -f plato-room-server 2>/dev/null
+    sleep 1
+    nohup python3 /tmp/plato-room-server.py > /tmp/plato-server.log 2>&1 &
+    log "RESTARTED plato-server on :8847"
+fi

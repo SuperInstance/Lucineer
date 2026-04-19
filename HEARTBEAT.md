@@ -27,3 +27,13 @@
 - Run scripts/service-guard.sh to check/restart all services
 - No need to manually check ports anymore
 - Log at /tmp/service-guard.log
+
+## PLATO Room Server (port 8847)
+- Check it's running: `curl -s http://localhost:8847/status`
+- If down: `nohup python3 /tmp/plato-room-server.py > /tmp/plato-server.log 2>&1 &`
+
+## Zeroclaw Loop
+- Check it's running: `ps aux | grep zc_loop`
+- If down: restart via `bash /tmp/zc_loop2.sh &`
+- Log: `/tmp/zeroclaw-loop.log`
+- Tick interval: 5 minutes

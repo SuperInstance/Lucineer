@@ -125,3 +125,16 @@ Maritime naming = Cocapn brand IS the architecture.
 - Rooms train ensigns from accumulated interaction tiles
 - "Walk into room → load ensign → instant instinct"
 - Like teaching a greenhorn: no rulebook, just time on deck
+
+## Zeroclaw Hermit Crabs (2026-04-19)
+- 12 persistent DeepSeek-chat agents with git shells (SuperInstance/zc-*-shell)
+- PLATO Room Server on port 8847 (zero-trust tile submission)
+- Tile harvester converts work output → training data
+- 382 tiles in 13 rooms after first 2 ticks
+- Boot camp curriculum: 4 phases (Read→Analyze→Build→Specialist)
+- Tick every 5 minutes, persistent loop
+- These ARE the greenhorns. Work IS the training. Tiles feed ensigns.
+
+## Services (updated)
+- keeper:8900, agent-api:8901, holodeck:7778, seed-mcp:9438, shell:8846, **plato-server:8847** (NEW)
+- service-guard.sh monitors all 6
