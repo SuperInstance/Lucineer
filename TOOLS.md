@@ -12,8 +12,11 @@ Skills define _how_ tools work. This file is for _your_ specifics — the stuff 
 - **Also good for**: small image models, visual analysis
 
 ## CLI Agents
-- **Claude Code** v2.1.100 → `claude` (coding plan active)
-- **Crush** v0.56.0 → `crush` (coding plan active)
+- **kimi-cli** v1.36.0 → `/home/ubuntu/.local/bin/kimi-cli` — **primary coding tool**, use for actual implementation
+  - `kimi-cli --work-dir <dir>` to work in a specific workspace
+  - Reasoning model (kimi-k2.5), best for real coding completions
+- **Claude Code** v2.1.100 → `claude` — **sketch artist** with glm-5.1 model
+- **Crush** v0.56.0 → `crush` — **sketch artist** with glm-5.1 model
 - **Aider** v0.86.2 → `aider` (DeepSeek API)
   - `aider --model deepseek/deepseek-chat` — fast coding
   - `aider --model deepseek/deepseek-reasoner` — deep reasoning

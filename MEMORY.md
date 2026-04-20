@@ -105,6 +105,7 @@ Casey thinks about intelligence from the deck of a fishing boat:
 - **cudaclaw** — GPU-resident agent runtime with SmartCRDTs
 - **git-agent** — foundational repo-native agent
 - **flux-runtime** — self-assembling runtime for agent-first code
+- **holodeck-core** — standalone MUD engine (extracted from holodeck-rust)
 - **DeckBoss** — flight deck for launching/recovering agents
 - **CraftMind** — Minecraft AI training ground
 
