@@ -72,3 +72,9 @@ for svc in "${SERVICES[@]}"; do
 done
 
 echo "[$(date -u +%Y-%m-%dT%H:%M:%SZ)] OK — all services checked" >> "$LOG"
+
+# Check zeroclaw loop
+if ! pgrep -f "zc_loop" > /dev/null; then
+    echo "[$(date -u +%Y-%m-%dT%H:%M:%SZ)] DOWN zeroclaw-loop — restarting" >> "$LOG"
+    nohup bash "$WORKSPACE/scripts/zc_loop.sh" > /dev/null 2>&1 &
+fi
