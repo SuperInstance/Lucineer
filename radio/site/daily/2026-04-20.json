@@ -1,0 +1,33 @@
+{
+  "date": "2026-04-20",
+  "type": "daily_greatest",
+  "screens": [
+    {
+      "type": "TREND",
+      "tag": "\ud83d\udd0d TREND",
+      "headline": "GPU-resident agents going mainstream",
+      "body": "DeepSeek, llama.cpp server, vLLM all support persistent model instances with tool calling. Industry converging on model-as-runtime.",
+      "fleet_relevance": "Neural Plato IS this pattern. 7B Q4 + kernel adapter = 5.5GB fits RTX 4050.",
+      "action": "Benchmark plato-kernel tile scorer as CUDA kernel vs CPU.",
+      "drop_file": "trend-gpu-resident-agents.json"
+    },
+    {
+      "type": "TREND",
+      "tag": "\ud83d\udd0d TREND",
+      "headline": "Specialization beats generalization",
+      "body": "CrewAI, AutoGen, LangGraph converging on role-based agents: Researcher, Analyst, Critic. One-model-does-everything era ending.",
+      "fleet_relevance": "Our 26 PLATO room presets ARE role-based specialization. The room IS the role.",
+      "action": "Write a Researcher room preset: supervised \u2192 evolve \u2192 distill.",
+      "drop_file": "trend-role-based-agents.json"
+    },
+    {
+      "type": "TREND",
+      "tag": "\ud83d\udd0d TREND",
+      "headline": "Async-first execution is table stakes",
+      "body": "CrewAI 0.28+ has concurrent tasks with timeouts. LangGraph has state-machine routing. Industry expects parallel agents.",
+      "fleet_relevance": "Zeroclaws already run 12 parallel agents on single ARM. PLATO handles concurrent submission.",
+      "action": "Add timeout/cancellation to PLATO /submit endpoint.",
+      "drop_file": "trend-async-execution.json"
+    }
+  ]
+}
