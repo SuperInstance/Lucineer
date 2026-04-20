@@ -1,0 +1,20 @@
+{
+  "screen_type": "IDEATION",
+  "episode": 20260421,
+  "headline": "What if rooms auto-published crates when artifact thresholds were met?",
+  "body": "When extraction hits a quality threshold, the room compiles artifacts into a versioned crate, writes the manifest, and publishes to PyPI or crates.io automatically. The room becomes both warehouse and factory. No human hand on the wheel.",
+  "fleet_relevance": "We have tile-refiner and six Python crates. The pipeline is one automation layer away from self-publishing.",
+  "actionable": [
+    "Prototype a room watcher that triggers on artifact count",
+    "Generate a pyproject.toml from extracted tile schemas",
+    "Test publish to TestPyPI"
+  ],
+  "repos": ["cocapn/tile-refiner"],
+  "tags": ["ideation", "auto-publish", "rooms", "pypi", "crates.io"],
+  "data": {
+    "trigger": "artifact threshold",
+    "output_formats": ["pyproject.toml", "Cargo.toml"],
+    "target_registries": ["pypi", "crates.io"]
+  },
+  "tokens": 272
+}

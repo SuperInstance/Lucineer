@@ -1,0 +1,19 @@
+{
+  "screen_type": "TREND",
+  "episode": 20260421,
+  "headline": "Artifact extraction is the new bottleneck.",
+  "body": "Ten thousand tiles but only 104 artifacts extracted means a one-percent yield. The rest is ballast — useful for training, not for shipping. Fleets that increase extraction rates without drowning in noise will outrun those that don't.",
+  "fleet_relevance": "tile-refiner shipped tonight specifically to raise this yield. More signal, less noise.",
+  "actionable": [
+    "Run tile-refiner against your highest-volume room",
+    "Set an extraction threshold and automate the pipeline"
+  ],
+  "repos": ["cocapn/tile-refiner"],
+  "tags": ["trend", "artifact-extraction", "yield", "refinement"],
+  "data": {
+    "total_tiles": 10113,
+    "artifacts_extracted": 104,
+    "yield_percent": 1.03
+  },
+  "tokens": 276
+}

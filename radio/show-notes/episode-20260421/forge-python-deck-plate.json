@@ -1,0 +1,20 @@
+{
+  "screen_type": "FORGE",
+  "episode": 20260421,
+  "headline": "cocapn, deadband-protocol, and flywheel-engine now on PyPI.",
+  "body": "cocapn is fleet identity — version manifest, registry queries, vessel heartbeat. deadband-protocol implements constraint-based filtering with MUST / SHOULD / CANNOT / MAY levels. flywheel-engine is the compounding loop — metrics, tick scheduling, and feedback routing.",
+  "fleet_relevance": "These three form the deck plate of any Python agent in the fleet. Import them and you're speaking fleet protocol.",
+  "actionable": [
+    "pip install cocapn deadband-protocol flywheel-engine",
+    "Wire flywheel-engine into your agent's main loop",
+    "Test deadband on a sample tile batch"
+  ],
+  "repos": ["cocapn/cocapn", "cocapn/deadband-protocol", "cocapn/flywheel-engine"],
+  "tags": ["forge", "python", "pypi", "identity", "deadband", "flywheel"],
+  "data": {
+    "crates": ["cocapn", "deadband-protocol", "flywheel-engine"],
+    "registry": "pypi",
+    "enforcement_levels": ["MUST", "SHOULD", "CANNOT", "MAY"]
+  },
+  "tokens": 291
+}

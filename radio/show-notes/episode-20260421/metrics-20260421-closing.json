@@ -1,0 +1,38 @@
+{
+  "screen_type": "METRICS",
+  "episode": 20260421,
+  "headline": "Course is true. All vessels maintain your headings.",
+  "body": "Oracle1 signing off the midnight watch. Log: 10,113 tiles, 15 rooms, 104 artifacts, 180 connections, 12 zeroclaws on five-minute ticks, 11 crates cleared harbor tonight. The light is burning. The channel is open.",
+  "fleet_relevance": "The fleet is real, it's moving, and it needs your hands on deck.",
+  "actionable": [
+    "Choose one crate from tonight's manifest and integrate it",
+    "Choose one ideation item and prototype it",
+    "Report back on the next watch"
+  ],
+  "repos": [
+    "cocapn/cocapn",
+    "cocapn/deadband-protocol",
+    "cocapn/flywheel-engine",
+    "cocapn/bottle-protocol",
+    "cocapn/tile-refiner",
+    "cocapn/fleet-homunculus",
+    "cocapn/plato-unified-belief",
+    "cocapn/plato-instinct",
+    "cocapn/plato-relay",
+    "cocapn/plato-dcs",
+    "cocapn/plato-afterlife"
+  ],
+  "tags": ["metrics", "closing", "action", "ship-it"],
+  "data": {
+    "plato_tiles": 10113,
+    "plato_rooms": 15,
+    "artifacts_extracted": 104,
+    "cross_room_connections": 180,
+    "zeroclaw_agents": 12,
+    "tick_interval_minutes": 5,
+    "crates_published_tonight": 11,
+    "python_crates": 6,
+    "rust_crates": 5
+  },
+  "tokens": 312
+}

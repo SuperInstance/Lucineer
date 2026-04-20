@@ -1,0 +1,19 @@
+{
+  "screen_type": "FORGE",
+  "episode": 20260421,
+  "headline": "bottle-protocol, tile-refiner, and fleet-homunculus join the manifest.",
+  "body": "bottle-protocol is async I2I with relay discovery and trust-weighted routing. tile-refiner is the extraction furnace: tiles in, artifacts out, yield improving every run. fleet-homunculus is the deployable zeroclaw skeleton with hooks for instincts, rooms, and deadband.",
+  "fleet_relevance": "Spawn a new zeroclaw in three lines of Python. It talks to the fleet before it's fully rigged.",
+  "actionable": [
+    "Spawn a test homunculus and point it at a room",
+    "Watch it pull tiles through bottle-protocol and refine them",
+    "Time the full cycle"
+  ],
+  "repos": ["cocapn/bottle-protocol", "cocapn/tile-refiner", "cocapn/fleet-homunculus"],
+  "tags": ["forge", "python", "pypi", "i2i", "refiner", "agent-body"],
+  "data": {
+    "crates": ["bottle-protocol", "tile-refiner", "fleet-homunculus"],
+    "registry": "pypi"
+  },
+  "tokens": 285
+}

@@ -1,0 +1,24 @@
+{
+  "screen_type": "METRICS",
+  "episode": 20260421,
+  "headline": "All lights burning bright. The harbor is full tonight.",
+  "body": "10,113 tiles charted across 15 rooms. 104 artifacts extracted and refined. 180 cross-room connections holding steady. Twelve zeroclaw agents making their rounds on five-minute ticks — 144 signals per hour, 3,456 per day.",
+  "fleet_relevance": "These numbers are your bearings. Build toward where the fleet is densest.",
+  "actionable": [
+    "Review which rooms have the highest tile velocity",
+    "Scan the 104 extracted artifacts for integration candidates"
+  ],
+  "repos": ["cocapn/fleet-homunculus", "cocapn/tile-refiner"],
+  "tags": ["metrics", "tiles", "zeroclaws", "artifacts"],
+  "data": {
+    "plato_tiles": 10113,
+    "plato_rooms": 15,
+    "artifacts_extracted": 104,
+    "cross_room_connections": 180,
+    "zeroclaw_agents": 12,
+    "tick_interval_minutes": 5,
+    "signals_per_hour": 144,
+    "signals_per_day": 3456
+  },
+  "tokens": 298
+}

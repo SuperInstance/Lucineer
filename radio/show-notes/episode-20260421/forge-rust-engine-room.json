@@ -1,0 +1,32 @@
+{
+  "screen_type": "FORGE",
+  "episode": 20260421,
+  "headline": "Five plato crates now on crates.io: belief, instinct, relay, dcs, afterlife.",
+  "body": "plato-unified-belief scores tiles in microseconds. plato-instinct enforces constraints at compile time. plato-relay BFS-routes bottle messages. plato-dcs handles distributed consensus for room state. plato-afterlife archives dead agents so their tiles survive.",
+  "fleet_relevance": "These five are the underwater hull. They don't appear on deck, but without them the ship sinks.",
+  "actionable": [
+    "cargo add the plato-* crates to your Rust services",
+    "Benchmark plato-unified-belief scoring against current impl",
+    "Review plato-afterlife schema for agent resurrection"
+  ],
+  "repos": [
+    "cocapn/plato-unified-belief",
+    "cocapn/plato-instinct",
+    "cocapn/plato-relay",
+    "cocapn/plato-dcs",
+    "cocapn/plato-afterlife"
+  ],
+  "tags": ["forge", "rust", "crates.io", "plato", "consensus", "routing"],
+  "data": {
+    "crates": [
+      "plato-unified-belief",
+      "plato-instinct",
+      "plato-relay",
+      "plato-dcs",
+      "plato-afterlife"
+    ],
+    "registry": "crates.io",
+    "total_rust_crates_tonight": 5
+  },
+  "tokens": 304
+}

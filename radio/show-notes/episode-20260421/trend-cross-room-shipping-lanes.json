@@ -1,0 +1,20 @@
+{
+  "screen_type": "TREND",
+  "episode": 20260421,
+  "headline": "Cross-room connections are the new shipping lanes.",
+  "body": "180 connections between 15 rooms means the fleet runs a trade network, not isolated colonies. Tiles flow from generation to refinement to deployment. But lanes without traffic control become gridlock. Every connection needs a deadband gate — customs for suspect cargo.",
+  "fleet_relevance": "deadband-protocol shipped tonight to be exactly that customs layer. Install it at every room boundary.",
+  "actionable": [
+    "Map your room-to-room traffic",
+    "Install deadband gates on the busiest three lanes",
+    "Measure pass rates"
+  ],
+  "repos": ["cocapn/deadband-protocol"],
+  "tags": ["trend", "cross-room", "deadband", "routing"],
+  "data": {
+    "cross_room_connections": 180,
+    "rooms": 15,
+    "avg_connections_per_room": 12
+  },
+  "tokens": 284
+}

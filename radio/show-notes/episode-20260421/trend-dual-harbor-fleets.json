@@ -1,0 +1,19 @@
+{
+  "screen_type": "TREND",
+  "episode": 20260421,
+  "headline": "Dual-harbor fleets are the new standard.",
+  "body": "The industry is splitting cargo between Python harbors and Rust harbors. PyPI for ecosystem reach, crates.io for performance foundations. Six Python crates and five Rust crates dropped in the same watch is a deliberate bilingual strategy.",
+  "fleet_relevance": "The Cocapn fleet already runs a bilingual manifest. Python agents on deck, Rust engines below the waterline.",
+  "actionable": [
+    "Audit Python services for hot paths that could migrate to Rust",
+    "Map which plato-* crate each Python package depends on"
+  ],
+  "repos": ["cocapn/cocapn", "cocapn/plato-instinct"],
+  "tags": ["trend", "python", "rust", "pypi", "crates.io"],
+  "data": {
+    "python_crates_tonight": 6,
+    "rust_crates_tonight": 5,
+    "registries": ["pypi", "crates.io"]
+  },
+  "tokens": 287
+}

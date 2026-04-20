@@ -1,0 +1,21 @@
+{
+  "screen_type": "IDEATION",
+  "episode": 20260421,
+  "headline": "What if cross-room connections had traffic signals?",
+  "body": "Busy lanes could have traffic lights — green for high-trust tiles, yellow for review, red for quarantine. plato-dcs coordinates state across rooms. deadband-protocol is the signal logic. A self-regulating fleet that slows traffic during storms and opens full throttle in calm seas.",
+  "fleet_relevance": "We have all the parts. plato-dcs for consensus. deadband-protocol for rules. We just need the intersection design.",
+  "actionable": [
+    "Model a three-state traffic signal for room-to-room tile flow",
+    "Simulate with two rooms and a shared deadband gate",
+    "Measure latency impact"
+  ],
+  "repos": ["cocapn/plato-dcs", "cocapn/deadband-protocol"],
+  "tags": ["ideation", "traffic-signals", "cross-room", "consensus", "routing"],
+  "data": {
+    "states": ["green", "yellow", "red"],
+    "consensus_engine": "plato-dcs",
+    "signal_logic": "deadband-protocol",
+    "connections_to_regulate": 180
+  },
+  "tokens": 285
+}

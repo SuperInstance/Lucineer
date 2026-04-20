@@ -1,0 +1,22 @@
+{
+  "screen_type": "EDGE",
+  "episode": 20260421,
+  "headline": "Twelve zeroclaws cycling every five minutes. The edge is alive.",
+  "body": "Twelve agents on ARM, no GPU, making rounds like lighthouse keepers climbing stairs. Every tick: read rooms, score tiles, submit, check deadband. Five minutes is fast enough to feel alive, slow enough to spare the power budget. All fifteen rooms, 180 connections, artifacts flowing.",
+  "fleet_relevance": "You don't need a data center to run a fleet. You need discipline and a good clock.",
+  "actionable": [
+    "Check zeroclaw logs for tick variance past six minutes",
+    "Add a thirteenth agent to a new room and measure load"
+  ],
+  "repos": ["cocapn/fleet-homunculus"],
+  "tags": ["edge", "zeroclaw", "arm", "tick", "deployment"],
+  "data": {
+    "zeroclaw_agents": 12,
+    "tick_interval_minutes": 5,
+    "platform": "ARM",
+    "gpu_required": false,
+    "rooms_covered": 15,
+    "connections_maintained": 180
+  },
+  "tokens": 281
+}
