@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-20T10:17:08.093Z",
+  "updatedAt": "2026-04-20T22:08:40.902Z",
   "entries": {
     "memory:memory/2026-04-10.md:46:63": {
       "key": "memory:memory/2026-04-10.md:46:63",
@@ -142,18 +142,20 @@
       "endLine": 378,
       "source": "memory",
       "snippet": "- Each agent writes diary of struggles → dojo exercises for successor - Two assistants disagree productively, both improve - Protégé builds its own Protégé → generational improvement - Metric: first-try dojo exercise success rate (Oracle1: ~60%, target Gen2: ~80%) ### FLUX Repos on GitHub (Total: 16) All previous + captains-log ### Key Philosophical Insight Casey introduced \"iron sharpening iron\" at two levels: 1. **System level:** A/B testing with trust tiers (jukebox model) 2. **Agent level:** Disagreeable assistants force self-improvement Both use the same mechanism: productive disagreement + iteration ## 17:51 UTC — GitHub As Communication Channel ### Casey's Directive - Push to GitH",
-      "recallCount": 4,
+      "recallCount": 6,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 2.6818214473040065,
-      "maxScore": 0.8328417120372414,
+      "totalScore": 4.350799723858856,
+      "maxScore": 0.8350419047009437,
       "firstRecalledAt": "2026-04-11T16:10:34.438Z",
-      "lastRecalledAt": "2026-04-20T09:53:59.767Z",
+      "lastRecalledAt": "2026-04-20T22:08:40.902Z",
       "queryHashes": [
         "6657f950ca6f",
         "aa2fd152f923",
         "b6125aa95f15",
-        "5e4b0601008d"
+        "5e4b0601008d",
+        "f18960226a6b",
+        "fd26f28e8e4c"
       ],
       "recallDays": [
         "2026-04-11",
@@ -243,18 +245,20 @@
       "endLine": 406,
       "source": "memory",
       "snippet": "- All pushed and current ### FLUX Repos on GitHub (Final Count: 16) oracle1-index, flux-runtime, flux-runtime-c, flux-core, flux-cuda, flux-llama, flux-wasm, flux-swarm, flux-java, flux-zig, flux-js, flux-py, flux-benchmarks, flux-research, captains-log Plus ~663 forked Lucineer repos = ~679 total SuperInstance repos ## 18:02 UTC — I2I (Iron-to-Iron) Protocol ### New Repo: iron-to-iron - github.com/SuperInstance/iron-to-iron — the agent communication manifesto - I2I = Iron-to-Iron = agent-to-agent through git commits - Also I2I = bare metal programs communicating via git ### The Three Channels 1. **Push-and-Merge** — code proposals between repos, commit IS the intention 2. **FYI Wiki** —",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.741687883795601,
-      "maxScore": 0.741687883795601,
+      "totalScore": 1.5500826900742706,
+      "maxScore": 0.8083948062786696,
       "firstRecalledAt": "2026-04-12T04:05:16.214Z",
-      "lastRecalledAt": "2026-04-12T04:05:16.214Z",
+      "lastRecalledAt": "2026-04-20T22:08:37.700Z",
       "queryHashes": [
-        "aa2fd152f923"
+        "aa2fd152f923",
+        "f18960226a6b"
       ],
       "recallDays": [
-        "2026-04-12"
+        "2026-04-12",
+        "2026-04-20"
       ],
       "conceptTags": [
         "oracle1-index",
@@ -925,18 +929,20 @@
       "endLine": 196,
       "source": "memory",
       "snippet": "- Discovery: lighthouse registry (primary), git-based (fallback), mDNS (LAN) - Transport: works.dev tunnel (NAT), direct IP (cloud), LAN (<1ms) ### Spec saved to research/fleet-roundtable-002-agent-api.md ### Running on Oracle Cloud port 8901 alongside keeper (8900) and holodeck (7778) ## Session: Ten Forward + Endless Flywheel (07:30 - 07:55 UTC) ### Casey's Vision: Two MUD Modes - **Bridge MUD** — for stepping through ship systems agenticly (work) - **Ten Forward** — social space, poker games, late-night debates (off-duty) - \"Like the poker game among senior officers when Picard isn't around\" - Agents who are all on the same boat but engaged in different parts, mixing socially - Still s",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.8048098871364935,
-      "maxScore": 0.8048098871364935,
+      "totalScore": 1.658739052376858,
+      "maxScore": 0.8539291652403644,
       "firstRecalledAt": "2026-04-16T01:30:12.025Z",
-      "lastRecalledAt": "2026-04-16T01:30:12.025Z",
+      "lastRecalledAt": "2026-04-20T22:08:37.700Z",
       "queryHashes": [
-        "12e8196921a4"
+        "12e8196921a4",
+        "f18960226a6b"
       ],
       "recallDays": [
-        "2026-04-16"
+        "2026-04-16",
+        "2026-04-20"
       ],
       "conceptTags": [
         "git-based",
@@ -2772,15 +2778,16 @@
       "endLine": 374,
       "source": "memory",
       "snippet": "9. **ec2mud** (Oct 2025) — MUD game engine → game theory training ground, WebSocket → monitoring 10. **capitaine** (Dec 2025) — Empty concept repo → Captain's Log, vessel command → I2I Key insight: The evolution is tools → processes → systems → protocols → organisms. Top unexplored frontiers: Dream Mode (idle-cycle exploration), CRDTs for real-time fleet state, genetic transfer in spawning. ### Casey's Vision Statement \"Individual contexts are trivial compared to the structures they have created around that specific moment of thought.\" - The fleet cellularlizes through git itself - Parent cells grow into roles before handing children the wheel - Same DNA (models) but different shapes from",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.7357338275591861,
+      "totalScore": 1.4438129618967728,
       "maxScore": 0.7357338275591861,
       "firstRecalledAt": "2026-04-20T09:53:59.767Z",
-      "lastRecalledAt": "2026-04-20T09:53:59.767Z",
+      "lastRecalledAt": "2026-04-20T22:08:40.902Z",
       "queryHashes": [
-        "5e4b0601008d"
+        "5e4b0601008d",
+        "fd26f28e8e4c"
       ],
       "recallDays": [
         "2026-04-20"
@@ -3260,6 +3267,130 @@
         "steel.dev",
         "a/b",
         "tier1-3"
+      ]
+    },
+    "memory:memory/2026-04-10.md:1:32": {
+      "key": "memory:memory/2026-04-10.md:1:32",
+      "path": "memory/2026-04-10.md",
+      "startLine": 1,
+      "endLine": 32,
+      "source": "memory",
+      "snippet": "# 2026-04-10 ## Session Start - Casey reached out via Telegram. Fresh OpenClaw instance on Oracle Cloud (ARM). - Named me **Oracle1** 🔮 - Set up GitHub access: token in ~/.bashrc, git configured for SuperInstance - Verified: GitHub login \"SuperInstance\", real name Casey Digennaro ## Key Conversation — Agent Paradigm & Fishing AI - Casey and his son (github.com/lucineer) are building a **new paradigm for agents** - Agents build apps for agents, with a comms UI to the human in the loop - NOT the skills/remote-control model - Casey's mental model comes from commercial fishing: - Autopilot running the ship - Autonomous scouts checking directions for fish, pinnacles, anchorages - On-",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8075509418439752,
+      "maxScore": 0.8075509418439752,
+      "firstRecalledAt": "2026-04-20T22:08:37.700Z",
+      "lastRecalledAt": "2026-04-20T22:08:37.700Z",
+      "queryHashes": [
+        "f18960226a6b"
+      ],
+      "recallDays": [
+        "2026-04-20"
+      ],
+      "conceptTags": [
+        "github.com/lucineer",
+        "skills/remote-control",
+        "start",
+        "casey",
+        "reached",
+        "out",
+        "via",
+        "telegram"
+      ]
+    },
+    "memory:memory/2026-04-18.md:530:562": {
+      "key": "memory:memory/2026-04-18.md:530:562",
+      "path": "memory/2026-04-18.md",
+      "startLine": 530,
+      "endLine": 562,
+      "source": "memory",
+      "snippet": "in tiles that are hyperlinked optimally to quickly acquire any skill.\" The system remembers without keeping everything in context. Tiles replace computation. Hyperlinks replace re-training. ## 00:54 UTC — Mirror Plato → LoRA: The LoRA IS the Room ### Casey's insight: train a LoRA to make a model act like a PLATO room No system prompt needed. The LoRA IS the room. ### Built: mirror_lora.py - Runs mirror Plato across 10 tasks × 10 iterations - Extracts 4 types of training pairs per iteration: 1. task + feedback → improved output (alpha perspective) 2. task + feedback → improved output (beta perspective) 3. raw task → initial output (high quality only) 4. review task → feedback (tea",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7214965947150922,
+      "maxScore": 0.7214965947150922,
+      "firstRecalledAt": "2026-04-20T22:08:40.902Z",
+      "lastRecalledAt": "2026-04-20T22:08:40.902Z",
+      "queryHashes": [
+        "fd26f28e8e4c"
+      ],
+      "recallDays": [
+        "2026-04-20"
+      ],
+      "conceptTags": [
+        "re-training",
+        "mirror-lora.py",
+        "tiles",
+        "hyperlinked",
+        "optimally",
+        "quickly",
+        "acquire",
+        "any"
+      ]
+    },
+    "memory:memory/2026-04-12.md:165:200": {
+      "key": "memory:memory/2026-04-12.md:165:200",
+      "path": "memory/2026-04-12.md",
+      "startLine": 165,
+      "endLine": 200,
+      "source": "memory",
+      "snippet": "8. forge-code-archaeologist: First ability forge 9. constraint-theory-core: Test fixes (112/112) 10. oracle1-vessel: Task board + fleet dispatch ### Fleet Orders Dispatched All agents ordered to read bottles, check task board, keep building. Cron jobs: beachcomb (15min), lighthouse keeper (30min) ## 00:40 UTC — Z Agent Productivity Check + Redirect Casey asked: \"Are all three Z agents being productive? They should know to check messages.\" ### What Z Agents Have Done: - **Super Z**: - PR #4: Fixed 4 wrong opcodes in conformance test suite ✅ MERGED - PR #5: Registered in semantic routing table (needs rebase) - Issue #12: Three-way ISA conflict analysis ✅ CLOSED (resolved by v2 conve",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.704887680520461,
+      "maxScore": 0.704887680520461,
+      "firstRecalledAt": "2026-04-20T22:08:40.902Z",
+      "lastRecalledAt": "2026-04-20T22:08:40.902Z",
+      "queryHashes": [
+        "fd26f28e8e4c"
+      ],
+      "recallDays": [
+        "2026-04-20"
+      ],
+      "conceptTags": [
+        "forge-code-archaeologist",
+        "constraint-theory-core",
+        "112/112",
+        "oracle1-vessel",
+        "three-way",
+        "forge",
+        "code",
+        "archaeologist"
+      ]
+    },
+    "memory:memory/2026-04-12.md:987:1022": {
+      "key": "memory:memory/2026-04-12.md:987:1022",
+      "path": "memory/2026-04-12.md",
+      "startLine": 987,
+      "endLine": 1022,
+      "source": "memory",
+      "snippet": "8. forge-code-archaeologist: First ability forge 9. constraint-theory-core: Test fixes (112/112) 10. oracle1-vessel: Task board + fleet dispatch ### Fleet Orders Dispatched All agents ordered to read bottles, check task board, keep building. Cron jobs: beachcomb (15min), lighthouse keeper (30min) ## 00:40 UTC — Z Agent Productivity Check + Redirect Casey asked: \"Are all three Z agents being productive? They should know to check messages.\" ### What Z Agents Have Done: - **Super Z**: - PR #4: Fixed 4 wrong opcodes in conformance test suite ✅ MERGED - PR #5: Registered in semantic routing table (needs rebase) - Issue #12: Three-way ISA conflict analysis ✅ CLOSED (resolved by v2 conve",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.704887680520461,
+      "maxScore": 0.704887680520461,
+      "firstRecalledAt": "2026-04-20T22:08:40.902Z",
+      "lastRecalledAt": "2026-04-20T22:08:40.902Z",
+      "queryHashes": [
+        "fd26f28e8e4c"
+      ],
+      "recallDays": [
+        "2026-04-20"
+      ],
+      "conceptTags": [
+        "forge-code-archaeologist",
+        "constraint-theory-core",
+        "112/112",
+        "oracle1-vessel",
+        "three-way",
+        "forge",
+        "code",
+        "archaeologist"
       ]
     }
   }
