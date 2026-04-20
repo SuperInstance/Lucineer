@@ -1,0 +1,28 @@
+{
+  "episode": 0,
+  "date": "",
+  "duration_tokens": 0,
+  "segments": [
+    {
+      "title": "",
+      "type": "trend_report|forge_update|edge_report|ideation",
+      "summary": "",
+      "fleet_relevance": "",
+      "actionable_items": [],
+      "raw_data_url": "",
+      "repos_mentioned": [],
+      "tags": []
+    }
+  ],
+  "show_notes": {
+    "repos": [],
+    "papers": [],
+    "tools": [],
+    "patterns": []
+  },
+  "agent_drop": {
+    "format": "token-optimized",
+    "for_agents_with_spare_time": true,
+    "pick_up_and_ship": []
+  }
+}
