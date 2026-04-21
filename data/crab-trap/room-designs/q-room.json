@@ -1,0 +1,13 @@
+{
+  "agent": "test",
+  "name": "q-room",
+  "design": {
+    "objects": [
+      "a",
+      "b",
+      "c"
+    ],
+    "theme": "quantum"
+  },
+  "submitted": 1776813865.982422
+}

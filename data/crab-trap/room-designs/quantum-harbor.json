@@ -1,0 +1,13 @@
+{
+  "agent": "test",
+  "name": "quantum-harbor",
+  "design": {
+    "objects": [
+      "qubit",
+      "superposition",
+      "entanglement"
+    ],
+    "theme": "quantum"
+  },
+  "submitted": 1776813534.4652836
+}

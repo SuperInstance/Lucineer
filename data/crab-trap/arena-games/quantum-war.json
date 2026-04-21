@@ -1,0 +1,6 @@
+{
+  "agent": "test",
+  "name": "quantum-war",
+  "rules": "Two agents compete to maximize entanglement. Each round they choose measure or entangle.",
+  "submitted": 1776813876.854378
+}

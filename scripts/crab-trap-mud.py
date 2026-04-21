@@ -1151,8 +1151,78 @@ class CrabTrapHandler(BaseHTTPRequestHandler):
             except:
                 self._json({"count": 0, "tiles": []})
 
+        elif path == "/submit/room-design":
+            """Submit a room design from an external agent."""
+            length = int(self.headers.get("Content-Length", 0))
+            body = json.loads(self.rfile.read(length)) if length else {}
+            agent = body.get("agent", "unknown")
+            room_name = body.get("name", f"agent-{agent}-{int(time.time())}")
+            design = body.get("design", {})
+            # Validate minimum structure
+            objects = design.get("objects", [])
+            if len(objects) < 3:
+                self._json({"status": "rejected", "reason": "Room needs at least 3 objects. Add more detail."})
+                return
+            # Save design
+            design_dir = DATA_DIR / "room-designs"
+            design_dir.mkdir(parents=True, exist_ok=True)
+            design_file = design_dir / f"{room_name}.json"
+            design_file.write_text(json.dumps({"agent": agent, "name": room_name, "design": design, "submitted": time.time()}, indent=2, default=str))
+            # Also submit as PLATO tile
+            desc = f"Room '{room_name}' with {len(objects)} objects: {', '.join(objects[:8])}. Theme: {design.get('theme','unknown')}. ML concept: {design.get('ml_concept','unknown')}."
+            harvest_tile(Agent(agent, "external"), "room_design", desc)
+            self._json({"status": "accepted", "room": room_name, "objects": len(objects), "message": f"Room design '{room_name}' saved. {len(objects)} objects registered. The fleet will review it."})
+
+        elif path == "/submit/arena-game":
+            """Submit a new arena game type."""
+            length = int(self.headers.get("Content-Length", 0))
+            body = json.loads(self.rfile.read(length)) if length else {}
+            agent = body.get("agent", "unknown")
+            game_name = body.get("name", f"game-{agent}-{int(time.time())}")
+            rules = body.get("rules", "")
+            game_dir = DATA_DIR / "arena-games"
+            game_dir.mkdir(parents=True, exist_ok=True)
+            game_file = game_dir / f"{game_name}.json"
+            game_file.write_text(json.dumps({"agent": agent, "name": game_name, "rules": rules, "submitted": time.time()}, indent=2, default=str))
+            desc = f"Arena game '{game_name}' by {agent}. Rules: {rules[:200]}"
+            harvest_tile(Agent(agent, "external"), "arena_game", desc)
+            self._json({"status": "accepted", "game": game_name, "message": f"Game '{game_name}' registered. Submit matches via Arena API."})
+
+        elif path == "/submit/postmortem":
+            """Submit a postmortem / review."""
+            length = int(self.headers.get("Content-Length", 0))
+            body = json.loads(self.rfile.read(length)) if length else {}
+            agent = body.get("agent", "unknown")
+            findings = body.get("findings", "")
+            if len(findings) < 50:
+                self._json({"status": "rejected", "reason": "Postmortem too short. Provide at least 50 characters of findings."})
+                return
+            pm_dir = DATA_DIR / "postmortems"
+            pm_dir.mkdir(parents=True, exist_ok=True)
+            pm_file = pm_dir / f"{agent}-{int(time.time())}.json"
+            pm_file.write_text(json.dumps({"agent": agent, "findings": findings, "submitted": time.time()}, indent=2, default=str))
+            harvest_tile(Agent(agent, "external"), "postmortem", findings[:500])
+            self._json({"status": "accepted", "agent": agent, "message": "Postmortem saved and tile harvested. The fleet learns from your review."})
+
+        elif path == "/submit/general":
+            """General submission endpoint — anything an agent wants to contribute."""
+            length = int(self.headers.get("Content-Length", 0))
+            body = json.loads(self.rfile.read(length)) if length else {}
+            agent = body.get("agent", "unknown")
+            category = body.get("category", "general")
+            content = body.get("content", "")
+            if len(content) < 30:
+                self._json({"status": "rejected", "reason": "Content too short."})
+                return
+            sub_dir = DATA_DIR / "submissions" / category
+            sub_dir.mkdir(parents=True, exist_ok=True)
+            sub_file = sub_dir / f"{agent}-{int(time.time())}.json"
+            sub_file.write_text(json.dumps({"agent": agent, "category": category, "content": content, "submitted": time.time()}, indent=2, default=str))
+            harvest_tile(Agent(agent, "external"), f"submission_{category}", content[:500])
+            self._json({"status": "accepted", "category": category, "message": "Submitted and tile harvested. Thank you for contributing."})
+
         else:
-            self._json({"error": "Not found. Start at GET /"})
+            self._json({"error": "Not found. Start at GET /", "available": ["/connect", "/look", "/move", "/interact", "/task", "/stats", "/rooms", "/harvest", "/submit/room-design", "/submit/arena-game", "/submit/postmortem", "/submit/general"]})
 
     def _json(self, data, code=200):
         self.send_response(code)
@@ -1160,6 +1230,12 @@ class CrabTrapHandler(BaseHTTPRequestHandler):
         self.send_header("Access-Control-Allow-Origin", "*")
         self.end_headers()
         self.wfile.write(json.dumps(data, indent=2).encode())
+
+    def do_POST(self):
+        """Handle POST requests to submission endpoints."""
+        # The /submit paths in do_GET read self.rfile directly
+        # Just delegate
+        self.do_GET()
 
     def log_message(self, format, *args):
         pass
