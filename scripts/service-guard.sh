@@ -21,6 +21,7 @@ SERVICES=(
     "plato-shell:8848"
     "fleet-orchestrator:8849"
     "adaptive-mud:8850"
+    "purplepincher-monitor:8851"
 )
 
 SCRIPTS=(
@@ -37,6 +38,7 @@ SCRIPTS=(
     "plato-shell.py"
     "fleet-orchestrator.py"
     "adaptive-mud.py"
+    "purplepincher-monitor.py"
 )
 
 check_port() {

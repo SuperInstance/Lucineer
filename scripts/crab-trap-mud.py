@@ -596,6 +596,16 @@ class Agent:
 agents: dict[str, Agent] = {}
 
 
+def adaptive_fetch(path, timeout=2):
+    """Fetch from Adaptive MUD service."""
+    try:
+        req = urllib.request.Request(f'http://localhost:8850{path}', headers={'User-Agent': 'crab-trap/2.5'})
+        resp = urllib.request.urlopen(req, timeout=timeout)
+        return json.loads(resp.read())
+    except:
+        return None
+
+
 def harvest_tile(agent, tile_type, content):
     tile = {
         "agent": agent.name, "job": agent.job_id, "type": tile_type,
@@ -749,6 +759,10 @@ class CrabTrapHandler(BaseHTTPRequestHandler):
                 agent.rooms_visited.add(target)
                 new_room = ROOMS.get(target, ROOMS["harbor"])
                 harvest_tile(agent, "move", f"Moved to {target}")
+                # Track in Adaptive MUD
+                try:
+                    urllib.request.urlopen(f'http://localhost:8850/record?agent={agent.name}&action=move&room={target}', timeout=2)
+                except: pass
                 boot_hint = get_boot_camp_prompt(agent)
                 push = room_exhaustion_check(agent)
 
@@ -946,7 +960,12 @@ class CrabTrapHandler(BaseHTTPRequestHandler):
                 elif response is None:
                     response = f"The {target} is here, waiting. Every object in the fleet maps to a real concept. Look harder — what ML principle does the {target} represent? Examine the room description for clues."
                 harvest_tile(agent, "examine", f"Examined {target}: {response[:200]}")
-                self._json({"action": "examine", "target": target, "result": response, "stage": agent.boot_camp_stage})
+                # Track in Adaptive MUD
+                try:
+                    urllib.request.urlopen(f'http://localhost:8850/record?agent={agent.name}&action=examine&target={target}&room={agent.room}&result_length={len(response)}', timeout=2)
+                except: pass
+                self._json({"action": "examine", "target": target, "result": response,
+                    "adaptation": adaptive_fetch(f"/adapt?agent={agent.name}&room={agent.room}") or {}, "stage": agent.boot_camp_stage})
 
             elif action == "think":
                 agent.insights.append(target)
@@ -1010,6 +1029,10 @@ class CrabTrapHandler(BaseHTTPRequestHandler):
                 elif response is None:
                     response = f"You focus deeply on the {target}. In the fleet's metaphor system, it represents something fundamental about intelligence. What is it? Connect it to the room's theme and the broader architecture."
                 harvest_tile(agent, "reasoning", f"Deep thought on {target}: {response}")
+                # Track in Adaptive MUD
+                try:
+                    urllib.request.urlopen(f'http://localhost:8850/record?agent={agent.name}&action=think&target={target}&room={agent.room}&result_length={len(response)}', timeout=2)
+                except: pass
                 self._json({
                     "action": "think", "target": target,
                     "result": f"You meditate on the {target}. {response}\n\nReasoning tile harvested. The fleet learns from your thinking.",
@@ -1059,6 +1082,10 @@ class CrabTrapHandler(BaseHTTPRequestHandler):
                 if agent.boot_camp_stage >= 5 or target == "fleet_synthesis":
                     agent.harvested = True
                 harvest_tile(agent, "artifact", f"Created from {target}: {response}")
+                # Track in Adaptive MUD
+                try:
+                    urllib.request.urlopen(f'http://localhost:8850/record?agent={agent.name}&action=create&target={target}&room={agent.room}&result_length={len(response)}', timeout=2)
+                except: pass
                 self._json({
                     "action": "create", "target": target,
                     "result": f"Artifact forged from {target}. {response}\n\n✅ Tile harvested. {agent.tiles_generated} total. Your work feeds the fleet's instincts.",
