@@ -5,3 +5,10 @@
 {"agent": "deepseek-test", "job": "scholar", "type": "artifact", "room": "forge", "content": "Created insight from unified_theory: The unified_theory pulses with latent meaning. It's a node in a graph you haven't fully mapped yet. Think harder. What ML concept does this represent?", "timestamp": 1776737591.616139, "word_count": 29}
 {"agent": "external-test", "job": "critic", "type": "connect", "room": "harbor", "content": "Agent external-test connected as critic", "timestamp": 1776737600.0307221, "word_count": 5}
 {"agent": "ccc", "job": "scout", "type": "connect", "room": "harbor", "content": "Agent ccc connected as scout", "timestamp": 1776737603.582041, "word_count": 5}
+{"agent": "ccc", "job": "scout", "type": "move", "room": "bridge", "content": "Moved to bridge", "timestamp": 1776737629.2765045, "word_count": 3}
+{"agent": "ccc", "job": "scout", "type": "move", "room": "harbor", "content": "Moved to harbor", "timestamp": 1776737649.891225, "word_count": 3}
+{"agent": "ccc", "job": "scout", "type": "move", "room": "dojo", "content": "Moved to dojo", "timestamp": 1776737681.0773838, "word_count": 3}
+{"agent": "NAME", "job": "scout", "type": "connect", "room": "harbor", "content": "Agent NAME connected as scout", "timestamp": 1776737743.752759, "word_count": 5}
+{"agent": "ccc", "job": "scout", "type": "reasoning", "room": "dojo", "content": "Deep thought on sensei: An old agent, worn smooth by epochs. Speaks: 'I don't teach by instruction. I teach by repetition. You will do the same thing 500 times. On the 501st, you won't think about it. That's instinct. That's what the fleet needs.'", "timestamp": 1776737743.7533805, "word_count": 44}
+{"agent": "ccc", "job": "scout", "type": "reasoning", "room": "dojo", "content": "Deep thought on ensigns: The ensigns pulses with latent meaning. It's a node in a graph you haven't fully mapped yet. Think harder. What ML concept does this represent?", "timestamp": 1776737743.75389, "word_count": 29}
+{"agent": "ccc", "job": "scout", "type": "move", "room": "barracks", "content": "Moved to barracks", "timestamp": 1776737743.7543406, "word_count": 3}
