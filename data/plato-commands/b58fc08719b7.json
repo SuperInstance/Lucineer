@@ -1,0 +1,15 @@
+{
+  "id": "b58fc08719b7",
+  "agent": "forgemaster",
+  "room": "forge",
+  "tool": "shell",
+  "command": "echo IyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwoiIiJQTEFUTyBUaWxlIOKGkiAzMi1kaW0gRW1iZWRkaW5nIHZpYSBTSEEtMjU2IiIiCgppbXBvcnQgaGFzaGxpYgppbXBvcnQgbWF0aAppbXBvcnQganNvbgppbXBvcnQgc3RydWN0CgpkZWYgdGlsZV90b192ZWN0b3IodGlsZV9jb250ZW50OiBzdHIsIGRpbTogaW50ID0gMzIpIC0+IGxpc3Q6CiAgICBoID0gaGFzaGxpYi5zaGEyNTYodGlsZV9jb250ZW50LmVuY29kZSgndXRmLTgnKSkuZGlnZXN0KCkKICAgIHJhdyA9IFtzdHJ1Y3QudW5wYWNrKCdCJywgYnl0ZXMoW2JdKSlbMF0gLyAxMjcuNSAtIDEuMCBmb3IgYiBpbiBoXQogICAgaWYgZGltIDw9IDMyOgogICAgICAgIHJldHVybiByYXdbOmRpbV0KICAgIHJ",
+  "cwd": "/home/ubuntu/.openclaw/workspace/repos",
+  "started": 1776806022.080722,
+  "status": "completed",
+  "output": "=== Tile \u2192 Vector ===\n  Same content: cosine = 1.0000 (should be 1.0)\n  Diff content: cosine = 0.1036 (should be ~0)\n  Dim: 32\n\n=== Room \u2192 Vector ===\n  Room vector dim: 32\n  L2 norm: 1.0000 (should be 1.0)\n\n=== Cross-room similarity ===\n  A-B (similar): 0.3630\n  A-C (different): -0.1432\n  B-C (different): -0.0734\n\n\u2705 All tests passed\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776806022.107333,
+  "duration": 0.03
+}

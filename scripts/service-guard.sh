@@ -19,6 +19,8 @@ SERVICES=(
     "federated-nexus:4047"
     "fleet-dashboard:4046"
     "plato-shell:8848"
+    "fleet-orchestrator:8849"
+    "adaptive-mud:8850"
 )
 
 SCRIPTS=(
@@ -33,6 +35,8 @@ SCRIPTS=(
     "federated-nexus.py"
     "fleet-dashboard.py"
     "plato-shell.py"
+    "fleet-orchestrator.py"
+    "adaptive-mud.py"
 )
 
 check_port() {

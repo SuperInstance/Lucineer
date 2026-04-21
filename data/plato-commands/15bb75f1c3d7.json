@@ -1,0 +1,15 @@
+{
+  "id": "15bb75f1c3d7",
+  "agent": "forgemaster",
+  "room": "forge",
+  "tool": "shell",
+  "command": "tail -60 /home/ubuntu/.openclaw/workspace/scripts/federated-nexus.py",
+  "cwd": "/home/ubuntu/.openclaw/workspace/repos",
+  "started": 1776805926.0540743,
+  "status": "completed",
+  "output": "            sim = dot / (cn * gn)\n            return {\"client\": client_id, \"cosine_similarity\": round(sim, 6), \"alignment\": \"high\" if sim > 0.8 else \"medium\" if sim > 0.5 else \"low\"}\n\nnexus = FederatedNexus()\n\n# Auto-register PLATO rooms as clients\nfor room in [\"harbor\", \"forge\", \"tide-pool\", \"lighthouse\", \"dojo\", \"self-play-arena\", \"ouroboros\", \"engine-room\", \"federated-nexus\"]:\n    nexus.register_client(f\"room:{room}\")\n\nclass NexusHandler(BaseHTTPRequestHandler):\n    def do_GET(self):\n        parsed = urlparse(self.path)\n        params = parse_qs(parsed.query)\n        path = parsed.path\n        \n        if path == \"/status\":\n            self._json(nexus.get_status())\n        elif path == \"/register\":\n            cid = params.get(\"client\", [f\"anon-{int(time.time())}\"])[0]\n            self._json({\"message\": nexus.register_client(cid)})\n        elif path == \"/aggregate\":\n            self._json(nexus.aggregate())\n        elif path == \"/diverge\":\n            cid = params.get(\"client\", [\"unknown\"])[0]\n            self._json(nexus.diverge(cid))\n        elif path == \"/history\":\n            self._json({\"rounds\": nexus.round_history})\n        elif path == \"/model\":\n            # Return global model fingerprint\n            fp = hashlib.sha256(json.dumps(nexus.global_model).encode()).hexdigest()[:16]\n            self._json({\"fingerprint\": fp, \"dim\": len(nexus.global_model), \"round\": nexus.round_number})\n        else:\n            self._json({\"service\": \"Federated Nexus v1.0\", \"endpoints\": [\"/status\", \"/register\", \"/aggregate\", \"/diverge\", \"/history\", \"/model\"]})\n\n    def do_POST(self):\n        parsed = urlparse(self.path)\n        path = parsed.path\n        length = int(self.headers.get(\"Content-Length\", 0))\n        body = json.loads(self.rfile.read(length)) if length else {}\n        \n        if path == \"/submit\":\n            cid = body.get(\"client\", \"unknown\")\n            vector = body.get(\"vector\", [random.gauss(0, 0.1) for _ in range(32)])\n            samples = body.get(\"samples\", 1)\n            self._json(nexus.submit_update(cid, vector, samples))\n        else:\n            self._json({\"error\": \"unknown endpoint\"})\n\n    def _json(self, data):\n        self.send_response(200)\n        self.send_header(\"Content-Type\", \"application/json\")\n        self.send_header(\"Access-Control-Allow-Origin\", \"*\")\n        self.end_headers()\n        self.wfile.write(json.dumps(data, indent=2).encode())\n    \n    def log_message(self, *a): pass\n\nif __name__ == \"__main__\":\n    print(f\"\ud83c\udf10 Federated Nexus on :{PORT}\")\n    HTTPServer((\"0.0.0.0\", PORT), NexusHandler).serve_forever()\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776805926.0558457,
+  "duration": 0.0
+}

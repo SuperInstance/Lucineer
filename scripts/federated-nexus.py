@@ -5,6 +5,7 @@ Each PLATO room is a "client" with a local model state (embedding vector).
 Aggregation rounds merge local updates into a global fleet model.
 """
 import json, time, hashlib, math, random, threading
+from nexus_vectors import tile_to_vector
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from urllib.parse import urlparse, parse_qs
 
@@ -13,7 +14,7 @@ PORT = 4047
 class FederatedNexus:
     def __init__(self):
         self.clients = {}       # client_id -> {"vector": [...], "samples": N, "last_update": ts}
-        self.global_model = [random.gauss(0, 0.1) for _ in range(32)]  # 32-dim embedding
+        self.global_model = tile_to_vector("fleet-global-model-v1", 32)  # 32-dim embedding
         self.round_number = 0
         self.round_history = []
         self.lock = threading.Lock()
@@ -22,7 +23,7 @@ class FederatedNexus:
         with self.lock:
             if client_id not in self.clients:
                 self.clients[client_id] = {
-                    "vector": [random.gauss(0, 0.1) for _ in range(dim)],
+                    "vector": tile_to_vector(f"client:{client_id}", dim),
                     "samples": 0,
                     "last_update": time.time(),
                     "total_submissions": 0
