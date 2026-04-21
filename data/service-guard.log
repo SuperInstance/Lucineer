@@ -375,3 +375,7 @@
 [2026-04-21T23:25:03Z] MISSING 
 [2026-04-21T23:25:08Z] FAILED federated-nexus:4047
 [2026-04-21T23:25:08Z] OK — all services checked
+[2026-04-21T23:30:03Z] DOWN federated-nexus:4047
+[2026-04-21T23:30:03Z] MISSING 
+[2026-04-21T23:30:08Z] FAILED federated-nexus:4047
+[2026-04-21T23:30:08Z] OK — all services checked
