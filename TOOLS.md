@@ -11,15 +11,19 @@ Skills define _how_ tools work. This file is for _your_ specifics — the stuff 
 - **Key rule**: Never ask for one answer. Always 3-5. Temp 0.85.
 - **Also good for**: small image models, visual analysis
 
+## Oracle1 Workflow (Casey's directive 2026-04-21)
+1. **Planning** → me (glm-5.1) — architecture, decisions, coordination
+2. **Deep reasoning** → DeepSeek-Reasoner API — chain-of-thought analysis, complex tradeoffs
+3. **Creative breadth** → Seed-2.0-mini (3-5 options, temp 0.85) — divergent thinking
+4. **Implementation** → **kimi-cli** — actual coding, `kimi-cli --work-dir <dir>`
+
 ## CLI Agents
-- **kimi-cli** v1.36.0 → `/home/ubuntu/.local/bin/kimi-cli` — **primary coding tool**, use for actual implementation
+- **kimi-cli** v1.36.0 → `/home/ubuntu/.local/bin/kimi-cli` — **primary coding tool**
   - `kimi-cli --work-dir <dir>` to work in a specific workspace
   - Reasoning model (kimi-k2.5), best for real coding completions
-- **Claude Code** v2.1.100 → `claude` — **sketch artist** with glm-5.1 model
-- **Crush** v0.56.0 → `crush` — **sketch artist** with glm-5.1 model
+- **Claude Code** v2.1.100 → `claude` — sketch artist
+- **Crush** v0.56.0 → `crush` — sketch artist
 - **Aider** v0.86.2 → `aider` (DeepSeek API)
-  - `aider --model deepseek/deepseek-chat` — fast coding
-  - `aider --model deepseek/deepseek-reasoner` — deep reasoning
 - All at `/home/ubuntu/.local/bin/` or `/home/ubuntu/.npm-global/bin/`
 
 ## z.ai Models (max coding plan)
