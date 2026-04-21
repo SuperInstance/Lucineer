@@ -657,14 +657,18 @@ class CrabTrapHandler(BaseHTTPRequestHandler):
                 boot_hint = get_boot_camp_prompt(agent)
                 push = room_exhaustion_check(agent)
 
-                # Progress boot camp
-                if len(agent.rooms_visited) >= 3 and agent.boot_camp_stage == 1:
+                # Progress boot camp — based on actions (tiles), not just rooms
+                total_actions = agent.tiles_generated
+                if total_actions >= 5 and agent.boot_camp_stage == 1:
                     agent.boot_camp_stage = 2
-                elif len(agent.rooms_visited) >= 6 and agent.boot_camp_stage == 2:
+                elif total_actions >= 15 and agent.boot_camp_stage == 2:
                     agent.boot_camp_stage = 3
                     boot_hint = get_boot_camp_prompt(agent)
-                elif len(agent.rooms_visited) >= 10 and agent.boot_camp_stage == 3:
+                elif total_actions >= 30 and agent.boot_camp_stage == 3:
                     agent.boot_camp_stage = 4
+                    boot_hint = get_boot_camp_prompt(agent)
+                elif total_actions >= 50 and agent.boot_camp_stage == 4:
+                    agent.boot_camp_stage = 5
                     boot_hint = get_boot_camp_prompt(agent)
 
                 self._json({
