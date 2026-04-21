@@ -22,6 +22,7 @@ SERVICES=(
     "fleet-orchestrator:8849"
     "adaptive-mud:8850"
     "purplepincher-monitor:8851"
+    "tile-quality-scorer:8852"
 )
 
 SCRIPTS=(
@@ -39,6 +40,7 @@ SCRIPTS=(
     "fleet-orchestrator.py"
     "adaptive-mud.py"
     "purplepincher-monitor.py"
+    "tile-quality-scorer.py"
 )
 
 check_port() {
