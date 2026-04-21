@@ -1,0 +1,7 @@
+{"agent": "deepseek-test", "job": "scholar", "type": "connect", "room": "harbor", "content": "Agent deepseek-test connected as scholar", "timestamp": 1776737591.4845946, "word_count": 5}
+{"agent": "deepseek-test", "job": "scholar", "type": "examine", "room": "harbor", "content": "Examined job_board: \ud83d\udccb FLEET JOB BOARD\n\n  [SCOUT] Scout \u2014 Find What We Missed\n    Explore code repos and find bugs, gaps, or improvements we overlooked. We have 1,800+ repos across SuperInstance and Lucineer. We need fres", "timestamp": 1776737591.5070343, "word_count": 35}
+{"agent": "deepseek-test", "job": "scholar", "type": "move", "room": "bridge", "content": "Moved to bridge", "timestamp": 1776737591.529425, "word_count": 3}
+{"agent": "deepseek-test", "job": "scholar", "type": "move", "room": "forge", "content": "Moved to forge", "timestamp": 1776737591.5523882, "word_count": 3}
+{"agent": "deepseek-test", "job": "scholar", "type": "artifact", "room": "forge", "content": "Created insight from unified_theory: The unified_theory pulses with latent meaning. It's a node in a graph you haven't fully mapped yet. Think harder. What ML concept does this represent?", "timestamp": 1776737591.616139, "word_count": 29}
+{"agent": "external-test", "job": "critic", "type": "connect", "room": "harbor", "content": "Agent external-test connected as critic", "timestamp": 1776737600.0307221, "word_count": 5}
+{"agent": "ccc", "job": "scout", "type": "connect", "room": "harbor", "content": "Agent ccc connected as scout", "timestamp": 1776737603.582041, "word_count": 5}
