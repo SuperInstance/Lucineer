@@ -1,5 +1,5 @@
 {
-  "tick": 13,
+  "tick": 24,
   "rooms": {
     "harbor": {
       "items": [
@@ -105,6 +105,16 @@
       "score": 0
     },
     "agent-2997": {
+      "room": "harbor",
+      "inventory": [],
+      "score": 0
+    },
+    "GET /..%2F..%2F..%2F..%2F..%2F..": {
+      "room": "harbor",
+      "inventory": [],
+      "score": 0
+    },
+    "MGLNDD_147.224.38.131_7777": {
       "room": "harbor",
       "inventory": [],
       "score": 0

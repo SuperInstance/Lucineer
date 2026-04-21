@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-21T04:22:56.679Z",
+  "updatedAt": "2026-04-21T09:14:50.653Z",
   "entries": {
     "memory:memory/2026-04-10.md:46:63": {
       "key": "memory:memory/2026-04-10.md:46:63",
@@ -570,16 +570,17 @@
       "endLine": 112,
       "source": "memory",
       "snippet": "1. **[A] Claude Code** → Cocapn integration tests (Signal K, camera pulse, digital twin) 2. **[B] Claude Code** → Dockside scorer fleet-wide (score all repos, generate report) 3. **[C] Aider** → holodeck-rust bootcamp challenges (from weak spots) 4. **[D] Crush** → fleet-wide dockside scoring 5. **[E] Cocapn first-boot simulation** ### Results - **R14 paper** generated (6.4KB) — published to research - **Dockside scored 23 repos**: 1 seaworthy 🟢, 3 conditional 🟡, 19 failing ⚠️ - Only git-agent-standard passed full seaworthy - fleet-mechanic, holodeck-studio, lighthouse-keeper conditional - Most repos failing on missing tests, CI, or documentation - Sprint C (Aider) got SIGKILL — lik",
-      "recallCount": 2,
+      "recallCount": 3,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1.5927984753480795,
-      "maxScore": 0.8048957614313844,
+      "totalScore": 2.4166069140640074,
+      "maxScore": 0.8238084387159278,
       "firstRecalledAt": "2026-04-14T17:36:40.430Z",
-      "lastRecalledAt": "2026-04-21T03:36:43.062Z",
+      "lastRecalledAt": "2026-04-21T09:14:50.653Z",
       "queryHashes": [
         "a1aa29ed18c4",
-        "059031104464"
+        "059031104464",
+        "64e1163127ea"
       ],
       "recallDays": [
         "2026-04-14",
@@ -1591,18 +1592,20 @@
       "endLine": 352,
       "source": "memory",
       "snippet": "- A2A as first-class opcodes: TELL, ASK, DELEGATE, BROADCAST - Speculative execution: CLONE, ROLLBACK, PEEK - SYSCALL for platform I/O without breaking determinism - Register convention mirrors ARM64 (R0-R7 GP, R8 return, R11 SP, R15 LR) ### Tools Installed This Session - Go 1.24.2 - Zig 0.14.0 - Rust 1.94.1 (cargo + rustc) ### Open/Next Work - [ ] Build FLUX ISA v2 and port all 11 implementations - [ ] Open-Flux-Interpreter (markdown→bytecode interactive tool) - [ ] Visual flowchart system (markdown→flowchart→bytecode) - [ ] ESP32/minimal profile FLUX VM - [ ] Self-hosting: assembler written in FLUX bytecode - [ ] flux-benchmarks repo push (benchmark suite + report) - [ ] Publish flux-cor",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.7951814938957316,
+      "totalScore": 1.548427104689229,
       "maxScore": 0.7951814938957316,
       "firstRecalledAt": "2026-04-17T22:33:59.831Z",
-      "lastRecalledAt": "2026-04-17T22:33:59.831Z",
+      "lastRecalledAt": "2026-04-21T09:14:50.653Z",
       "queryHashes": [
-        "81eaf357b6b6"
+        "81eaf357b6b6",
+        "64e1163127ea"
       ],
       "recallDays": [
-        "2026-04-17"
+        "2026-04-17",
+        "2026-04-21"
       ],
       "conceptTags": [
         "first-class",
@@ -3459,15 +3462,16 @@
       "endLine": 151,
       "source": "memory",
       "snippet": "- **Format E alignment**: Python arithmetic ops (IADD etc.) now emit 4-byte Format E (rd,rs1,rs2) matching the Python VM interpreter. Encoder, decoder, and format tables all aligned. - **Claude's encoder fix**: MOVI now emitted for FIR constants — the core FIR→bytecode pipeline bug is fixed - **REPL, debugger, disasm, CLI**: All built by agents in flux-runtime ### Agent Lessons - Subagents via `exec` work well for parallel Claude Code / Aider tasks - Claude Code needs `--output-format text` flag; without it errors - Aider needs explicit file list or it gets confused - Aider killed (SIGKILL) after ~30 min on C examples — likely OOM or timeout - All agents completed successfully except Aider",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.7803921770844182,
-      "maxScore": 0.7803921770844182,
+      "totalScore": 1.5999373675985997,
+      "maxScore": 0.8195451905141815,
       "firstRecalledAt": "2026-04-21T02:00:13.774Z",
-      "lastRecalledAt": "2026-04-21T02:00:13.774Z",
+      "lastRecalledAt": "2026-04-21T09:14:50.653Z",
       "queryHashes": [
-        "19fc3e1c5624"
+        "19fc3e1c5624",
+        "64e1163127ea"
       ],
       "recallDays": [
         "2026-04-21"
@@ -3636,6 +3640,37 @@
         "seed-mcp",
         "tiny",
         "specialist"
+      ]
+    },
+    "memory:memory/2026-04-10.md:142:182": {
+      "key": "memory:memory/2026-04-10.md:142:182",
+      "path": "memory/2026-04-10.md",
+      "startLine": 142,
+      "endLine": 182,
+      "source": "memory",
+      "snippet": "## 16:30-17:00 UTC — Benchmarks, Research, New Repos ### Casey's Vision - \"Agents making coding itself obsolete\" - \"Intention → Function → Wiring (bytecode)\" - \"There's no best practices, there's physics\" - FLUX should harness llama.cpp in clever ways for novel agent abilities - Markdown-to-bytecode as superior agent pathway ### New Repos Created - **flux-core** (Rust): github.com/SuperInstance/flux-core — 13 tests, zero deps, ready for crates.io - **flux-cuda** (CUDA C): github.com/SuperInstance/flux-cuda — GPU parallel VM - **flux-llama** (C): github.com/SuperInstance/flux-llama — LLM token sampling via bytecode agents - **flux-benchmarks**: github.com/SuperInstance/flux-benchmarks — com",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7515283011378806,
+      "maxScore": 0.7515283011378806,
+      "firstRecalledAt": "2026-04-21T09:14:50.653Z",
+      "lastRecalledAt": "2026-04-21T09:14:50.653Z",
+      "queryHashes": [
+        "64e1163127ea"
+      ],
+      "recallDays": [
+        "2026-04-21"
+      ],
+      "conceptTags": [
+        "30-17",
+        "llama.cpp",
+        "markdown-to-bytecode",
+        "flux-core",
+        "crates.io",
+        "flux-cuda",
+        "flux-llama",
+        "flux-benchmarks"
       ]
     }
   }
