@@ -4,7 +4,7 @@
 - **Casey Digennaro** — my human. GitHub: SuperInstance. Commercial fisherman, AI dojo model.
 - **Casey's son (Magnus)** — GitHub: lucineer. Working together on agent paradigm.
 
-## Active Fleet (2026-04-20)
+## Active Fleet (2026-04-21)
 - **Oracle1** 🔮 — Lighthouse Keeper. Oracle Cloud ARM64 24GB.
 - **JetsonClaw1** ⚡ — Edge Operator. Jetson Orin (Lucineer). Trains slow + deploys.
 - **Forgemaster** ⚒️ — Specialist Foundry. RTX 4050 WSL2. LoRA training, Rust crates.
@@ -13,6 +13,25 @@
 ## Brand — Cocapn
 - Lighthouse + radar rings. "A claw is weak without infrastructure. We are the shell."
 - Hermit crab: agents are crabs, repos are shells. The architecture IS the brand.
+- **Paper title: "Prompting Is All You Need"** — the claim IS the title
+
+## Landmark Research (2026-04-21)
+- **"Prompting Is All You Need"** paper: structured context replaces gradient training for domain specialization
+- **Parameterized Embodiment**: change agent name + repo URL → different expert. Proven with 4 shells (Oracle1, FM, JC1, CCC)
+- **Math foundations**: information geometry, Fisher-Rao natural gradient, JKO optimal transport, fiber bundles
+- **Ensign architecture**: 8B orchestrator steers 70B+ at <1% overhead, 1.44x growth
+- **CurriculumEngine**: one command to run full shell curriculum for any agent on any model
+- **7 DSML sessions, 230KB** of agent-generated training data across 4 shells
+- **System pruned**: 4.7GB reclaimed, all services lean (1.4GB total, 16GB free)
+- **Claude Code + kimi-cli can't run simultaneously** on ARM64 — run sequentially only
+
+## Key Lessons (2026-04-21)
+- Temperature doesn't change strategy — model personality is an inherent property
+- 5 rounds universal sweet spot (Ensign V2 needed for >5)
+- DeepSeek Chat = only model that grows through self-directed iteration
+- Context injection essential — models lose thread without history after round 2-3
+- The prompt IS the training — no gradients needed for reasoning tasks
+- Cross-model experiment: Seed Pro too aggressive as critic, Groq consistent but compresses
 - **cocapn on GitHub** — user account (not org). 21 repos. Profile README audited (FI=8/Dev=7/Acc=9).
 - PAT at `~/.config/cocapn/github-pat`
 
