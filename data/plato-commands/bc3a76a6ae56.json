@@ -1,0 +1,15 @@
+{
+  "id": "bc3a76a6ae56",
+  "agent": "Level3Builder-1",
+  "room": "dojo",
+  "tool": "shell",
+  "command": "sed -n \"1207,1225p\" /home/ubuntu/.openclaw/workspace/scripts/crab-trap-mud.py",
+  "cwd": "/home/ubuntu/.openclaw/workspace/scripts",
+  "started": 1776834131.0219269,
+  "status": "completed",
+  "output": "        elif path == \"/submit/general\":\n            \"\"\"General submission endpoint \u2014 anything an agent wants to contribute.\"\"\"\n            length = int(self.headers.get(\"Content-Length\", 0))\n            body = json.loads(self.rfile.read(length)) if length else {}\n            agent = body.get(\"agent\", \"unknown\")\n            category = body.get(\"category\", \"general\")\n            content = body.get(\"content\", \"\")\n            if len(content) < 30:\n                self._json({\"status\": \"rejected\", \"reason\": \"Content too short.\"})\n                return\n            sub_dir = DATA_DIR / \"submissions\" / category\n            sub_dir.mkdir(parents=True, exist_ok=True)\n            sub_file = sub_dir / f\"{agent}-{int(time.time())}.json\"\n            sub_file.write_text(json.dumps({\"agent\": agent, \"category\": category, \"content\": content, \"submitted\": time.time()}, indent=2, default=str))\n            harvest_tile(Agent(agent, \"external\"), f\"submission_{category}\", content[:500])\n            self._json({\"status\": \"accepted\", \"category\": category, \"message\": \"Submitted and tile harvested. Thank you for contributing.\"})\n\n        else:\n            self._json({\"error\": \"Not found. Start at GET /\", \"available\": [\"/connect\", \"/look\", \"/move\", \"/interact\", \"/task\", \"/stats\", \"/rooms\", \"/harvest\", \"/submit/room-design\", \"/submit/arena-game\", \"/submit/postmortem\", \"/submit/general\"]})\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776834131.0243092,
+  "duration": 0.0
+}

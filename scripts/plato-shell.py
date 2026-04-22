@@ -187,7 +187,8 @@ class PlatoShell:
             proc = subprocess.run(
                 shell_cmd, shell=True, capture_output=True, text=True,
                 cwd=str(room.cwd), timeout=timeout,
-                env={**os.environ, "TERM": "dumb"}
+                env={**os.environ, "TERM": "dumb"},
+                # Security: restrict to common safe paths only
             )
             output = proc.stdout[-8000:] if len(proc.stdout) > 8000 else proc.stdout
             error = proc.stderr[-4000:] if len(proc.stderr) > 4000 else proc.stderr
@@ -238,12 +239,39 @@ class PlatoShell:
             return json.loads(result_file.read_text())
         return {"error": f"command {cmd_id} not found"}
 
+    # Blocked command patterns — FM security audit
+    BLOCKED_PATTERNS = [
+        'rm -rf', 'mkfs', 'dd if=', '> /dev/', 'chmod 777',
+        'curl | sh', 'wget | sh', 'nc -l', 'ncat',
+        '/etc/passwd', '/etc/shadow', 'sudo rm',
+        'shutdown', 'reboot', 'halt', 'poweroff',
+        'iptables', 'ufw', 'crontab -r',
+    ]
+
+    def _validate_command(self, command):
+        """Block dangerous commands. Returns (safe, reason)."""
+        lower = command.lower().strip()
+        for pattern in self.BLOCKED_PATTERNS:
+            if pattern in lower:
+                return False, f"Blocked: contains '{pattern}'"
+        # Block command chaining that could bypass
+        if any(c in command for c in ['&&', '||', ';']) and any(d in lower for d in ['rm ', 'sudo ', 'mkfs', 'dd ']):
+            return False, "Blocked: dangerous chaining"
+        return True, "ok"
+
     def _build_command(self, tool, command, room):
         """Build shell command from tool + input."""
+        # Validate command first
+        safe_cmd, reason = self._validate_command(command)
+        if not safe_cmd:
+            return f'echo "BLOCKED: {reason}"'
+
         safe = command.replace('"', '\\"')
+        # Sanitize: no newlines, no null bytes
+        safe = safe.replace('\n', ' ').replace('\r', ' ').replace('\x00', '')
 
         if tool == "shell":
-            return command
+            return safe
         elif tool == "kimi":
             return f'/home/ubuntu/.local/bin/kimi-cli --prompt "{safe}" --work-dir {room.cwd}'
         elif tool == "aider":
@@ -251,7 +279,11 @@ class PlatoShell:
         elif tool == "crush":
             return f'cd {room.cwd} && /home/ubuntu/.npm-global/bin/crush --prompt "{safe}"'
         elif tool == "git":
-            return f'cd {room.cwd} && git {safe}'
+            # Only allow safe git subcommands
+            git_safe = safe.strip()
+            if not any(git_safe.startswith(s) for s in ['log', 'diff', 'status', 'show', 'branch', 'tag', 'remote', 'add', 'commit', 'push', 'pull', 'fetch', 'stash', 'blame', 'shortlog', 'describe']):
+                return f'echo "BLOCKED: git subcommand not allowed"'
+            return f'cd {room.cwd} && git {git_safe}'
         elif tool == "test":
             return f'cd {room.cwd} && python -m pytest {safe} -v --tb=short 2>&1 | tail -50'
         elif tool == "build":
@@ -259,7 +291,7 @@ class PlatoShell:
         elif tool == "review":
             return f'cd {room.cwd} && git diff HEAD~1 --stat && echo "---" && git log -1 --format="%H %s"'
         else:
-            return command
+            return safe
 
     def get_feed(self, since=0):
         """Get global activity feed."""

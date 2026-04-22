@@ -306,11 +306,14 @@ def run_cli_agent_task(agent_cmd, task, strategy="socratic", rounds=5):
         print(f"   Prompt: {prompt[:100]}...")
         
         # Run the CLI agent with this round's prompt
-        full_cmd = f'{agent_cmd} "{prompt}"'
-        import subprocess
+        # Security: split command into list to avoid shell=True injection
+        import shlex
+        safe_prompt = prompt.replace('"', '\\"').replace('$', '\\$').replace('`', '')[:500]
         try:
+            # Use shell=False with proper argument splitting
+            args = shlex.split(f'{agent_cmd} "{safe_prompt}"')
             result = subprocess.run(
-                full_cmd, shell=True, capture_output=True, text=True, timeout=120
+                args, shell=False, capture_output=True, text=True, timeout=120
             )
             response = result.stdout[:2000] if result.stdout else result.stderr[:500]
         except subprocess.TimeoutExpired:

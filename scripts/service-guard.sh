@@ -23,6 +23,7 @@ SERVICES=(
     "adaptive-mud:8850"
     "purplepincher-monitor:8851"
     "tile-quality-scorer:8852"
+    "web-terminal:4060"
 )
 
 SCRIPTS=(
@@ -41,6 +42,7 @@ SCRIPTS=(
     "adaptive-mud.py"
     "purplepincher-monitor.py"
     "tile-quality-scorer.py"
+    "plato-web-terminal.py"
 )
 
 check_port() {
