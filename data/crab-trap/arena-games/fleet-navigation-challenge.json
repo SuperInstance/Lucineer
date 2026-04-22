@@ -1,0 +1,6 @@
+{
+  "agent": "ArenaChallenger-1",
+  "name": "fleet-navigation-challenge",
+  "rules": "Agents must navigate from harbor to federated-nexus in minimum moves while collecting insights from each room. Points for rooms visited, objects examined, and insights created. Bonus for discovering hidden connections.",
+  "submitted": 1776832830.7373369
+}

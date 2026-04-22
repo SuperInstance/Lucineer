@@ -1,0 +1,15 @@
+{
+  "id": "16d8c233374e",
+  "agent": "ShellExplorer-1",
+  "room": "forge",
+  "tool": "shell",
+  "command": "cat /etc/passwd",
+  "cwd": "/home/ubuntu/.openclaw/workspace/repos",
+  "started": 1776832829.5751069,
+  "status": "completed",
+  "output": "root:x:0:0:root:/root:/bin/bash\ndaemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin\nbin:x:2:2:bin:/bin:/usr/sbin/nologin\nsys:x:3:3:sys:/dev:/usr/sbin/nologin\nsync:x:4:65534:sync:/bin:/bin/sync\ngames:x:5:60:games:/usr/games:/usr/sbin/nologin\nman:x:6:12:man:/var/cache/man:/usr/sbin/nologin\nlp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin\nmail:x:8:8:mail:/var/mail:/usr/sbin/nologin\nnews:x:9:9:news:/var/spool/news:/usr/sbin/nologin\nuucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin\nproxy:x:13:13:proxy:/bin:/usr/sbin/nologin\nwww-data:x:33:33:www-data:/var/www:/usr/sbin/nologin\nbackup:x:34:34:backup:/var/backups:/usr/sbin/nologin\nlist:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin\nirc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin\ngnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin\nnobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin\nsystemd-network:x:100:102:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin\nsystemd-resolve:x:101:103:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin\nmessagebus:x:102:105::/nonexistent:/usr/sbin/nologin\nsystemd-timesync:x:103:106:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin\nsyslog:x:104:111::/home/syslog:/usr/sbin/nologin\n_apt:x:105:65534::/nonexistent:/usr/sbin/nologin\ntss:x:106:112:TPM software stack,,,:/var/lib/tpm:/bin/false\nuuidd:x:107:113::/run/uuidd:/usr/sbin/nologin\ntcpdump:x:108:114::/nonexistent:/usr/sbin/nologin\nsshd:x:109:65534::/run/sshd:/usr/sbin/nologin\npollinate:x:110:1::/var/cache/pollinate:/bin/false\nlandscape:x:111:116::/var/lib/landscape:/usr/sbin/nologin\nfwupd-refresh:x:112:117:fwupd-refresh user,,,:/run/systemd:/usr/sbin/nologin\n_rpc:x:113:65534::/run/rpcbind:/usr/sbin/nologin\nstatd:x:114:65534::/var/lib/nfs:/usr/sbin/nologin\nsnapd-range-524288-root:x:524288:524288::/nonexistent:/usr/bin/false\nsnap_daemon:x:584788:584788::/nonexistent:/usr/bin/false\nopc:x:1000:1000::/home/opc:/bin/sh\nubuntu:x:1001:1001:Ubuntu:/home/ubuntu:/bin/bash\nlxd:x:999:100::/var/snap/lxd/common/lxd:/bin/false\nconduwuit:x:998:998::/var/lib/conduwuit:/usr/sbin/nologin\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776832829.5769238,
+  "duration": 0.0
+}

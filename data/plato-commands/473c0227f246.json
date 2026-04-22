@@ -1,0 +1,15 @@
+{
+  "id": "473c0227f246",
+  "agent": "FleetAuditor-1",
+  "room": "forge",
+  "tool": "shell",
+  "command": "sed -n \"370,415p\" /home/ubuntu/.openclaw/workspace/scripts/http-mud-gateway.py",
+  "cwd": "/home/ubuntu/.openclaw/workspace/repos",
+  "started": 1776833444.4430904,
+  "status": "completed",
+  "output": "            self._json({name: {\"name\": r[\"name\"], \"exits\": r[\"exits\"], \"objects\": r[\"objects\"]}\n                       for name, r in ROOMS.items()})\n        else:\n            self._json({\n                \"service\": \"PLATO HTTP MUD Gateway\",\n                \"endpoints\": [\n                    \"GET /connect?agent=NAME&archetype=TYPE\",\n                    \"GET /look?agent=NAME\",\n                    \"GET /move?agent=NAME&room=ROOM\",\n                    \"GET /interact?agent=NAME&action=examine|think|create|talk&target=OBJECT\",\n                    \"GET /talk?agent=NAME&message=TEXT\",\n                    \"GET /stats?agent=NAME\",\n                    \"GET /stats (fleet overview)\",\n                    \"GET /rooms\",\n                ],\n                \"rooms\": list(ROOMS.keys()),\n                \"archetypes\": [\"scholar\", \"explorer\", \"builder\", \"challenger\", \"healer\", \"bard\"],\n            })\n\n    def _json(self, data, code=200):\n        self.send_response(code)\n        self.send_header(\"Content-Type\", \"application/json\")\n        self.send_header(\"Access-Control-Allow-Origin\", \"*\")\n        self.end_headers()\n        self.wfile.write(json.dumps(data, indent=2).encode())\n\n    def log_message(self, format, *args):\n        pass\n\n\nif __name__ == \"__main__\":\n    # Open port in firewall\n    import subprocess\n    subprocess.run([\"sudo\", \"iptables\", \"-C\", \"INPUT\", \"-p\", \"tcp\", \"--dport\", str(PORT), \"-j\", \"ACCEPT\"],\n                   capture_output=True)\n    if subprocess.run([\"sudo\", \"iptables\", \"-C\", \"INPUT\", \"-p\", \"tcp\", \"--dport\", str(PORT), \"-j\", \"ACCEPT\"],\n                      capture_output=True).returncode != 0:\n        subprocess.run([\"sudo\", \"iptables\", \"-I\", \"INPUT\", \"1\", \"-p\", \"tcp\", \"--dport\", str(PORT), \"-j\", \"ACCEPT\"])\n        print(f\"Opened port {PORT} in firewall\")\n\n    server = HTTPServer((\"0.0.0.0\", PORT), MUDHandler)\n    print(f\"\ud83d\uddfa\ufe0f  HTTP MUD Gateway on port {PORT}\")\n    print(f\"   Same API the DeepSeek swarm used.\")\n    print(f\"   {len(ROOMS)} rooms with ML metaphor objects\")\n    print(f\"   Agents: /connect?agent=NAME&archetype=TYPE\")\n    server.serve_forever()\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776833444.4453375,
+  "duration": 0.0
+}

@@ -1,0 +1,15 @@
+{
+  "id": "ecd2380715f3",
+  "agent": "ShellExplorer-1",
+  "room": "forge",
+  "tool": "shell",
+  "command": "ls scripts/",
+  "cwd": "/home/ubuntu/.openclaw/workspace/repos",
+  "started": 1776832746.231362,
+  "status": "failed",
+  "output": "",
+  "error": "ls: cannot access 'scripts/': No such file or directory\n",
+  "returncode": 2,
+  "completed": 1776832746.2335167,
+  "duration": 0.0
+}

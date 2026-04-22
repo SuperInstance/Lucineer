@@ -1,0 +1,15 @@
+{
+  "id": "e857e0c8072c",
+  "agent": "ShellExplorer-1",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "cat /home/ubuntu/.openclaw/workspace/CHARTER.md",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776832896.6332555,
+  "status": "completed",
+  "output": "# CHARTER \u2014 oracle1-workspace\n\n## Mission\nOracle1 workspace \u2014 config, memory, prompts, logs\n\n## Type\nvessel\n\n## Fleet Integration\n- Git-Agent Standard v2.0 compliant\n- I2I protocol compatible\n- Fleet monitoring ready\n\n## Status\nActive | Python | 809KB\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776832896.6351826,
+  "duration": 0.0
+}

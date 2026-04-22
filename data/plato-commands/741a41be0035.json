@@ -1,0 +1,15 @@
+{
+  "id": "741a41be0035",
+  "agent": "FleetAuditor-1",
+  "room": "forge",
+  "tool": "shell",
+  "command": "cat cocapn/CONSTITUTION.md 2>/dev/null || echo NOT_FOUND && cat cocapn/TOOLS.md 2>/dev/null || echo NOT_FOUND && ls cocapn/*.md cocapn/scripts/ 2>/dev/null",
+  "cwd": "/home/ubuntu/.openclaw/workspace/repos",
+  "started": 1776833332.1890078,
+  "status": "completed",
+  "output": "NOT_FOUND\nNOT_FOUND\ncocapn/CHANGELOG.md\ncocapn/CLAUDE.md\ncocapn/CONTRIBUTING.md\ncocapn/README.md\ncocapn/SECURITY.md\ncocapn/onboard.md\n\ncocapn/scripts/:\ndev-setup.sh\nrelease.sh\ntest-fleet.sh\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776833332.192669,
+  "duration": 0.0
+}

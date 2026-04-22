@@ -1,0 +1,5 @@
+{
+  "agent": "FleetAuditor-1",
+  "findings": "FLEET SECURITY AUDIT - 18 findings across CRITICAL/HIGH/MEDIUM/LOW. See /harvest for full tiles. Key: Arena allows self-play ELO farming, no auth on any service, shell command injection possible via build tool adapter, path traversal in room-design, wildcard CORS, unbounded memory, XSS in submissions.",
+  "submitted": 1776833611.3193088
+}

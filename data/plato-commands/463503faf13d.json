@@ -1,0 +1,15 @@
+{
+  "id": "463503faf13d",
+  "agent": "FleetAuditor-1",
+  "room": "forge",
+  "tool": "shell",
+  "command": "ls -la",
+  "cwd": "/home/ubuntu/.openclaw/workspace/repos",
+  "started": 1776833300.9977891,
+  "status": "completed",
+  "output": "total 140\ndrwxrwxr-x 35 ubuntu ubuntu 4096 Apr 20 23:16 .\ndrwxrwxr-x 40 ubuntu ubuntu 4096 Apr 22 03:50 ..\ndrwxrwxr-x  3 ubuntu ubuntu 4096 Apr 18 18:12 AIR\ndrwxrwxr-x  9 ubuntu ubuntu 4096 Apr 18 19:30 DeepGEMM\ndrwxrwxr-x  4 ubuntu ubuntu 4096 Apr 10 15:01 Equipment-Consensus-Engine\ndrwxrwxr-x  4 ubuntu ubuntu 4096 Apr 10 15:01 Equipment-Swarm-Coordinator\ndrwxrwxr-x 14 ubuntu ubuntu 4096 Apr 18 19:29 MuOxi\ndrwxrwxr-x  4 ubuntu ubuntu 4096 Apr 10 15:01 Mycelium\ndrwxrwxr-x 10 ubuntu ubuntu 4096 Apr 18 19:30 SageAttention\ndrwxrwxr-x 17 ubuntu ubuntu 4096 Apr 18 17:53 SmartCRDT\ndrwxrwxr-x  5 ubuntu ubuntu 4096 Apr 10 15:01 agentic-compiler\ndrwxrwxr-x  6 ubuntu ubuntu 4096 Apr 10 14:23 ai-character-sdk\ndrwxrwxr-x  3 ubuntu ubuntu 4096 Apr 18 18:12 bordercollie\ndrwxrwxr-x 13 ubuntu ubuntu 4096 Apr 10 10:30 cocapn\ndrwxrwxr-x  9 ubuntu ubuntu 4096 Apr 10 10:30 constraint-theory-core\ndrwxrwxr-x 13 ubuntu ubuntu 4096 Apr 10 10:30 craftmind\ndrwxrwxr-x  7 ubuntu ubuntu 4096 Apr 10 14:23 cudaclaw\ndrwxrwxr-x  5 ubuntu ubuntu 4096 Apr 10 10:30 deckboss\ndrwxrwxr-x  8 ubuntu ubuntu 4096 Apr 10 15:01 fishinglog-ai\ndrwxrwxr-x  4 ubuntu ubuntu 4096 Apr 10 10:30 fleet-orchestrator\ndrwxrwxr-x  3 ubuntu ubuntu 4096 Apr 20 23:16 fleet-status\ndrwxrwxr-x  6 ubuntu ubuntu 4096 Apr 10 15:26 flux\ndrwxrwxr-x 10 ubuntu ubuntu 4096 Apr 10 15:26 flux-os\ndrwxrwxr-x 19 ubuntu ubuntu 4096 Apr 12 13:58 flux-runtime\ndrwxrwxr-x 10 ubuntu ubuntu 4096 Apr 18 19:21 flux-runtime-c\ndrwxrwxr-x  8 ubuntu ubuntu 4096 Apr 18 18:12 git-agent\ndrwxrwxr-x  7 ubuntu ubuntu 4096 Apr 10 14:23 hierarchical-memory\ndrwxrwxr-x  4 ubuntu ubuntu 4096 Apr 20 22:16 holodeck-core\ndrwxrwxr-x  9 ubuntu ubuntu 4096 Apr 20 22:16 holodeck-studio\ndrwxrwxr-x  9 ubuntu ubuntu 4096 Apr 11 01:44 iron-to-iron\ndrwxrwxr-x  5 ubuntu ubuntu 4096 Apr 14 10:30 lighthouse-monitor\ndrwxrwxr-x  6 ubuntu ubuntu 4096 Apr 18 19:29 mud-mcp\ndrwxrwxr-x  7 ubuntu ubuntu 4096 Apr 20 22:46 plato-mud-server\ndrwxrwxr-x 43 ubuntu ubuntu 4096 Apr 17 22:36 superinstance-papers\ndrwxrwxr-x 14 ubuntu ubuntu 4096 Apr 10 15:01 superpowers\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776833301.0003214,
+  "duration": 0.0
+}

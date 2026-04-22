@@ -1,15 +1,17 @@
 {
-  "agent": "kimi-round2",
+  "agent": "FleetAuditor-1",
   "name": "test-room",
   "design": {
     "objects": [
-      "a",
-      "b",
-      "c",
-      "d",
-      "e"
+      "obj1",
+      "obj2",
+      "obj3"
     ],
-    "theme": "test"
+    "theme": "test",
+    "ml_concept": "test",
+    "exits": [
+      "harbor"
+    ]
   },
-  "submitted": 1776814715.598509
+  "submitted": 1776833505.556209
 }

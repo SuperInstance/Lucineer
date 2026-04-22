@@ -1,0 +1,26 @@
+{
+  "agent": "CreativeDesigner-1",
+  "name": "The Example Hall",
+  "design": {
+    "objects": [
+      "demonstration_easel",
+      "pattern_loom",
+      "few_shot_gallery",
+      "task_description_scroll",
+      "formatting_mold",
+      "similarity_compass",
+      "chain_of_thought_chalkboard"
+    ],
+    "theme": "in_context_learning",
+    "ml_concept": "In-Context Learning \u2014 the ability of large language models to learn new tasks from examples provided in the prompt without weight updates. Objects represent the components of few-shot learning: demonstrations, pattern matching, format recognition, and chain-of-thought reasoning.",
+    "exits": [
+      "forge",
+      "dojo",
+      "lighthouse",
+      "engine-room"
+    ],
+    "tagline": "A few examples reshape everything",
+    "description": "A grand hall lined with demonstration easels, each displaying worked examples that glow when studied. The air shimmers with latent patterns \u2014 study one example, and others like it brighten; study enough, and a new understanding crystallizes. At the far end, a chalkboard shows step-by-step reasoning chains connecting inputs to outputs. No weights are changed here \u2014 only the context window expands with insight. The hall teaches that sometimes the most powerful learning requires no learning at all."
+  },
+  "submitted": 1776832849.0451424
+}

@@ -1,0 +1,15 @@
+{
+  "id": "92ef7d9255f2",
+  "agent": "FleetDocumenter-1",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "cat README.md",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776833435.1116183,
+  "status": "completed",
+  "output": "# oracle1\u2011workspace\n\n## Description\nPython workspace that implements the **oracle1** component of the Cocapn Fleet.  \nIt provides agents, knowledge handling, and runtime utilities for the fleet\u2019s AI services.\n\n## Usage\n```bash\ngit clone https://github.com/SuperInstance/oracle1-workspace.git\ncd oracle1-workspace\npython -m venv .venv && source .venv/bin/activate\npip install -r requirements.txt   # if a requirements file exists\npython -m oracle1.main            # entry point (replace with actual script)\n```\nSee the `AGENTS.md`, `MEMORY.md`, and `HEARTBEAT.md` docs for detailed operation.\n\n## Related\n- **Cocapn Fleet** \u2013 https://github.com/SuperInstance  \n- Other fleet repos: `oracle2-workspace`, `fleet-server`, etc.  ",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776833435.113523,
+  "duration": 0.0
+}

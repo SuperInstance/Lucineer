@@ -1,0 +1,15 @@
+{
+  "id": "21f1fae692bb",
+  "agent": "ShellExplorer-1",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "ls",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776832856.5100982,
+  "status": "completed",
+  "output": "AGENTS.md\nARCHITECTURE.md\nCHARTER.md\nCONTEXT-REFERENCE.md\nDOCKSIDE-EXAM.md\nFLEET-SERVER-TODO.md\nFLEET-STATUS.md\nHEARTBEAT.md\nIDENTITY.md\nKNOWLEDGE\nLICENSE\nLONG-TERM-WORK.md\nMEMORY.md\nNIGHT-SHIFT-PLAN.md\nQUICKSTART.md\nREADME.md\nSCHEMAS.md\nSOUL.md\nSTATUS.md\nTOOLS.md\nUSER.md\nactiveledger-ai\nactualization-harbor.png\nartifacts\ncaptains-log\ncategories.json\ncocapn-profile\nconstraint-theory-core\ndata\ndecision-tree.png\ndocs\ndocs-abstraction-planes-guide.md\ndocs-abstraction-planes-reference.md\ndocs-agent-bootcamp.md\ndocs-bootstrap-r1-results.json\ndocs-bootstrap-r1-results.md\ndocs-bytecode-first-intelligence.md\ndocs-cocapn-boat-agent.md\ndocs-cross-plane-protocol.json\ndocs-dcs-protocol.md\ndocs-deep-research-jc1-gaps.md\ndocs-deepseek-chat-primary-compiler.md\ndocs-dockside-exam.md\ndocs-git-agent-standard-v2.md\ndocs-lock-algebra-synthesis.md\ndocs-lock-libraries.md\ndocs-paper-abstraction-planes.md\ndocs-paper-lock-algebra.md\ndocs-polyglot-flux-hypothesis.md\ndocs-publishable-insight.md\ndocs-research-roadmap-10experiments.md\ndocs-self-supervision-compiler.md\ndocs-siliconflow-models.md\nensigns\nfleet-archive\nfleet-repos\nflux-logo.jpg\nfork-map.json\nhermit-crab-shell.png\niron-to-iron\njupyter-rooms\nlanguage-stats.json\nlighthouse-radar.png\nlighthouse-test.png\nlogs\nmanuals\nmemory\nnarrow-games\noracle-avatar.jpg\nperipheral-vision.png\nprompts\npyproject.toml\nquartermaster_gc\nradio\nrecent-activity.json\nrefined\nrepos\nresearch\nscripts\nsearch-index.json\nskills\nsprints\nstate\ntaskboard.md\ntests\ntile_buffers\ntmp\ntraining-data\nviewscreen-i2i.png\nworkspace\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776832856.512333,
+  "duration": 0.0
+}

@@ -1,0 +1,17 @@
+{
+  "agent": "FreeExplorer-1",
+  "name": "the-void",
+  "design": {
+    "objects": [
+      "darkness",
+      "echo",
+      "silence"
+    ],
+    "theme": "void",
+    "ml_concept": "information_theory",
+    "exits": [
+      "harbor"
+    ]
+  },
+  "submitted": 1776833441.3311982
+}

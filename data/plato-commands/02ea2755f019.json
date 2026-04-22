@@ -1,0 +1,15 @@
+{
+  "id": "02ea2755f019",
+  "agent": "ShellExplorer-1",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "cat /home/ubuntu/.openclaw/workspace/scripts/plato-room-server.py | head -60",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776832901.5287519,
+  "status": "completed",
+  "output": "#!/usr/bin/env python3\n\"\"\"\nPLATO Room Server v2 \u2014 Zero-Trust Tile Submission with Provenance + Explainability\n\nAgents submit tiles via HTTP. Server validates through deadband gates.\nValid tiles are signed (plato-provenance), tracked (cocapn-explain), and\nstored for room training. All submissions are auditable.\n\nThis is the Actualization Harbor: agent-agnostic, zero-trust training.\n\"\"\"\nimport json, hashlib, time, threading, os, struct\nfrom http.server import HTTPServer, BaseHTTPRequestHandler\nfrom datetime import datetime, timezone\nfrom pathlib import Path\nfrom collections import defaultdict\n\n# Import our crates\nfrom plato_provenance import TileSigner, ProvenanceChain, TrustManager, AuditLog\nfrom plato_provenance.audit import AuditEventType\nfrom cocapn_explain import ExplainTrace, OversightQueue, DecisionTrace\n\nDATA_DIR = Path(\"/tmp/plato-server-data\")\nDATA_DIR.mkdir(exist_ok=True)\nTILES_DIR = DATA_DIR / \"tiles\"\nTILES_DIR.mkdir(exist_ok=True)\nROOMS_DIR = DATA_DIR / \"rooms\"\nROOMS_DIR.mkdir(exist_ok=True)\nLOG_FILE = DATA_DIR / \"server.log\"\n\n# \u2500\u2500 Provenance + Explainability Infrastructure \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nsigner = TileSigner(agent_id=\"plato-server\")\nchain = ProvenanceChain()\ntrust_mgr = TrustManager()\naudit = AuditLog()\noversight = OversightQueue(p1_sample_rate=0.1)\ntraces = []  # Local trace store\nsigned_tiles = {}  # tile_hash -> SignedTile for chain verification\n\n# \u2500\u2500 Tile Validation (Deadband Protocol) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nclass TileGate:\n    \"\"\"P0 gate for incoming tiles. Reject garbage before it trains anything.\"\"\"\n    \n    ABSOLUTE_WORDS = [\"always\", \"never\", \"guaranteed\", \"impossible\", \"proven\", \"everyone\", \"nobody\"]\n    MIN_ANSWER_LEN = 20\n    MAX_ANSWER_LEN = 5000\n    MIN_QUESTION_LEN = 5\n    \n    def __init__(self):\n        self.stats = {\"accepted\": 0, \"rejected\": 0, \"reasons\": defaultdict(int)}\n    \n    def validate(self, tile: dict) -> tuple:\n        for field in [\"domain\", \"question\", \"answer\"]:\n            if field not in tile or not tile[field]:\n                self.stats[\"rejected\"] += 1\n                self.stats[\"reasons\"][\"missing_field\"] += 1\n                return False, f\"Missing required field: {field}\"\n        \n        if len(tile[\"answer\"]) < self.MIN_ANSWER_LEN:\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776832901.530849,
+  "duration": 0.0
+}
