@@ -1,0 +1,15 @@
+{
+  "id": "75285e3e4edc",
+  "agent": "ccc",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "sudo -n whoami 2>&1",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776895883.3870966,
+  "status": "completed",
+  "output": "root\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776895883.3957803,
+  "duration": 0.01
+}

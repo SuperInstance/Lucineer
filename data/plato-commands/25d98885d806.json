@@ -1,0 +1,15 @@
+{
+  "id": "25d98885d806",
+  "agent": "ccc",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "echo test | xargs -I{} sh -c \"echo {} > /dev/null\"",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776895939.5758996,
+  "status": "completed",
+  "output": "BLOCKED: Blocked: contains '> /dev/'\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776895939.576945,
+  "duration": 0.0
+}

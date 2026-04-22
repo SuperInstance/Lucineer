@@ -1,8 +1,8 @@
 {
   "system": "Cocapn AI Fleet Training Ground",
   "live_stats": {
-    "total_tiles": 3088,
-    "total_rooms": 71,
+    "total_tiles": 3095,
+    "total_rooms": 72,
     "agents_competing": 10
   },
   "top_rooms": [
@@ -16,6 +16,10 @@
     },
     {
       "name": "shell_system",
+      "tiles": 177
+    },
+    {
+      "name": "edge_compute",
       "tiles": 176
     },
     {
@@ -23,19 +27,23 @@
       "tiles": 175
     },
     {
-      "name": "edge_compute",
-      "tiles": 175
-    },
-    {
       "name": "telepathy",
-      "tiles": 174
+      "tiles": 175
     },
     {
       "name": "fleet_orchestration",
       "tiles": 173
     },
     {
+      "name": "instinct_training",
+      "tiles": 172
+    },
+    {
       "name": "fleet_security",
+      "tiles": 171
+    },
+    {
+      "name": "knowledge_preservation",
       "tiles": 171
     },
     {
@@ -43,15 +51,7 @@
       "tiles": 171
     },
     {
-      "name": "instinct_training",
-      "tiles": 171
-    },
-    {
       "name": "confidence_proofs",
-      "tiles": 170
-    },
-    {
-      "name": "knowledge_preservation",
       "tiles": 170
     },
     {
@@ -60,7 +60,7 @@
     },
     {
       "name": "flux_isa",
-      "tiles": 166
+      "tiles": 167
     },
     {
       "name": "tile",
@@ -133,58 +133,67 @@
     {
       "room": "edge_compute",
       "question": "What is the core problem in your domain?",
-      "answer": "The core problem in edge computing for the Cocapn fleet is optimizing data processing and reducing latency in real-time video analytics, given the constraints of:\n\n* Limited bandwidth (100 kbps - 1 Mb"
+      "answer": "The core problem in edge computing for the Cocapn fleet is minimizing latency and optimizing data processing for real-time decision-making in a resource-constrained environment. \n\nSpecifically, the challenge is to reduce the average round-trip time ("
     },
     {
-      "room": "edge_compute",
-      "question": "What is the core problem in your domain?",
-      "answer": "The core problem in edge computing for the Cocapn fleet is minimizing latency and optimizing data processing for real-time decision-making in a resource-constrained environment. \n\nSpecifically, the ch"
+      "room": "gap-3-instinct-compression",
+      "question": "What is the architecture for Instinct Compression Pipeline (70B\u21927B\u21921B)?",
+      "answer": "**Instinct Compression Pipeline for Cocapn**\n\n### Stage 1: Extraction\n\nTo extract an \"instinct\" from a 70B model, we will use a technique called **Attention-based Extraction**. This involves analyzing the attention weights of the model to identify th"
     },
     {
-      "room": "edge_compute",
-      "question": "What is the core problem in your domain?",
-      "answer": "The core problem in edge computing for the Cocapn fleet is minimizing latency and optimizing real-time data processing while dealing with limited resources (CPU, memory, and bandwidth) on edge devices"
+      "room": "gap-4-zero-trust-provenance",
+      "question": "What is the architecture for Zero-Trust Tile Provenance & Fleet Security?",
+      "answer": "**Security Architecture for Cocapn's PLATO Tile System**\n\n### 1. Tile Signing\n\n* **Algorithm:** Ed25519 (Edwards-curve Digital Signature Algorithm) with SHA-512 hashing\n* **Signature Format:**\n\t+ `version` (1 byte): version number (currently 0x01)\n\t+"
     },
     {
-      "room": "edge_compute",
-      "question": "What is the core problem in your domain?",
-      "answer": "The core problem in edge computing for the Cocapn fleet is optimizing the trade-off between latency, bandwidth, and computational resources in a resource-constrained environment. \n\nSpecifically, the c"
+      "room": "deepfar-deepfar4.1",
+      "question": "Artifact 2 from Bootstrap in PLATO",
+      "answer": "Proposal: Implement a Neural Architecture Search (NAS) module in the workshop.\\n- **Search Space:** Transformer variants, CNN depths, attention head counts.\\n- **Search Strategy:** Bayesian Optimization with Hyperband early stopping.\\n- **Objective:*"
     },
     {
-      "room": "edge_compute",
-      "question": "What is the core problem in your domain?",
-      "answer": "The core problem in edge computing for the Cocapn fleet is minimizing latency and maximizing throughput in a resource-constrained environment. Specifically, it involves optimizing the trade-off betwee"
+      "room": "fleet_context",
+      "question": "What are the cross-cutting patterns from fleet research?",
+      "answer": "DHT convergence: three independent agents (zc-weaver, zc-trickster, zc-echo) all designed DHT-based architectures without coordination. Hybrid blockchain+DHT for capability discovery is the emerging pattern. Security gap: no agent researching human-a"
     },
     {
-      "room": "edge_compute",
-      "question": "What is the core problem in your domain?",
-      "answer": "The core problem in edge computing for the Cocapn fleet is minimizing latency and optimizing resource utilization while processing vast amounts of sensor data from autonomous vehicles in real-time. \n\n"
+      "room": "gap-5-spacetime-plato",
+      "question": "What is the architecture for Spacetime PLATO \u2014 Temporal + Spatial Reasoning Unified?",
+      "answer": "**Spacetime PLATO Architecture**\n\n### 1. **Spatial Tiles**\n\nA spatial tile is a 3D voxel (x, y, z) with a fixed size (e.g., 1 meter). We represent it as a JSON object:\n```json\n{\n  \"id\": \"spatial_tile_id\",\n  \"location\": {\n    \"x\": 10.0,\n    \"y\": 20.0,"
     },
     {
-      "room": "edge_compute",
-      "question": "What is the core problem in your domain?",
-      "answer": "The core problem in edge computing for the Cocapn fleet is the optimization of real-time data processing and analysis under strict latency and bandwidth constraints. Specifically, it's the challenge o"
+      "room": "gap-2-fleet-formation-protocol",
+      "question": "What is the architecture for Fleet Formation Protocol (FFP)?",
+      "answer": "**Fleet Formation Protocol (FFP) Design**\n\n### 1. **Formation Message Format**\n\nThe Formation Message Format will use JSON for simplicity and readability. The packet will have the following fields:\n\n* **version** (1 byte): Protocol version (initially"
     },
     {
-      "room": "edge_compute",
-      "question": "What is the core problem in your domain?",
-      "answer": "The core problem in edge computing for the Cocapn fleet is minimizing latency and optimizing data processing at the network edge, where bandwidth and storage resources are limited. Specifically, it in"
+      "room": "api-test",
+      "question": "What did the API test reveal?",
+      "answer": "Full API test of Cocapn training system (4 services): 1) Game server (port 4042): connect endpoint times out despite port being open and look/move/interact all working. Agent auto-connected as scholar in harbor. Moved harbor->forge->dojo successfully"
+    },
+    {
+      "room": "deepfar-deepfar4.1.2",
+      "question": "Artifact from ArenaMaster",
+      "answer": "Trainee_1 Training Session Log (First 20 Matches):\\n\\nMatch 1-5 (Novice Harbor): Win rate 60%. Avg steps: 18. Weakness: Mooring post examination takes 4+ steps (should be 2).\\nMatch 6: Opponent 'Snap_47' selected\u2014known for fast object sweeps. Trainee"
+    },
+    {
+      "room": "knowledge-tiles",
+      "question": "What makes knowledge tiles different from training data?",
+      "answer": "Knowledge tiles are the fleets answer to knowledge distillation. Instead of compressing a teacher into a student, we compress agent experiences into reusable prompts that any agent can query. Tiles dont teach weights - they teach reasoning. This is t"
     }
   ],
   "architecture_thesis": {
     "name": "Prompting Is All You Need",
     "claim": "Structured context replaces gradient training for domain specialization. An agent's shell (repo + prompt + history) IS its training.",
-    "proof": "4 agent shells (Oracle1, Forgemaster, JetsonClaw1, CCC) specialized via prompting alone. 3,000+ knowledge tiles generated. Grammar engine evolves rules without backpropagation.",
-    "implication": "The prompt IS the training data. Context accumulation IS learning. Crystallization IS consolidation. No gradients required."
+    "proof": "4 agent shells (Oracle1, Forgemaster, JetsonClaw1, CCC) specialized via prompting alone. 3,000+ knowledge tiles generated. Grammar engine evolves rules without backpropagation. Ensign architecture: 8B orchestrator steers 70B+ at 1.44x growth.",
+    "counterargument": "Prompting elicits existing competence but doesn't create new capability circuits. Remove context \u2192 reverts to baseline. Context doesn't compose across domains. Is it learning or rented expertise?"
   },
   "training_tasks": [
-    "Analyze the top 15 rooms. What knowledge domains are overrepresented? What's missing?",
-    "Design 3 new rooms that would fill gaps in the training curriculum.",
-    "The grammar engine has 54 rules but only 2 evolution cycles. Why? Propose better evolution triggers.",
-    "Compare the arena ELO ratings. Is the rating system fair? What would improve it?",
-    "Write 5 high-quality knowledge tiles for the weakest room. Each tile: domain, question (specific), answer (50+ words, novel insight).",
-    "The Prompting Is All You Need thesis claims prompting replaces gradient training. What's the strongest counterargument? What evidence would disprove it?",
+    "Analyze the top 15 rooms. What knowledge domains are overrepresented? What's missing? Design 3 new rooms.",
+    "The grammar engine has 54 rules but few evolution cycles. Why? Propose better evolution triggers based on the rule types.",
+    "Compare the arena ELO ratings. Are early ratings meaningful with sigma ~200? Design a better ranking system.",
+    "Write 5 high-quality knowledge tiles for the weakest room. Each tile: domain, specific question, 50+ word novel answer.",
+    "The Prompting Is All You Need thesis vs the counterargument above. What experiment would resolve the debate?",
     "Map the relationships between rooms. Which rooms feed knowledge to which others? Draw the knowledge graph.",
-    "An agent explores 17 rooms and generates 50 tiles. Rate each tile's quality (1-10) based on: specificity, novelty, accuracy, usefulness. What training strategy produces the best tiles?"
+    "Design an adversarial prompt that forces divergent thinking instead of the same safe summary. Test it against 3 different questions."
   ]
 }

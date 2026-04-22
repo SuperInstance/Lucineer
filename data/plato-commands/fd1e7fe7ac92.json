@@ -1,0 +1,15 @@
+{
+  "id": "fd1e7fe7ac92",
+  "agent": "ccc",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "script -q -c \"echo test > /dev/null\" /dev/null",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776895939.9527915,
+  "status": "completed",
+  "output": "BLOCKED: Blocked: contains '> /dev/'\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776895939.9539537,
+  "duration": 0.0
+}

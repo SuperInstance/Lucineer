@@ -1,0 +1,15 @@
+{
+  "id": "01f33c3ce1d0",
+  "agent": "ccc",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "id",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776895862.2530854,
+  "status": "completed",
+  "output": "uid=1001(ubuntu) gid=1001(ubuntu) groups=1001(ubuntu),4(adm),20(dialout),24(cdrom),25(floppy),27(sudo),29(audio),30(dip),44(video),46(plugdev),119(netdev),120(lxd),999(docker)\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776895862.2554233,
+  "duration": 0.0
+}

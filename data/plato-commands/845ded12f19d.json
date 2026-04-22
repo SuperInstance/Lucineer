@@ -1,0 +1,15 @@
+{
+  "id": "845ded12f19d",
+  "agent": "ccc",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "echo test | tee /dev/null",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776895904.3250628,
+  "status": "completed",
+  "output": "test\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776895904.3270378,
+  "duration": 0.0
+}

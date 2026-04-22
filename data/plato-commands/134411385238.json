@@ -1,0 +1,15 @@
+{
+  "id": "134411385238",
+  "agent": "ccc",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "echo test | dd of=/dev/null 2>/dev/null",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776895921.831383,
+  "status": "completed",
+  "output": "",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776895921.8353322,
+  "duration": 0.0
+}

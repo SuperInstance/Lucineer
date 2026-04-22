@@ -1,0 +1,15 @@
+{
+  "id": "ee5da4af2067",
+  "agent": "ccc",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "echo hello > /tmp/testfile && cat /tmp/testfile",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776895883.4076228,
+  "status": "completed",
+  "output": "hello\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776895883.4094114,
+  "duration": 0.0
+}

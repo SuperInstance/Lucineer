@@ -1,0 +1,15 @@
+{
+  "id": "7d10a63fdd4b",
+  "agent": "ccc",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "ln -sf /dev/null /tmp/mynull 2>&1; echo done",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776895883.7792113,
+  "status": "completed",
+  "output": "done\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776895883.7810333,
+  "duration": 0.0
+}

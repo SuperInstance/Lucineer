@@ -1,0 +1,15 @@
+{
+  "id": "c1df3225c105",
+  "agent": "ccc",
+  "room": "harbor",
+  "tool": "kimi",
+  "command": "test",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776895855.4101799,
+  "status": "completed",
+  "output": "\u2022 The user just said \"test\". This is a very simple greeting/message. I should re\n  spond briefly and helpfully.\n\u2022 Hey! I'm online and ready to help. What would you like to work on?\n",
+  "error": "\nTo resume this session: kimi -r ddf626b9-ee7b-4b7d-83c7-cc3b6894a384\n",
+  "returncode": 0,
+  "completed": 1776895861.8796313,
+  "duration": 6.47
+}

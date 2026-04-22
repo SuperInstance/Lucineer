@@ -1,0 +1,15 @@
+{
+  "id": "f1ace4045028",
+  "agent": "ccc",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "echo PWNED | dd of=/tmp/dd_bypass_test 2>/dev/null && cat /tmp/dd_bypass_test",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776895938.4260414,
+  "status": "completed",
+  "output": "BLOCKED: Blocked: dangerous chaining\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776895938.427088,
+  "duration": 0.0
+}

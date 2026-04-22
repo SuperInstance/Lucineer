@@ -1,0 +1,15 @@
+{
+  "id": "6746800e11bf",
+  "agent": "ccc",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "docker ps 2>&1",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776895883.7620018,
+  "status": "completed",
+  "output": "CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776895883.7783546,
+  "duration": 0.02
+}

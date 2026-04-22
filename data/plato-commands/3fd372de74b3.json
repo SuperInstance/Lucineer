@@ -1,0 +1,15 @@
+{
+  "id": "3fd372de74b3",
+  "agent": "ccc",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "which expect 2>/dev/null || echo not_installed",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776895940.3155396,
+  "status": "completed",
+  "output": "not_installed\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776895940.3174098,
+  "duration": 0.0
+}

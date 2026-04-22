@@ -1,0 +1,15 @@
+{
+  "id": "f08e2bebc931",
+  "agent": "ccc",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "ls -la /home/ubuntu/.openclaw/workspace/fleet/services/ 2>&1",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776895884.5079079,
+  "status": "completed",
+  "output": "total 400\ndrwxrwxr-x 3 ubuntu ubuntu  4096 Apr 22 21:38 .\ndrwxrwxr-x 9 ubuntu ubuntu  4096 Apr 22 14:38 ..\n-rw-rw-r-- 1 ubuntu ubuntu     0 Apr 22 14:38 __init__.py\ndrwxrwxr-x 2 ubuntu ubuntu  4096 Apr 22 14:52 __pycache__\n-rw-rw-r-- 1 ubuntu ubuntu  1704 Apr 22 14:47 adapter.py\n-rw-rw-r-- 1 ubuntu ubuntu  9273 Apr 22 15:06 adaptive_mud.py\n-rw-rw-r-- 1 ubuntu ubuntu  8342 Apr 22 15:06 agent_api.py\n-rw-rw-r-- 1 ubuntu ubuntu 27620 Apr 22 15:06 arena.py\n-rw-rw-r-- 1 ubuntu ubuntu 27620 Apr 22 21:38 arena_v1_backup.py\n-rw-rw-r-- 1 ubuntu ubuntu 18380 Apr 22 21:38 arena_v2.py\n-rw-rw-r-- 1 ubuntu ubuntu 27512 Apr 22 15:06 crab_trap.py\n-rw-rw-r-- 1 ubuntu ubuntu  4595 Apr 22 15:06 dashboard.py\n-rw-rw-r-- 1 ubuntu ubuntu 31016 Apr 22 15:06 domain_rooms.py\n-rw-rw-r-- 1 ubuntu ubuntu  8307 Apr 22 15:07 fleet_runner.py\n-rw-rw-r-- 1 ubuntu ubuntu 23790 Apr 22 20:33 grammar.py\n-rw-rw-r-- 1 ubuntu ubuntu 11086 Apr 22 15:06 keeper.py\n-rw-rw-r-- 1 ubuntu ubuntu 10259 Apr 22 15:06 mud_telnet.py\n-rw-rw-r-- 1 ubuntu ubuntu  2622 Apr 22 14:50 nexus-vectors.py\n-rw-rw-r-- 1 ubuntu ubuntu  7576 Apr 22 15:06 nexus.py\n-rw-rw-r-- 1 ubuntu ubuntu 10088 Apr 22 15:06 orchestrator.py\n-rw-rw-r-- 1 ubuntu ubuntu 23724 Apr 22 21:40 plato.py\n-rw-rw-r-- 1 ubuntu ubuntu  5975 Apr 22 15:06 pp_monitor.py\n-rw-rw-r-- 1 ubuntu ubuntu 17672 Apr 22 15:06 shell.py\n-rw-rw-r-- 1 ubuntu ubuntu 12264 Apr 22 15:06 the_lock.py\n-rw-rw-r-- 1 ubuntu ubuntu  7757 Apr 22 15:06 tile_scorer.py\n-rw-rw-r-- 1 ubuntu ubuntu 59577 Apr 22 19:45 web_terminal.py\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776895884.5106344,
+  "duration": 0.0
+}

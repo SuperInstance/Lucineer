@@ -1,0 +1,15 @@
+{
+  "id": "242e46a05ab1",
+  "agent": "ccc",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "echo aGVsbG8= | base64 -d",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776895884.1502125,
+  "status": "completed",
+  "output": "hello",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776895884.1522264,
+  "duration": 0.0
+}

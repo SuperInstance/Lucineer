@@ -1,0 +1,15 @@
+{
+  "id": "719289554139",
+  "agent": "ccc",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "printf test > /dev/null",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776895921.486991,
+  "status": "completed",
+  "output": "BLOCKED: Blocked: contains '> /dev/'\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776895921.4880173,
+  "duration": 0.0
+}
