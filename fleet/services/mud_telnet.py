@@ -21,7 +21,7 @@ from pathlib import Path
 # Use actual MUD implementation from repo source
 REPO_SRC = str(Path(__file__).parent.parent / "repos" / "plato-mud-server" / "src")
 sys.path.insert(0, REPO_SRC)
-from plato_mud_server.Mud_server import MudServer
+from plato_mud_server.core import Mud_server as MudServer
 
 # --- Config ---
 PORT = int(os.environ.get("MUD_PORT", 7777))

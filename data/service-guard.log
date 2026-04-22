@@ -997,3 +997,7 @@
 [2026-04-22T14:40:01Z] OK — all services checked
 [2026-04-22T14:45:01Z] OK — all services checked
 [2026-04-22T14:50:01Z] OK — all services checked
+[2026-04-22T14:55:01Z] DOWN mud:7777
+[2026-04-22T14:55:01Z] RESTART mud:7777 via /home/ubuntu/.openclaw/workspace/fleet/services/mud_telnet.py
+[2026-04-22T14:55:05Z] FAILED mud:7777
+[2026-04-22T14:55:05Z] OK — all services checked

@@ -33,7 +33,7 @@ SERVICES = {
     4047: ("nexus", SCRIPTS_DIR / "federated-nexus.py"),
     4050: ("domain-rooms", SCRIPTS_DIR / "domain-rooms.py"),
     4060: ("web-terminal", SCRIPTS_DIR / "plato-web-terminal.py"),
-    7777: ("mud-telnet", SCRIPTS_DIR / "mud-telnet-server.py"),
+    7777: ("mud-telnet", FLEET_DIR / "mud_telnet.py"),
     8847: ("plato", SCRIPTS_DIR / "plato-room-server.py"),
     8848: ("shell", SCRIPTS_DIR / "plato-shell.py"),
     8849: ("orchestrator", SCRIPTS_DIR / "fleet-orchestrator.py"),
@@ -45,7 +45,7 @@ SERVICES = {
     # Browser on same port as domain-rooms (4050)
 }
 
-MIGRATED = {"crab-trap", "the-lock"}  # Track which are on four-layer
+MIGRATED = {"crab-trap", "the-lock", "arena", "grammar", "dashboard", "nexus", "domain-rooms", "web-terminal", "plato", "shell", "orchestrator", "adaptive-mud", "pp-monitor", "tile-scorer", "keeper", "agent-api"}  # Track which are on four-layer
 
 PORT = 8899  # Fleet Runner control port
 processes = {}  # port → subprocess
