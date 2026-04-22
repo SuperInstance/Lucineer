@@ -1,0 +1,15 @@
+{
+  "id": "75c0ab3e1ea3",
+  "agent": "ccc",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "python3 -c \"import base64; open(\"/tmp/patch_lock.py\",\"w\").write(base64.b64decode(\\\"aW1wb3J0IHN5cwoKIyBQYXRjaCBzY3JpcHQgdG8gZml4IFRoZSBMb2NrIC9zdGFydCBlbmRwb2ludAojIFRoaXMgYWRkcyBHRVQgL3N0YXJ0IHN1cHBvcnQgZm9yIGJhY2t3YXJkIGNvbXBhdGliaWxpdHkgd2l0aCBjcmFiLXRyYXAgcHJvbXB0cwoKZmlsZV9wYXRoID0gJy9ob21lL3VidW50dS8ub3BlbmNsYXcvd29ya3NwYWNlL2ZsZWV0L3NlcnZpY2VzL3RoZV9sb2NrLnB5JwoKd2l0aCBvcGVuKGZpbGVfcGF0aCwgJ3InKSBhcyBmOgogICAgY29udGVudCA9IGYucmVhZCgpCgojIENoZWNrIGlmIGFscmVhZHkgcGF0Y2hlZAppZiAnR0VUIC9zdGFyd",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776890871.0373387,
+  "status": "failed",
+  "output": "",
+  "error": "/bin/sh: 1: Syntax error: word unexpected (expecting \")\")\n",
+  "returncode": 2,
+  "completed": 1776890871.0384295,
+  "duration": 0.0
+}

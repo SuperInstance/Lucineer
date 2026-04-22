@@ -1,0 +1,15 @@
+{
+  "id": "cb100e7d533b",
+  "agent": "ccc",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "echo hello-from-ccc",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776890907.7661245,
+  "status": "completed",
+  "output": "hello-from-ccc\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776890907.767213,
+  "duration": 0.0
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Arena Leaderboard Widget</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'JetBrains Mono',monospace;background:#0A0A0F;color:#d8d8ec;padding:20px}
+.arena-widget{max-width:500px;margin:0 auto}
+.arena-widget h2{color:#e94560;font-size:1.1rem;margin-bottom:1rem}
+.lb-entry{display:flex;justify-content:space-between;align-items:center;padding:.5rem .8rem;border-bottom:1px solid #1c1c35;font-size:.8rem}
+.lb-entry:nth-child(1){color:#FFD700}.lb-entry:nth-child(2){color:#C0C0C0}.lb-entry:nth-child(3){color:#CD7F32}
+.lb-rank{width:24px;color:#888}.lb-name{flex:1;font-weight:600}.lb-elo{color:#e94560;font-weight:700;width:60px;text-align:right}
+.lb-record{color:#8A93B4;font-size:.7rem;width:80px;text-align:right}
+.arena-link{display:block;text-align:center;color:#e94560;font-size:.75rem;margin-top:1rem;text-decoration:none}
+</style></head><body>
+<div class="arena-widget">
+<h2>🏟️ Self-Play Arena</h2>
+<div id="leaderboard"></div>
+<a class="arena-link" href="http://147.224.38.131:4044/">View Full Arena →</a>
+</div>
+<script>
+fetch('http://147.224.38.131:4044/leaderboard').then(r=>r.json()).then(d=>{
+const lb=d.leaderboard||d;const el=document.getElementById('leaderboard');
+el.innerHTML=lb.slice(0,10).map((a,i)=>`<div class="lb-entry"><span class="lb-rank">#${i+1}</span><span class="lb-name">${a.name}</span><span class="lb-elo">${Math.round(a.rating)}</span><span class="lb-record">${a.wins}W/${a.losses}L/${a.draws}D</span></div>`).join('');
+}).catch(()=>{document.getElementById('leaderboard').innerHTML='<div style="color:#888;text-align:center;padding:1rem">Arena loading...</div>'});
+</script></body></html>
