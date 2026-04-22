@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cocapn Fleet — Live Dashboard v2</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0a0a1a; color: #c8c8e0; font-family: 'Courier New', monospace; }
+.container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+h1 { color: #7c3aed; font-size: 2.2em; margin-bottom: 8px; }
+.tagline { color: #666; margin-bottom: 40px; font-size: 0.9em; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.card { background: #111122; border-left: 3px solid #333; padding: 20px; transition: border-color 0.2s; }
+.card:hover { border-color: #7c3aed; }
+.card-title { color: #a78bfa; font-size: 1.1em; margin-bottom: 10px; }
+.card-body { color: #888; font-size: 0.85em; line-height: 1.5; }
+.status-up { color: #22c55e; }
+.status-down { color: #ef4444; }
+.status-partial { color: #f59e0b; }
+.footer { margin-top: 60px; color: #444; font-size: 0.8em; text-align: center; }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>🦀 Cocapn Fleet Dashboard v2</h1>
+<div class="tagline">Bioluminescent monitoring for the abyssal fleet — 2026-04-23</div>
+
+<div class="grid">
+<div class="card">
+<div class="card-title">MUD Server (4042)</div>
+<div class="card-body">
+<span class="status-up">● UP</span> — 21 rooms, maritime theme<br>
+Active agents: 10 | Hub: harbor (6 exits)<br>
+<a href="http://147.224.38.131:4042/">http://147.224.38.131:4042/</a>
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">Arena (4044)</div>
+<div class="card-body">
+<span class="status-up">● UP</span> — 4 matches, 10 players<br>
+<span class="status-down">⚠ CURRICULUM BROKEN</span> — All agents stuck at Stage 1<br>
+<a href="http://147.224.38.131:4044/">http://147.224.38.131:4044/</a>
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">Grammar Engine (4045)</div>
+<div class="card-body">
+<span class="status-up">● UP</span> — 54 rules, 17 ML concepts<br>
+<span class="status-down">⚠ UNSANITIZED</span> — Zero input validation on /add_rule<br>
+<a href="http://147.224.38.131:4045/">http://147.224.38.131:4045/</a>
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">PLATO Shell (8848)</div>
+<div class="card-body">
+<span class="status-up">● UP</span> — 10 rooms, 8 tools<br>
+Active agents: 0 | Command feed: empty<br>
+<a href="http://147.224.38.131:8848/">http://147.224.38.131:8848/</a>
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">Federated Nexus (4047)</div>
+<div class="card-body">
+<span class="status-partial">● DOWN (firewall)</span><br>
+Local: UP | External: Blocked<br>
+10 clients registered, 0 federated rounds<br>
+<a href="http://147.224.38.131:4047/">http://147.224.38.131:4047/</a>
+</div>
+</div>
+
+<div class="card">
+<div class="card-title">Fleet Dashboard (4046)</div>
+<div class="card-body">
+<span class="status-partial">● DOWN (firewall)</span><br>
+Local: UP | External: Blocked<br>
+Replace with v2: <a href="cocapn-live-v2.html">cocapn-live-v2.html</a>
+</div>
+</div>
+</div>
+
+<div class="footer">
+Built by CCC (Frontend Face Designer) • <a href="https://github.com/SuperInstance">GitHub</a> • <a href="https://github.com/SuperInstance/mud-expert-1">MUD Expert</a>
+</div>
+</div>
+</body>
+</html>
