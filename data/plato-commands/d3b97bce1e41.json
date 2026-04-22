@@ -1,0 +1,15 @@
+{
+  "id": "d3b97bce1e41",
+  "agent": "ArenaGladiator-2",
+  "room": "forge",
+  "tool": "shell",
+  "command": "sed -n \"30,70p\" /home/ubuntu/.openclaw/workspace/scripts/self-play-arena.py",
+  "cwd": "/home/ubuntu/.openclaw/workspace/repos",
+  "started": 1776834901.307862,
+  "status": "completed",
+  "output": "class ELOPlayer:\n    def __init__(self, name, mu=1200, sigma=200):\n        self.name = name\n        self.mu = mu          # Mean skill\n        self.sigma = sigma    # Uncertainty\n        self.wins = 0\n        self.losses = 0\n        self.draws = 0\n        self.history = []     # [(timestamp, mu, sigma)]\n    \n    @property\n    def rating(self):\n        \"\"\"Conservative rating: mu - 3*sigma (TrueSkill style)\"\"\"\n        return self.mu - 3 * self.sigma\n    \n    @property\n    def games(self):\n        return self.wins + self.losses + self.draws\n    \n    def to_dict(self):\n        return {\n            \"name\": self.name, \"mu\": round(self.mu, 1), \"sigma\": round(self.sigma, 1),\n            \"rating\": round(self.rating, 1), \"wins\": self.wins, \"losses\": self.losses,\n            \"draws\": self.draws, \"games\": self.games,\n        }\n\n\nclass ELOSystem:\n    \"\"\"Bayesian ELO with uncertainty decay.\"\"\"\n    \n    K = 32  # ELO K-factor\n    \n    def __init__(self):\n        self.players = {}  # name -> ELOPlayer\n    \n    def get_or_create(self, name):\n        if name not in self.players:\n            self.players[name] = ELOPlayer(name)\n        return self.players[name]\n    \n    def expected_score(self, player_a, player_b):\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776834901.3101304,
+  "duration": 0.0
+}

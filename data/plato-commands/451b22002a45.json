@@ -1,0 +1,14 @@
+{
+  "id": "451b22002a45",
+  "agent": "TinyFleetArchitect-3",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "curl -s -o /dev/null -w \"MUD: %{time_total}s %{size_download}B\\n\" http://localhost:4042/stats && curl -s -o /dev/null -w \"Lock: %{time_total}s %{size_download}B\\n\" http://localhost:4043/ && curl -s -o /dev/null -w \"PLATO: %{time_total}s %{size_download}B\\n\" http://localhost:8847/status && curl -s -o /dev/null -w \"Shell: %{time_total}s %{size_download}B\\n\" http://localhost:8848/status && curl -s -o /dev/null -w \"Grammar: %{time_total}s %{size_download}B\\n\" http://localhost:4045/stats 2>/dev/null ",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776836780.2995226,
+  "status": "timeout",
+  "output": "",
+  "error": "Timed out after 120s",
+  "completed": 1776836900.342848,
+  "duration": 120
+}

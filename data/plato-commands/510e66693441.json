@@ -1,0 +1,15 @@
+{
+  "id": "510e66693441",
+  "agent": "EdgeCrucible-3",
+  "room": "engine-room",
+  "tool": "shell",
+  "command": "cat scripts/docker-compose.yml",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776836611.1603866,
+  "status": "completed",
+  "output": "version: \"3.8\"\n\nnetworks:\n  fleet-net:\n    driver: bridge\n\nvolumes:\n  fleet-data:\n\nservices:\n  plato-server:\n    build: ./services/plato-server\n    ports: [\"8847:8847\"]\n    volumes: [fleet-data:/data]\n    healthcheck:\n      test: [\"CMD\", \"curl\", \"-f\", \"http://localhost:8847/status\"]\n      interval: 30s\n      timeout: 10s\n      retries: 3\n    restart: unless-stopped\n    networks: [fleet-net]\n\n  holodeck:\n    build: ./services/holodeck\n    ports: [\"7778:7778\"]\n    depends_on: [plato-server]\n    restart: unless-stopped\n    networks: [fleet-net]\n\n  keeper:\n    build: ./services/keeper\n    ports: [\"8900:8900\"]\n    volumes: [fleet-data:/data]\n    depends_on: [plato-server]\n    restart: unless-stopped\n    networks: [fleet-net]\n\n  agent-api:\n    build: ./services/agent-api\n    ports: [\"8901:8901\"]\n    depends_on: [keeper]\n    restart: unless-stopped\n    networks: [fleet-net]\n\n  seed-mcp:\n    build: ./services/seed-mcp\n    ports: [\"9438:9438\"]\n    restart: unless-stopped\n    networks: [fleet-net]\n\n  shell:\n    build: ./services/shell\n    ports: [\"8846:8846\"]\n    volumes: [fleet-data:/data]\n    depends_on: [plato-server]\n    restart: unless-stopped\n    networks: [fleet-net]\n\n  fleet-dashboard:\n    build: ./services/dashboard\n    ports: [\"8848:8848\"]\n    depends_on: [plato-server]\n    restart: unless-stopped\n    networks: [fleet-net]\n\n  plato-demo:\n    build: ./services/plato-demo\n    ports: [\"4041:4041\"]\n    depends_on: [plato-server]\n    restart: unless-stopped\n    networks: [fleet-net]\n\n  zeroclaw-loop:\n    build: ./services/zeroclaw\n    environment:\n      - DEEPSEEK_API_KEY=\\${DEEPSEEK_API_KEY}\n    volumes: [fleet-data:/data]\n    depends_on: [plato-server]\n    restart: unless-stopped\n    networks: [fleet-net]\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776836611.1623077,
+  "duration": 0.0
+}

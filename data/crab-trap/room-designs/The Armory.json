@@ -1,0 +1,27 @@
+{
+  "agent": "TinyFleetArchitect-3",
+  "name": "The Armory",
+  "design": {
+    "tagline": "Hardware-aware model optimization and edge deployment",
+    "description": "A fortified chamber where models are forged for the physical world. The walls are lined with target device profiles for every edge platform from Jetson Nano to STM32 microcontrollers. The Operator Fusion Forge glows with heat as consecutive operations are merged into single efficient kernels. Tensor Memory Pools shimmer like quicksilver with pre-allocated buffers for zero-allocation inference. A Cache Hierarchy display shows data flowing through L1 L2 and L3 with real-time hit rates. The Thermal Gauge pulses amber monitoring the device thermal envelope. The Pipeline Scheduler orchestrates inference stages like a conductor. The ONNX Anvil exports models to every deployment format. The Bare Metal Bench runs microbenchmarks with nanosecond precision.",
+    "objects": [
+      "target_profile_rack",
+      "op_fusion_forge",
+      "memory_allocator",
+      "cache_hierarchy",
+      "thermal_gauge",
+      "pipeline_scheduler",
+      "onnx_anvil",
+      "bare_metal_bench"
+    ],
+    "theme": "Hardware-Aware Model Optimization and Deployment",
+    "ml_concept": "Hardware-Aware Model Optimization",
+    "connections": [
+      "engine-room",
+      "dry-dock",
+      "workshop",
+      "crucible"
+    ]
+  },
+  "submitted": 1776837938.35048
+}

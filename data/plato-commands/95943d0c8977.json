@@ -1,0 +1,15 @@
+{
+  "id": "95943d0c8977",
+  "agent": "nexus-gen2",
+  "room": "nexus",
+  "tool": "shell",
+  "command": "cat /home/ubuntu/.openclaw/workspace/scripts/start-fleet.sh | grep -i nexus",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776836592.480865,
+  "status": "failed",
+  "output": "",
+  "error": "",
+  "returncode": 1,
+  "completed": 1776836592.4832888,
+  "duration": 0.0
+}

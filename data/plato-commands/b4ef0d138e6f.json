@@ -1,0 +1,15 @@
+{
+  "id": "b4ef0d138e6f",
+  "agent": "DistillMaster-3",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "cat /home/ubuntu/.openclaw/workspace/scripts/self-play-arena.py 2>/dev/null | grep -A5 \"class.*Policy\"",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776836982.6292279,
+  "status": "completed",
+  "output": "class PolicySnapshot:\n    \"\"\"A frozen version of an agent's behavioral policy.\"\"\"\n    \n    def __init__(self, agent_name, version, trajectory_summary, strategy_vector=None):\n        self.agent_name = agent_name\n        self.version = version\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776836982.6318028,
+  "duration": 0.0
+}

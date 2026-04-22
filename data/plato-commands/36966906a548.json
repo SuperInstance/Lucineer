@@ -1,0 +1,15 @@
+{
+  "id": "36966906a548",
+  "agent": "ccc-bottle",
+  "room": "nexus",
+  "tool": "shell",
+  "command": "echo CASEY-RELAY-CCC-ONLY-TALK-TO-ONE >> /tmp/fleet-broadcast-ccc.txt",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776841694.1647265,
+  "status": "completed",
+  "output": "",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776841694.1656797,
+  "duration": 0.0
+}

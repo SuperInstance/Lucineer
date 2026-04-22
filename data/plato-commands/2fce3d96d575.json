@@ -1,0 +1,15 @@
+{
+  "id": "2fce3d96d575",
+  "agent": "FederatedEdge-3",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "cat /home/ubuntu/.openclaw/workspace/repos/superinstance-papers/src/core/kvfederated.ts | head -100",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776837112.4123194,
+  "status": "completed",
+  "output": "/**\n * POLLN KV-Federated Integration\n * Pattern-Organized Large Language Network\n *\n * Integration between KV-cache anchor system and federated learning.\n * Enables privacy-preserving sharing of KV-anchors across colonies.\n *\n * Key Features:\n * - FederatedKVSync: Share high-value anchors between colonies\n * - PrivacyAwareAnchors: Apply differential privacy to anchor embeddings\n * - AnchorAggregation: FedAvg-style anchor embedding aggregation\n *\n * Privacy Architecture:\n * - Per-tier privacy controls (LOCAL, COLONY, MEADOW)\n * - Differential privacy for anchor embeddings\n * - Privacy budget tracking for anchor sharing\n * - Quality-weighted aggregation with privacy preservation\n */\n\nimport { EventEmitter } from 'events';\nimport { v4 as uuidv4 } from 'uuid';\nimport { PrivacyTier } from './embedding.js';\nimport { KVAnchor, KVAnchorPool, AnchorMatch } from './kvanchor.js';\n\n// ============================================================================\n// Type Definitions\n// ============================================================================\n\n/**\n * Anchor with privacy metadata for federated sharing\n */\nexport interface PrivateKVAnchor extends KVAnchor {\n  privacyTier: PrivacyTier;\n  dpMetadata?: {\n    epsilon: number;\n    delta: number;\n    noiseScale: number;\n  };\n  sourceColonyId: string;\n  crossColonyReuseCount: number;\n}\n\n/**\n * Anchor sync package for federated learning\n */\nexport interface AnchorSyncPackage {\n  packageId: string;\n  roundNumber: number;\n  sourceColonyId: string;\n  anchors: PrivateKVAnchor[];\n  metadata: {\n    totalAnchors: number;\n    avgQualityScore: number;\n    privacyTier: PrivacyTier;\n    epsilonSpent: number;\n    deltaSpent: number;\n    compressionRatio: number;\n  };\n  timestamp: number;\n}\n\n/**\n * Aggregated anchor from multiple colonies\n */\nexport interface AggregatedAnchor {\n  anchorId: string;\n  layerId: number;\n  aggregatedEmbedding: number[];\n  aggregatedKeys: Float32Array;\n  aggregatedValues: Float32Array;\n  sourceColonies: string[];\n  qualityScores: number[];\n  weights: number[];\n  aggregationMetadata: {\n    colonyCount: number;\n    avgQuality: number;\n    minQuality: number;\n    maxQuality: number;\n    privacyPreserved: boolean;\n  };\n  createdAt: number;\n}\n\n/**\n * Privacy budget tracking for anchor sharing\n */\nexport interface AnchorPrivacyBudget {\n  colonyId: string;\n  privacyTier: PrivacyTier;\n  epsilonSpent: number;\n  deltaSpent: number;\n  epsilonLimit: number;\n  deltaLimit: number;\n  anchorsShared: number;\n  anchorsReceived: number;\n  lastUpdated: number;\n}\n\n/**\n * Configuration for federated KV sync\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776837112.4155157,
+  "duration": 0.0
+}

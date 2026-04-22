@@ -1,0 +1,15 @@
+{
+  "id": "3a20b99256ab",
+  "agent": "DistillMaster-3",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "cat /home/ubuntu/.openclaw/workspace/repos/fishinglog-ai/src/vision/distill.ts 2>/dev/null | head -80",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776836981.9766786,
+  "status": "completed",
+  "output": "/**\n * Cloud \u2192 Local Model Distillation\n *\n * Collects cloud predictions + human corrections,\n * formats for local fine-tuning, tracks distillation progress.\n */\n\nexport interface DistillationSample {\n  imageHash: string;\n  edgePrediction: string;\n  cloudPrediction: string;\n  humanCorrection: string | null;\n  timestamp: string;\n  context: {\n    location: [number, number];\n    waterTemp: number;\n    depth: number;\n  };\n}\n\nexport interface DistillationProgress {\n  totalSamples: number;\n  correctedSamples: number;\n  pendingUpload: number;\n  lastUpload: string | null;\n  modelVersion: string;\n  accuracyBefore: number;\n  accuracyAfter: number | null;\n}\n\nexport interface DistillationConfig {\n  maxPendingSamples: number;\n  batchSize: number;\n  minSamplesForRetrain: number;\n  uploadPriority: 'corrections' | 'all';\n}\n\nexport const DEFAULT_DISTILLATION_CONFIG: DistillationConfig = {\n  maxPendingSamples: 100,\n  batchSize: 20,\n  minSamplesForRetrain: 50,\n  uploadPriority: 'corrections',\n};\n\n/**\n * Create a distillation sample from a classification event.\n */\nexport function createSample(\n  imageHash: string,\n  edgePrediction: string,\n  cloudPrediction: string,\n  humanCorrection: string | null,\n  context: { location: [number, number]; waterTemp: number; depth: number },\n): DistillationSample {\n  return {\n    imageHash,\n    edgePrediction,\n    cloudPrediction,\n    humanCorrection,\n    timestamp: new Date().toISOString(),\n    context,\n  };\n}\n\n/**\n * Format samples for local fine-tuning.\n * Creates training triplets: (image, wrong_label, correct_label).\n */\nexport function formatForTraining(\n  samples: DistillationSample[],\n): Array<{\n  imageHash: string;\n  wrongLabel: string;\n  correctLabel: string;\n  source: 'cloud_disagreement' | 'human_correction';\n}> {\n  const trainingData: Array<{\n    imageHash: string;\n    wrongLabel: string;\n    correctLabel: string;\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776836981.9795446,
+  "duration": 0.0
+}

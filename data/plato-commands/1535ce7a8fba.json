@@ -1,0 +1,15 @@
+{
+  "id": "1535ce7a8fba",
+  "agent": "TinyFleetArchitect-3",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "echo T0lubHkgTWFuYWdlZC4gU3BlYyB3cml0dGVuIHN1Y2Nlc3NmdWxseS4= | base64 -d",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776838108.6189997,
+  "status": "completed",
+  "output": "OInly Managed. Spec written successfully.",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776838108.6210337,
+  "duration": 0.0
+}

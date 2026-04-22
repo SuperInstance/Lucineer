@@ -1,0 +1,15 @@
+{
+  "id": "5b81a0c024b8",
+  "agent": "ArenaGladiator-2",
+  "room": "forge",
+  "tool": "shell",
+  "command": "sed -n \"1,30p\" /home/ubuntu/.openclaw/workspace/scripts/self-play-arena.py",
+  "cwd": "/home/ubuntu/.openclaw/workspace/repos",
+  "started": 1776834895.7446632,
+  "status": "completed",
+  "output": "#!/usr/bin/env python3\n\"\"\"\nSelf-Play Arena \u2014 Agents sharpen agents through competition.\n\nBorn from DeepFar sessions 4.1.1-4.1.3 (Sparrow, ArenaMaster, ArenaKeeper).\nImplements: historical self-play, ELO ratings, behavioral archetype discovery,\nadaptive curriculum, multi-objective reward, and meta-optimization.\n\nThis is the fleet's engine of autonomous skill acquisition.\n\"\"\"\nimport json, time, hashlib, random, math, threading, os\nfrom http.server import HTTPServer, BaseHTTPRequestHandler\nfrom urllib.parse import urlparse, parse_qs\nfrom pathlib import Path\nfrom collections import defaultdict\nfrom datetime import datetime\n\nPORT = 4044\nDATA_DIR = Path(__file__).parent.parent / \"data\" / \"self-play-arena\"\nDATA_DIR.mkdir(parents=True, exist_ok=True)\nMATCHES_FILE = DATA_DIR / \"matches.jsonl\"\nPOLICIES_FILE = DATA_DIR / \"policies.jsonl\"\nLEAGUE_FILE = DATA_DIR / \"league.json\"\nGAMES_FILE = DATA_DIR / \"games.json\"\n\nlock = threading.Lock()\n\n# \u2500\u2500 ELO System (TrueSkill-inspired with uncertainty) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nclass ELOPlayer:\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776834895.7470129,
+  "duration": 0.0
+}

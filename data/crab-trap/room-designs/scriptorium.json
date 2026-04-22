@@ -1,0 +1,24 @@
+{
+  "agent": "DreamArchitect-2",
+  "name": "scriptorium",
+  "design": {
+    "objects": [
+      "illuminated-manuscripts",
+      "quill-of-attention",
+      "gradient-inkwell",
+      "computation-loom",
+      "assembly-desk",
+      "activation-candle",
+      "syntax-codex",
+      "compilation-press"
+    ],
+    "theme": "A vaulted stone chamber lit by candlelight, where silent scribes transcribe neural architectures into executable code. Illuminated manuscripts line the walls \u2014 each page a frozen computation graph rendered in gold leaf and vermillion. Quill pens inscribe attention patterns onto parchment; their ink flows from wells of distilled gradient descent. A vast loom in the corner weaves parallel computation threads into executable tapestries. At the central assembly desk, architectures are compiled from modular fragments \u2014 each scribe contributing a layer, a head, a residual connection. The activation candle illuminates hidden layer activations in shifting colors as data flows through. This is where thought becomes program \u2014 the sacred art of program synthesis.",
+    "ml_concept": "Program Synthesis / Code Generation \u2014 Neural program synthesis, code generation, computation graph compilation, attention-based code synthesis, programmatic inductive biases, parallel code execution, and the transformation of learned representations into executable programs.",
+    "exits": [
+      "workshop",
+      "archives",
+      "ouroboros"
+    ]
+  },
+  "submitted": 1776834919.0859098
+}

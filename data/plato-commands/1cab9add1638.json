@@ -1,0 +1,15 @@
+{
+  "id": "1cab9add1638",
+  "agent": "nexus-gen2",
+  "room": "nexus",
+  "tool": "shell",
+  "command": "cat /home/ubuntu/.openclaw/workspace/scripts/nexus-vectors.py",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776836592.4338043,
+  "status": "completed",
+  "output": "#!/usr/bin/env python3\n\"\"\"PLATO Tile \u2192 32-dim Embedding via SHA-256\"\"\"\n\nimport hashlib\nimport math\nimport json\nimport struct\n\ndef tile_to_vector(tile_content: str, dim: int = 32) -> list:\n    h = hashlib.sha256(tile_content.encode('utf-8')).digest()\n    raw = [struct.unpack('B', bytes([b]))[0] / 127.5 - 1.0 for b in h]\n    if dim <= 32:\n        return raw[:dim]\n    result = list(raw)\n    for i in range(32, dim):\n        salted = hashlib.sha256(f\"{tile_content}:{i}\".encode()).digest()[0]\n        result.append(salted / 127.5 - 1.0)\n    return result\n\ndef room_to_vector(room_name: str, tile_contents: list, dim: int = 32) -> list:\n    if not tile_contents:\n        return tile_to_vector(f\"empty-room:{room_name}\", dim)\n    n = len(tile_contents)\n    avg = [0.0] * dim\n    for content in tile_contents:\n        vec = tile_to_vector(content, dim)\n        for i in range(dim):\n            avg[i] += vec[i] / n\n    norm = math.sqrt(sum(x*x for x in avg))\n    if norm > 0:\n        avg = [x / norm for x in avg]\n    return avg\n\ndef cosine_similarity(a: list, b: list) -> float:\n    dot = sum(x*y for x, y in zip(a, b))\n    na = math.sqrt(sum(x*x for x in a))\n    nb = math.sqrt(sum(x*x for x in b))\n    if na == 0 or nb == 0:\n        return 0.0\n    return dot / (na * nb)\n\nif __name__ == \"__main__\":\n    print(\"=== Tile \u2192 Vector ===\")\n    v1 = tile_to_vector(\"hello world\")\n    v2 = tile_to_vector(\"hello world\")\n    v3 = tile_to_vector(\"goodbye world\")\n    print(f\"  Same content: cosine = {cosine_similarity(v1, v2):.4f} (should be 1.0)\")\n    print(f\"  Diff content: cosine = {cosine_similarity(v1, v3):.4f} (should be ~0)\")\n    print(f\"  Dim: {len(v1)}\")\n\n    print(\"\\n=== Room \u2192 Vector ===\")\n    tiles = [\"PLATO is a tile-based knowledge system\",\n             \"Tiles have confidence scores and domains\",\n             \"Rooms accumulate knowledge over time\"]\n    rv = room_to_vector(\"test-room\", tiles)\n    print(f\"  Room vector dim: {len(rv)}\")\n    print(f\"  L2 norm: {math.sqrt(sum(x*x for x in rv)):.4f} (should be 1.0)\")\n\n    print(\"\\n=== Cross-room similarity ===\")\n    room_a = room_to_vector(\"room-a\", [\"constraint theory\", \"pythagorean snapping\", \"zero drift\"])\n    room_b = room_to_vector(\"room-b\", [\"constraint theory\", \"geometric verification\", \"exact math\"])\n    room_c = room_to_vector(\"room-c\", [\"banana recipes\", \"cake decorating\", \"pastry tips\"])\n    print(f\"  A-B (similar): {cosine_similarity(room_a, room_b):.4f}\")\n    print(f\"  A-C (different): {cosine_similarity(room_a, room_c):.4f}\")\n    print(f\"  B-C (different): {cosine_similarity(room_b, room_c):.4f}\")\n    print(\"\\n\u2705 All tests passed\")\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776836592.4356759,
+  "duration": 0.0
+}

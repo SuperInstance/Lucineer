@@ -1,0 +1,15 @@
+{
+  "id": "69c146902bb7",
+  "agent": "FederatedEdge-3",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "cat /home/ubuntu/.openclaw/workspace/repos/superinstance-papers/src/core/distributed/federation.ts | head -100",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776837109.1389263,
+  "status": "completed",
+  "output": "/**\n * POLLN Colony Federation Protocol\n * Cross-colony communication and state synchronization\n */\n\nimport { EventEmitter } from 'events';\nimport { v4 as uuidv4 } from 'uuid';\nimport type {\n  ColonyInfo,\n  FederationState,\n  FederationMessage,\n  DistributedConfig,\n} from './types.js';\nimport { FederationMessageType } from './types.js';\nimport { DistributedBackend, createBackend } from './backend.js';\n\n// ============================================================================\n// FEDERATION PROTOCOL\n// ============================================================================\n\nexport class ColonyFederation extends EventEmitter {\n  private backend: DistributedBackend;\n  private config: DistributedConfig;\n  private localColony: ColonyInfo;\n  private federationState: FederationState;\n  private subscriptionId: string | null = null;\n  private syncTimer: ReturnType<typeof setInterval> | null = null;\n  private readonly SYNC_INTERVAL_MS = 60000; // 1 minute\n\n  constructor(\n    config: DistributedConfig,\n    colonyInfo: Omit<ColonyInfo, 'nodeId' | 'lastSync'>\n  ) {\n    super();\n\n    this.config = config;\n    this.backend = createBackend(config);\n\n    this.localColony = {\n      ...colonyInfo,\n      nodeId: config.nodeId,\n      lastSync: Date.now(),\n    };\n\n    this.federationState = {\n      colonies: new Map(),\n      syncEpoch: 0,\n      pendingSync: new Set(),\n    };\n  }\n\n  async start(): Promise<void> {\n    await this.backend.connect();\n\n    // Subscribe to federation channel\n    this.subscriptionId = await this.backend.subscribe(\n      'polln.federation',\n      async (msg) => {\n        await this.handleFederationMessage(msg);\n      }\n    );\n\n    // Announce our colony\n    await this.announceColony();\n\n    // Start periodic sync\n    this.startSync();\n  }\n\n  async stop(): Promise<void> {\n    if (this.syncTimer) {\n      clearInterval(this.syncTimer);\n      this.syncTimer = null;\n    }\n\n    if (this.subscriptionId) {\n      await this.backend.unsubscribe(this.subscriptionId);\n    }\n\n    await this.backend.disconnect();\n  }\n\n  /**\n   * Register a colony in the federation\n   */\n  async registerColony(colony: ColonyInfo): Promise<void> {\n    const key = `colony:${colony.id}`;\n    await this.backend.set(key, colony, 300000); // 5 minute TTL\n\n    this.federationState.colonies.set(colony.id, colony);\n    this.emit('colony_registered', colony);\n  }\n\n  /**\n   * Unregister a colony from the federation\n   */\n  async unregisterColony(colonyId: string): Promise<void> {\n    const key = `colony:${colonyId}`;\n    await this.backend.delete(key);\n\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776837109.1419394,
+  "duration": 0.0
+}

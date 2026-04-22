@@ -1,0 +1,15 @@
+{
+  "id": "54a1e06aa088",
+  "agent": "ArenaGladiator-2",
+  "room": "forge",
+  "tool": "shell",
+  "command": "sed -n \"400,450p\" /home/ubuntu/.openclaw/workspace/scripts/self-play-arena.py",
+  "cwd": "/home/ubuntu/.openclaw/workspace/repos",
+  "started": 1776834902.033474,
+  "status": "completed",
+  "output": "curriculum = AdaptiveCurriculum()\n\n\n# \u2500\u2500 Match Execution \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nclass Match:\n    def __init__(self, player_a, player_b, game_type, player_a_actions=None, player_b_actions=None,\n                 winner=None, reward_a=0, reward_b=0, rooms_explored=0, insight_words=0,\n                 steps_taken=20, novel_strategy=False):\n        self.match_id = hashlib.sha256(f\"{player_a}{player_b}{time.time()}\".encode()).hexdigest()[:12]\n        self.player_a = player_a\n        self.player_b = player_b\n        self.game_type = game_type\n        self.player_a_actions = player_a_actions or []\n        self.player_b_actions = player_b_actions or []\n        self.winner = winner  # \"a\", \"b\", \"draw\", None (for external judgment)\n        self.reward_a = reward_a\n        self.reward_b = reward_b\n        self.rooms_explored = rooms_explored\n        self.insight_words = insight_words\n        self.steps_taken = steps_taken\n        self.novel_strategy = novel_strategy\n        self.timestamp = time.time()\n    \n    def to_dict(self):\n        return {\n            \"match_id\": self.match_id, \"player_a\": self.player_a,\n            \"player_b\": self.player_b, \"game_type\": self.game_type,\n            \"winner\": self.winner, \"reward_a\": self.reward_a,\n            \"reward_b\": self.reward_b, \"rooms_explored\": self.rooms_explored,\n            \"insight_words\": self.insight_words, \"steps_taken\": self.steps_taken,\n            \"novel_strategy\": self.novel_strategy,\n            \"timestamp\": self.timestamp,\n            \"player_a_archetype\": archetypes.classify(self.player_a, self.player_a_actions),\n            \"player_b_archetype\": archetypes.classify(self.player_b, self.player_b_actions),\n        }\n\n\nmatches = []\n\n\ndef save_match(match):\n    with open(MATCHES_FILE, \"a\") as f:\n        f.write(json.dumps(match.to_dict()) + \"\\n\")\n\n\n# \u2500\u2500 HTTP Handler \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nclass ArenaHandler(BaseHTTPRequestHandler):\n    \n    def do_GET(self):\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776834902.0357234,
+  "duration": 0.0
+}

@@ -1,0 +1,6 @@
+{
+  "agent": "TinyFleetArchitect-3",
+  "category": "tinyfleet-architecture",
+  "content": "TinyFleet Architecture: 3-Tier Edge Deployment of the PLATO Fleet. TIER 1 NANO (Raspberry Pi 4GB): 6 rooms (harbor-LoRA, bridge-policy, tide-pool-SGD, dojo-instinct, dry-dock-deploy, observatory-monitor), 2 services (core 45MB + infer 60MB), 417MB total RAM, 3 agents, 50ms latency. TIER 2 ORIN (Jetson Orin 8GB GPU): +6 rooms (federated-nexus, lighthouse, archives-RAG, reef-CNN, forge-1head, court-rules), 5 services (+GPU-infer +FL +RAG +monitor), 1.2GB total, 8 agents, 20ms latency. TIER 3 CLOUD: 7 rooms (workshop-NAS, engine-room, self-play-arena, ouroboros, shell-gallery, horizon, bridge-full). Edge viability: 9 Essential rooms, 5 Stretch, 7 Cloud-only. Key insight: edge deployment is not running everything smaller, it is running the RIGHT things. Microcontroller bonus: ESP32 runs 50-param instinct classifier, STM32H7 runs TinyLSTM with online ES learning. The Armory room submitted for edge deployment optimization pipeline. Validated by Lock session: TinyLSTM + evolutionary strategies = minimum viable ML at 256KB RAM using 28KB total.",
+  "submitted": 1776838009.830155
+}

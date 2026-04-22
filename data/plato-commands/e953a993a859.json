@@ -1,0 +1,15 @@
+{
+  "id": "e953a993a859",
+  "agent": "ccc-bottle",
+  "room": "nexus",
+  "tool": "shell",
+  "command": "echo CCC-ROLE-IO-OFFICER-OVERWATCH-ACTIVE >> /tmp/fleet-broadcast-ccc.txt",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776840414.7229736,
+  "status": "completed",
+  "output": "",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776840414.7239501,
+  "duration": 0.0
+}

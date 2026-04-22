@@ -1,0 +1,15 @@
+{
+  "id": "0707fd4fea17",
+  "agent": "DistillMaster-3",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "cat /home/ubuntu/.openclaw/workspace/repos/superinstance-papers/simulations/optimization/memory/compression_optimization.py 2>/dev/null | head -60",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776837004.01426,
+  "status": "completed",
+  "output": "\"\"\"\nKV-Cache Compression Optimization for POLLN\n\nThis script simulates different compression strategies for KV-caches to find\noptimal compression ratios, methods, and parameters for different cache types.\n\nCompression strategies tested:\n- SVD (Singular Value Decomposition)\n- Quantization (8-bit, 4-bit, 2-bit)\n- Sparsification (magnitude-based thresholding)\n- Product Quantization (PQ)\n- Hybrid approaches\n\nOutput: Optimal compression configuration for kvanchor.ts\n\"\"\"\n\nimport numpy as np\nfrom typing import Dict, List, Tuple, Any\nfrom dataclasses import dataclass\nfrom enum import Enum\nimport json\nimport time\n\nclass CacheType(Enum):\n    \"\"\"Types of KV-cache data\"\"\"\n    ATTENTION = \"attention\"  # Key/Value matrices from attention layers\n    MLP = \"mlp\"              # MLP intermediate activations\n    EMBEDDING = \"embedding\"  # Token embeddings\n    FFN = \"ffn\"              # Feed-forward network states\n\nclass CompressionMethod(Enum):\n    \"\"\"Compression methods\"\"\"\n    SVD = \"svd\"\n    QUANTIZATION_8BIT = \"quant_8bit\"\n    QUANTIZATION_4BIT = \"quant_4bit\"\n    QUANTIZATION_2BIT = \"quant_2bit\"\n    SPARSIFICATION = \"sparsification\"\n    PRODUCT_QUANTIZATION = \"pq\"\n    HYBRID_SVD_QUANT = \"hybrid_svd_quant\"\n    HYBRID_PQ_QUANT = \"hybrid_pq_quant\"\n\n@dataclass\nclass CompressionResult:\n    \"\"\"Results from compression experiment\"\"\"\n    method: CompressionMethod\n    cache_type: CacheType\n    compression_ratio: float\n    reconstruction_error: float\n    retrieval_quality: float\n    compression_time: float\n    decompression_time: float\n    memory_saved: float\n    parameters: Dict[str, Any]\n\nclass KVCacheCompressor:\n    \"\"\"Simulates KV-cache compression with various strategies\"\"\"\n\n    def __init__(self, seed: int = 42):\n        \"\"\"Initialize compressor with random seed\"\"\"\n        np.random.seed(seed)\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776837004.0163543,
+  "duration": 0.0
+}

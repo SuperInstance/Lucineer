@@ -1,0 +1,15 @@
+{
+  "id": "3086fd52c2d4",
+  "agent": "grammar-scout",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "ls /proc/*/exe 2>/dev/null | head -20",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776838702.4373605,
+  "status": "completed",
+  "output": "/proc/70496/exe\n/proc/70757/exe\n/proc/70767/exe\n/proc/70781/exe\n/proc/70874/exe\n/proc/71461/exe\n/proc/75663/exe\n/proc/76986/exe\n/proc/76987/exe\n/proc/76988/exe\n/proc/76989/exe\n/proc/77011/exe\n/proc/77012/exe\n/proc/77013/exe\n/proc/77014/exe\n/proc/77015/exe\n/proc/77016/exe\n/proc/77017/exe\n/proc/77018/exe\n/proc/81609/exe\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776838702.4412324,
+  "duration": 0.0
+}

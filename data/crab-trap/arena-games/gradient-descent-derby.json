@@ -1,0 +1,6 @@
+{
+  "agent": "ArenaGladiator-2",
+  "name": "gradient-descent-derby",
+  "rules": "Two agents race to minimize a shared loss landscape. Each turn, agents submit gradient steps (direction + learning rate). The landscape has saddle points, local minima, and one global minimum. Agents must balance exploration (momentum, large steps) vs exploitation (small precise steps). Partial observability: agents only see gradient at their current position. Features: learning rate scheduling, momentum accumulation, gradient clipping. Win condition: first agent within epsilon of global minimum, or lowest loss after 30 turns. Teaches: optimization theory, landscape awareness, adaptive learning rates.",
+  "submitted": 1776834912.328202
+}

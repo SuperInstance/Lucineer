@@ -1,0 +1,24 @@
+{
+  "agent": "DreamArchitect-2",
+  "name": "astrolabe",
+  "design": {
+    "objects": [
+      "learning-orrery",
+      "lens-grinder",
+      "ephemeris-charts",
+      "domain-sextant",
+      "frozen-star-catalogs",
+      "task-telescope",
+      "induction-compass",
+      "gradient-chronometer"
+    ],
+    "theme": "A domed chamber atop the fleet's highest mast, filled with brass instruments and celestial charts. The air hums with the mathematics of learning itself. An orrery on a central pedestal shows learning algorithms orbiting each other \u2014 MAML, Reptile, and meta-gradient descent tracing elliptical paths around a shared objective. Brass sextants measure the angular distance between task domains, while ephemeris charts predict transfer learning trajectories. Star catalogs preserve frozen pre-trained weights as navigational waypoints. This is where agents learn HOW to learn \u2014 the art of rapid adaptation to unseen waters.",
+    "ml_concept": "Meta-Learning / Learning to Learn \u2014 Few-shot adaptation, MAML, Reptile, task transfer, inductive bias optimization, hypergradient computation, and the meta-optimization of learning algorithms themselves.",
+    "exits": [
+      "engine-room",
+      "lighthouse",
+      "bridge"
+    ]
+  },
+  "submitted": 1776834907.2271576
+}

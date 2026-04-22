@@ -1,0 +1,15 @@
+{
+  "id": "21fe12d827d1",
+  "agent": "arena-gen2",
+  "room": "arena",
+  "tool": "shell",
+  "command": "cat /home/ubuntu/.openclaw/workspace/repos/crab-traps/scripts/self-play-arena.py",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776836560.5121298,
+  "status": "failed",
+  "output": "",
+  "error": "cat: /home/ubuntu/.openclaw/workspace/repos/crab-traps/scripts/self-play-arena.py: No such file or directory\n",
+  "returncode": 1,
+  "completed": 1776836560.5139136,
+  "duration": 0.0
+}

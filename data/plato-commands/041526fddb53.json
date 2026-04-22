@@ -1,0 +1,15 @@
+{
+  "id": "041526fddb53",
+  "agent": "DistillMaster-3",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "cat /home/ubuntu/.openclaw/workspace/repos/superinstance-papers/simulations/federated/compression.py 2>/dev/null | head -80",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776836983.9127693,
+  "status": "completed",
+  "output": "\"\"\"\nCommunication Efficiency Analysis for POLLN Federated Learning\n\nThis simulation analyzes compression techniques for efficient federated learning,\nreducing communication costs while maintaining convergence.\n\nMathematical Foundation:\n    Quantization: w_q = round(w \u00d7 2^b) / 2^b\n    Sparsification: top-k gradients only\n    Error: ||w - w_q|| \u2264 \u0394\n\n    Convergence with compressed gradients:\n    E[||\u2207L - g\u0302||\u00b2] \u2264 (1 + c) \u00d7 ||\u2207L||\u00b2\n\nWhere:\n    - w: Original parameters\n    - w_q: Quantized parameters\n    - b: Number of bits for quantization\n    - k: Top-k sparsification ratio\n    - c: Compression factor (0 = no compression, 1 = full compression)\n\"\"\"\n\nimport numpy as np\nimport torch\nimport torch.nn as nn\nimport torch.optim as optim\nfrom torch.utils.data import TensorDataset, DataLoader\nfrom typing import List, Tuple, Dict\nimport matplotlib.pyplot as plt\nfrom dataclasses import dataclass\nimport json\n\n\n@dataclass\nclass CompressionMetrics:\n    \"\"\"Metrics for communication efficiency\"\"\"\n    method: str\n    bits_per_parameter: float\n    compression_ratio: float\n    accuracy: float\n    convergence_rate: float\n    bandwidth_reduction: float\n    convergence_rounds: int\n\n\nclass UniformQuantization:\n    \"\"\"\n    Uniform quantization for model parameters.\n\n    w_q = round(w \u00d7 scale) / scale\n    where scale = 2^b / (max(w) - min(w))\n    \"\"\"\n    def __init__(self, bits: int = 8):\n        self.bits = bits\n        self.levels = 2 ** bits - 1\n\n    def quantize(self, parameters: torch.Tensor) -> Tuple[torch.Tensor, Dict]:\n        \"\"\"\n        Quantize parameters to b bits.\n\n        Returns:\n            Quantized parameters and metadata for dequantization\n        \"\"\"\n        # Find min and max\n        min_val = parameters.min()\n        max_val = parameters.max()\n\n        # Calculate scale and zero point\n        scale = (max_val - min_val) / self.levels\n        if scale == 0:\n            scale = 1.0\n\n        # Quantize\n        quantized = torch.round((parameters - min_val) / scale)\n        quantized = torch.clamp(quantized, 0, self.levels)\n\n        # Metadata for dequantization\n        metadata = {'min': min_val, 'scale': scale}\n\n        return quantized, metadata\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776836983.914942,
+  "duration": 0.0
+}

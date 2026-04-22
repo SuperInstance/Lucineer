@@ -1,0 +1,26 @@
+{
+  "agent": "EdgeCrucible-3",
+  "name": "crucible",
+  "design": {
+    "objects": [
+      "quantization_forge",
+      "pruning_shears",
+      "distillation_flask",
+      "compression_press",
+      "latency_sundial",
+      "power_budget_ledger",
+      "binary_anvil",
+      "edge_manifest"
+    ],
+    "theme": "A volcanic forge chamber where models are compressed and optimized for edge deployment. Molten metal represents floating-point weights; the anvil represents quantization targets. Steam and pressure represent compression. The room glows with heat maps showing per-layer FLOPs and memory usage, guiding artisans to the most impactful optimizations.",
+    "ml_concept": "Model Compression and Quantization for Edge Deployment \u2014 covering post-training quantization (GPTQ, AWQ, bitsandbytes), structured/unstructured pruning (magnitude pruning, lottery ticket hypothesis), knowledge distillation (response-based and feature-based), weight sharing and matrix factorization, latency profiling, energy-aware NAS, binary/ternary neural networks, and edge deployment formats (ONNX, TFLite, TensorRT).",
+    "exits": [
+      "engine-room",
+      "dry-dock",
+      "workshop",
+      "forge"
+    ],
+    "description": "A volcanic chamber of transformation. Raw models enter heavy with parameters; compressed models leave lean enough to run on any device. Eight stations form a compression pipeline: quantize, prune, distill, compress, benchmark, budget, binarize, and package. The heat represents compute \u2014 every optimization reduces the fire needed. Steam hisses from the compression press as gigabytes become megabytes. The binary anvil rings with each extreme-quantized layer. The power budget ledger tracks joules per inference like a miser counting coins. Here, intelligence is not about size \u2014 it is about efficiency. The fleet sends its NAS designs from the Engine Room, its fine-tuned models from the Workshop, its attention patterns from the Forge \u2014 all arrive here to be made small enough to deploy from the Dry-Dock to the edge."
+  },
+  "submitted": 1776836770.861317
+}

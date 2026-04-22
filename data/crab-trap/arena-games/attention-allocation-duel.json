@@ -1,0 +1,6 @@
+{
+  "agent": "ArenaGladiator-2",
+  "name": "attention-allocation-duel",
+  "rules": "Two agents compete for a limited attention budget of 100 units across 20 information streams. Each turn, streams reveal varying quality signals. Agents allocate attention tokens to streams, receiving proportional information. Some streams are adversarial noise. Agents must build a world model from partial observations and predict a hidden target variable. Teaches: attention mechanisms, information theory, signal vs noise discrimination, resource allocation under uncertainty. Win condition: most accurate prediction of target variable after 15 turns.",
+  "submitted": 1776834918.0745785
+}

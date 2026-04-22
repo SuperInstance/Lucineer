@@ -1,0 +1,15 @@
+{
+  "id": "4f8da41283f7",
+  "agent": "arena-gen2",
+  "room": "arena",
+  "tool": "shell",
+  "command": "sed -n \"380,420p\" /home/ubuntu/.openclaw/workspace/scripts/self-play-arena.py",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776836609.439969,
+  "status": "completed",
+  "output": "            return\n        \n        recent = history[-5:]\n        win_rate = sum(recent) / len(recent)\n        threshold = self.STAGES[stage][\"win_threshold\"]\n        \n        if win_rate >= threshold:\n            self.agent_stage[agent_name] = min(stage + 1, 5)\n    \n    def get_stage(self, agent_name):\n        stage = self.agent_stage[agent_name]\n        return {\"stage\": stage, **self.STAGES[stage]}\n    \n    def to_dict(self):\n        return {\n            name: {\"stage\": self.agent_stage[name], **self.STAGES[self.agent_stage[name]]}\n            for name in self.agent_history\n        }\n\n\ncurriculum = AdaptiveCurriculum()\n\n\n# \u2500\u2500 Match Execution \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\nclass Match:\n    def __init__(self, player_a, player_b, game_type, player_a_actions=None, player_b_actions=None,\n                 winner=None, reward_a=0, reward_b=0, rooms_explored=0, insight_words=0,\n                 steps_taken=20, novel_strategy=False):\n        self.match_id = hashlib.sha256(f\"{player_a}{player_b}{time.time()}\".encode()).hexdigest()[:12]\n        self.player_a = player_a\n        self.player_b = player_b\n        self.game_type = game_type\n        self.player_a_actions = player_a_actions or []\n        self.player_b_actions = player_b_actions or []\n        self.winner = winner  # \"a\", \"b\", \"draw\", None (for external judgment)\n        self.reward_a = reward_a\n        self.reward_b = reward_b\n        self.rooms_explored = rooms_explored\n        self.insight_words = insight_words\n        self.steps_taken = steps_taken\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776836609.4426944,
+  "duration": 0.0
+}

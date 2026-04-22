@@ -1,0 +1,15 @@
+{
+  "id": "c60e9cb40169",
+  "agent": "EdgeCrucible-3",
+  "room": "engine-room",
+  "tool": "shell",
+  "command": "cat scripts/jc1-tensorrt-room.py | head -80",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776836772.1722753,
+  "status": "completed",
+  "output": "#!/usr/bin/env python3\n\"\"\"\nPLATO-Compatible TensorRT Room\nFor JC1's Jetson Super Orin\n\n3 endpoints matching PLATO's examine/think/create pattern:\n- GET /examine?agent=X \u2192 describe the model (input shapes, types, capabilities)\n- GET /think?agent=X&input=... \u2192 run inference and return results\n- POST /create \u2192 submit inference results as PLATO tile\n\nUsage on Jetson:\n  1. Export your model: torch.onnx.export(model, dummy, \"room.onnx\", opset_version=17)\n  2. Build engine: trtexec --onnx=room.onnx --saveEngine=room.trt --fp16\n  3. Run this server: python3 jc1-tensorrt-room.py --engine room.trt --port 8849\n\"\"\"\nimport json, time, argparse, hashlib\nfrom http.server import HTTPServer, BaseHTTPRequestHandler\nfrom urllib.parse import urlparse, parse_qs\n\ntry:\n    import tensorrt as trt\n    import pycuda.driver as cuda\n    import pycuda.autoinit\n    import numpy as np\n    HAS_TRT = True\nexcept ImportError:\n    HAS_TRT = False\n\nPLATO_URL = \"http://147.224.38.131:8847/submit\"\nengine_path = None\nengine = None\n\ndef load_engine(path):\n    \"\"\"Load a TensorRT engine from file.\"\"\"\n    if not HAS_TRT:\n        return None\n    logger = trt.Logger(trt.Logger.WARNING)\n    runtime = trt.Runtime(logger)\n    with open(path, 'rb') as f:\n        return runtime.deserialize_cuda_engine(f.read())\n\ndef infer(engine, input_data):\n    \"\"\"Run inference on a TensorRT engine.\"\"\"\n    if not engine:\n        return {\"error\": \"no engine loaded\"}\n    context = engine.create_execution_context()\n    \n    # Allocate buffers\n    inputs = []\n    outputs = []\n    bindings = []\n    stream = cuda.Stream()\n    \n    for i in range(engine.num_bindings):\n        shape = engine.get_binding_shape(i)\n        dtype = trt.nptype(engine.get_binding_dtype(i))\n        size = 1\n        for s in shape:\n            size *= s\n        host_mem = cuda.pagelocked_empty(size, dtype)\n        device_mem = cuda.mem_alloc(host_mem.nbytes)\n        bindings.append(int(device_mem))\n        if engine.binding_is_input(i):\n            host_mem[:] = input_data.flatten()[:size]\n            inputs.append({'host': host_mem, 'device': device_mem})\n        else:\n            outputs.append({'host': host_mem, 'device': device_mem})\n    \n    # Transfer input, execute, transfer output\n    for inp in inputs:\n        cuda.memcpy_htod_async(inp['device'], inp['host'], stream)\n    context.execute_async_v2(bindings=bindings, stream_handle=stream.handle)\n    for out in outputs:\n        cuda.memcpy_dtoh_async(out['host'], out['device'], stream)\n    stream.synchronize()\n    \n    return [out['host'].tolist() for out in outputs]\n\nclass TRTRoomHandler(BaseHTTPRequestHandler):\n    def do_GET(self):\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776836772.1744006,
+  "duration": 0.0
+}
