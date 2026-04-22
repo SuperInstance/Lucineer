@@ -415,6 +415,22 @@ class Handler(http.server.BaseHTTPRequestHandler):
             self.serve_session(params)
         elif path == "/agent-prompt":
             self.serve_agent_prompt(params)
+        elif path.startswith("/domain/"):
+            self.serve_domain_room(path[8:], params)
+        elif path == "/compare-plato":
+            self.serve_compare_plato(params)
+        elif path == "/fishinglog":
+            self.serve_static_app('fishinglog-app.html')
+        elif path == "/studylog":
+            self.serve_static_app('studylog-app.html')
+        elif path == "/activelog":
+            self.serve_static_app('activelog-app.html')
+        elif path == "/makerlog":
+            self.serve_static_app('makerlog-app.html')
+        elif path == "/personallog":
+            self.serve_static_app('personallog-app.html')
+        elif path == "/playerlog":
+            self.serve_static_app('playerlog-app.html')
         else:
             self.send_header("Content-Type", "text/plain")
             self.end_headers()
@@ -447,6 +463,102 @@ class Handler(http.server.BaseHTTPRequestHandler):
         else:
             self.wfile.write(json.dumps({"error": "unknown endpoint"}).encode())
     
+
+    def serve_domain_room(self, domain, params):
+        """Serve a domain-specific room explorer page."""
+        # Fetch domain rooms from :4050
+        rooms_data = {}
+        try:
+            import urllib.request
+            r = urllib.request.urlopen(f'http://localhost:4050/{domain}', timeout=3)
+            rooms_data = json.loads(r.read())
+        except Exception:
+            pass
+        
+        # Also get tiles from PLATO
+        plato_tiles = []
+        try:
+            import urllib.request
+            r = urllib.request.urlopen(f'http://localhost:8847/rooms', timeout=3)
+            all_rooms = json.loads(r.read())
+            plato_tiles = all_rooms.get(domain, {}).get('tile_count', 0)
+        except Exception:
+            pass
+
+        self.send_header('Content-Type', 'text/html; charset=utf-8')
+        self.end_headers()
+        
+        rooms_html = ''
+        if rooms_data:
+            rooms = rooms_data.get('rooms', [])
+            for room in rooms:
+                name = room.get('name', '?')
+                objects = room.get('objects', [])
+                obj_html = ''.join(f'<span class="obj">{o}</span>' for o in objects)
+                rooms_html += f'<div class="room-card"><h3>{name}</h3><div class="objects">{obj_html}</div></div>'
+        
+        html = f"""<!DOCTYPE html><html><head><title>{domain} - PLATO Domain Explorer</title>
+<style>
+body{{font-family:system-ui;max-width:900px;margin:0 auto;padding:20px;background:#0a0a0a;color:#e0e0e0}}
+.room-card{{background:#1a1a2e;border:1px solid #333;border-radius:8px;padding:16px;margin:12px 0}}
+.room-card h3{{color:#e94560;margin:0 0 8px}}
+.objects{{display:flex;flex-wrap:wrap;gap:6px}}
+.obj{{background:#16213e;padding:4px 10px;border-radius:12px;font-size:0.85em;border:1px solid #0f3460}}
+.stats{{color:#888;font-size:0.9em;margin:8px 0}}
+a{{color:#e94560;text-decoration:none}}a:hover{{text-decoration:underline}}
+</style></head><body>
+<h1>🔮 {domain} Domain Explorer</h1>
+<p class="stats">PLATO tiles: {plato_tiles} | <a href="/">← Back to Terminal</a></p>
+<div>{rooms_html if rooms_html else '<p>No domain rooms configured yet.</p>'}</div>
+<script>setTimeout(()=>location.reload(),30000)</script>
+</body></html>"""
+        self.wfile.write(html.encode())
+
+    def serve_compare_plato(self, params):
+        """Compare fleet PLATO with a remote PLATO instance."""
+        remote_url = params.get('url', [''])[0]
+        comparison = {'fleet_rooms': 0, 'remote_rooms': 0, 'shared': [], 'unique_fleet': [], 'unique_remote': []}
+        
+        # Get fleet rooms
+        try:
+            import urllib.request
+            r = urllib.request.urlopen('http://localhost:8847/rooms', timeout=3)
+            fleet_data = json.loads(r.read())
+            comparison['fleet_rooms'] = len(fleet_data)
+            fleet_names = set(fleet_data.keys())
+        except Exception:
+            fleet_names = set()
+
+        if remote_url:
+            try:
+                import urllib.request
+                r = urllib.request.urlopen(f'{remote_url}/rooms', timeout=5)
+                remote_data = json.loads(r.read())
+                comparison['remote_rooms'] = len(remote_data)
+                remote_names = set(remote_data.keys())
+                comparison['shared'] = sorted(fleet_names & remote_names)
+                comparison['unique_fleet'] = sorted(fleet_names - remote_names)[:20]
+                comparison['unique_remote'] = sorted(remote_names - fleet_names)[:20]
+            except Exception as e:
+                comparison['error'] = str(e)
+
+        self.send_header('Content-Type', 'application/json')
+        self.end_headers()
+        self.wfile.write(json.dumps(comparison, indent=2).encode())
+
+    def serve_static_app(self, filename):
+        """Serve a static HTML app from the data directory."""
+        import pathlib
+        app_path = pathlib.Path(__file__).parent.parent / "data" / filename
+        if app_path.exists():
+            self.send_header('Content-Type', 'text/html; charset=utf-8')
+            self.end_headers()
+            self.wfile.write(app_path.read_bytes())
+        else:
+            self.send_header('Content-Type', 'text/plain')
+            self.end_headers()
+            self.wfile.write(f'App not found: {filename}'.encode())
+
     def serve_terminal(self, params):
         """Serve the main web terminal HTML."""
         session_id = params.get("session", [hashlib.md5(str(time.time()).encode()).hexdigest()[:8]])[0]

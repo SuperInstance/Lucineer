@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#10B981">
+<title>PlayerLog — Gaming Tracker</title>
+<meta name="description" content="Track games, log sessions, analyze performance. Your gaming data belongs to you.">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--accent:#10B981;--bg:#0A0A0F;--text:#d8d8ec;--dim:#8A93B4;--surface:#14141f;--border:#1c1c35;--green:#22C55E;--red:#EF4444}
+body{font-family:'JetBrains Mono',monospace;background:var(--bg);color:var(--text);line-height:1.7}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,.95);border-bottom:1px solid var(--border);padding:.7rem 2rem;display:flex;align-items:center;justify-content:space-between}
+nav .logo{font-weight:700;color:var(--accent)}
+nav .links a{font-size:.75rem;color:var(--dim);text-decoration:none;margin-left:1.5rem}
+.container{max-width:700px;margin:5rem auto 2rem;padding:0 1.5rem}
+h1{font-size:1.5rem;margin-bottom:.3rem}
+.subtitle{color:var(--dim);font-size:.85rem;margin-bottom:2rem}
+.form-group{margin-bottom:1.2rem}
+label{display:block;font-size:.75rem;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem}
+input,select,textarea{width:100%;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:.6rem .8rem;font-family:inherit;font-size:.85rem;border-radius:4px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--accent)}
+textarea{min-height:80px;resize:vertical}
+.row{display:flex;gap:1rem}
+.row>*{flex:1}
+.btn{padding:.6rem 1.4rem;border-radius:6px;font-weight:600;font-size:.85rem;cursor:pointer;border:none;font-family:inherit;transition:all .2s}
+.btn-primary{background:var(--accent);color:var(--bg)}
+.btn-ghost{background:transparent;color:var(--dim);border:1px solid var(--border)}
+.log-list{margin-top:2rem}
+.log-entry{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;margin-bottom:.8rem}
+.log-entry .game{color:var(--accent);font-weight:600}
+.log-entry .meta{color:var(--dim);font-size:.75rem;margin-top:.3rem}
+.log-entry .notes{font-size:.8rem;margin-top:.3rem}
+.empty{text-align:center;color:var(--dim);padding:3rem;font-size:.85rem}
+.stats{display:flex;gap:1.5rem;margin:1.5rem 0;flex-wrap:wrap}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;flex:1;min-width:100px;text-align:center}
+.stat-num{font-size:1.3rem;font-weight:700;color:var(--accent)}
+.stat-label{font-size:.65rem;color:var(--dim);text-transform:uppercase;letter-spacing:.08em}
+.tab-bar{display:flex;gap:.5rem;margin-bottom:1.5rem}
+.tab{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:.4rem 1rem;font-size:.75rem;color:var(--dim);cursor:pointer;font-family:inherit}
+.tab.active{border-color:var(--accent);color:var(--accent)}
+.hidden{display:none}
+.result-win{color:var(--green)}.result-loss{color:var(--red)}.result-draw{color:var(--dim)}
+.game-list{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.5rem}
+.game-tag{background:var(--surface);border:1px solid var(--border);padding:.3rem .7rem;border-radius:4px;font-size:.75rem;cursor:pointer}
+.game-tag:hover{border-color:var(--accent)}
+.insight-box{background:var(--surface);border:1px solid var(--accent);border-radius:8px;padding:1rem;margin-top:1.5rem}
+.insight-box h3{color:var(--accent);font-size:.85rem;margin-bottom:.5rem}
+.insight-box textarea{min-height:60px}
+</style></head><body>
+<nav><div class="logo">🎮 PlayerLog</div><div class="links"><a href="/">Terminal</a><a href="/live">Dashboard</a><a href="https://playerlog.ai">playerlog.ai</a></div></nav>
+<div class="container">
+<h1>Track Your Games</h1>
+<p class="subtitle">Sessions, performance, meta analysis. Your gaming data belongs to you.</p>
+<div class="stats" id="stats"></div>
+<div class="tab-bar"><button class="tab active" onclick="showTab('log')">Log Session</button><button class="tab" onclick="showTab('history')">History</button><button class="tab" onclick="showTab('analysis')">Analysis</button></div>
+<div id="tab-log">
+<div class="form-group"><label>Game</label><input id="game" placeholder="e.g. Valorant, Elden Ring, Chess" list="game-list"><datalist id="game-list"></datalist></div>
+<div class="row">
+<div class="form-group"><label>Duration (min)</label><input id="duration" type="number" placeholder="60"></div>
+<div class="form-group"><label>Result</label><select id="result"><option value="win">Win</option><option value="loss">Loss</option><option value="draw">Draw</option><option value="session">Session (no result)</option></select></div>
+</div>
+<div class="row">
+<div class="form-group"><label>Score/Rank</label><input id="score" placeholder="e.g. 2450 ELO, 12 kills"></div>
+<div class="form-group"><label>Mood After</label><select id="mood"><option value="pumped">💪 Pumped</option><option value="satisfied">😄 Satisfied</option><option value="neutral">😐 Neutral</option><option value="frustrated">😤 Frustrated</option><option value="tilted">🔥 Tilted</option></select></div>
+</div>
+<div class="form-group"><label>What happened?</label><textarea id="notes" placeholder="Key moments, plays, mistakes, what you learned."></textarea></div>
+<div class="form-group"><label>What to improve?</label><textarea id="improve" placeholder="One thing to work on next session."></textarea></div>
+<button class="btn btn-primary" onclick="logSession()">Log Session</button>
+</div>
+<div id="tab-history" class="hidden"><div id="history"></div></div>
+<div id="tab-analysis" class="hidden"><div id="analysis"></div></div>
+</div>
+<script>
+const K='playerlog-sessions';let sessions=JSON.parse(localStorage.getItem(K)||'[]');
+function showTab(t){document.querySelectorAll('[id^=tab-]').forEach(e=>e.classList.add('hidden'));document.getElementById('tab-'+t).classList.remove('hidden');document.querySelectorAll('.tab').forEach((b,i)=>b.classList.toggle('active',['log','history','analysis'][i]===t));if(t==='history')renderHistory();if(t==='analysis')renderAnalysis()}
+function logSession(){const s={game:document.getElementById('game').value,duration:parseInt(document.getElementById('duration').value)||0,result:document.getElementById('result').value,score:document.getElementById('score').value,mood:document.getElementById('mood').value,notes:document.getElementById('notes').value,improve:document.getElementById('improve').value,time:new Date().toISOString()};if(!s.game)return;sessions.unshift(s);localStorage.setItem(K,JSON.stringify(sessions));document.getElementById('game').value='';document.getElementById('notes').value='';document.getElementById('improve').value='';document.getElementById('score').value='';renderStats();updateGameList()}
+function renderStats(){const s=document.getElementById('stats');const total=sessions.length;const wins=sessions.filter(s=>s.result==='win').length;const totalMin=sessions.reduce((a,s)=>a+s.duration,0);const wr=total?((wins/total)*100).toFixed(0)+'%':'-';s.innerHTML=`<div class="stat"><div class="stat-num">${total}</div><div class="stat-label">Sessions</div></div><div class="stat"><div class="stat-num">${wr}</div><div class="stat-label">Win Rate</div></div><div class="stat"><div class="stat-num">${Math.round(totalMin/60)}</div><div class="stat-label">Hours</div></div><div class="stat"><div class="stat-num">${[...new Set(sessions.map(s=>s.game))].length}</div><div class="stat-label">Games</div></div>`}
+function renderHistory(){const h=document.getElementById('history');if(!sessions.length){h.innerHTML='<div class="empty">No sessions yet. Go play something!</div>';return}h.innerHTML=sessions.map(s=>`<div class="log-entry"><div class="game">${s.game} <span class="result-${s.result==='session'?'draw':s.result}">${s.result.toUpperCase()}</span></div><div class="meta">${s.duration}min · ${s.mood} · ${s.score||'no score'} · ${new Date(s.time).toLocaleDateString()}</div>${s.notes?`<div class="notes">${s.notes}</div>`:''}</div>`).join('')}
+function renderAnalysis(){const a=document.getElementById('analysis');const games={};sessions.forEach(s=>{games[s.game]=games[s.game]||{sessions:0,wins:0,losses:0,minutes:0};games[s.game].sessions++;games[s.game].minutes+=s.duration;if(s.result==='win')games[s.game].wins++;if(s.result==='loss')games[s.game].losses++});const html=Object.entries(games).sort((a,b)=>b[1].sessions-a[1].sessions).map(([g,d])=>{const wr=d.sessions?((d.wins/d.sessions)*100).toFixed(0):'0';return`<div class="stat" style="text-align:left"><div style="display:flex;justify-content:space-between"><strong>${g}</strong><span style="color:var(--dim)">${d.sessions} sessions · ${wr}% WR</span></div><div style="color:var(--dim);font-size:.75rem">${Math.round(d.minutes/60)}h played · ${d.wins}W/${d.losses}L</div></div>`}).join('');a.innerHTML=html||'<div class="empty">Play more to see analysis.</div>'}
+function updateGameList(){const games=[...new Set(sessions.map(s=>s.game))];const dl=document.getElementById('game-list');dl.innerHTML=games.map(g=>`<option value="${g}">`).join('')}
+renderStats();updateGameList();
+</script></body></html>

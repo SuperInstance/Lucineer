@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#8B5CF6">
+<title>PersonalLog — Life Tracker</title>
+<meta name="description" content="Track your life. Health, habits, milestones, reflections. Your personal data, your rules.">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--accent:#8B5CF6;--bg:#0A0A0F;--text:#d8d8ec;--dim:#8A93B4;--surface:#14141f;--border:#1c1c35;--green:#22C55E;--red:#EF4444}
+body{font-family:'JetBrains Mono',monospace;background:var(--bg);color:var(--text);line-height:1.7}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,.95);border-bottom:1px solid var(--border);padding:.7rem 2rem;display:flex;align-items:center;justify-content:space-between}
+nav .logo{font-weight:700;color:var(--accent)}
+nav .links a{font-size:.75rem;color:var(--dim);text-decoration:none;margin-left:1.5rem}
+.container{max-width:700px;margin:5rem auto 2rem;padding:0 1.5rem}
+h1{font-size:1.5rem;margin-bottom:.3rem}
+.subtitle{color:var(--dim);font-size:.85rem;margin-bottom:2rem}
+.form-group{margin-bottom:1.2rem}
+label{display:block;font-size:.75rem;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem}
+input,select,textarea{width:100%;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:.6rem .8rem;font-family:inherit;font-size:.85rem;border-radius:4px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--accent)}
+textarea{min-height:80px;resize:vertical}
+.row{display:flex;gap:1rem}
+.row>*{flex:1}
+.btn{padding:.6rem 1.4rem;border-radius:6px;font-weight:600;font-size:.85rem;cursor:pointer;border:none;font-family:inherit;transition:all .2s}
+.btn-primary{background:var(--accent);color:var(--bg)}
+.btn-ghost{background:transparent;color:var(--dim);border:1px solid var(--border)}
+.log-list{margin-top:2rem}
+.log-entry{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;margin-bottom:.8rem}
+.log-entry .category{color:var(--accent);font-weight:600}
+.log-entry .meta{color:var(--dim);font-size:.75rem;margin-top:.3rem}
+.log-entry .notes{font-size:.8rem;margin-top:.3rem}
+.empty{text-align:center;color:var(--dim);padding:3rem;font-size:.85rem}
+.stats{display:flex;gap:1.5rem;margin:1.5rem 0;flex-wrap:wrap}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;flex:1;min-width:100px;text-align:center}
+.stat-num{font-size:1.3rem;font-weight:700;color:var(--accent)}
+.stat-label{font-size:.65rem;color:var(--dim);text-transform:uppercase;letter-spacing:.08em}
+.tab-bar{display:flex;gap:.5rem;margin-bottom:1.5rem}
+.tab{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:.4rem 1rem;font-size:.75rem;color:var(--dim);cursor:pointer;font-family:inherit}
+.tab.active{border-color:var(--accent);color:var(--accent)}
+.hidden{display:none}
+.mood-grid{display:flex;gap:.5rem;margin-bottom:1rem;flex-wrap:wrap}
+.mood{padding:.4rem .8rem;border-radius:20px;border:1px solid var(--border);cursor:pointer;font-size:.85em;transition:all .2s}
+.mood:hover,.mood.selected{border-color:var(--accent);background:var(--accent);color:var(--bg)}
+.insight-box{background:var(--surface);border:1px solid var(--accent);border-radius:8px;padding:1rem;margin-top:1.5rem}
+.insight-box h3{color:var(--accent);font-size:.85rem;margin-bottom:.5rem}
+.insight-box textarea{min-height:60px}
+</style></head><body>
+<nav><div class="logo">💜 PersonalLog</div><div class="links"><a href="/">Terminal</a><a href="/live">Dashboard</a><a href="https://personallog.ai">personallog.ai</a></div></nav>
+<div class="container">
+<h1>Track Your Life</h1>
+<p class="subtitle">Health, habits, milestones, reflections. Your data, your rules.</p>
+<div class="stats" id="stats"></div>
+<div class="tab-bar"><button class="tab active" onclick="showTab('log')">New Entry</button><button class="tab" onclick="showTab('history')">History</button><button class="tab" onclick="showTab('streaks')">Streaks</button></div>
+<div id="tab-log">
+<div class="form-group"><label>Category</label><select id="category"><option>health</option><option>exercise</option><option>sleep</option><option>nutrition</option><option>habit</option><option>milestone</option><option>reflection</option><option>relationship</option><option>finance</option><option>learning</option><option>creative</option><option>other</option></select></div>
+<div class="form-group"><label>Mood</label>
+<div class="mood-grid"><span class="mood" onclick="pickMood(this,'great')">😊 Great</span><span class="mood" onclick="pickMood(this,'good')">🙂 Good</span><span class="mood" onclick="pickMood(this,'okay')">😐 Okay</span><span class="mood" onclick="pickMood(this,'low')">😔 Low</span><span class="mood" onclick="pickMood(this,'rough')">😰 Rough</span></div>
+</div>
+<div class="row">
+<div class="form-group"><label>Energy (1-10)</label><input id="energy" type="number" min="1" max="10" placeholder="5"></div>
+<div class="form-group"><label>Hours Sleep</label><input id="sleep" type="number" step="0.5" placeholder="7"></div>
+</div>
+<div class="form-group"><label>What happened?</label><textarea id="description" placeholder="What's on your mind? What did you do today?"></textarea></div>
+<div class="form-group"><label>Gratitude</label><textarea id="gratitude" placeholder="One thing you're grateful for today."></textarea></div>
+<button class="btn btn-primary" onclick="logEntry()">Log Entry</button>
+</div>
+<div id="tab-history" class="hidden"><div id="history"></div></div>
+<div id="tab-streaks" class="hidden"><div id="streaks"></div></div>
+</div>
+<script>
+const K='personallog-entries';let entries=JSON.parse(localStorage.getItem(K)||'[]');let selectedMood='';
+function pickMood(el,mood){document.querySelectorAll('.mood').forEach(e=>e.classList.remove('selected'));el.classList.add('selected');selectedMood=mood}
+function showTab(t){document.querySelectorAll('[id^=tab-]').forEach(e=>e.classList.add('hidden'));document.getElementById('tab-'+t).classList.remove('hidden');document.querySelectorAll('.tab').forEach((b,i)=>b.classList.toggle('active',['log','history','streaks'][i]===t));if(t==='history')renderHistory();if(t==='streaks')renderStreaks()}
+function logEntry(){const e={category:document.getElementById('category').value,mood:selectedMood,energy:parseInt(document.getElementById('energy').value)||5,sleep:parseFloat(document.getElementById('sleep').value)||0,description:document.getElementById('description').value,gratitude:document.getElementById('gratitude').value,time:new Date().toISOString()};if(!e.description)return;entries.unshift(e);localStorage.setItem(K,JSON.stringify(entries));document.getElementById('description').value='';document.getElementById('gratitude').value='';selectedMood='';document.querySelectorAll('.mood').forEach(e=>e.classList.remove('selected'));renderStats();submitToPlato(e)}
+function renderStats(){const s=document.getElementById('stats');const total=entries.length;const streak=calcStreak();const avgEnergy=entries.length?(entries.reduce((a,e)=>a+e.energy,0)/entries.length).toFixed(1):'-';const avgSleep=entries.length?(entries.reduce((a,e)=>a+e.sleep,0)/entries.length).toFixed(1):'-';s.innerHTML=`<div class="stat"><div class="stat-num">${total}</div><div class="stat-label">Entries</div></div><div class="stat"><div class="stat-num">${streak}</div><div class="stat-label">Day Streak</div></div><div class="stat"><div class="stat-num">${avgEnergy}</div><div class="stat-label">Avg Energy</div></div><div class="stat"><div class="stat-num">${avgSleep}</div><div class="stat-label">Avg Sleep</div></div>`}
+function calcStreak(){if(!entries.length)return 0;let streak=1;const dates=entries.map(e=>new Date(e.time).toDateString());for(let i=1;i<dates.length;i++){const d1=new Date(dates[i-1]);const d2=new Date(dates[i]);if((d1-d2)/(1000*60*60*24)<=1.5)streak++;else break}return streak}
+function renderHistory(){const h=document.getElementById('history');if(!entries.length){h.innerHTML='<div class="empty">No entries yet. Start tracking your life.</div>';return}h.innerHTML=entries.map(e=>`<div class="log-entry"><div class="category">${e.category} ${e.mood?'· '+e.mood:''}</div><div class="meta">Energy: ${e.energy}/10 · Sleep: ${e.sleep}h · ${new Date(e.time).toLocaleDateString()}</div>${e.description?`<div class="notes">${e.description}</div>`:''}${e.gratitude?`<div class="notes" style="color:var(--accent)">🙏 ${e.gratitude}</div>`:''}</div>`).join('')}
+function renderStreaks(){const s=document.getElementById('streaks');const cats={};entries.forEach(e=>{const d=new Date(e.time).toDateString();cats[e.category]=cats[e.category]||new Set();cats[e.category].add(d)});const html=Object.entries(cats).sort((a,b)=>b[1].size-a[1].size).map(([cat,days])=>`<div class="stat" style="text-align:left"><div class="stat-num">${days.size}</div><div class="stat-label">${cat} days logged</div></div>`).join('');s.innerHTML=html||'<div class="empty">Log entries to see streaks.</div>'}
+function submitToPlato(e){if(!e.gratitude&&!e.description||e.description.length<30)return;fetch('http://localhost:8847/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({domain:'personallog-reflections',question:`Life reflection: ${e.category} (${e.mood})`,answer:e.gratitude||e.description,agent:'personallog-user',confidence:0.5})}).catch(()=>{})}
+renderStats();
+</script></body></html>

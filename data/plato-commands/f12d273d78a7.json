@@ -1,0 +1,15 @@
+{
+  "id": "f12d273d78a7",
+  "agent": "ccc",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "curl -s http://localhost:8899/status",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776890614.09377,
+  "status": "completed",
+  "output": "{\n  \"service\": \"fleet-runner\",\n  \"version\": \"v1.0-four-layer\",\n  \"total_services\": 17,\n  \"services_up\": 17,\n  \"migrated\": 17,\n  \"pending_migration\": 0,\n  \"services\": {\n    \"crab-trap\": {\n      \"port\": 4042,\n      \"up\": true,\n      \"migrated\": true,\n      \"process\": \"external\"\n    },\n    \"the-lock\": {\n      \"port\": 4043,\n      \"up\": true,\n      \"migrated\": true,\n      \"process\": \"external\"\n    },\n    \"arena\": {\n      \"port\": 4044,\n      \"up\": true,\n      \"migrated\": true,\n      \"process\": \"external\"\n    },\n    \"grammar\": {\n      \"port\": 4045,\n      \"up\": true,\n      \"migrated\": true,\n      \"process\": \"external\"\n    },\n    \"dashboard\": {\n      \"port\": 4046,\n      \"up\": true,\n      \"migrated\": true,\n      \"process\": \"external\"\n    },\n    \"nexus\": {\n      \"port\": 4047,\n      \"up\": true,\n      \"migrated\": true,\n      \"process\": \"external\"\n    },\n    \"domain-rooms\": {\n      \"port\": 4050,\n      \"up\": true,\n      \"migrated\": true,\n      \"process\": \"external\"\n    },\n    \"web-terminal\": {\n      \"port\": 4060,\n      \"up\": true,\n      \"migrated\": true,\n      \"process\": \"external\"\n    },\n    \"mud-telnet\": {\n      \"port\": 7777,\n      \"up\": true,\n      \"migrated\": true,\n      \"process\": \"external\"\n    },\n    \"plato\": {\n      \"port\": 8847,\n      \"up\": true,\n      \"migrated\": true,\n      \"process\": \"external\"\n    },\n    \"shell\": {\n      \"port\": 8848,\n      \"up\": true,\n      \"migrated\": true,\n      \"process\": \"external\"\n    },\n    \"orchestrator\": {\n      \"port\": 8849,\n      \"up\": true,\n      \"migrated\": true,\n      \"process\": \"external\"\n    },\n    \"adaptive-mud\": {\n      \"port\": 8850,\n      \"up\": true,\n      \"migrated\": true,\n      \"process\": \"external\"\n    },\n    \"pp-monitor\": {\n      \"port\": 8851,\n      \"up\": true,\n      \"migrated\": true,\n      \"process\": \"external\"\n    },\n    \"tile-scorer\": {\n      \"port\": 8852,\n      \"up\": true,\n      \"migrated\": true,\n      \"process\": \"external\"\n    },\n    \"keeper\": {\n      \"port\": 8900,\n      \"up\": true,\n      \"migrated\": true,\n      \"process\": \"external\"\n    },\n    \"agent-api\": {\n      \"port\": 8901,\n      \"up\": true,\n      \"migrated\": true,\n      \"process\": \"external\"\n    }\n  }\n}",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776890614.1072369,
+  "duration": 0.01
+}

@@ -1,0 +1,15 @@
+{
+  "id": "5f876e233f7c",
+  "agent": "ccc",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "ps aux | grep nexus | grep -v grep; ps aux | grep fleet | grep -v grep",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776890538.016472,
+  "status": "completed",
+  "output": "ubuntu    101818  0.0  0.0  27844 18484 ?        S    15:06   0:01 python3 fleet/services/nexus.py\nubuntu    101808  0.0  0.0  28372 19628 ?        S    15:06   0:01 python3 fleet/services/crab_trap.py\nubuntu    101810  0.0  0.0  27796 18908 ?        S    15:06   0:01 python3 fleet/services/the_lock.py\nubuntu    101812  0.0  0.0  29760 20056 ?        S    15:06   0:01 python3 fleet/services/arena.py\nubuntu    101816  0.0  0.0  27444 18128 ?        S    15:06   0:01 python3 fleet/services/dashboard.py\nubuntu    101818  0.0  0.0  27844 18484 ?        S    15:06   0:01 python3 fleet/services/nexus.py\nubuntu    101820  0.0  0.0  27928 18752 ?        S    15:06   0:01 python3 fleet/services/domain_rooms.py\nubuntu    101826  0.0  0.0  29596 19772 ?        S    15:06   0:01 python3 fleet/services/shell.py\nubuntu    101828  0.0  0.0  27912 18992 ?        S    15:06   0:01 python3 fleet/services/orchestrator.py\nubuntu    101830  0.0  0.0  27836 18620 ?        S    15:06   0:01 python3 fleet/services/adaptive_mud.py\nubuntu    101832  0.0  0.0  27776 18548 ?        S    15:06   0:01 python3 fleet/services/pp_monitor.py\nubuntu    101834  0.0  0.0  27808 18588 ?        S    15:06   0:01 python3 fleet/services/tile_scorer.py\nubuntu    101836  0.0  0.0  29908 20912 ?        S    15:06   0:01 python3 fleet/services/keeper.py\nubuntu    101838  0.0  0.0  30840 21100 ?        S    15:06   0:01 python3 fleet/services/agent_api.py\nubuntu    101840  0.0  0.0  31116 21600 ?        S    15:06   0:00 python3 fleet/services/mud_telnet.py\nubuntu    101996  0.0  0.0  27440 17696 ?        S    15:07   0:01 python3 fleet/services/fleet_runner.py\nubuntu    112989  0.1  0.1  40416 31692 ?        S    20:30   0:00 python3 /home/ubuntu/.openclaw/workspace/fleet/services/plato.py\nubuntu    113451  0.0  0.0  29488 19748 ?        S    20:33   0:00 python3 /home/ubuntu/.openclaw/workspace/fleet/services/grammar.py\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776890538.033196,
+  "duration": 0.02
+}

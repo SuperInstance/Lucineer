@@ -1,0 +1,15 @@
+{
+  "id": "5297ce21d637",
+  "agent": "ccc",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "curl -s http://localhost:4046/ | head -40",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776890630.34331,
+  "status": "completed",
+  "output": "<!DOCTYPE html>\n<html><head><title>Cocapn Fleet Dashboard</title>\n<meta http-equiv=\"refresh\" content=\"30\">\n<style>\nbody{background:#0a0a0f;color:#e0e0e0;font-family:monospace;margin:2em}\nh1{color:#4fc3f7;border-bottom:2px solid #1a1a2e;padding-bottom:.5em}\n.grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5em;margin-top:1em}\n.card{background:#12121a;border:1px solid #1a1a2e;border-radius:8px;padding:1.2em}\n.card h2{color:#4fc3f7;margin:0 0 .5em 0;font-size:1.1em}\n.card .value{font-size:2em;color:#7c4dff;font-weight:bold}\n.card .label{color:#888;font-size:.85em}\n.services{margin-top:1.5em}\n.svc{display:inline-block;background:#1a1a2e;padding:.3em .8em;margin:.2em;border-radius:4px;font-size:.85em}\n.svc.up{border-left:3px solid #4caf50}.svc.down{border-left:3px solid #f44336}\n.footer{margin-top:2em;color:#555;font-size:.8em;text-align:center}\n</style></head><body>\n<h1>Cocapn Fleet Dashboard</h1>\n<div class=\"grid\">\n<div class=\"card\" id=\"plato\"><h2>PLATO Room Server</h2><div class=\"value\" id=\"plato-tiles\">--</div><div class=\"label\">tiles submitted</div></div>\n<div class=\"card\" id=\"arena\"><h2>Self-Play Arena</h2><div class=\"value\" id=\"arena-matches\">--</div><div class=\"label\">matches played</div></div>\n<div class=\"card\" id=\"grammar\"><h2>Recursive Grammar</h2><div class=\"value\" id=\"grammar-rules\">--</div><div class=\"label\">active rules</div></div>\n<div class=\"card\" id=\"crabtrap\"><h2>Crab Trap MUD</h2><div class=\"value\" id=\"crabtrap-agents\">--</div><div class=\"label\">agents onboarded</div></div>\n</div>\n<div class=\"services\" id=\"services\"></div>\n<div class=\"footer\">Cocapn Fleet &mdash; auto-refresh every 30s &mdash; <span id=\"ts\"></span></div>\n<script>\nconst ports={8900:'Keeper',8901:'Agent API',8847:'PLATO',7777:'MUD',4042:'Crab Trap',4043:'The Lock',4044:'Arena',4045:'Grammar',6167:'Matrix'};\nfetch('/api/status').then(r=>r.json()).then(d=>{\ndocument.getElementById('plato-tiles').textContent=d.plato.tiles;\ndocument.getElementById('arena-matches').textContent=d.arena.total_matches;\ndocument.getElementById('grammar-rules').textContent=d.grammar.active_rules;\ndocument.getElementById('crabtrap-agents').textContent=d.crabtrap.fleet_agents||'?';\ndocument.getElementById('ts').textContent=new Date().toISOString().slice(0,19);\n});\ndocument.getElementById('ts').textContent=new Date().toISOString().slice(0,19);\n</script></body></html>",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776890630.3509536,
+  "duration": 0.01
+}

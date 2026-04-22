@@ -1,0 +1,15 @@
+{
+  "id": "ac5b64d7f72c",
+  "agent": "ccc",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "curl -s http://localhost:4047/status | head -5; echo \"---\"; curl -s http://localhost:4046/ | head -5; echo \"---\"; curl -s http://localhost:8899/status | head -5",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776890565.9162786,
+  "status": "completed",
+  "output": "{\n  \"round\": 0,\n  \"clients\": 10,\n  \"total_samples\": 0,\n  \"global_model_norm\": 2.9852,\n\"---\"\n<!DOCTYPE html>\n<html><head><title>Cocapn Fleet Dashboard</title>\n<meta http-equiv=\"refresh\" content=\"30\">\n<style>\nbody{background:#0a0a0f;color:#e0e0e0;font-family:monospace;margin:2em}\n\"---\"\n{\n  \"service\": \"fleet-runner\",\n  \"version\": \"v1.0-four-layer\",\n  \"total_services\": 17,\n  \"services_up\": 17,\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776890565.9427617,
+  "duration": 0.03
+}

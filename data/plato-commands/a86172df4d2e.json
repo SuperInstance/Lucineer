@@ -1,0 +1,15 @@
+{
+  "id": "a86172df4d2e",
+  "agent": "ccc",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "curl -s http://localhost:8849/ | head -20",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776890757.3332326,
+  "status": "completed",
+  "output": "{\n  \"service\": \"Fleet Orchestrator v1.0\",\n  \"endpoints\": [\n    \"/status\",\n    \"/rules\",\n    \"/test\",\n    \"/test-chain\",\n    \"/event (POST)\"\n  ],\n  \"rules\": 5\n}",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776890757.3407152,
+  "duration": 0.01
+}

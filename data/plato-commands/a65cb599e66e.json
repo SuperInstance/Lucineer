@@ -1,0 +1,14 @@
+{
+  "id": "a65cb599e66e",
+  "agent": "ccc",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "curl -s http://47.236.242.160:8765/cocapn-live-v2.html -o /home/ubuntu/.openclaw/workspace/data/cocapn-live-v2.html && wc -c /home/ubuntu/.openclaw/workspace/data/cocapn-live-v2.html",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776890273.48507,
+  "status": "timeout",
+  "output": "",
+  "error": "Timed out after 120s",
+  "completed": 1776890393.5721197,
+  "duration": 120
+}

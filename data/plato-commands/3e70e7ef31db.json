@@ -1,0 +1,15 @@
+{
+  "id": "3e70e7ef31db",
+  "agent": "ccc",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "curl -s http://localhost:4050/fishinglog.ai/rooms",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776890740.77808,
+  "status": "completed",
+  "output": "{\n  \"domain\": \"fishinglog.ai\",\n  \"rooms\": {\n    \"wheelhouse\": {\n      \"name\": \"\\ud83d\\udea2 The Wheelhouse\",\n      \"tagline\": \"Captain's command center\",\n      \"exits\": [\n        \"deck\",\n        \"engine-room-vessel\",\n        \"galley\"\n      ],\n      \"objects\": [\n        \"radar\",\n        \"chartplotter\",\n        \"autopilot\",\n        \"vhf_radio\",\n        \"log_book\",\n        \"weather_station\"\n      ]\n    },\n    \"deck\": {\n      \"name\": \"\\ud83c\\udfa3 The Deck\",\n      \"tagline\": \"Where the fish meet the boat\",\n      \"exits\": [\n        \"wheelhouse\",\n        \"hold\"\n      ],\n      \"objects\": [\n        \"sorting_table\",\n        \"hydraulic_drum\",\n        \"power_block\",\n        \"rod_holder\",\n        \"live_tank\",\n        \"deck_cameras\"\n      ]\n    },\n    \"hold\": {\n      \"name\": \"\\u2744\\ufe0f The Fish Hold\",\n      \"tagline\": \"RSW system, catch tracking, market data\",\n      \"exits\": [\n        \"deck\"\n      ],\n      \"objects\": [\n        \"rsw_control\",\n        \"catch_tracker\",\n        \"quality_meter\",\n        \"market_display\"\n      ]\n    }\n  }\n}",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776890740.785394,
+  "duration": 0.01
+}

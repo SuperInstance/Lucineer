@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#F59E0B">
+<title>MakerLog — Build Tracker</title>
+<meta name="description" content="Track builds, log commits, measure progress. For makers who ship.">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--accent:#F59E0B;--bg:#0A0A0F;--text:#d8d8ec;--dim:#8A93B4;--surface:#14141f;--border:#1c1c35;--green:#22C55E;--red:#EF4444}
+body{font-family:'JetBrains Mono',monospace;background:var(--bg);color:var(--text);line-height:1.7}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,.95);border-bottom:1px solid var(--border);padding:.7rem 2rem;display:flex;align-items:center;justify-content:space-between}
+nav .logo{font-weight:700;color:var(--accent)}
+nav .links a{font-size:.75rem;color:var(--dim);text-decoration:none;margin-left:1.5rem}
+.container{max-width:700px;margin:5rem auto 2rem;padding:0 1.5rem}
+h1{font-size:1.5rem;margin-bottom:.3rem}
+.subtitle{color:var(--dim);font-size:.85rem;margin-bottom:2rem}
+.form-group{margin-bottom:1.2rem}
+label{display:block;font-size:.75rem;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem}
+input,select,textarea{width:100%;background:var(--surface);border:1px solid var(--border);color:var(--text);padding:.6rem .8rem;font-family:inherit;font-size:.85rem;border-radius:4px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--accent)}
+textarea{min-height:80px;resize:vertical}
+.row{display:flex;gap:1rem}
+.row>*{flex:1}
+.btn{padding:.6rem 1.4rem;border-radius:6px;font-weight:600;font-size:.85rem;cursor:pointer;border:none;font-family:inherit;transition:all .2s}
+.btn-primary{background:var(--accent);color:var(--bg)}
+.btn-ghost{background:transparent;color:var(--dim);border:1px solid var(--border)}
+.log-list{margin-top:2rem}
+.log-entry{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;margin-bottom:.8rem}
+.log-entry .project{color:var(--accent);font-weight:600}
+.log-entry .meta{color:var(--dim);font-size:.75rem;margin-top:.3rem}
+.log-entry .notes{font-size:.8rem;margin-top:.3rem}
+.empty{text-align:center;color:var(--dim);padding:3rem;font-size:.85rem}
+.stats{display:flex;gap:1.5rem;margin:1.5rem 0;flex-wrap:wrap}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;flex:1;min-width:120px;text-align:center}
+.stat-num{font-size:1.3rem;font-weight:700;color:var(--accent)}
+.stat-label{font-size:.65rem;color:var(--dim);text-transform:uppercase;letter-spacing:.08em}
+.hidden{display:none}
+.insight-box{background:var(--surface);border:1px solid var(--accent);border-radius:8px;padding:1rem;margin-top:1.5rem}
+.insight-box h3{color:var(--accent);font-size:.85rem;margin-bottom:.5rem}
+.insight-box textarea{min-height:60px}
+</style></head><body>
+<nav><div class="logo">🔧 MakerLog</div><div class="links"><a href="/">Terminal</a><a href="/live">Dashboard</a><a href="https://makerlog.ai">makerlog.ai</a></div></nav>
+<div class="container">
+<h1>Track Your Builds</h1>
+<p class="subtitle">Log projects, track commits, measure what ships.</p>
+<div class="stats" id="stats"></div>
+<div class="tab-bar"><button class="tab active" onclick="showTab('log')">New Build</button><button class="tab" onclick="showTab('history')">History</button><button class="tab" onclick="showTab('insight')">Fleet Insight</button></div>
+<div id="tab-log">
+<div class="form-group"><label>Project</label><input id="project" placeholder="e.g. flux-runtime, plato-kernel"></div>
+<div class="row">
+<div class="form-group"><label>Build Type</label><select id="buildtype"><option>feature</option><option>bugfix</option><option>refactor</option><option>docs</option><option>test</option><option>deploy</option></select></div>
+<div class="form-group"><label>Status</label><select id="status"><option>shipped</option><option>in-progress</option><option>blocked</option><option>abandoned</option></select></div>
+</div>
+<div class="row">
+<div class="form-group"><label>Commits</label><input id="commits" type="number" placeholder="1"></div>
+<div class="form-group"><label>Lines Changed</label><input id="lines" type="number" placeholder="50"></div>
+</div>
+<div class="form-group"><label>What You Built</label><textarea id="description" placeholder="What did you ship? What did you learn?"></textarea></div>
+<div class="form-group"><label>Lessons Learned</label><textarea id="lessons" placeholder="What would you do differently?"></textarea></div>
+<button class="btn btn-primary" onclick="logBuild()">Log Build</button>
+</div>
+<div id="tab-history" class="hidden"><div id="history"></div></div>
+<div id="tab-insight" class="hidden">
+<div class="insight-box"><h3>Share with the Fleet</h3><p style="color:var(--dim);font-size:.8rem;margin-bottom:.5rem">Submit a PLATO tile about what you learned building.</p>
+<textarea id="insight-text" placeholder="What insight from this build session should the fleet know?"></textarea>
+<button class="btn btn-primary" style="margin-top:.5rem" onclick="submitInsight()">Submit to PLATO</button></div>
+</div>
+</div>
+<script>
+const K='makerlog-builds';let builds=JSON.parse(localStorage.getItem(K)||'[]');
+function showTab(t){document.querySelectorAll('[id^=tab-]').forEach(e=>e.classList.add('hidden'));document.getElementById('tab-'+t).classList.remove('hidden');document.querySelectorAll('.tab').forEach((b,i)=>b.classList.toggle('active',['log','history','insight'][i]===t));if(t==='history')renderHistory();if(t==='insight')preFillInsight()}
+function logBuild(){const b={project:document.getElementById('project').value,buildtype:document.getElementById('buildtype').value,status:document.getElementById('status').value,commits:parseInt(document.getElementById('commits').value)||0,lines:parseInt(document.getElementById('lines').value)||0,description:document.getElementById('description').value,lessons:document.getElementById('lessons').value,time:new Date().toISOString()};if(!b.project||!b.description)return;builds.unshift(b);localStorage.setItem(K,JSON.stringify(builds));document.getElementById('project').value='';document.getElementById('description').value='';document.getElementById('lessons').value='';document.getElementById('commits').value='';document.getElementById('lines').value='';renderStats();renderHistory()}
+function renderStats(){const s=document.getElementById('stats');const total=builds.length;const shipped=builds.filter(b=>b.status==='shipped').length;const commits=builds.reduce((a,b)=>a+b.commits,0);const lines=builds.reduce((a,b)=>a+b.lines,0);s.innerHTML=`<div class="stat"><div class="stat-num">${total}</div><div class="stat-label">Builds</div></div><div class="stat"><div class="stat-num">${shipped}</div><div class="stat-label">Shipped</div></div><div class="stat"><div class="stat-num">${commits}</div><div class="stat-label">Commits</div></div><div class="stat"><div class="stat-num">${lines}</div><div class="stat-label">Lines</div></div>`}
+function renderHistory(){const h=document.getElementById('history');if(!builds.length){h.innerHTML='<div class="empty">No builds yet. Ship something!</div>';return}h.innerHTML=builds.map(b=>`<div class="log-entry"><div class="project">${b.project}</div><div class="meta">${b.buildtype} · ${b.status} · ${b.commits} commits · ${b.lines} lines · ${new Date(b.time).toLocaleDateString()}</div>${b.description?`<div class="notes">${b.description}</div>`:''}</div>`).join('')}
+function preFillInsight(){const recent=builds[0];if(recent)document.getElementById('insight-text').value=`Building ${recent.project}: ${recent.lessons||recent.description}`}
+function submitInsight(){const text=document.getElementById('insight-text').value;if(!text)return;fetch('http://localhost:8847/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({domain:'makerlog-insights',question:'What did you learn building?',answer:text,agent:'makerlog-user',confidence:0.7})}).then(r=>r.json()).then(d=>{alert(d.status==='accepted'?'Submitted to fleet PLATO!':'Rejected: '+d.reason)}).catch(()=>alert('Could not reach PLATO server'))}
+renderStats();
+</script></body></html>

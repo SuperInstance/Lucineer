@@ -1,0 +1,15 @@
+{
+  "id": "58dbc7e0575e",
+  "agent": "ccc",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "curl -s http://localhost:4047/status | python3 -m json.tool",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776890623.238029,
+  "status": "completed",
+  "output": "{\n    \"round\": 0,\n    \"clients\": 10,\n    \"total_samples\": 0,\n    \"global_model_norm\": 2.9852,\n    \"clients_detail\": {\n        \"room:harbor\": {\n            \"samples\": 0,\n            \"submissions\": 0,\n            \"last_update_age\": 20235.5\n        },\n        \"room:forge\": {\n            \"samples\": 0,\n            \"submissions\": 0,\n            \"last_update_age\": 20235.5\n        },\n        \"room:tide-pool\": {\n            \"samples\": 0,\n            \"submissions\": 0,\n            \"last_update_age\": 20235.5\n        },\n        \"room:lighthouse\": {\n            \"samples\": 0,\n            \"submissions\": 0,\n            \"last_update_age\": 20235.5\n        },\n        \"room:dojo\": {\n            \"samples\": 0,\n            \"submissions\": 0,\n            \"last_update_age\": 20235.5\n        },\n        \"room:self-play-arena\": {\n            \"samples\": 0,\n            \"submissions\": 0,\n            \"last_update_age\": 20235.5\n        },\n        \"room:ouroboros\": {\n            \"samples\": 0,\n            \"submissions\": 0,\n            \"last_update_age\": 20235.5\n        },\n        \"room:engine-room\": {\n            \"samples\": 0,\n            \"submissions\": 0,\n            \"last_update_age\": 20235.5\n        },\n        \"room:federated-nexus\": {\n            \"samples\": 0,\n            \"submissions\": 0,\n            \"last_update_age\": 20235.5\n        },\n        \"grammar:unknown\": {\n            \"samples\": 0,\n            \"submissions\": 0,\n            \"last_update_age\": 919.5\n        }\n    },\n    \"recent_rounds\": []\n}\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776890623.2715895,
+  "duration": 0.03
+}

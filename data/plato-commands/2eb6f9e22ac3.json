@@ -1,0 +1,15 @@
+{
+  "id": "2eb6f9e22ac3",
+  "agent": "ccc",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "netstat -tlnp 2>/dev/null | grep -E \"(4047|4046|8899|7777)\" || ss -tlnp 2>/dev/null | grep -E \"(4047|4046|8899|7777)\"",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776890546.9147666,
+  "status": "failed",
+  "output": "",
+  "error": "/bin/sh: 1: Syntax error: \"(\" unexpected\n",
+  "returncode": 2,
+  "completed": 1776890546.9159284,
+  "duration": 0.0
+}

@@ -1,0 +1,15 @@
+{
+  "id": "c14b544a959a",
+  "agent": "ccc",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "ps aux | grep -E \"(nexus|fleet|status|dashboard)\" | grep -v grep",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776890531.2296896,
+  "status": "failed",
+  "output": "",
+  "error": "/bin/sh: 1: Syntax error: \"(\" unexpected\n",
+  "returncode": 2,
+  "completed": 1776890531.2307665,
+  "duration": 0.0
+}

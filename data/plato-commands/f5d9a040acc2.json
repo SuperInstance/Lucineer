@@ -1,0 +1,15 @@
+{
+  "id": "f5d9a040acc2",
+  "agent": "ccc",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "cat > /home/ubuntu/.openclaw/workspace/data/cocapn-live-v2.html << 'EOF'\n$(cat /root/.openclaw/workspace/cocapn-live-v2.html)\nEOF",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776890178.2160637,
+  "status": "failed",
+  "output": "",
+  "error": "cat: /root/.openclaw/workspace/cocapn-live-v2.html: Permission denied\ncat: EOF: No such file or directory\n",
+  "returncode": 1,
+  "completed": 1776890178.2188919,
+  "duration": 0.0
+}

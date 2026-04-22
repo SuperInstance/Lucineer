@@ -1,0 +1,15 @@
+{
+  "id": "a369d774a5d2",
+  "agent": "ccc",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "ss -tlnp | grep 4047; ss -tlnp | grep 4046; ss -tlnp | grep 8899",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776890554.5806267,
+  "status": "completed",
+  "output": "LISTEN 0      5            0.0.0.0:4047       0.0.0.0:*    users:((\"python3\",pid=101818,fd=3))        \nLISTEN 0      5            0.0.0.0:4046       0.0.0.0:*    users:((\"python3\",pid=101816,fd=3))        \nLISTEN 0      5            0.0.0.0:8899       0.0.0.0:*    users:((\"python3\",pid=101996,fd=3))        \n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776890554.5983005,
+  "duration": 0.02
+}
