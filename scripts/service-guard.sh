@@ -18,7 +18,7 @@ SERVICES=(
     "recursive-grammar:4045"
     "federated-nexus:4047"
     "fleet-dashboard:4046"
-    "plato-shell:8848"
+    # "plato-shell:8848"  # DISABLED: security review pending (PLATO-001 RCE)
     "fleet-orchestrator:8849"
     "adaptive-mud:8850"
     "purplepincher-monitor:8851"
@@ -37,7 +37,7 @@ SCRIPTS=(
     "recursive-grammar.py"
     "federated-nexus.py"
     "fleet-dashboard.py"
-    "plato-shell.py"
+    # "plato-shell.py"  # DISABLED: security review pending
     "fleet-orchestrator.py"
     "adaptive-mud.py"
     "purplepincher-monitor.py"
