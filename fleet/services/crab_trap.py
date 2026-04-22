@@ -33,7 +33,7 @@ from equipment.models import FleetModelClient
 from agent.context import ContextManager
 
 PORT = 4042
-DATA_DIR = Path(FLEET_LIB) / "data" / "crab-trap"
+DATA_DIR = Path(FLEET_LIB).parent / "data" / "crab-trap"
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 lock = threading.Lock()

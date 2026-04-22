@@ -24,7 +24,7 @@ from collections import defaultdict
 from datetime import datetime
 
 PORT = 4044
-DATA_DIR = Path(FLEET_LIB) / "data" / "self-play-arena"
+DATA_DIR = Path(FLEET_LIB).parent / "data" / "self-play-arena"
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 MATCHES_FILE = DATA_DIR / "matches.jsonl"
 POLICIES_FILE = DATA_DIR / "policies.jsonl"

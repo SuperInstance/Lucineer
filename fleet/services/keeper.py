@@ -23,7 +23,7 @@ from keeper_beacon import AgentRegistry, AgentRecord, AgentStatus, CapabilityMat
 from keeper_beacon import BeaconDiscovery, BeaconSignal
 from bottle_protocol import Bottle, BottleType, Priority, TidePool, BottleRouter
 
-DATA_DIR = Path(FLEET_LIB) / "data" / "keeper"
+DATA_DIR = Path(FLEET_LIB).parent / "data" / "keeper"
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 STATE_FILE = DATA_DIR / "fleet.json"
 

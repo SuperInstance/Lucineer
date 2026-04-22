@@ -26,7 +26,7 @@ from equipment.models import FleetModelClient
 from agent.context import ContextManager
 
 PORT = 4043
-DATA_DIR = Path(FLEET_LIB) / "data" / "the-lock"
+DATA_DIR = Path(FLEET_LIB).parent / "data" / "the-lock"
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 lock = threading.Lock()
 sessions = {}

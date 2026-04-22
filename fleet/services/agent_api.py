@@ -22,7 +22,7 @@ from keeper_beacon import AgentRegistry, AgentRecord, AgentStatus, CapabilityMat
 from fleet_formation_protocol import FormationProtocol, FormationType, AgentProfile
 from synclink_protocol import SyncPacket, PacketType, SyncSession, FrameEncoder
 
-DATA_DIR = Path(FLEET_LIB) / "data" / "agent-api"
+DATA_DIR = Path(FLEET_LIB).parent / "data" / "agent-api"
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 # ── Fleet Infrastructure ────────────────────────────────────

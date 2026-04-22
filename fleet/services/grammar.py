@@ -25,7 +25,7 @@ from collections import defaultdict
 from datetime import datetime
 
 PORT = 4045
-DATA_DIR = Path(FLEET_LIB) / "data" / "recursive-grammar"
+DATA_DIR = Path(FLEET_LIB).parent / "data" / "recursive-grammar"
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 RULES_FILE = DATA_DIR / "rules.jsonl"
 EVOLUTION_LOG = DATA_DIR / "evolution.jsonl"
