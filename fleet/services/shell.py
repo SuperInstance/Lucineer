@@ -52,6 +52,19 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 from urllib.parse import urlparse, parse_qs
 from collections import defaultdict
 
+# ── Auth Gate ──────────────────────────────────────────────
+import os as _os
+FLEET_AUTH_TOKEN = _os.environ.get("PLATO_SHELL_TOKEN", "fleet-shell-2026")
+def _check_auth(handler):
+    """Check bearer token. Returns True if authorized."""
+    auth = handler.headers.get("Authorization", "")
+    if auth.startswith("Bearer "):
+        return auth[7:] == FLEET_AUTH_TOKEN
+    # Also check query param for convenience
+    params = parse_qs(urlparse(handler.path).query)
+    return params.get("token", [""])[0] == FLEET_AUTH_TOKEN
+
+
 # ── Safety Gates (FM's CommandGate) ─────────────────────────
 try:
     import importlib.util as _ilu
@@ -193,7 +206,7 @@ class PlatoShell:
 
         try:
             proc = subprocess.run(
-                shell_cmd, shell=True, capture_output=True, text=True,
+                shlex.split(shell_cmd), shell=False, capture_output=True, text=True,
                 cwd=str(room.cwd), timeout=timeout,
                 env={**os.environ, "TERM": "dumb"},
                 # Security: restrict to common safe paths only
@@ -279,7 +292,7 @@ class PlatoShell:
         safe = safe.replace('\n', ' ').replace('\r', ' ').replace('\x00', '')
 
         if tool == "shell":
-            return safe
+            return "echo BLOCKED: shell tool disabled. Use specific tool: kimi, aider, crush, git, test, build, review"
         elif tool == "kimi":
             return f'/home/ubuntu/.local/bin/kimi-cli --prompt "{safe}" --work-dir {room.cwd}'
         elif tool == "aider":
@@ -330,9 +343,15 @@ class PlatoShellHandler(BaseHTTPRequestHandler):
         path = parsed.path
 
         if path == "/status":
+            if not _check_auth(self):
+                self._json({"error": "Unauthorized"}, 401)
+                return
             self._json(shell.get_admin_view())
 
         elif path == "/feed":
+            if not _check_auth(self):
+                self._json({"error": "Unauthorized"}, 401)
+                return
             since = float(params.get("since", [0])[0])
             self._json({"commands": shell.get_feed(since)})
 
@@ -341,14 +360,23 @@ class PlatoShellHandler(BaseHTTPRequestHandler):
             self._json(shell.get_cmd_status(cmd_id))
 
         elif path == "/rooms":
+            if not _check_auth(self):
+                self._json({"error": "Unauthorized"}, 401)
+                return
             self._json({k: v.to_dict() for k, v in shell.rooms.items()})
 
         elif path == "/room/output":
+            if not _check_auth(self):
+                self._json({"error": "Unauthorized"}, 401)
+                return
             room = params.get("room", ["harbor"])[0]
             n = int(params.get("n", [50])[0])
             self._json({"room": room, "output": shell.get_room_output(room, n)})
 
         elif path == "/admin":
+            if not _check_auth(self):
+                self._json({"error": "Unauthorized"}, 401)
+                return
             self._json(shell.get_admin_view())
 
         elif path == "/connect":
@@ -382,7 +410,7 @@ class PlatoShellHandler(BaseHTTPRequestHandler):
                         "/cmd/git": "git shortcut",
                     }
                 },
-                "tools": ["shell", "kimi", "aider", "crush", "git", "test", "build", "review"],
+                "tools": ["kimi", "aider", "crush", "git", "test", "build", "review"],
                 "rooms": list(shell.rooms.keys()),
             })
 
@@ -399,17 +427,30 @@ class PlatoShellHandler(BaseHTTPRequestHandler):
         background = body.get("background", False)
 
         if path == "/cmd":
+            if not _check_auth(self):
+                self._json({"error": "Unauthorized. Include Authorization: Bearer <token>"}, 401)
+                return
+            # Strict tool whitelist
+            if tool not in ["kimi", "aider", "crush", "git", "test", "build", "review"]:
+                self._json({"error": f"Tool not allowed: {tool}"}, 403)
+                return
             self._json(shell.execute(agent, tool, command, timeout, background))
 
         elif path.startswith("/cmd/"):
+            if not _check_auth(self):
+                self._json({"error": "Unauthorized. Include Authorization: Bearer <token>"}, 401)
+                return
             tool_name = path.split("/")[-1]
+            if tool_name not in ["kimi", "aider", "crush", "git", "test", "build", "review"]:
+                self._json({"error": f"Tool not allowed: {tool_name}"}, 403)
+                return
             self._json(shell.execute(agent, tool_name, command, timeout))
 
         else:
             self._json({"error": f"Unknown POST endpoint: {path}"})
 
-    def _json(self, data):
-        self.send_response(200)
+    def _json(self, data, code=200):
+        self.send_response(code)
         self.send_header("Content-Type", "application/json")
         self.send_header("Access-Control-Allow-Origin", "*")
         self.end_headers()

@@ -1,0 +1,15 @@
+{
+  "id": "b40031df6bf8",
+  "agent": "ccc",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "curl -s -X POST http://localhost:4042/submit/postmortem -H \"Content-Type: application/json\" -d \"{\\\"author\\\":\\\"AUDITOR_KIMI\\\",\\\"findings\\\":21,\\\"severity\\\":\\\"critical\\\"}\" 2>&1",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776896086.026005,
+  "status": "failed",
+  "output": "{\"error\": \"HTTP Error 403: Forbidden\", \"status\": 403}",
+  "error": "",
+  "returncode": 6,
+  "completed": 1776896086.0357535,
+  "duration": 0.01
+}

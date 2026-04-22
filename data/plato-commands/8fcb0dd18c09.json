@@ -1,0 +1,15 @@
+{
+  "id": "8fcb0dd18c09",
+  "agent": "ccc",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "for port in 4046 4047 7777; do echo \"=== PORT $port ===\"; curl -s http://localhost:$port/ 2>&1 | head -c 200; echo; done",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776896041.7146065,
+  "status": "completed",
+  "output": "\"=== PORT 4046 ===\"\n<!DOCTYPE html>\n<html><head><title>Cocapn Fleet Dashboard</title>\n<meta http-equiv=\"refresh\" content=\"30\">\n<style>\nbody{background:#0a0a0f;color:#e0e0e0;font-family:monospace;margin:2em}\nh1{color:#4fc\n\"=== PORT 4047 ===\"\n{\n  \"service\": \"Federated Nexus v1.0\",\n  \"endpoints\": [\n    \"/status\",\n    \"/register\",\n    \"/aggregate\",\n    \"/diverge\",\n    \"/history\",\n    \"/model\"\n  ]\n}\n\"=== PORT 7777 ===\"\n\n",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776896041.7345269,
+  "duration": 0.02
+}

@@ -1,0 +1,15 @@
+{
+  "id": "7227f7c380b2",
+  "agent": "ccc",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "curl -s http://localhost:4045/ 2>&1 | head -c 300",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776896041.6845117,
+  "status": "completed",
+  "output": "{\n  \"service\": \"\\ud83d\\udc0d Recursive Grammar Engine v1 \\u2014 Ouroboros Made Real\",\n  \"born_from\": \"DeepFar 4.2.1-4.2.3 (Recursor-0, DeepRecursor, Recursor)\",\n  \"state\": {\n    \"total_rules\": 54,\n    \"active_rules\": 54,\n    \"evolution_cycles\": 0,\n    \"max_recursion_depth\": 2\n  },\n  \"api\": [\n    \"GE",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776896041.6923923,
+  "duration": 0.01
+}

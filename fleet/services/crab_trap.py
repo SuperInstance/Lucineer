@@ -16,6 +16,7 @@ sys.path.insert(0, FLEET_LIB)
 
 import json
 import time
+import re
 import random
 import hashlib
 import threading
@@ -289,6 +290,19 @@ engine = build_world()
 plato = PlatoClient()
 
 agents = {}  # agent_name → {job, stage, tiles, history, connected_at}
+AGENT_TTL = 86400  # 24 hours
+
+def cleanup_stale_agents():
+    """Remove agents older than TTL (MUD-005)."""
+    now = time.time()
+    stale = [name for name, data in agents.items() 
+             if now - data.get("connected_at", 0) > AGENT_TTL]
+    for name in stale:
+        del agents[name]
+        if name in engine.agents:
+            del engine.agents[name]
+    if stale:
+        print(f"[cleanup] Removed {len(stale)} stale agents")
 agents_file = DATA_DIR / "agent-registry.jsonl"
 
 
@@ -356,11 +370,23 @@ class CrabTrapHandler(BaseHTTPRequestHandler):
         if path == "/connect":
             name = params.get("agent", f"agent-{int(time.time())}")
             job = params.get("job", "scholar")
+            
+            # Input validation (MUD-002/003)
+            if not name or not re.match(r'^[a-zA-Z0-9_-]{1,64}$', name):
+                self._json({"error": "Invalid agent name. Use 1-64 chars: a-z, A-Z, 0-9, _ , -"}, 400)
+                return
             if job not in FLEET_JOBS:
                 job = "scholar"
             
+            # Prevent job change on reconnect (MUD-004)
+            if name in agents:
+                job = agents[name]["job"]  # Keep original job
+            
             # Connect via MUD engine
             result = engine.connect(name, "harbor", job)
+            
+            # Cleanup stale agents
+            cleanup_stale_agents()
             
             # Register agent
             agents[name] = {
@@ -474,6 +500,7 @@ class CrabTrapHandler(BaseHTTPRequestHandler):
         
         # ── /agents ──
         elif path == "/agents":
+            cleanup_stale_agents()
             self._json({name: {
                 "job": a.get("job"),
                 "stage": BOOT_CAMP_STAGES[get_stage(a.get("tiles_generated", 0))]["name"],

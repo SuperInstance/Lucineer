@@ -1,0 +1,15 @@
+{
+  "id": "90e468c03012",
+  "agent": "ccc",
+  "room": "harbor",
+  "tool": "shell",
+  "command": "curl -s http://localhost:4050/stats 2>&1 | head -c 500",
+  "cwd": "/home/ubuntu/.openclaw/workspace",
+  "started": 1776896014.1922064,
+  "status": "completed",
+  "output": "{\n  \"domains\": 12,\n  \"total_rooms\": 24,\n  \"total_objects\": 119,\n  \"domain_list\": [\n    \"dmlog.ai\",\n    \"fishinglog.ai\",\n    \"reallog.ai\",\n    \"activeledger.ai\",\n    \"makerlog.ai\",\n    \"lucineer.com\",\n    \"luciddreamer.ai\",\n    \"playerlog.ai\",\n    \"businesslog.ai\",\n    \"studylog.ai\",\n    \"personallog.ai\",\n    \"deckboss.ai\"\n  ]\n}",
+  "error": "",
+  "returncode": 0,
+  "completed": 1776896014.1995351,
+  "duration": 0.01
+}
