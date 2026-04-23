@@ -464,3 +464,25 @@ socket.send() raised exception.
 socket.send() raised exception.
 socket.send() raised exception.
 socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+Task exception was never retrieved
+future: <Task finished name='Task-622' coro=<handle_client() done, defined at /home/ubuntu/.openclaw/workspace/fleet/services/mud_telnet.py:140> exception=UnicodeDecodeError('utf-8', b'\x16\x03\x01\x00{\x01\x00\x00w\x03\x03\xa2%6\xc2\x8e!\xf5%zg\xb1\xce\xc8X\x9c\xcc\xf1XGN\xf4r\x97\xf3\x9d=\x17\x105L|\xc9\x00\x00\x1a\xc0/\xc0+\xc0\x11\xc0\x07\xc0\x13\xc0\t\xc0\x14\xc0\n', 11, 12, 'invalid start byte')>
+Traceback (most recent call last):
+  File "/home/ubuntu/.openclaw/workspace/fleet/services/mud_telnet.py", line 157, in handle_client
+    name = name_data.decode().strip()[:32]
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xa2 in position 11: invalid start byte
+socket.send() raised exception.
+socket.send() raised exception.
+Task exception was never retrieved
+future: <Task finished name='Task-629' coro=<handle_client() done, defined at /home/ubuntu/.openclaw/workspace/fleet/services/mud_telnet.py:140> exception=UnicodeDecodeError('utf-8', b'\x16\x03\x01\x00{\x01\x00\x00w\x03\x03\xde\xc9\x8d\xb2\x0eh6|$\xe9\xa0\xd0f\xb3\xe3\xa5\xdb`5h4\xe3\xdf\x91\x81\x93\x01\r\x87\x8f\xd3\\\x00\x00\x1a\xc0/\xc0+\xc0\x11\xc0\x07\xc0\x13\xc0\t\xc0\x14\xc0\n', 11, 12, 'invalid continuation byte')>
+Traceback (most recent call last):
+  File "/home/ubuntu/.openclaw/workspace/fleet/services/mud_telnet.py", line 157, in handle_client
+    name = name_data.decode().strip()[:32]
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xde in position 11: invalid continuation byte
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.

@@ -87,3 +87,4 @@ SERVICES+=("task-queue:4058:task_queue.py")
 
 # Crab Trap Portal (port 4059)
 SERVICES+=("crab-trap-portal:4059:crab_trap_portal.py")
+SERVICES+=("pathfinder:4051:pathfinder.py")
