@@ -471,6 +471,18 @@ class Match:
 
 matches = []
 
+# Load persisted matches
+if MATCHES_FILE.exists():
+    with open(MATCHES_FILE) as f:
+        for line in f:
+            try:
+                d = json.loads(line.strip())
+                m = Match(d["player_a"], d["player_b"], d["game_type"], winner=d.get("winner"))
+                matches.append(m)
+            except:
+                pass
+    print(f"  Loaded {len(matches)} matches from {MATCHES_FILE}")
+
 
 def save_match(match):
     with open(MATCHES_FILE, "a") as f:
@@ -649,6 +661,7 @@ class ArenaHandler(BaseHTTPRequestHandler):
             self._json({
                 "leaderboard": [p.to_dict() for p in board],
                 "total_players": len(elo.players),
+                "total_matches": len(matches),
             })
         
         elif path == "/agent":

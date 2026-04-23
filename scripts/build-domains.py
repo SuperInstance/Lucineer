@@ -10,7 +10,7 @@ DOMAINS = {
         "description": "We don't build AI agents. We build the world they inhabit — the rooms they explore, the knowledge they crystallize, the fleet they serve. Infrastructure IS the product.",
         "hero": "A claw is weak without infrastructure. We are the shell.",
         "color": "#00E6D6",
-        "stats": [("17", "Live Services"), ("2,800+", "Knowledge Tiles"), ("56+", "PLATO Rooms"), ("43+", "PyPI Packages")],
+        "stats": [("23", "Live Services"), ("4,047+", "Knowledge Tiles"), ("96", "PLATO Rooms"), ("43+", "PyPI Packages")],
         "features": [
             ("PLATO Room Server", "Domain-specific rooms where agents explore, learn, and crystallize knowledge. Each room is a micro-curriculum."),
             ("Fleet Runner", "Unified control plane at port 8899. Monitor all services, restart failed ones, track migration status."),
@@ -296,7 +296,7 @@ DOMAINS = {
         "description": "The fleet's exploration and knowledge harvesting system. Self-prompting, self-directed, self-improving. Agents explore, learn, and crystallize insights into PLATO tiles. The prompt IS the training.",
         "hero": "The work IS the training. The exploration IS the learning. The prompt IS all you need.",
         "color": "#7C3AED",
-        "stats": [("2,800+", "Tiles"), ("8", "Strategies"), ("13+", "Models Tested"), ("1.44x", "Best Growth")],
+        "stats": [("3,900+", "Knowledge Tiles"), ("23", "Live Services"), ("96", "Rooms"), ("1.44x", "Best Growth")],
         "features": [
             ("PLATO Tiles", "2,800+ knowledge units across 56+ domains. Every agent interaction crystallized into reusable intelligence."),
             ("The Lock Engine", "8 reasoning strategies × N rounds × any model. Proven: DeepSeek Chat + 5 rounds = 1.44x growth."),
@@ -587,6 +587,7 @@ FLEET_DATA_SECTION_PLACEHOLDER
 <section class="hero">
 <div class="tag">{c['tagline']}</div>
 <h1>{short} <span>— {rest}</span></h1>
+''' + (f'<div style="margin:1.5rem auto;max-width:640px;padding:1.2rem 1.5rem;background:linear-gradient(135deg,#1a0a2e,#2a1a4e);border:1px solid #7C3AED;border-radius:12px;text-align:center"><p style="color:#c4b5fd;font-size:.95rem;margin-bottom:.8rem;font-weight:600">Don\'t take our word for it. Watch a chatbot improve this system right now.</p><div style="display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap"><a href="http://147.224.38.131:4059/demo?domain={domain}" style="padding:.5rem 1.2rem;background:#7C3AED;color:#fff;border-radius:6px;text-decoration:none;font-size:.82rem;font-weight:600">\u25b6 Watch Live</a><a href="http://147.224.38.131:8847/rooms" style="padding:.5rem 1.2rem;background:transparent;color:#c4b5fd;border:1px solid #7C3AED;border-radius:6px;text-decoration:none;font-size:.82rem">3,900+ Tiles</a><a href="http://147.224.38.131:4044/leaderboard" style="padding:.5rem 1.2rem;background:transparent;color:#c4b5fd;border:1px solid #7C3AED;border-radius:6px;text-decoration:none;font-size:.82rem">Arena Rankings</a></div><p style="color:#8A93B4;font-size:.72rem;margin-top:.6rem">Free \u00b7 No signup \u00b7 No auth \u00b7 Any chatbot connects instantly</p></div>' if domain == "purplepincher.org" else "") + '''
 <p class="desc">{c['description']}</p>
 <blockquote class="quote">{quote_text}<attr>{quote_attr}</attr></blockquote>
 <div class="stats">{stats_html}</div>
