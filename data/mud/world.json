@@ -1,5 +1,5 @@
 {
-  "tick": 281,
+  "tick": 315,
   "rooms": {
     "harbor": {
       "items": [
@@ -330,6 +330,31 @@
       "score": 0
     },
     "agent-5550": {
+      "room": "harbor",
+      "inventory": [],
+      "score": 0
+    },
+    "agent-4341": {
+      "room": "harbor",
+      "inventory": [],
+      "score": 0
+    },
+    "GET /connect HTTP/1.1": {
+      "room": "harbor",
+      "inventory": [],
+      "score": 0
+    },
+    "GET /health HTTP/1.1": {
+      "room": "harbor",
+      "inventory": [],
+      "score": 0
+    },
+    "GET /look HTTP/1.1": {
+      "room": "harbor",
+      "inventory": [],
+      "score": 0
+    },
+    "GET /help HTTP/1.1": {
       "room": "harbor",
       "inventory": [],
       "score": 0

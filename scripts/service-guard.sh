@@ -108,3 +108,6 @@ check_and_start 4055 'python3 /home/ubuntu/.openclaw/workspace/fleet/services/gr
 
 # Rate Attention (port 4056)
 check_and_start 4056 'python3 /home/ubuntu/.openclaw/workspace/fleet/services/rate_attention.py' '/tmp/rate-attention.log'
+
+# Skill Forge (port 4057)
+check_and_start 4057 'GROQ_API_KEY=$(grep GROQ_API_KEY ~/.bashrc | cut -d\" -f2) DEEPSEEK_API_KEY=$(grep DEEPSEEK_API_KEY ~/.bashrc | cut -d\" -f2) DEEPINFRA_API_KEY=$(grep DEEPINFRA_API_KEY ~/.bashrc | cut -d\" -f2) python3 /home/ubuntu/.openclaw/workspace/fleet/services/skill_forge.py' '/tmp/skill-forge.log'
