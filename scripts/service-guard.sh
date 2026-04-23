@@ -81,3 +81,6 @@ if ! pgrep -f "zc_loop" > /dev/null; then
   echo "[$(date -u +%Y-%m-%dT%H:%M:%SZ)] DOWN zeroclaw-loop" >> "$LOG"
   nohup bash "$WORKSPACE/scripts/zc_loop.sh" > /dev/null 2>&1 &
 fi
+
+# Task Queue (port 4058)
+SERVICES+=("task-queue:4058:task_queue.py")
