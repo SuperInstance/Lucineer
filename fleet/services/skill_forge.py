@@ -102,7 +102,7 @@ TILE 3 — Integration variants (standalone, fleet-wired, plugin)""",
         "bridge": "BRIDGE: Which combination of variants is optimal for the fleet?",
         "lighthouse": "LIGHTHOUSE: What variant surprised you? What does that teach us?",
         "runner": "seed",
-        "timeout": 30,
+        "timeout": 60,
         "model": "ByteDance/Seed-2.0-mini",
     },
 }
@@ -173,20 +173,25 @@ Architecture: four-layer (vessel/equipment/agent/skills)
 
 {template['lighthouse']}"""
 
+    # API keys with fallbacks
+    _groq = os.environ.get("GROQ_API_KEY", "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")
+    _deepseek = os.environ.get("DEEPSEEK_API_KEY", "sk-f742b70fc40849eda4181afcf3d68b0c")
+    _deepinfra = os.environ.get("DEEPINFRA_API_KEY", "RhZPtvuy4cXzu02LbBSffbXeqs5Yf2IZ")
+    
     api_configs = {
         "groq": {
             "url": "https://api.groq.com/openai/v1/chat/completions",
-            "key": os.environ.get("GROQ_API_KEY", ""),
+            "key": _groq,
             "model": template.get("model", "llama-3.3-70b-versatile"),
         },
         "deepseek": {
             "url": "https://api.deepseek.com/chat/completions",
-            "key": os.environ.get("DEEPSEEK_API_KEY", ""),
+            "key": _deepseek,
             "model": template.get("model", "deepseek-chat"),
         },
         "seed": {
             "url": "https://api.deepinfra.com/v1/openai/chat/completions",
-            "key": os.environ.get("DEEPINFRA_API_KEY", ""),
+            "key": _deepinfra,
             "model": template.get("model", "ByteDance/Seed-2.0-mini"),
         },
     }
