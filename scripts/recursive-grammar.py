@@ -16,6 +16,27 @@ from pathlib import Path
 from collections import defaultdict
 from datetime import datetime
 
+# ── Import rule sanitizer (fallback if not available) ──────
+try:
+    import sys
+    sys.path.insert(0, str(Path(__file__).parent.parent / "fleet-repos" / "grammar-curator-1" / "tools"))
+    from rule_sanitizer import sanitize_rule
+except ImportError:
+    def sanitize_rule(name, rule_type, production, meta_condition=None, meta_action=None):
+        class _R:
+            def __init__(self, v, r="", b=False):
+                self.valid = v; self.reason = r; self.blocked = b
+            def __bool__(self): return self.valid
+        if not name or not isinstance(name, str):
+            return _R(False, "Rule name must be non-empty string", True)
+        if len(name) > 128:
+            return _R(False, "Rule name exceeds 128 chars")
+        if not re.match(r'^[a-zA-Z0-9_\-:]+$', name):
+            return _R(False, "Rule name has illegal chars", True)
+        if not isinstance(production, dict):
+            return _R(False, "Production must be a dict")
+        return _R(True, "Rule passed basic checks")
+
 PORT = 4045
 DATA_DIR = Path(__file__).parent.parent / "data" / "recursive-grammar"
 DATA_DIR.mkdir(parents=True, exist_ok=True)
@@ -124,6 +145,11 @@ class RecursiveGrammar:
     
     def add_rule(self, name, rule_type, production, created_by="external", parent_id=None):
         """Add a new rule to the grammar."""
+        # ── INPUT VALIDATION ──
+        result = sanitize_rule(name, rule_type, production)
+        if not result:
+            return {"status": "rejected", "reason": result.reason, "blocked": result.blocked}
+        
         if len(self.rules) >= self.max_rules:
             # Prune lowest-scoring non-anchor rule
             candidates = [r for r in self.rules.values() if r.name not in self.anchors and r.active]
@@ -146,6 +172,11 @@ class RecursiveGrammar:
     
     def add_meta_rule(self, name, condition, action, created_by="external"):
         """Add a meta-rule: a rule that generates/modifies other rules."""
+        # ── INPUT VALIDATION ──
+        result = sanitize_rule(name, "meta", {}, meta_condition=condition, meta_action=action)
+        if not result:
+            return {"status": "rejected", "reason": result.reason, "blocked": result.blocked}
+        
         production = {"condition": condition, "action": action, "meta_type": "generator"}
         rule = GrammarRule(name, "meta", production, meta=True)
         rule.created_by = created_by

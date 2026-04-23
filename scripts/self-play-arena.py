@@ -13,6 +13,7 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 from urllib.parse import urlparse, parse_qs
 from pathlib import Path
 from collections import defaultdict
+import atexit
 from datetime import datetime
 
 PORT = 4044
@@ -296,7 +297,9 @@ class ArchetypeDiscovery:
         else:
             archetype = "Social Mimic"
         
-        self.archetypes[archetype].append(agent_name)
+        # FIX BUG 2: Prevent duplicate agent entries in archetypes
+        if agent_name not in self.archetypes[archetype]:
+            self.archetypes[archetype].append(agent_name)
         self.behaviors[agent_name] = actions[-50:]  # Keep last 50
         return archetype
     
@@ -366,6 +369,34 @@ class AdaptiveCurriculum:
     def __init__(self):
         self.agent_stage = defaultdict(lambda: 1)
         self.agent_history = defaultdict(list)  # agent -> [bool] (wins/losses)
+        self._state_file = DATA_DIR / "curriculum_state.json"
+        self._load_state()
+        atexit.register(self._save_state)
+    
+    def _load_state(self):
+        """BUG FIX 1: Restore curriculum progress from disk."""
+        if self._state_file.exists():
+            try:
+                with open(self._state_file, "r") as f:
+                    data = json.load(f)
+                for name, stage in data.get("stages", {}).items():
+                    self.agent_stage[name] = stage
+                for name, history in data.get("histories", {}).items():
+                    self.agent_history[name] = history[-20:]
+                print(f"[Arena] Loaded curriculum for {len(self.agent_stage)} agents")
+            except Exception as e:
+                print(f"[Arena] Curriculum load failed: {e}")
+    
+    def _save_state(self):
+        """BUG FIX 1: Persist curriculum progress to disk."""
+        try:
+            with open(self._state_file, "w") as f:
+                json.dump({
+                    "stages": dict(self.agent_stage),
+                    "histories": {k: v[-20:] for k, v in self.agent_history.items()},
+                }, f, indent=2)
+        except Exception as e:
+            print(f"[Arena] Curriculum save failed: {e}")
     
     def record_result(self, agent_name, won):
         self.agent_history[agent_name].append(won)
@@ -436,6 +467,32 @@ class Match:
 
 
 matches = []
+
+# BUG FIX 3: Reload matches from disk on boot
+if MATCHES_FILE.exists():
+    try:
+        with open(MATCHES_FILE, "r") as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    data = json.loads(line)
+                    m = Match(
+                        data["player_a"], data["player_b"], data["game_type"],
+                        data.get("player_a_actions", []), data.get("player_b_actions", []),
+                        data.get("winner"), data.get("reward_a", 0), data.get("reward_b", 0),
+                        data.get("rooms_explored", 0), data.get("insight_words", 0),
+                        data.get("steps_taken", 20), data.get("novel_strategy", False)
+                    )
+                    m.match_id = data.get("match_id", m.match_id)
+                    m.timestamp = data.get("timestamp", m.timestamp)
+                    matches.append(m)
+                except (json.JSONDecodeError, KeyError):
+                    continue
+        print(f"[Arena] Reloaded {len(matches)} matches from {MATCHES_FILE}")
+    except Exception as e:
+        print(f"[Arena] Match reload failed: {e}")
 
 
 def save_match(match):
