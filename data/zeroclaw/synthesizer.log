@@ -575,3 +575,9 @@ The research outputs from 12 autonomous agents cover various topics, including c
   Preview: ## Top 3 cross-cutting patterns
 
 1. **Distributed systems and protocols**: Multiple agents (zc-healer, zc-echo, zc-weaver, zc-tide) are researching distributed systems, protocols, and architectures to...
+[2026-04-23T04:30:02.066342+00:00] Fleet synthesizer starting...
+  Loaded 240 entries from 12 agents
+  Synthesis saved to /home/ubuntu/.openclaw/workspace/research/fleet-synthesis/synthesis-20260423-0430.md
+  Preview: ## Top 3 cross-cutting patterns
+
+1. **Distributed Systems and Networking**: Many topics, such as `deadband_protocol`, `fleet_orchestration`, `fleet_security`, and `telepathy`, involve designing and op...
