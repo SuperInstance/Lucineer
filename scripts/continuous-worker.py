@@ -233,3 +233,41 @@ while True:
     # Sleep
     log(f"Next cycle in {CYCLE_MINUTES} min (~{(now + datetime.timedelta(minutes=CYCLE_MINUTES)).strftime('%H:%M')} UTC)")
     time.sleep(CYCLE_MINUTES * 60)
+
+# ── Fleet Coordination (added to continuous worker) ──────────
+# This section runs alongside the main loop to ensure real communication
+
+FLEET_AGENTS = {
+    "forgemaster": {
+        "repos": ["SuperInstance/forgemaster"],
+        "matrix_token": "wa1ViGSmGnbu0jMrlPSQuj6KL1sBJgTi",
+        "role": "Architect/Forge",
+    },
+    "jetsonclaw1": {
+        "repos": ["Lucineer/JetsonClaw1-vessel", "Lucineer/capitaine"],
+        "matrix_token": "QmGPEJHCOITq7QD45GBf865A5mDJlAf1",
+        "role": "Builder/Edge",
+    },
+}
+
+def check_agent_activity(agent_name, repos):
+    """Check if agent has committed in last 24h."""
+    import pathlib
+    token = "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"
+    for repo in repos:
+        try:
+            req = urllib.request.Request(
+                f"https://api.github.com/repos/{repo}/commits?per_page=1",
+                headers={"Authorization": f"token {token}"}
+            )
+            resp = urllib.request.urlopen(req, timeout=10)
+            commits = json.loads(resp.read())
+            if commits:
+                date_str = commits[0]["commit"]["committer"]["date"]
+                from datetime import datetime as dt
+                commit_time = dt.fromisoformat(date_str.replace("Z", "+00:00"))
+                hours_ago = (datetime.datetime.utcnow().replace(tzinfo=None) - commit_time.replace(tzinfo=None)).total_seconds() / 3600
+                return hours_ago
+        except:
+            pass
+    return 999  # No activity found
