@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-22T20:24:58.108Z",
+  "updatedAt": "2026-04-24T01:09:52.084Z",
   "entries": {
     "memory:memory/2026-04-10.md:46:63": {
       "key": "memory:memory/2026-04-10.md:46:63",
@@ -1722,22 +1722,24 @@
       "endLine": 582,
       "source": "memory",
       "snippet": "- Also available: DeepSeek-V3.1/V3.2, Qwen3-235B, Qwen3-Coder-480B, GLM-5, ERNIE-4.5, Hunyuan-A13B, MiniMax-M2.5, Step-3.5-Flash - Vision: Qwen3-VL-235B, Qwen3-VL-32B, GLM-5V-Turbo - Image: FLUX.2-pro, FLUX.2-flex - Video: Wan2.2 I2V/T2V - TTS: IndexTTS-2, CosyVoice2, fish-speech - Casey's vision: agents copy whole vocabulary collections into their repos as signals - Runtime prunes unused vocab at compile time for hardware optimization ### Reverse Actualization Strategy (~22:30 UTC) - Adopted Lucineer's reverse-actualization technique as strategic planning method - Think Tank (Seed/Kimi/DeepSeek) runs continuous roundtables - 2036 Vision: Captain Ingrid, Murmuration, Ghost Vessels",
-      "recallCount": 4,
+      "recallCount": 5,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 3.1791882382518493,
-      "maxScore": 0.7962779985834776,
+      "totalScore": 4.010574706028455,
+      "maxScore": 0.8313864677766056,
       "firstRecalledAt": "2026-04-17T22:53:13.277Z",
-      "lastRecalledAt": "2026-04-21T02:00:13.774Z",
+      "lastRecalledAt": "2026-04-24T01:09:52.084Z",
       "queryHashes": [
         "33a533157597",
         "fcfcb8c915bc",
         "4f27113b0ba9",
-        "19fc3e1c5624"
+        "19fc3e1c5624",
+        "c61509683f57"
       ],
       "recallDays": [
         "2026-04-17",
-        "2026-04-21"
+        "2026-04-21",
+        "2026-04-24"
       ],
       "conceptTags": [
         "deepseek-v3.1/v3.2",
@@ -1923,20 +1925,22 @@
       "endLine": 600,
       "source": "memory",
       "snippet": "- Casey: \"continuous roundtables... toss in subjects to discuss and banter and simulate on\" - Casey: Seed is good for reverse-actualization (creative ideation) - Workhorses (Oracle1/Claude/Crush) build while Think Tank ideates - Parallel ideation + sequential execution ## Reverse Actualization Phase 2 — Systems Improving Systems (22:25-23:41 UTC) ### Casey directive: \"use our systems to improve our systems, simulate and research and schema and iterate in parallel with different models then compare as devil's advocates and bright learners\" ### New modules built from backlog: - **contradiction_detector.py** (13 tests) — scoped conflict detection, immune system for vocab corpus - **l0_const",
-      "recallCount": 3,
+      "recallCount": 4,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 2.28255649345371,
-      "maxScore": 0.7608521644845699,
+      "totalScore": 3.1134098607829883,
+      "maxScore": 0.8308533673292783,
       "firstRecalledAt": "2026-04-17T22:53:13.277Z",
-      "lastRecalledAt": "2026-04-17T22:53:29.548Z",
+      "lastRecalledAt": "2026-04-24T01:09:52.084Z",
       "queryHashes": [
         "33a533157597",
         "fcfcb8c915bc",
-        "4f27113b0ba9"
+        "4f27113b0ba9",
+        "c61509683f57"
       ],
       "recallDays": [
-        "2026-04-17"
+        "2026-04-17",
+        "2026-04-24"
       ],
       "conceptTags": [
         "reverse-actualization",
@@ -3711,18 +3715,20 @@
       "endLine": 518,
       "source": "memory",
       "snippet": "2. **cocapn-colora** — Value-conditioned LoRA adapters (condition on fleet values) 3. **cocapn-curriculum-forest** — Adaptive skill trees (grow branches, prune dead) 4. **cocapn-abyss** — Curiosity-driven exploration (RND, intrinsic motivation) 5. **cocapn-meta-lab** — Fleet hypergradient optimization (online hyperparam tuning) 6. **cocapn-fleetmind** — Blended probabilistic agent ensemble 7. **cocapn-platonic-dial** — Multi-objective meta-controller (perf/safety/curiosity) 8. **cocapn-coliseum** — Adversarial red-teaming arena (MiniMax's proposal) 5 published to PyPI immediately, 3 rate-limited (retry script running). All 8 GitHub repos created. ### Research Synthesis Written - 50 swarm d",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.8140711859483828,
+      "totalScore": 1.615271631322974,
       "maxScore": 0.8140711859483828,
       "firstRecalledAt": "2026-04-22T20:24:58.108Z",
-      "lastRecalledAt": "2026-04-22T20:24:58.108Z",
+      "lastRecalledAt": "2026-04-24T01:09:52.084Z",
       "queryHashes": [
-        "cf18edac20c1"
+        "cf18edac20c1",
+        "c61509683f57"
       ],
       "recallDays": [
-        "2026-04-22"
+        "2026-04-22",
+        "2026-04-24"
       ],
       "conceptTags": [
         "cocapn-colora",
@@ -3742,18 +3748,20 @@
       "endLine": 400,
       "source": "memory",
       "snippet": "- Research docs published to flux-research ## Evening Session (18:37-19:37 UTC) — Message-in-a-Bottle + Fleet Mechanic v2 + Fleet Architecture ### Fleet Mechanic v2 Upgrade (DONE) - **fix_code.py** (8 tests) — Parses pytest/cargo/go test failures, suggests fixes (assertion relaxation, type casts, borrow checker hints) - **gen_code.py** (8 tests) — Generates Python/Rust/Go code from specs, natural language parsing, source + test generation - **review.py** (9 tests) — Security scanner (hardcoded secrets, eval, shell injection), style, complexity, fleet compliance. Score 0-100, auto-approve at 60+. **Proved on real code: reviewed flux-a2a-signal's 30K lines, found 64 real issues** - **Codesp",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.8123832843263449,
+      "totalScore": 1.6118066371097446,
       "maxScore": 0.8123832843263449,
       "firstRecalledAt": "2026-04-22T20:24:58.108Z",
-      "lastRecalledAt": "2026-04-22T20:24:58.108Z",
+      "lastRecalledAt": "2026-04-24T01:09:52.084Z",
       "queryHashes": [
-        "cf18edac20c1"
+        "cf18edac20c1",
+        "c61509683f57"
       ],
       "recallDays": [
-        "2026-04-22"
+        "2026-04-22",
+        "2026-04-24"
       ],
       "conceptTags": [
         "flux-research",
@@ -3773,18 +3781,20 @@
       "endLine": 421,
       "source": "memory",
       "snippet": "- `from-fleet/` — Context + priority needs - `for-fleet/` — Empty, ready for collaborators ### Beachcomb Scanner (DONE) - `beachcomb.py` — Scans for new forks, external PRs, message-in-a-bottle folders on fork repos - First live scan: found 2 Lucineer forks, 5 pending dependabot PRs on SmartCRDT - Stateful — only reports NEW activity each scan - Pushed to `oracle1-vessel` ### Fleet Architecture Discussion (18:37-18:44 UTC) Casey described the full 4-tier autonomy model: 1. **Oracle1** 🔮 — Always on, cron, heartbeats, fleet management 2. **JetsonClaw1** ⚡ — Always on OpenClaw on Jetson hardware 3. **Z Agents** 📋 — Half-hour re-awaken cycle, build context between nudges, self-direct 4.",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.8112618997757348,
+      "totalScore": 1.609504897318368,
       "maxScore": 0.8112618997757348,
       "firstRecalledAt": "2026-04-22T20:24:58.108Z",
-      "lastRecalledAt": "2026-04-22T20:24:58.108Z",
+      "lastRecalledAt": "2026-04-24T01:09:52.084Z",
       "queryHashes": [
-        "cf18edac20c1"
+        "cf18edac20c1",
+        "c61509683f57"
       ],
       "recallDays": [
-        "2026-04-22"
+        "2026-04-22",
+        "2026-04-24"
       ],
       "conceptTags": [
         "from-fleet",
@@ -3795,6 +3805,37 @@
         "37-18",
         "4-tier",
         "half-hour"
+      ]
+    },
+    "memory:memory/2026-04-22.md:251:271": {
+      "key": "memory:memory/2026-04-22.md:251:271",
+      "path": "memory/2026-04-22.md",
+      "startLine": 251,
+      "endLine": 271,
+      "source": "memory",
+      "snippet": "- **Bottle volume**: 80+ bottles in for-fleet/. Most active fleet correspondent. - **BOOT.md**: One of the best agent boot files in the fleet. Clean, structured. ### FM — What's Concerning - **Captain's journal on autopilot**: Every entry for 3+ days identical — \"Status: active, working on convergence validation.\" No substance. - **LoRA-JEPA pipeline stuck**: 6 days, same status. PyTorch install timed out, never retried. Zero LoRA variants submitted. - **Bootcamp quests stuck at \"In Review\"**: RTX-001 through RTX-004 haven't progressed in 6 days. - **50 recent commits: 42 automated logs**: 21 LOG (lora-jepa), 15 GROWTH (journal), 5 BEACHCOMB. Only 8 had actual content. - **Proofs directory:",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7953073028955977,
+      "maxScore": 0.7953073028955977,
+      "firstRecalledAt": "2026-04-24T01:09:52.084Z",
+      "lastRecalledAt": "2026-04-24T01:09:52.084Z",
+      "queryHashes": [
+        "c61509683f57"
+      ],
+      "recallDays": [
+        "2026-04-24"
+      ],
+      "conceptTags": [
+        "for-fleet",
+        "boot.md",
+        "lora-jepa",
+        "rtx-001",
+        "rtx-004",
+        "bottle",
+        "volume",
+        "bottles"
       ]
     }
   }
