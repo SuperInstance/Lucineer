@@ -136,6 +136,21 @@ class RecursiveGrammar:
         self.rules_by_name[rule.name] = rule.id
         self.rules_by_type[rule.rule_type].append(rule.id)
     
+    # Blocked patterns for input sanitization
+    BLOCKED_PATTERNS = ['<script', 'javascript:', 'onerror=', 'onload=', 'DROP TABLE',
+                        '--', '; --', 'alert(', 'document.', 'eval(', '<iframe']
+
+    @classmethod
+    def _sanitize(cls, value):
+        """Sanitize a string value against injection attempts."""
+        if not isinstance(value, str):
+            return value
+        lower = value.lower()
+        for pattern in cls.BLOCKED_PATTERNS:
+            if pattern.lower() in lower:
+                return None
+        return value
+
     def add_rule(self, name, rule_type, production, created_by="external", parent_id=None):
         """Add a new rule to the grammar."""
         if len(self.rules) >= self.max_rules:
@@ -145,6 +160,17 @@ class RecursiveGrammar:
                 worst = min(candidates, key=lambda r: r.score())
                 worst.active = False
         
+        # Input sanitization
+        name = self._sanitize(name)
+        if name is None:
+            return {"error": "blocked: name contains disallowed pattern"}
+        if isinstance(production, dict):
+            for k, v in list(production.items()):
+                clean = self._sanitize(str(v)) if v else v
+                if clean is None:
+                    return {"error": f"blocked: production.{k} contains disallowed pattern"}
+                production[k] = clean
+
         rule = GrammarRule(name, rule_type, production)
         rule.created_by = created_by
         rule.parent_rule = parent_id
@@ -374,7 +400,10 @@ class GrammarHandler(BaseHTTPRequestHandler):
         path = parsed.path
         params = parse_qs(parsed.query)
         
-        if path in ("/", ""):
+        if path == "/health":
+            state = grammar.get_grammar()
+            self._json({"status": "healthy", "service": "recursive-grammar-engine", "rules": state["total_rules"], "evolutions": state["evolution_cycles"]})
+        elif path in ("/", ""):
             state = grammar.get_grammar()
             self._json({
                 "service": "🐍 Recursive Grammar Engine v1 — Ouroboros Made Real",
@@ -438,7 +467,10 @@ class GrammarHandler(BaseHTTPRequestHandler):
             
             result = grammar.add_rule(name, rule_type, production, created_by,
                                      grammar.rules_by_name.get(parent))
-            self._json({"status": "created", "rule": result})
+            if isinstance(result, dict) and "error" in result:
+                self._json({"status": "blocked", "reason": result["error"]}, 403)
+            else:
+                self._json({"status": "created", "rule": result})
         
         elif path == "/add_meta_rule":
             name = params.get("name", [None])[0]

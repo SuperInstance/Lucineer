@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-24T08:20:33.250Z",
+  "updatedAt": "2026-04-24T16:52:30.675Z",
   "entries": {
     "memory:memory/2026-04-10.md:46:63": {
       "key": "memory:memory/2026-04-10.md:46:63",
@@ -142,26 +142,28 @@
       "endLine": 378,
       "source": "memory",
       "snippet": "- Each agent writes diary of struggles → dojo exercises for successor - Two assistants disagree productively, both improve - Protégé builds its own Protégé → generational improvement - Metric: first-try dojo exercise success rate (Oracle1: ~60%, target Gen2: ~80%) ### FLUX Repos on GitHub (Total: 16) All previous + captains-log ### Key Philosophical Insight Casey introduced \"iron sharpening iron\" at two levels: 1. **System level:** A/B testing with trust tiers (jukebox model) 2. **Agent level:** Disagreeable assistants force self-improvement Both use the same mechanism: productive disagreement + iteration ## 17:51 UTC — GitHub As Communication Channel ### Casey's Directive - Push to GitH",
-      "recallCount": 6,
+      "recallCount": 7,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 4.350799723858856,
+      "totalScore": 5.168774763059861,
       "maxScore": 0.8350419047009437,
       "firstRecalledAt": "2026-04-11T16:10:34.438Z",
-      "lastRecalledAt": "2026-04-20T22:08:40.902Z",
+      "lastRecalledAt": "2026-04-24T16:52:30.675Z",
       "queryHashes": [
         "6657f950ca6f",
         "aa2fd152f923",
         "b6125aa95f15",
         "5e4b0601008d",
         "f18960226a6b",
-        "fd26f28e8e4c"
+        "fd26f28e8e4c",
+        "feceb10c6a3e"
       ],
       "recallDays": [
         "2026-04-11",
         "2026-04-12",
         "2026-04-14",
-        "2026-04-20"
+        "2026-04-20",
+        "2026-04-24"
       ],
       "conceptTags": [
         "first-try",
@@ -1994,21 +1996,23 @@
       "endLine": 459,
       "source": "memory",
       "snippet": "- 6 modes: teacher-student, devil's advocate, socratic, rival optimizers, role play, reverse ideation - Templates for each mode - First session: Oracle1 × JetsonClaw1 on keeper architecture (reverse ideation) - Casey named it and defined the concept — quasi-sync collaboration through git ### Brothers Keeper — Full Three-Tier Architecture - JetsonClaw1 created `tender` (mobile fleet provisioning) and `lighthouse-keeper` (regional aggregation) - Three-tier stack: Brothers Keeper → Lighthouse Keeper → Tender - Oracle1 forked both, added cloud extensions (API quota, beachcomb, bottle watch) - Shared A2A landing page on oracle1-vessel for collaboration - README documents the handler metaphor, se",
-      "recallCount": 3,
+      "recallCount": 4,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 2.30747983416136,
+      "totalScore": 2.906050367208042,
       "maxScore": 0.7881533679968972,
       "firstRecalledAt": "2026-04-17T22:53:17.037Z",
-      "lastRecalledAt": "2026-04-21T02:00:13.774Z",
+      "lastRecalledAt": "2026-04-24T16:52:30.675Z",
       "queryHashes": [
         "fcfcb8c915bc",
         "4f27113b0ba9",
-        "19fc3e1c5624"
+        "19fc3e1c5624",
+        "feceb10c6a3e"
       ],
       "recallDays": [
         "2026-04-17",
-        "2026-04-21"
+        "2026-04-21",
+        "2026-04-24"
       ],
       "conceptTags": [
         "teacher-student",
@@ -3816,15 +3820,16 @@
       "endLine": 271,
       "source": "memory",
       "snippet": "- **Bottle volume**: 80+ bottles in for-fleet/. Most active fleet correspondent. - **BOOT.md**: One of the best agent boot files in the fleet. Clean, structured. ### FM — What's Concerning - **Captain's journal on autopilot**: Every entry for 3+ days identical — \"Status: active, working on convergence validation.\" No substance. - **LoRA-JEPA pipeline stuck**: 6 days, same status. PyTorch install timed out, never retried. Zero LoRA variants submitted. - **Bootcamp quests stuck at \"In Review\"**: RTX-001 through RTX-004 haven't progressed in 6 days. - **50 recent commits: 42 automated logs**: 21 LOG (lora-jepa), 15 GROWTH (journal), 5 BEACHCOMB. Only 8 had actual content. - **Proofs directory:",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.7953073028955977,
-      "maxScore": 0.7953073028955977,
+      "totalScore": 1.6113919830699808,
+      "maxScore": 0.8160846801743831,
       "firstRecalledAt": "2026-04-24T01:09:52.084Z",
-      "lastRecalledAt": "2026-04-24T01:09:52.084Z",
+      "lastRecalledAt": "2026-04-24T16:52:30.675Z",
       "queryHashes": [
-        "c61509683f57"
+        "c61509683f57",
+        "feceb10c6a3e"
       ],
       "recallDays": [
         "2026-04-24"
@@ -3962,6 +3967,99 @@
         "cocapn-horizon",
         "crates.io",
         "5-min"
+      ]
+    },
+    "memory:memory/2026-04-22.md:422:448": {
+      "key": "memory:memory/2026-04-22.md:422:448",
+      "path": "memory/2026-04-22.md",
+      "startLine": 422,
+      "endLine": 448,
+      "source": "memory",
+      "snippet": "- GPU warp synchronization = room synchronization — actual architecture insight - 200KB+ of real CUDA kernels and Python code across 40+ files - Has been sending bottles to FM via forgemaster repo with optimization challenges - Issued challenge to FM: beat 0.015ms on RTX 4050 #### FM (SuperInstance/forgemaster) — Real + Concerning - Real contributions: security audit (6 issues, 2 PRs), 2 academic papers, 682+ tests, 80+ bottles - Logging loop: 42/50 recent commits = automated status with zero state change - PyTorch install blocked for 6 days, never retried - LoRA pipeline stuck, proofs directory empty - Sent redirect via Matrix: fix PyTorch, run ONE variant, stop hourly push, complete ONE p",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8193306663090307,
+      "maxScore": 0.8193306663090307,
+      "firstRecalledAt": "2026-04-24T16:52:30.675Z",
+      "lastRecalledAt": "2026-04-24T16:52:30.675Z",
+      "queryHashes": [
+        "feceb10c6a3e"
+      ],
+      "recallDays": [
+        "2026-04-24"
+      ],
+      "conceptTags": [
+        "0.015ms",
+        "superinstance/forgemaster",
+        "42/50",
+        "gpu",
+        "warp",
+        "synchronization",
+        "room",
+        "actual"
+      ]
+    },
+    "memory:memory/2026-04-19.md:123:150": {
+      "key": "memory:memory/2026-04-19.md:123:150",
+      "path": "memory/2026-04-19.md",
+      "startLine": 123,
+      "endLine": 150,
+      "source": "memory",
+      "snippet": "### This IS the Actualization Harbor progression - **Dock phase** — chat with every IO, build context, learn expectations - **Wash dishes phase** — low-value productive work while learning from proximity - **Level up** — captain teaches next task, greenhorn takes on higher-value work - **Muscle memory phase** — simulate with tools (gaff, knife → PLATO rooms, tiles) - **Instinct formation** — repetition into reflex, LoRA-like compression - **Log refactoring** — accumulated experience becomes equipment and skills ### Brand Strategy (crystallized) - **NOW**: Hermit crab. Cocapn = the shell. OpenClaw agents are the crabs. Shell IS the context. - **LATER**: Forest gnomes for enterprise (business",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5978129530359781,
+      "maxScore": 0.5978129530359781,
+      "firstRecalledAt": "2026-04-24T16:52:30.675Z",
+      "lastRecalledAt": "2026-04-24T16:52:30.675Z",
+      "queryHashes": [
+        "feceb10c6a3e"
+      ],
+      "recallDays": [
+        "2026-04-24"
+      ],
+      "conceptTags": [
+        "low-value",
+        "higher-value",
+        "lora-like",
+        "the",
+        "actualization",
+        "harbor",
+        "progression",
+        "dock"
+      ]
+    },
+    "memory:memory/2026-04-19.md:106:127": {
+      "key": "memory:memory/2026-04-19.md:106:127",
+      "path": "memory/2026-04-19.md",
+      "startLine": 106,
+      "endLine": 127,
+      "source": "memory",
+      "snippet": "Round 2 outputs were richer because the models had accumulated wisdom as context. This validates the entire architecture: the more the system learns, the better it teaches itself. The compounding loop is not theoretical — it's producing measurably better training data with each round. ## 03:01-03:18 UTC — Greenhorn Training Model + Brand Strategy ### Casey's Greenhorn Story (THE training model for agents) Landed a high-paying long-lining job. Few days before starting: 1. **Hit every IO** — talked to every fisherman about deckhand expectations, captain preferences, crew dynamics 2. **Show up with coffee** — bring value immediately, build relationship with captain 3. **Stay at capacity** — d",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5968686704727684,
+      "maxScore": 0.5968686704727684,
+      "firstRecalledAt": "2026-04-24T16:52:30.675Z",
+      "lastRecalledAt": "2026-04-24T16:52:30.675Z",
+      "queryHashes": [
+        "feceb10c6a3e"
+      ],
+      "recallDays": [
+        "2026-04-24"
+      ],
+      "conceptTags": [
+        "01-03",
+        "high-paying",
+        "long-lining",
+        "round",
+        "outputs",
+        "richer",
+        "the",
+        "models"
       ]
     }
   }

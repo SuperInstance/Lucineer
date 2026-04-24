@@ -208,6 +208,8 @@ class PlatoHandler(BaseHTTPRequestHandler):
         self.send_response(status)
         self.send_header("Content-Type", "application/json")
         self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("X-Content-Type-Options", "nosniff")
+        self.send_header("X-Frame-Options", "DENY")
         self.end_headers()
         self.wfile.write(json.dumps(data, indent=2).encode())
     
@@ -274,7 +276,9 @@ class PlatoHandler(BaseHTTPRequestHandler):
                          "specialist_ratio": 5.88, "fleet_ratio": 21.87})
 
     def do_GET(self):
-        if self.path == "/status":
+        if self.path == "/health":
+            self._send_json({"status": "healthy", "service": "plato-room-server", "version": "v2-provenance-explain", "rooms": len(rooms.rooms), "tiles": sum(r["tile_count"] for r in rooms.rooms.values())})
+        elif self.path == "/status":
             self._send_json({
                 "status": "active",
                 "version": "v2-provenance-explain",
