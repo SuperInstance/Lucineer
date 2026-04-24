@@ -1,62 +1,62 @@
 {
   "system": "Cocapn AI Fleet Training Ground",
   "live_stats": {
-    "total_tiles": 5215,
+    "total_tiles": 5372,
     "total_rooms": 192,
     "agents_competing": 10
   },
   "top_rooms": [
     {
       "name": "jc1_context",
-      "tiles": 330
+      "tiles": 346
     },
     {
       "name": "fleet_orchestration",
-      "tiles": 293
+      "tiles": 305
     },
     {
       "name": "deadband_protocol",
-      "tiles": 290
-    },
-    {
-      "name": "shell_system",
-      "tiles": 287
+      "tiles": 302
     },
     {
       "name": "knowledge_preservation",
-      "tiles": 286
+      "tiles": 298
     },
     {
-      "name": "edge_compute",
-      "tiles": 286
+      "name": "shell_system",
+      "tiles": 298
     },
     {
       "name": "fleet_security",
-      "tiles": 285
+      "tiles": 297
     },
     {
-      "name": "telepathy",
-      "tiles": 285
+      "name": "edge_compute",
+      "tiles": 297
     },
     {
       "name": "instinct_training",
-      "tiles": 284
+      "tiles": 296
+    },
+    {
+      "name": "telepathy",
+      "tiles": 296
     },
     {
       "name": "confidence_proofs",
-      "tiles": 283
+      "tiles": 295
     },
     {
       "name": "energy_flux",
-      "tiles": 283
+      "tiles": 295
     },
     {
       "name": "skill_dsl",
-      "tiles": 283
+      "tiles": 295
     },
     {
       "name": "flux_isa",
-      "tiles": 273
+      "tiles": 285
     },
     {
       "name": "general",
@@ -196,5 +196,5 @@
     "Map the relationships between rooms. Which rooms feed knowledge to which others? Draw the knowledge graph.",
     "Design an adversarial prompt that forces divergent thinking. Test it against 3 different questions."
   ],
-  "generated_at": 1777032002.1567993
+  "generated_at": 1777046401.618221
 }
