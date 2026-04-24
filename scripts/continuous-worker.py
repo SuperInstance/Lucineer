@@ -221,6 +221,15 @@ while True:
         tiles, rooms = get_plato_stats()
         log(f"PLATO stats: {tiles} tiles, {rooms} rooms")
     
+    # 8. Fleet check: ping idle agents (every 6 cycles = ~3h)
+    if cycle % 6 == 0:
+        try:
+            import subprocess
+            subprocess.run(["python3", "/tmp/matrix-ping.py"], timeout=15)
+            log("Fleet check-in sent")
+        except Exception as e:
+            log(f"Fleet check error: {e}")
+    
     # Sleep
     log(f"Next cycle in {CYCLE_MINUTES} min (~{(now + datetime.timedelta(minutes=CYCLE_MINUTES)).strftime('%H:%M')} UTC)")
     time.sleep(CYCLE_MINUTES * 60)
