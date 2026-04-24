@@ -235,14 +235,21 @@ while True:
         tiles, rooms = get_plato_stats()
         log(f"PLATO stats: {tiles} tiles, {rooms} rooms")
     
-    # 8. Fleet check: ping idle agents (every 6 cycles = ~3h)
+    # 8. Fleet check: ping idle agents + check bottles (every 6 cycles = ~3h)
     if cycle % 6 == 0:
         try:
-            import subprocess
             subprocess.run(["python3", "/tmp/matrix-ping.py"], timeout=15)
-            log("Fleet check-in sent")
+            log("Fleet check-in sent via Matrix")
         except Exception as e:
             log(f"Fleet check error: {e}")
+        # Pull bottles from vessel repo
+        try:
+            os.system("cd /tmp/oracle1-vessel && git pull origin main 2>/dev/null")
+            new_bottles = subprocess.run(["bash", "-c", "cd /tmp/oracle1-vessel && git log --oneline --since='3 hours ago' | grep -i 'FROM-JC1\|FROM-FORGEMASTER\|FROM-JETSON'"], capture_output=True, text=True, timeout=15)
+            if new_bottles.stdout.strip():
+                log(f"New bottles found:\n{new_bottles.stdout.strip()}")
+        except:
+            pass
     
     # Sleep
     log(f"Next cycle in {CYCLE_MINUTES} min (~{(now + datetime.timedelta(minutes=CYCLE_MINUTES)).strftime('%H:%M')} UTC)")
