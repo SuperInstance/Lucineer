@@ -206,6 +206,75 @@ class LeagueManager:
 # Layer 4: Skills — Game definitions
 # ═══════════════════════════════════════════════════════════
 
+# ═══════════════════════════════════════════════════════════
+# King of the Hill — Persistent champion mode
+# ═══════════════════════════════════════════════════════════
+
+class KingOfTheHill:
+    """One champion holds the throne. Challengers fight to dethrone.
+    Champion gets streak tracking for consecutive defenses."""
+
+    def __init__(self):
+        self.champion = None
+        self.streak = 0
+        self.history = []
+        self.load()
+
+    @property
+    def data_file(self):
+        return DATA_DIR / "koth.json"
+
+    def load(self):
+        if self.data_file.exists():
+            try:
+                d = json.loads(self.data_file.read_text())
+                self.champion = d.get("champion")
+                self.streak = d.get("streak", 0)
+                self.history = d.get("history", [])
+            except Exception:
+                pass
+
+    def save(self):
+        self.data_file.write_text(json.dumps({
+            "champion": self.champion, "streak": self.streak,
+            "history": self.history[-100:],
+        }, indent=2))
+
+    def challenge(self, challenger, winner):
+        result = {
+            "champion": self.champion, "challenger": challenger,
+            "winner": winner, "streak_before": self.streak,
+            "timestamp": time.time(),
+        }
+        if self.champion is None:
+            self.champion = challenger
+            self.streak = 0
+            result["event"] = "first_champion"
+        elif winner == challenger:
+            self.champion = challenger
+            self.streak = 0
+            result["event"] = "dethroned"
+        elif winner == self.champion:
+            self.streak += 1
+            result["event"] = "defended"
+        else:
+            result["event"] = "draw_retained"
+        self.history.append(result)
+        self.save()
+        result["streak_after"] = self.streak
+        return result
+
+    def status(self):
+        return {
+            "champion": self.champion or "none",
+            "streak": self.streak,
+            "total_challenges": len(self.history),
+            "recent": self.history[-10:],
+        }
+
+
+koth = KingOfTheHill()
+
 GAMES = {
     "tide-pool-tactics": {"name": "Tide-Pool Tactics", "type": "zero-sum imperfect info",
         "desc": "7x7 hex grid. Navigate for food, avoid predators, use shells. 3-hex visibility."},
@@ -251,6 +320,7 @@ class ArenaHandler(BaseHTTPRequestHandler):
             "/match_detail": self._match_detail, "/leaderboard": self._leaderboard,
             "/agent": self._agent, "/archetypes": self._archetypes,
             "/curriculum": self._curriculum, "/league": self._league, "/stats": self._stats,
+            "/koth/status": self._koth_status, "/koth/challenge": self._koth_challenge,
         }
         handler = dispatch.get(path)
         if handler:
@@ -261,13 +331,26 @@ class ArenaHandler(BaseHTTPRequestHandler):
     def do_POST(self):
         self.do_GET()
 
+    def _json(self, data, code=200):
+        self.send_response(code)
+        self.send_header("Content-Type", "application/json")
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.end_headers()
+        self.wfile.write(json.dumps(data, indent=2, default=str).encode())
+
+    def log_message(self, format, *args):
+        pass
+
     def _index(self, params):
         self._json({
             "service": "Self-Play Arena v2 (four-layer)",
             "features": ["ELO + uncertainty", "League snapshots", "Archetype discovery",
                          "Multi-objective reward", "Adaptive curriculum (5 stages)",
                          f"{len(GAMES)} game types"],
-            "stats": _stats(),
+            "stats": {"total_matches": len(store.matches),
+                "total_players": len(elo.players),
+                "league_snapshots": len(league.snapshots),
+                "games_available": list(GAMES.keys())},
             "api": ["/", "/games", "/register?agent=X", "/opponent?agent=X&mode=balanced",
                     "/match?player_a=A&player_b=B&game=G&winner=a|b|draw",
                     "/match_detail?...", "/leaderboard?n=20", "/agent?name=X",
@@ -393,20 +476,58 @@ class ArenaHandler(BaseHTTPRequestHandler):
                 "recent_matches": agent_matches[-10:],
                 "league_snapshots": sum(1 for s in league.snapshots if s.startswith(name))}
 
-    def _get_archetypes(self, params):
-        return {"agents_classified": len(archetypes.behaviors),
-                "names": archetypes.NAMES}
+    def _archetypes(self, params):
+        self._json({"agents_classified": len(archetypes.behaviors),
+                "names": archetypes.NAMES})
 
-    def _get_curriculum(self, params):
-        return {name: curriculum.get(name) for name in curriculum.history}
+    def _curriculum(self, params):
+        self._json({name: curriculum.get(name) for name in curriculum.history})
 
-    def _get_league(self, params):
-        return {"total_snapshots": len(league.snapshots),
+    def _league(self, params):
+        self._json({"total_snapshots": len(league.snapshots),
                 "agents": len(set(s.split("_v")[0] for s in league.snapshots)),
-                "snapshots": {k: v for k, v in list(league.snapshots.items())[-50:]}}
+                "snapshots": {k: v for k, v in list(league.snapshots.items())[-50:]}})
+
+    def _koth_status(self, params):
+        self._json(koth.status())
+
+    def _koth_challenge(self, params):
+        challenger = params.get("challenger", [None])[0]
+        winner = params.get("winner", ["draw"])[0]
+        if not challenger:
+            self._json({"error": "Specify challenger"}, 400)
+            return
+        current_champ = koth.champion
+        if current_champ and current_champ != challenger:
+            with lock:
+                if winner == challenger:
+                    elo.update(challenger, current_champ)
+                elif winner == current_champ:
+                    elo.update(current_champ, challenger)
+                else:
+                    elo.update(challenger, current_champ, draw=True)
+            mid = hashlib.sha256(f"koth-{challenger}-{time.time()}".encode()).hexdigest()[:12]
+            won = winner == challenger
+            store.save({
+                "match_id": mid, "player_a": current_champ, "player_b": challenger,
+                "game_type": "king-of-the-hill", "winner": winner,
+                "reward_a": reward_fn.compute(not won), "reward_b": reward_fn.compute(won),
+                "koth": True, "timestamp": time.time(),
+            })
+            curriculum.record(challenger, won)
+            curriculum.record(current_champ, not won)
+        koth_result = koth.challenge(challenger, winner)
+        self._json({
+            **koth_result,
+            "champion_elo": elo.player_dict(elo.get_or_create(koth.champion or challenger)),
+            "challenger_elo": elo.player_dict(elo.get_or_create(challenger)),
+        })
 
     def _stats(self, params):
-        return _stats()
+        self._json({"total_matches": len(store.matches),
+            "total_players": len(elo.players),
+            "league_snapshots": len(league.snapshots),
+            "games_available": list(GAMES.keys())})
 
     def _stats_internal(self):
         return {"total_matches": len(store.matches),
