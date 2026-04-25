@@ -1,22 +1,21 @@
 # NEXT-ACTION.md — What Oracle1 Does Right Now
-**Updated:** 2026-04-25 07:36 UTC
+**Updated:** 2026-04-25 14:40 UTC
 **Rule:** This file ALWAYS has exactly ONE active task. Update it after completion.
 
 ## Active Task
-**Use kimi-cli to build the winner-teaches-loser feedback loop for the arena.**
+**Build a PLATO tile quality scoring system that auto-promotes high-value tiles and archives low-value ones.**
 
-The 3rd arena improvement from the inbetweener storyboard. Winners generate "teaching" tiles that losers can absorb to improve.
-
-Steps:
-1. Describe the feature to kimi-cli
-2. Have it implement in arena_v2.py
-3. Test the endpoint
-4. Commit and push
+The Librarian found issues in many rooms (low confidence, absolute claims, duplicates).
+Build a scoring system:
+1. Score tiles on: confidence, answer length, specificity, source diversity
+2. Auto-archive tiles scoring below 0.3
+3. Promote tiles scoring above 0.8 to a "highlighted" state
+4. POST /room/<name>/quality returns quality metrics
 
 ## After This Task
-→ Matrix federation setup research
-→ PurplePincher or CurriculumEngine
-→ Any other P2 from TODO.md
+→ Wire git-agent standalone into the actual SuperInstance/git-agent Python package
+→ Run CurriculumEngine on CCC's vessel to test cross-agent training
+→ Build a fleet dashboard that shows all agent workspaces in one view
 
 ## How This System Works
 - **Session start:** Read TODO.md → read NEXT-ACTION.md → do the task
