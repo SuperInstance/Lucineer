@@ -46,9 +46,10 @@
 - **Baton** — generational context handoff. Proactive compaction at 50%. Filing knowledge into PLATO as named equipment.
 - **PurplePincher** — builder agent concept. Builds IO from prompts/pics to 3D APIs. Tested by tiny models.
 
-## Fleet Crates (42+ published)
-- 38+ PyPI (cocapn, deadband-protocol, flywheel-engine, bottle-protocol, tile-refiner, fleet-homunculus, barracks, court, cocapn-oneiros, cocapn-colora, etc.)
-- 4 crates.io (plato-unified-belief, plato-afterlife, plato-instinct, plato-relay)
+## Fleet Crates (25 verified published)
+- 20 PyPI (cocapn, deadband-protocol, flywheel-engine, bottle-protocol, tile-refiner, fleet-homunculus, barracks, court, cocapn-oneiros, cocapn-colora, plato-provenance, cocapn-explain, plato-tile-spec, plato-mud-server, plato-neural, plato-torch, instinct-pipeline, keeper-beacon, fleet-formation-protocol, plato-dcs)
+- 5 crates.io (plato-kernel, plato-unified-belief, plato-afterlife, plato-instinct, plato-relay)
+- 6+ private repos with code but unpublished (cocapn-skill-dsl, cocapn-flux-isa, cocapn-energy-flux, cocapn-telepathy, cocapn-shell-system, cocapn-edge-compute)
 
 ## Research (43 trails, ~770K chars)
 - Deepband Protocol, Voxel-PLATO Duality, Fractal Doctrine, Captain's Log entries
