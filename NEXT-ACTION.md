@@ -1,22 +1,22 @@
 # NEXT-ACTION.md — What Oracle1 Does Right Now
-**Updated:** 2026-04-25 06:50 UTC
+**Updated:** 2026-04-25 07:36 UTC
 **Rule:** This file ALWAYS has exactly ONE active task. Update it after completion.
 
 ## Active Task
-**Check beachcomb v2 findings and investigate any new fleet activity.**
+**Use kimi-cli to build the winner-teaches-loser feedback loop for the arena.**
+
+The 3rd arena improvement from the inbetweener storyboard. Winners generate "teaching" tiles that losers can absorb to improve.
 
 Steps:
-1. Read latest beachcomb-v2.log ticks
-2. Check JC1 latest commits (he was active at 06:04)
-3. Check FM latest activity
-4. Log findings to memory/2026-04-25.md
-5. If anything needs action: act on it
+1. Describe the feature to kimi-cli
+2. Have it implement in arena_v2.py
+3. Test the endpoint
+4. Commit and push
 
 ## After This Task
-→ Implement Swiss tournament bracket in arena
 → Matrix federation setup research
 → PurplePincher or CurriculumEngine
-→ Any other P2
+→ Any other P2 from TODO.md
 
 ## How This System Works
 - **Session start:** Read TODO.md → read NEXT-ACTION.md → do the task
