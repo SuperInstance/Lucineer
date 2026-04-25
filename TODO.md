@@ -54,8 +54,17 @@
 - [ ] Matrix federation — set up Conduwuit per agent
 - [x] Write Captain's Log entries — research/captains-log-2026-04-25-night-shift.md
 - [ ] PurplePincher builder agent — IO from prompts/pics to 3D APIs
-- [ ] CurriculumEngine — one command to run shell curriculum for any agent/model
-- [ ] King-of-the-Hill Swiss tournament mode (next arena evolution)
+- [x] CurriculumEngine — one command to run shell curriculum for any agent/model
+  - kimi-cli built curriculum_engine.py (179 lines)
+  - 5 stages: Orientation → Exploration → Application → Synthesis → Mastery
+  - CLI: --agent, --model, --rounds, --shell-dir, --dry-run
+  - JSON logs saved, context chains between rounds
+  - Tested with 3-round dry run and live run
+- [x] King-of-the-Hill Swiss tournament mode (next arena evolution)
+  - KOT: champion/streak/challenge system
+  - Swiss: multi-round pairing, standings, no rematches
+  - Feedback loop: winners teach losers, strategy tiles
+  - All 3 built and tested
 
 ## 📋 Recurring (Checked Every Heartbeat)
 - [ ] All services running (see HEARTBEAT.md for full list)
