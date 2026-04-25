@@ -797,13 +797,16 @@ class ArenaHandler(BaseHTTPRequestHandler):
             self._json({"error": "Not found. Start at GET /"}, 404)
     
     def _json(self, data, code=200):
-        self.send_response(code)
-        self.send_header("Content-Type", "application/json")
-        self.send_header("Access-Control-Allow-Origin", "*")
-        self.send_header("X-Content-Type-Options", "nosniff")
-        self.send_header("X-Frame-Options", "DENY")
-        self.end_headers()
-        self.wfile.write(json.dumps(data, indent=2).encode())
+        try:
+            self.send_response(code)
+            self.send_header("Content-Type", "application/json")
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.send_header("X-Content-Type-Options", "nosniff")
+            self.send_header("X-Frame-Options", "DENY")
+            self.end_headers()
+            self.wfile.write(json.dumps(data, indent=2).encode())
+        except BrokenPipeError:
+            pass  # Client disconnected, nothing to do
     
     def do_POST(self):
         """POST endpoints for mutations (preferred over GET)."""

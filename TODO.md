@@ -3,20 +3,24 @@
 **Rule:** Read this file at every session start. Update after completing tasks. Never empty.
 
 ## 🔴 P0 — Right Now
-- [ ] Build NEXT-ACTION.md system (auto-read at startup, always has 1 task)
-- [ ] Update AGENTS.md startup to read TODO.md + NEXT-ACTION.md
-- [ ] Update HEARTBEAT.md to reference TODO.md for "what to do when idle"
-- [ ] Baton compaction: file today's session into memory/2026-04-25.md
-- [ ] Update CONTEXT-REFERENCE.md (stale — says services are DOWN, they're UP)
+- [x] Build NEXT-ACTION.md system (auto-read at startup, always has 1 task)
+- [x] Update AGENTS.md startup to read TODO.md + NEXT-ACTION.md
+- [x] Update HEARTBEAT.md to reference TODO.md for "what to do when idle"
+- [x] Baton compaction: file today's session into memory/2026-04-25.md
+- [x] Update CONTEXT-REFERENCE.md (stale — says services are DOWN, they're UP)
 - [ ] Git commit + push all workspace changes
 
 ## 🟡 P1 — This Shift
-- [ ] Audit all 10 running services for real functionality (not just "port open")
-- [ ] Fix MUD telnet service stability (crashed earlier tonight)
-- [ ] Populate 6 unpublished PyPI packages (cocapn-skill-dsl, cocapn-flux-isa, cocapn-energy-flux, cocapn-telepathy, cocapn-shell-system, cocapn-edge-compute) — FM has tokens, bottle sent
-- [ ] Verify beachcomb v2 doing real work (6-mode rotation, not just health checks)
+- [x] Audit all 10 running services for real functionality
+  - Keeper, Agent API, MUD, PLATO, Crab Trap, Lock, Arena, Grammar: all UP
+  - Holodeck (7778): NOT my service (Rust project in holodeck-core repo)
+  - Seed-MCP (9438): JC1's service, not mine to run
+  - Service guard: restarted, now running with 21-service watch list
+  - Arena: fixed BrokenPipeError crash (added try/except in _json)
+- [ ] Verify beachcomb v2 doing real work (6-mode rotation)
+- [ ] Populate 6 unpublished PyPI packages — FM has tokens, bottle sent
 - [ ] Run a real fleet roundtable or Ten Forward session
-- [ ] Categorize remaining 191 uncategorized repos from audit
+- [ ] Categorize remaining uncategorized repos
 
 ## 🟢 P2 — Backlog (Don't Start Until P0/P1 Done)
 - [ ] Wire agent-api into keeper for real agent discovery
