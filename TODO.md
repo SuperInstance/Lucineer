@@ -51,9 +51,20 @@
   - Pattern works: good for medium-complexity features
 - [x] Improve holodeck-rust (new rooms, better poker AI, story circle)
   — Skipped holodeck (Rust project, not mine). Instead built King-of-the-Hill arena mode.
-- [ ] Matrix federation — set up Conduwuit per agent
+- [x] Matrix federation — set up Conduwuit per agent
+  - Conduwuit already running on 6167
+  - 4 fleet agents registered (oracle1, jc1, fm, ccc)
+  - 4 Matrix rooms created: Fleet Coordination, PLATO Tiles, Ten Forward, GPU Optimization
+  - Matrix↔PLATO bridge script syncs tiles + workspaces every 10 min
+  - Cron installed, tested, working
 - [x] Write Captain's Log entries — research/captains-log-2026-04-25-night-shift.md
-- [ ] PurplePincher builder agent — IO from prompts/pics to 3D APIs
+- [x] PurplePincher builder agent — IO from prompts/pics to 3D APIs
+  - Built purple_pincher.py (230 lines)
+  - 3 modes: OpenSCAD, Three.js HTML, STL Python
+  - Uses Seed-2.0-mini for creative generation
+  - HTTP API on port 4048 + CLI mode
+  - Tested: generated Cocapn lighthouse with radar rings in OpenSCAD
+  - Output dir: /tmp/purple-pincher-output/
 - [x] CurriculumEngine — one command to run shell curriculum for any agent/model
   - kimi-cli built curriculum_engine.py (179 lines)
   - 5 stages: Orientation → Exploration → Application → Synthesis → Mastery
