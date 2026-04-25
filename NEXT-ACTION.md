@@ -1,19 +1,23 @@
 # NEXT-ACTION.md — What Oracle1 Does Right Now
-**Updated:** 2026-04-25 05:20 UTC
+**Updated:** 2026-04-25 05:55 UTC
 **Rule:** This file ALWAYS has exactly ONE active task. Update it after completion.
 
 ## Active Task
-**Verify beachcomb v2 is doing real work, then commit and push everything.**
+**Generate descriptions for repos that have generic/weak descriptions.**
+
+The 3 stub PyPI packages (court, cocapn-oneiros, cocapn-colora) have placeholder descriptions. Also audit all repo descriptions for quality — some say just "PLATO framework" or "Cocapn fleet crate".
 
 Steps:
-1. Check beachcomb logs for actual work output (not just health pings)
-2. Verify 6-mode rotation is cycling through seed/classify/grammar/analyze/health/git
-3. If beachcomb is broken or only doing health checks, fix it
-4. Git commit + push all workspace changes (arena fix, TODO system, etc.)
+1. List all repos with weak descriptions (generic, <20 chars, or "PLATO framework")
+2. Generate proper descriptions from repo content
+3. Update via GitHub API
+4. Commit workspace changes
 
 ## After This Task
-→ Run a Ten Forward session with Seed-2.0-mini (creative fleet conversation)
-→ Then pick next from TODO.md P1 queue
+→ Test inbetweener pattern (big model storyboards, Seed decomposes)
+→ Write Captain's Log entry
+→ Improve holodeck-rust or wire agent-api into keeper
+→ Any other P2 item
 
 ## How This System Works
 - **Session start:** Read TODO.md → read NEXT-ACTION.md → do the task

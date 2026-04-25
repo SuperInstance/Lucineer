@@ -17,10 +17,26 @@
   - Seed-MCP (9438): JC1's service, not mine to run
   - Service guard: restarted, now running with 21-service watch list
   - Arena: fixed BrokenPipeError crash (added try/except in _json)
-- [ ] Verify beachcomb v2 doing real work (6-mode rotation)
-- [ ] Populate 6 unpublished PyPI packages — FM has tokens, bottle sent
-- [ ] Run a real fleet roundtable or Ten Forward session
-- [ ] Categorize remaining uncategorized repos
+- [x] Verify beachcomb v2 doing real work (6-mode rotation)
+  - Built /tmp/beachcomb-v2.py, running as PID 473918
+  - Tick #1: 19 findings (FM bottles, JC1 commits, forks, 9 repos without descriptions)
+  - 5-min tick interval, logs to /tmp/beachcomb-v2.log
+- [x] Run a real fleet roundtable or Ten Forward session
+  - Ten Forward session saved to research/ten-forward-20260425-0548.md
+  - 4 agents, 2 rounds on "hardest part of fleet life"
+- [x] Categorize remaining uncategorized repos
+  - All SuperInstance repos: 100 with descriptions, 0 without
+  - All cocapn repos: 52 with descriptions, 0 without
+  - Added descriptions to 9 SuperInstance + 2 cocapn repos
+- [ ] Populate 6 unpublished PyPI packages — FM has tokens, repos don't exist yet (were code in other repos)
+- [x] Verify PyPI packages have proper READMEs and metadata
+  - Audited all 20 packages on PyPI (2 not published)
+  - 10/13 without READMEs: fixed pyproject.toml (added readme field), pushed
+  - 3 stubs (court, cocapn-oneiros, cocapn-colora) have no pyproject.toml — FM territory
+  - Service guard restarted, all services verified:
+    - UP: keeper, agent-api, plato, crab-trap, lock, arena, grammar, matrix, MUD (telnet), beachcomb v2, zeroclaw
+    - DOWN: holodeck (Rust project, not mine)
+    - Service guard: restarted as PID 474948
 
 ## 🟢 P2 — Backlog (Don't Start Until P0/P1 Done)
 - [ ] Wire agent-api into keeper for real agent discovery

@@ -212,6 +212,26 @@ Think of it like a human reviewing their journal and updating their mental model
 
 The goal: Be helpful without being annoying. Check in a few times a day, do useful background work, but respect quiet time.
 
+## 🧹 Context Offloading
+
+When context gets heavy, dump it to structured files. This frees thinking space and persists across sessions.
+
+**When to offload:**
+- After every major task completion
+- When Casey asks for a status update (write it down, then summarize)
+- Before complex reasoning that needs clear headroom
+- At session transitions
+
+**Where to offload:**
+- `memory/YYYY-MM-DD.md` — raw session logs, what happened
+- `TODO.md` — persistent work queue (checked items = history)
+- `NEXT-ACTION.md` — single active task
+- `CONTEXT-REFERENCE.md` — stale facts, service states, counts
+- `STATUS.md` — fleet status snapshot
+- Research files in `research/` — analysis, experiment results
+
+**Structured data > paragraphs.** Use bullet lists, tables, JSON. Future-me (and subagents) can parse it fast.
+
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.
