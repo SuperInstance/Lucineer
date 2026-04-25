@@ -275,6 +275,160 @@ class KingOfTheHill:
 
 koth = KingOfTheHill()
 
+# ═══════════════════════════════════════════════════════════
+# Swiss Tournament — Pair by win record, no rematches
+# ═══════════════════════════════════════════════════════════
+
+class SwissTournament:
+    """Swiss-style tournament: players face opponents with similar records each round.
+    No elimination — everyone plays every round. Best record wins after N rounds."""
+
+    def __init__(self):
+        self.tournaments = {}  # tournament_id -> state
+        self.counter = 0
+        self.data_file = DATA_DIR / "swiss_tournaments.json"
+        self.load()
+
+    def load(self):
+        if self.data_file.exists():
+            try:
+                d = json.loads(self.data_file.read_text())
+                self.tournaments = d.get("tournaments", {})
+                self.counter = d.get("counter", 0)
+            except Exception:
+                pass
+
+    def save(self):
+        self.data_file.write_text(json.dumps({
+            "tournaments": {k: v for k, v in list(self.tournaments.items())[-20:]},
+            "counter": self.counter,
+        }, indent=2, default=str))
+
+    def create(self, name, players, rounds=5):
+        self.counter += 1
+        tid = f"swiss-{self.counter}"
+        self.tournaments[tid] = {
+            "name": name,
+            "players": players,  # list of agent names
+            "rounds_total": rounds,
+            "round_current": 0,
+            "standings": {p: {"wins": 0, "losses": 0, "draws": 0, "points": 0.0, "opponents": []} for p in players},
+            "pairings_history": [],  # [[(a, b), ...], ...]
+            "results": [],
+            "status": "active",
+            "created": time.time(),
+        }
+        self.save()
+        return tid
+
+    def pair_round(self, tid):
+        t = self.tournaments.get(tid)
+        if not t or t["status"] != "active":
+            return None
+        if t["round_current"] >= t["rounds_total"]:
+            t["status"] = "completed"
+            self.save()
+            return None
+
+        # Sort by points descending, pair neighbors
+        ranked = sorted(t["standings"].items(), key=lambda x: x[1]["points"], reverse=True)
+        past_pairs = set()
+        for rnd in t["pairings_history"]:
+            for a, b in rnd:
+                past_pairs.add((a, b))
+                past_pairs.add((b, a))
+
+        pairings = []
+        paired = set()
+        for i in range(len(ranked)):
+            p1 = ranked[i][0]
+            if p1 in paired:
+                continue
+            # Find closest unpaired opponent not yet faced
+            for j in range(i + 1, len(ranked)):
+                p2 = ranked[j][0]
+                if p2 in paired:
+                    continue
+                if (p1, p2) not in past_pairs:
+                    pairings.append((p1, p2))
+                    paired.add(p1)
+                    paired.add(p2)
+                    break
+            else:
+                # Bye if odd number and this player unpaired
+                if p1 not in paired:
+                    pairings.append((p1, "bye"))
+                    paired.add(p1)
+
+        t["pairings_history"].append(pairings)
+        t["round_current"] += 1
+        self.save()
+        return pairings
+
+    def report_result(self, tid, player_a, player_b, winner):
+        t = self.tournaments.get(tid)
+        if not t or t["status"] != "active":
+            return None
+
+        sa = t["standings"].get(player_a)
+        sb = t["standings"].get(player_b)
+        if not sa or not sb:
+            return None
+
+        if winner == player_a:
+            sa["wins"] += 1; sa["points"] += 1.0
+            sb["losses"] += 1
+        elif winner == player_b:
+            sb["wins"] += 1; sb["points"] += 1.0
+            sa["losses"] += 1
+        else:
+            sa["draws"] += 1; sa["points"] += 0.5
+            sb["draws"] += 1; sb["points"] += 0.5
+
+        sa["opponents"].append(player_b)
+        sb["opponents"].append(player_a)
+
+        t["results"].append({"round": t["round_current"], "a": player_a, "b": player_b, "winner": winner, "time": time.time()})
+
+        # Check if tournament complete
+        if t["round_current"] >= t["rounds_total"]:
+            all_played = all(
+                len(r["results"]) >= 1
+                for rnd_pairings in t["pairings_history"]
+                for r in t["results"]
+            )
+            if t["round_current"] >= t["rounds_total"]:
+                t["status"] = "completed"
+
+        self.save()
+        return {"player_a": player_a, "player_b": player_b, "winner": winner, "standings": t["standings"]}
+
+    def get_standings(self, tid):
+        t = self.tournaments.get(tid)
+        if not t:
+            return None
+        ranked = sorted(t["standings"].items(), key=lambda x: x[1]["points"], reverse=True)
+        return {
+            "tournament": tid,
+            "name": t["name"],
+            "round": f"{t['round_current']}/{t['rounds_total']}",
+            "status": t["status"],
+            "standings": [{"rank": i+1, "agent": name, **stats} for i, (name, stats) in enumerate(ranked)],
+        }
+
+    def list_tournaments(self):
+        return [{"id": tid, "name": t["name"], "status": t["status"],
+                "round": f"{t['round_current']}/{t['rounds_total']}",
+                "players": len(t["players"])}
+               for tid, t in self.tournaments.items()]
+
+
+swiss = SwissTournament()
+
+# ═══════════════════════════════════════════════════════════
+# Layer 1: Vessel — HTTP server with route bindings
+# ═══════════════════════════════════════════════════════════
+
 GAMES = {
     "tide-pool-tactics": {"name": "Tide-Pool Tactics", "type": "zero-sum imperfect info",
         "desc": "7x7 hex grid. Navigate for food, avoid predators, use shells. 3-hex visibility."},
@@ -321,6 +475,9 @@ class ArenaHandler(BaseHTTPRequestHandler):
             "/agent": self._agent, "/archetypes": self._archetypes,
             "/curriculum": self._curriculum, "/league": self._league, "/stats": self._stats,
             "/koth/status": self._koth_status, "/koth/challenge": self._koth_challenge,
+            "/swiss/list": self._swiss_list, "/swiss/create": self._swiss_create,
+            "/swiss/pair": self._swiss_pair, "/swiss/result": self._swiss_result,
+            "/swiss/standings": self._swiss_standings,
         }
         handler = dispatch.get(path)
         if handler:
@@ -522,6 +679,61 @@ class ArenaHandler(BaseHTTPRequestHandler):
             "champion_elo": elo.player_dict(elo.get_or_create(koth.champion or challenger)),
             "challenger_elo": elo.player_dict(elo.get_or_create(challenger)),
         })
+
+    def _swiss_list(self, params):
+        self._json(swiss.list_tournaments())
+
+    def _swiss_create(self, params):
+        name = params.get("name", ["Swiss Tournament"])[0]
+        players = params.get("players", [""])[0].split(",")
+        players = [p.strip() for p in players if p.strip()]
+        rounds = int(params.get("rounds", ["5"])[0])
+        if len(players) < 2:
+            self._json({"error": "Need at least 2 players"}, 400)
+            return
+        tid = swiss.create(name, players, rounds)
+        self._json({"tournament_id": tid, "name": name, "players": players, "rounds": rounds})
+
+    def _swiss_pair(self, params):
+        tid = params.get("tid", [None])[0]
+        if not tid:
+            self._json({"error": "Specify tid"}, 400)
+            return
+        pairings = swiss.pair_round(tid)
+        if pairings is None:
+            self._json({"error": "Tournament not found or completed"}, 404)
+            return
+        self._json({"tournament": tid, "pairings": pairings})
+
+    def _swiss_result(self, params):
+        tid = params.get("tid", [None])[0]
+        pa = params.get("player_a", [None])[0]
+        pb = params.get("player_b", [None])[0]
+        winner = params.get("winner", ["draw"])[0]
+        if not tid or not pa or not pb:
+            self._json({"error": "Specify tid, player_a, player_b"}, 400)
+            return
+        result = swiss.report_result(tid, pa, pb, winner)
+        if result is None:
+            self._json({"error": "Tournament not found or not active"}, 404)
+            return
+        # Also update main ELO
+        with lock:
+            if winner == pa: elo.update(pa, pb)
+            elif winner == pb: elo.update(pb, pa)
+            else: elo.update(pa, pb, draw=True)
+        self._json(result)
+
+    def _swiss_standings(self, params):
+        tid = params.get("tid", [None])[0]
+        if not tid:
+            self._json({"error": "Specify tid"}, 400)
+            return
+        standings = swiss.get_standings(tid)
+        if standings is None:
+            self._json({"error": "Tournament not found"}, 404)
+            return
+        self._json(standings)
 
     def _stats(self, params):
         self._json({"total_matches": len(store.matches),
