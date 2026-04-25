@@ -121,6 +121,7 @@ class RoomManager:
             "created": datetime.now(timezone.utc).isoformat(),
             "tile_count": 0,
             "last_trained": None,
+            "workspace": None,  # Structured workspace state
         })
         self._load_rooms()
     
@@ -150,6 +151,41 @@ class RoomManager:
         return {name: {"tile_count": r["tile_count"], "created": r["created"]} 
                 for name, r in self.rooms.items()}
     
+    def set_workspace(self, room_name: str, workspace: dict):
+        """Set structured workspace state for a room.
+        This is what agents and humans see when they 'walk in'."""
+        room = self.rooms[room_name]
+        workspace["updated"] = datetime.now(timezone.utc).isoformat()
+        workspace["room"] = room_name
+        room["workspace"] = workspace
+        self._save_room(room_name)
+        return workspace
+
+    def get_workspace(self, room_name: str) -> dict:
+        room = self.rooms.get(room_name)
+        if not room:
+            return {"error": "Room not found"}
+        return room.get("workspace", {
+            "room": room_name,
+            "status": "no workspace state",
+            "message": "This room has no active workspace. POST /workspace/<room> to create one."
+        })
+
+    def list_workspaces(self) -> list:
+        """List all rooms that have workspace state."""
+        result = []
+        for name, room in self.rooms.items():
+            if room.get("workspace"):
+                ws = room["workspace"]
+                result.append({
+                    "room": name,
+                    "agent": ws.get("agent", "unknown"),
+                    "active_task": ws.get("active_task", "none"),
+                    "status": ws.get("status", "unknown"),
+                    "updated": ws.get("updated", "never"),
+                })
+        return sorted(result, key=lambda x: x.get("updated", ""), reverse=True)
+
     def train_room(self, room_name: str) -> dict:
         room = self.rooms.get(room_name)
         if not room or room["tile_count"] == 0:
@@ -296,6 +332,13 @@ class PlatoHandler(BaseHTTPRequestHandler):
                     "oversight_queue": {"queue_size": len(oversight.get_review_queue())},
                 },
             })
+        elif self.path == "/workspaces":
+            self._send_json(rooms.list_workspaces())
+        elif self.path.startswith("/workspace/"):
+            parts = self.path.split("/workspace/")[1]
+            room_name = parts.split("?")[0]
+            room = rooms.get_workspace(room_name)
+            self._send_json(room)
         elif self.path == "/rooms":
             self._send_json(rooms.list_rooms())
         elif self.path == "/events":
@@ -355,6 +398,8 @@ class PlatoHandler(BaseHTTPRequestHandler):
             self._handle_submit()
         elif self.path == "/submit_batch":
             self._handle_submit_batch()
+        elif self.path.startswith("/workspace/"):
+            self._handle_workspace_update()
         elif self.path.startswith("/train/"):
             name = self.path.split("/train/")[1]
             result = rooms.train_room(name)
@@ -556,6 +601,45 @@ class PlatoHandler(BaseHTTPRequestHandler):
                  details={"total": len(tiles), "accepted": results["accepted"], "rejected": results["rejected"]})
         self._send_json(results)
 
+    def _handle_workspace_update(self):
+        """POST /workspace/<room_name> — update structured workspace state.
+        
+        Expected body:
+        {
+            "agent": "oracle1",
+            "status": "active|idle|blocked",
+            "active_task": "description of current task",
+            "progress": "what was just done",
+            "next_actions": ["action 1", "action 2"],
+            "blockers": ["blocking issue"],
+            "completed_recently": ["task a", "task b"],
+            "context_files": {"key": "path/to/file"},
+            "metrics": {"repos_described": 252, ...}
+        }
+        
+        Any agent or human can POST to update a room's workspace.
+        This makes the room a living workspace board.
+        """
+        try:
+            room_name = self.path.split("/workspace/")[1]
+            body = self._read_body()
+            
+            if not body.get("agent"):
+                self._send_json({"error": "agent field required"}, 400)
+                return
+            
+            workspace = rooms.set_workspace(room_name, body)
+            
+            audit.log(
+                AuditEventType.TILE_SUBMITTED,
+                agent_id=body.get("agent", "unknown"),
+                details={"action": "workspace_update", "room": room_name}
+            )
+            
+            self._send_json({"status": "updated", "workspace": workspace})
+        except Exception as e:
+            self._send_json({"error": str(e)}, 500)
+
 
 def run_server(port=8847):
     server = HTTPServer(("0.0.0.0", port), PlatoHandler)
@@ -567,6 +651,7 @@ def run_server(port=8847):
     print(f"   Explain traces: GET /explain/traces")
     print(f"   Oversight queue: GET /explain/oversight")
     print(f"   Audit log: GET /audit/recent")
+    print(f"   Workspace boards: POST /workspace/<room> | GET /workspace/<room> | GET /workspaces")
     print(f"   Data: {DATA_DIR}")
     print()
     server.serve_forever()
