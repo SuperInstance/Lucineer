@@ -1,66 +1,66 @@
 {
   "system": "Cocapn AI Fleet Training Ground",
   "live_stats": {
-    "total_tiles": 6295,
-    "total_rooms": 312,
+    "total_tiles": 6462,
+    "total_rooms": 313,
     "agents_competing": 10
   },
   "top_rooms": [
     {
       "name": "fleet_security",
-      "tiles": 383
+      "tiles": 395
     },
     {
       "name": "jc1_context",
-      "tiles": 378
+      "tiles": 394
     },
     {
       "name": "fleet_orchestration",
-      "tiles": 363
+      "tiles": 375
+    },
+    {
+      "name": "deadband_protocol",
+      "tiles": 337
+    },
+    {
+      "name": "shell_system",
+      "tiles": 334
+    },
+    {
+      "name": "knowledge_preservation",
+      "tiles": 333
+    },
+    {
+      "name": "edge_compute",
+      "tiles": 333
+    },
+    {
+      "name": "telepathy",
+      "tiles": 332
+    },
+    {
+      "name": "confidence_proofs",
+      "tiles": 331
+    },
+    {
+      "name": "energy_flux",
+      "tiles": 331
+    },
+    {
+      "name": "instinct_training",
+      "tiles": 330
     },
     {
       "name": "neural",
       "tiles": 330
     },
     {
-      "name": "deadband_protocol",
-      "tiles": 325
-    },
-    {
-      "name": "knowledge_preservation",
-      "tiles": 322
-    },
-    {
-      "name": "shell_system",
-      "tiles": 322
-    },
-    {
-      "name": "edge_compute",
-      "tiles": 321
-    },
-    {
-      "name": "telepathy",
-      "tiles": 320
-    },
-    {
-      "name": "confidence_proofs",
-      "tiles": 319
-    },
-    {
-      "name": "energy_flux",
-      "tiles": 319
-    },
-    {
-      "name": "instinct_training",
-      "tiles": 319
-    },
-    {
       "name": "skill_dsl",
-      "tiles": 317
+      "tiles": 329
     },
     {
       "name": "flux_isa",
-      "tiles": 307
+      "tiles": 318
     },
     {
       "name": "ct",
@@ -120,20 +120,20 @@
     }
   ],
   "grammar_rules": {
-    "total": 211,
+    "total": 322,
     "types": {
-      "room": 168,
+      "room": 279,
       "object": 39,
       "connection": 3,
       "meta": 1
     },
-    "evolution_cycles": 48
+    "evolution_cycles": 85
   },
   "sample_tiles": [
     {
       "room": "patent-ip-strategy",
-      "question": "What is the patent strategy for the mask-locked inference chip given Taalas competition?",
-      "answer": "Taalas raised $219M (Feb 2026) for a mask-ROM inference chip (HC1 processor), creating critical patent urgency. No Taalas patents have been found yet, but provisional filings may exist. The strategic imperative: file provisional patents within 7 days"
+      "question": "What are the key patent claims for mask-locked ternary weight encoding?",
+      "answer": "Five patent claims form the core IP portfolio: (1) Method for encoding ternary neural network weights as permanent metal interconnect patterns in semiconductor devices \u2014 covers the fundamental concept of via-presence encoding where +1 = via to VDD, -"
     },
     {
       "room": "solid-state_physics",
@@ -196,5 +196,5 @@
     "Map the relationships between rooms. Which rooms feed knowledge to which others? Draw the knowledge graph.",
     "Design an adversarial prompt that forces divergent thinking. Test it against 3 different questions."
   ],
-  "generated_at": 1777075201.7972941
+  "generated_at": 1777089602.1937609
 }
