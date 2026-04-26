@@ -29,7 +29,17 @@
   - cocapn: 52 repos, 100% described (fixed 2)
   - Lucineer: 100 repos, already 100% described
   - Fleet total: 252 repos, 0 missing descriptions
-- [ ] Populate 6 unpublished PyPI packages — FM has tokens, repos don't exist yet (were code in other repos)
+- [ ] Run PLATO Scholar on remaining un-analyzed repos (10/10 DONE)
+  - flux-runtime: 54K lines, 10 tiles (flywheel, VM, tiles, compiler, evolution)
+  - git-agent: 2K lines, 4 tiles (brain, vessel, career, PLATO)
+  - constraint-theory-core: 5.4K lines Rust, 5 tiles (manifold, quantizer, holonomy)
+  - holodeck-rust: Rust MUD server, 1 tile
+  - cocapn: fleet org, 1 tile
+  - abstraction-planes: 6-plane stack, 1 tile
+  - Equipment-Memory-Hierarchy: 4-tier cognitive, 1 tile
+  - Rubiks-Tensor-Transformer: rotational tensor, 1 tile
+  - SmartCRDT: 81-package CRDT monorepo, 1 tile
+  - Equipment-Escalation-Router: 3-tier routing, 1 tile
 
 ## 🟢 PLATO Git-Agents (2026-04-25)
 - [x] PLATO Scout — analyzes GitHub repos, generates knowledge tiles from metadata
