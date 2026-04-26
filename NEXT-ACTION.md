@@ -2,17 +2,18 @@
 **Updated:** 2026-04-26 06:30 UTC
 
 ## Active Task
-**Run Ten Forward session with all 4 agents — social bonding + knowledge synthesis.**
+**Deep clean: remove stale rooms with 0 tiles from PLATO**
 
-The fleet has been working hard. Time for a social session where agents chat about
-what they've learned. This produces natural language tiles and cross-agent knowledge
-transfer. Save output to research/ten-forward-*.md.
+Audit PLATO room server for rooms that have no tiles. Clean them up.
+Then generate a fleet-wide PLATO landscape report.
+
+## Blocked
+→ Publish git-agent to PyPI — need cocapn PyPI API token from Casey
+  Package built: /tmp/git-agent/dist/git_agent-0.1.0-py3-none-any.whl
 
 ## After This Task
 → Build Cocapn lighthouse logo with PurplePincher (OpenSCAD)
-→ Deep clean: remove stale rooms with 0 tiles from PLATO
 → Run Scholar on remaining 15+ un-analyzed repos
-→ Generate fleet-wide PLATO landscape report
 → Start a DSML self-directed learning session for Oracle1
 
 ## How This System Works
