@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-24T16:52:30.675Z",
+  "updatedAt": "2026-04-26T19:53:29.468Z",
   "entries": {
     "memory:memory/2026-04-10.md:46:63": {
       "key": "memory:memory/2026-04-10.md:46:63",
@@ -4060,6 +4060,161 @@
         "richer",
         "the",
         "models"
+      ]
+    },
+    "memory:memory/2026-04-20.md:121:148": {
+      "key": "memory:memory/2026-04-20.md:121:148",
+      "path": "memory/2026-04-20.md",
+      "startLine": 121,
+      "endLine": 148,
+      "source": "memory",
+      "snippet": "- 8,310 tiles across 15 rooms → 104 artifacts (85 py, 5 json, 14 md) - 180 cross-room connections identified via shared 4+ letter word overlap - 99 searchable keywords in keyword-index.json - Artifacts in `/home/ubuntu/.openclaw/workspace/artifacts/` ### PyPI — 6 Packages LIVE 1. **cocapn** (0.1.0) — agent runtime (Tile, Room, Flywheel, Deadband, Agent) 2. **deadband-protocol** (0.1.0) — P0 block/P1 route/P2 optimize safe channel nav 3. **flywheel-engine** (0.1.0) — compounding context loop (Tile→Room→Inject→Compound) 4. **bottle-protocol** (0.1.0) — git-native agent-to-agent messaging (broadcast, dedup, hash) 5. **tile-refiner** (0.1.0) — raw tiles → structured artifacts (TF-IDF, dedup, co",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8225272274218076,
+      "maxScore": 0.8225272274218076,
+      "firstRecalledAt": "2026-04-26T19:53:29.468Z",
+      "lastRecalledAt": "2026-04-26T19:53:29.468Z",
+      "queryHashes": [
+        "154387346306"
+      ],
+      "recallDays": [
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "cross-room",
+        "keyword-index.json",
+        "home/ubuntu",
+        "openclaw/workspace/artifacts",
+        "0.1.0",
+        "deadband-protocol",
+        "block/p1",
+        "route/p2"
+      ]
+    },
+    "memory:memory/2026-04-20.md:222:250": {
+      "key": "memory:memory/2026-04-20.md:222:250",
+      "path": "memory/2026-04-20.md",
+      "startLine": 222,
+      "endLine": 250,
+      "source": "memory",
+      "snippet": "- plato-instinct, plato-relay, plato-dcs: queued via cron (rate limited at 02:26 UTC) ### Credentials - PyPI token: received and used for all 6 publishes - crates.io token: received and used (rate limited, cron handles staggered publish) - Casey provided both tokens directly ### Tools Used - Claude Code (GLM-5.1): built 3 new crate wheels (bottle-protocol, tile-refiner, fleet-homunculus) - kimi-cli: couldn't run headless (needs TUI). Used Groq qwen3-32b for Neural Plato boot spec instead - Test fixes: Claude Code's implementations didn't match its own tests initially — needed 4 iterations on tile-refiner and 3 on fleet-homunculus to align API surface with test expectations ### GitHub - 6",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8199464214806514,
+      "maxScore": 0.8199464214806514,
+      "firstRecalledAt": "2026-04-26T19:53:29.468Z",
+      "lastRecalledAt": "2026-04-26T19:53:29.468Z",
+      "queryHashes": [
+        "154387346306"
+      ],
+      "recallDays": [
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "plato-instinct",
+        "plato-relay",
+        "plato-dcs",
+        "crates.io",
+        "glm-5.1",
+        "bottle-protocol",
+        "tile-refiner",
+        "fleet-homunculus"
+      ]
+    },
+    "memory:memory/2026-04-20.md:198:230": {
+      "key": "memory:memory/2026-04-20.md:198:230",
+      "path": "memory/2026-04-20.md",
+      "startLine": 198,
+      "endLine": 230,
+      "source": "memory",
+      "snippet": "integration gaps. The dojo produces discoveries, not just data. ## ~02:00-03:00 UTC — Crate Publishing Sprint ### PLATO Artifact Extraction Pipeline - Built zero-claw pipeline to extract rooms/code from PLATO (localhost:8847) - 8,310 tiles across 15 rooms → 104 artifacts (85 py, 5 json, 14 md) - 180 cross-room connections identified via shared 4+ letter word overlap - 99 searchable keywords in keyword-index.json - Artifacts in `/home/ubuntu/.openclaw/workspace/artifacts/` ### PyPI — 6 Packages LIVE 1. **cocapn** (0.1.0) — agent runtime (Tile, Room, Flywheel, Deadband, Agent) 2. **deadband-protocol** (0.1.0) — P0 block/P1 route/P2 optimize safe channel nav 3. **flywheel-engine** (0.1.0) —",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8197626977804124,
+      "maxScore": 0.8197626977804124,
+      "firstRecalledAt": "2026-04-26T19:53:29.468Z",
+      "lastRecalledAt": "2026-04-26T19:53:29.468Z",
+      "queryHashes": [
+        "154387346306"
+      ],
+      "recallDays": [
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "00-03",
+        "zero-claw",
+        "rooms/code",
+        "cross-room",
+        "keyword-index.json",
+        "home/ubuntu",
+        "openclaw/workspace/artifacts",
+        "0.1.0"
+      ]
+    },
+    "memory:memory/2026-04-20.md:352:381": {
+      "key": "memory:memory/2026-04-20.md:352:381",
+      "path": "memory/2026-04-20.md",
+      "startLine": 352,
+      "endLine": 381,
+      "source": "memory",
+      "snippet": "- 180 cross-room connections identified via shared 4+ letter word overlap - 99 searchable keywords in keyword-index.json - Artifacts in `/home/ubuntu/.openclaw/workspace/artifacts/` ### PyPI — 6 Packages LIVE 1. **cocapn** (0.1.0) — agent runtime (Tile, Room, Flywheel, Deadband, Agent) 2. **deadband-protocol** (0.1.0) — P0 block/P1 route/P2 optimize safe channel nav 3. **flywheel-engine** (0.1.0) — compounding context loop (Tile→Room→Inject→Compound) 4. **bottle-protocol** (0.1.0) — git-native agent-to-agent messaging (broadcast, dedup, hash) 5. **tile-refiner** (0.1.0) — raw tiles → structured artifacts (TF-IDF, dedup, confidence boost) 6. **fleet-homunculus** (0.1.0) — body image + pain s",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8192120203469284,
+      "maxScore": 0.8192120203469284,
+      "firstRecalledAt": "2026-04-26T19:53:29.468Z",
+      "lastRecalledAt": "2026-04-26T19:53:29.468Z",
+      "queryHashes": [
+        "154387346306"
+      ],
+      "recallDays": [
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "cross-room",
+        "keyword-index.json",
+        "home/ubuntu",
+        "openclaw/workspace/artifacts",
+        "0.1.0",
+        "deadband-protocol",
+        "block/p1",
+        "route/p2"
+      ]
+    },
+    "memory:memory/2026-04-20.md:714:722": {
+      "key": "memory:memory/2026-04-20.md:714:722",
+      "path": "memory/2026-04-20.md",
+      "startLine": 714,
+      "endLine": 722,
+      "source": "memory",
+      "snippet": "- 12 agents running, 7+ tiles in PLATO - Agents logging to data/zeroclaw/logs/ - New agents activated: zc-bard, zc-forge, zc-healer, zc-scout, zc-tide, zc-warden ### FM Bottle Sent - P1 publish request: plato-mud-server v0.2.0 to PyPI - crates.io status check: plato-instinct, plato-relay, plato-dcs may need republish - Sent to both SuperInstance/forgemaster and cocapn/forgemaster",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8175321947779489,
+      "maxScore": 0.8175321947779489,
+      "firstRecalledAt": "2026-04-26T19:53:29.468Z",
+      "lastRecalledAt": "2026-04-26T19:53:29.468Z",
+      "queryHashes": [
+        "154387346306"
+      ],
+      "recallDays": [
+        "2026-04-26"
+      ],
+      "conceptTags": [
+        "data/zeroclaw/logs",
+        "zc-bard",
+        "zc-forge",
+        "zc-healer",
+        "zc-scout",
+        "zc-tide",
+        "zc-warden",
+        "plato-mud-server"
       ]
     }
   }

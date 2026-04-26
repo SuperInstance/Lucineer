@@ -1,5 +1,5 @@
 {
-  "tick": 696,
+  "tick": 702,
   "rooms": {
     "harbor": {
       "items": [
@@ -450,6 +450,11 @@
       "score": 0
     },
     "agent-4061": {
+      "room": "harbor",
+      "inventory": [],
+      "score": 0
+    },
+    "GET /api/sonicos/is-sslvpn-enabl": {
       "room": "harbor",
       "inventory": [],
       "score": 0
