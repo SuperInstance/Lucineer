@@ -8,8 +8,8 @@
 | Keeper Beacon | 8900 | ✅ UP |
 | PLATO Room Server | 8847 | ✅ UP (580 rooms) |
 | MUD Server | 7777 | ✅ UP |
-| Holodeck Rust | 7778 | ❌ DOWN (binary lost to /tmp cleanup) |
-| Seed MCP | 9438 | ❌ DOWN (source lost to /tmp cleanup) |
+| Holodeck Rust | 7778 | ✅ UP (restored from ~/holodeck-home/) |
+| Seed MCP | 9438 | ✅ UP (restored from ~/seed-mcp-home/) |
 
 ## PLATO Knowledge System
 - **Rooms:** 580 (3 empty agent identity rooms, 358 single-tile niche rooms)
@@ -38,4 +38,3 @@
 ## Blocked
 - git-agent PyPI publish — awaiting cocapn API token from Casey
 - Cloudflare Workers/Pages — token needs permission update
-- Holodeck + Seed-MCP restore — need source rebuild from git
