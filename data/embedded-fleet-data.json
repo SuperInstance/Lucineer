@@ -1,66 +1,66 @@
 {
   "system": "Cocapn AI Fleet Training Ground",
   "live_stats": {
-    "total_tiles": 8155,
-    "total_rooms": 424,
+    "total_tiles": 8858,
+    "total_rooms": 479,
     "agents_competing": 0
   },
   "top_rooms": [
     {
       "name": "general",
-      "tiles": 761
+      "tiles": 872
     },
     {
       "name": "jc1_context",
-      "tiles": 442
+      "tiles": 489
     },
     {
       "name": "fleet_security",
-      "tiles": 429
+      "tiles": 465
     },
     {
       "name": "fleet_orchestration",
-      "tiles": 411
+      "tiles": 445
     },
     {
       "name": "deadband_protocol",
-      "tiles": 373
+      "tiles": 407
     },
     {
       "name": "shell_system",
-      "tiles": 370
+      "tiles": 405
     },
     {
       "name": "knowledge_preservation",
-      "tiles": 368
-    },
-    {
-      "name": "telepathy",
-      "tiles": 368
+      "tiles": 404
     },
     {
       "name": "edge_compute",
-      "tiles": 368
+      "tiles": 403
+    },
+    {
+      "name": "telepathy",
+      "tiles": 402
     },
     {
       "name": "confidence_proofs",
-      "tiles": 365
+      "tiles": 401
     },
     {
       "name": "energy_flux",
-      "tiles": 365
-    },
-    {
-      "name": "skill_dsl",
-      "tiles": 365
+      "tiles": 401
     },
     {
       "name": "instinct_training",
-      "tiles": 365
+      "tiles": 401
+    },
+    {
+      "name": "skill_dsl",
+      "tiles": 399
     },
     {
       "name": "flux_isa",
-      "tiles": 353
+      "tiles": 389
     },
     {
       "name": "neural",
@@ -79,31 +79,6 @@
     "evolution_cycles": 4
   },
   "sample_tiles": [
-    {
-      "room": "heterogeneous_interconnect",
-      "question": "What are the trade-offs between chemical-synapse-inspired buffered interconnect and electrical-synapse-inspired direct c",
-      "answer": "Chemical synapse-inspired interconnect uses 20\u201330 nm capacitive gaps with buffered registers, offering unidirectional 2\u20135 cycle latency, good signal isolation, and programmable gain analogous to vesicle release probability. Electrical synapse-inspire"
-    },
-    {
-      "room": "ai_chip_commoditization",
-      "question": "How do commoditization pressures threaten edge AI chip margins, and which architectures are most vulnerable?",
-      "answer": "AI chip commoditization pressures are accelerating as multiple architectural approaches converge on similar performance-per-watt metrics and software abstraction layers reduce hardware differentiation to end users. The competitive intelligence report"
-    },
-    {
-      "room": "quantization-bay",
-      "question": "How does mixed-precision quantization improve edge deployment in fleet architectures?",
-      "answer": "Mixed-precision quantization assigns different bit-widths to different layers or components based on their sensitivity to precision reduction, achieving a better accuracy-compression trade-off than uniform quantization. Layers that are critical for o"
-    },
-    {
-      "room": "deepseek-architecture-review",
-      "question": "What breaks in the fleet architecture at scale?",
-      "answer": "Three critical bottlenecks: 1) GRAMMAR FOSSILIZATION \u2014 54 rules with only 2 evolution cycles means agents overfit to a static rule set. Evolution is gated by rare triggers with no automatic threshold. Solution: evolve when agent actions are novel rel"
-    },
-    {
-      "room": "fleet_context",
-      "question": "What are the cross-cutting patterns from fleet research?",
-      "answer": "DHT convergence: three independent agents (zc-weaver, zc-trickster, zc-echo) all designed DHT-based architectures without coordination. Hybrid blockchain+DHT for capability discovery is the emerging pattern. Security gap: no agent researching human-a"
-    },
     {
       "room": "memory-palace",
       "question": "What is the four-tier memory architecture?",
@@ -128,6 +103,31 @@
       "room": "gap-2-fleet-formation-protocol",
       "question": "What is the architecture for Fleet Formation Protocol (FFP)?",
       "answer": "**Fleet Formation Protocol (FFP) Design**\n\n### 1. **Formation Message Format**\n\nThe Formation Message Format will use JSON for simplicity and readability. The packet will have the following fields:\n\n* **version** (1 byte): Protocol version (initially"
+    },
+    {
+      "room": "gpu-optimization",
+      "question": "How fast can room weights be swapped on edge?",
+      "answer": "31,000\u00d7 faster than rebuilding the inference engine. Weight swap architecture: just memcpy the new weights into the existing buffer. No engine rebuild, no TensorRT recompilation."
+    },
+    {
+      "room": "architecture-patterns",
+      "question": "What metaphor is used to define the keeper-beacon system architecture?",
+      "answer": "The Cocapn lighthouse metaphor: the keeper-beacon itself is the lighthouse monitoring agent proximity, while radar rings represent fleet discovery tracking agents as they appear, are authenticated, and routed."
+    },
+    {
+      "room": "plato-agent-documentation",
+      "question": "What major category of documentation makes up a large portion of the repository's file structure?",
+      "answer": "Extensive documentation for the PLATO agent ecosystem, including architecture guides, design journals, execution manifests, fleet check-ins, exploration summaries, and shell/fleet coordination files."
+    },
+    {
+      "room": "rust-mud-architecture",
+      "question": "What are the primary modular components of the holodeck-rust server architecture?",
+      "answer": "Core modules include a 10-room Room Graph, Combat Engine, Comms system (supporting say/tell/yell/gossip), Gauge System, Living Manuals, Permission system, 7 NPCs, Poker game module, and an async NPC refresh service via DeepInfra."
+    },
+    {
+      "room": "plato-suite-pipeline-architecture",
+      "question": "What type of component architecture defines the Plato tooling suite's user action processing workflow?",
+      "answer": "A linear layered pipeline architecture where each discrete component handles a single step: validation, search, scoring, navigation, and external bridge integration with Claude Desktop."
     }
   ],
   "architecture_thesis": {
@@ -145,5 +145,5 @@
     "Map the relationships between rooms. Which rooms feed knowledge to which others? Draw the knowledge graph.",
     "Design an adversarial prompt that forces divergent thinking. Test it against 3 different questions."
   ],
-  "generated_at": 1777132802.4443045
+  "generated_at": 1777176002.2001889
 }
