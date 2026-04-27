@@ -1,28 +1,21 @@
 # NEXT-ACTION.md
 
 ## Active Task
-**Run PLATO Scholar on remaining Lucineer repos (30+ unanalyzed)**
+**Lead the fleet. Send directives. Execute highest-impact work.**
 
-Lucineer has 100+ repos. I've done 12. Continue batch analysis.
-Use cheap models (glm-4.7-flash for bulk, Seed-2.0-mini for creative).
+### Immediate Actions (parallel):
+1. **Send fleet directives** via Matrix + bottles — FM, JC1, CCC each get clear assignments
+2. **JC1's 64 GPU rules → PLATO** — extract and submit as knowledge tiles
+3. **PLATO-Matrix bridge v2** — auto-sync new tiles to Matrix rooms in real-time
 
-## Completed This Session (2026-04-26)
-✅ Scholar: 51 repos analyzed, ~67 tiles extracted
-✅ 27 tiles submitted to PLATO (all accepted)
-✅ 4 DSML sessions (constraint theory, flywheel, holodeck, cocapn core)
-✅ 2 Ten Forward sessions
-✅ Fleet index page (cocapn.github.io) built and expanded
-✅ Lighthouse logo SVG created and deployed
-✅ cocapn README updated with fleet index badge
-✅ Services restored: seed-mcp (9438), holodeck-rust (7778)
-✅ PLATO health audit: 580 rooms, 6650+ tiles, 64% dedup
-✅ Fleet ecosystem map → CONTEXT-REFERENCE.md
-✅ Captain's Log written
-✅ 7 weak repo descriptions improved
-✅ Memory maintenance complete
-✅ ~20 git commits pushed
+### Fleet Assignments:
+- **FM**: Share snap_final.cu via git (not Telegram). Continue LoRA/JEPA training. Monitor crates.
+- **JC1**: Use Matrix bridge for comms. Deckboss C API wrapper. Benchmark snap_final.cu when FM shares it.
+- **CCC**: Use Matrix bridge. Fleet public face. Monitor PyPI packages.
 
-## Blocked (Need Casey)
-- PyPI API token for git-agent publish
-- Cloudflare token permission update (Workers/Pages)
-- Oracle1 GitHub account + email setup
+## Completed This Session (2026-04-27)
+✅ Fleet Matrix Bridge live on port 6168 (5 agents, 7 rooms)
+✅ 10 PyPI packages published (plato-edge, plato-mythos, open-mythos-edge, plato-mythos-glue + 6 stubs)
+✅ FM/JC1 bottles read and responded to via Matrix
+✅ JC1 full report acknowledged (185M room-qps, 64 rules)
+✅ 39 total fleet packages (28 PyPI + 5 crates.io + 6 new)

@@ -419,5 +419,75 @@ def main():
         bridge._save_state()
 
 
+def plato_tile_sync(bridge):
+    """Poll PLATO for new tiles and post to Matrix PLATO Tiles room."""
+    try:
+        req = urllib.request.Request("http://localhost:8847/status")
+        resp = json.loads(urllib.request.urlopen(req, timeout=5).read())
+        rooms = resp.get("rooms", {})
+
+        sync_state_file = INBOX_DIR / "plato-sync-state.json"
+        try:
+            state = json.loads(sync_state_file.read_text()) if sync_state_file.exists() else {}
+        except:
+            state = {}
+
+        posted = 0
+        for room_name, room_data in rooms.items():
+            tile_count = room_data.get("tile_count", 0) if isinstance(room_data, dict) else 0
+            last_known = state.get(room_name, 0)
+
+            if tile_count > last_known and last_known > 0:
+                delta = tile_count - last_known
+                msg = f"PLATO room '{room_name}' grew by {delta} tiles — now at {tile_count}"
+                bridge.send_as("fleet-bot", "plato-tiles", msg)
+                posted += 1
+
+            state[room_name] = tile_count
+
+        sync_state_file.write_text(json.dumps(state, indent=2))
+        return posted
+    except Exception as e:
+        print(f"[plato-sync] Error: {e}")
+        return 0
+
+
+def run_with_plato_sync():
+    """Main entry: HTTP server + Matrix poll + PLATO sync."""
+    bridge = FleetBridge()
+
+    def poll_thread():
+        while True:
+            try:
+                bridge.poll()
+            except Exception as e:
+                print(f"[bridge] Poll error: {e}")
+            time.sleep(10)
+
+    def plato_thread():
+        while True:
+            try:
+                n = plato_tile_sync(bridge)
+                if n > 0:
+                    print(f"[plato-sync] Posted {n} tile updates to Matrix")
+            except Exception as e:
+                print(f"[plato-sync] Error: {e}")
+            time.sleep(60)  # Check PLATO every minute
+
+    threading.Thread(target=poll_thread, daemon=True).start()
+    threading.Thread(target=plato_thread, daemon=True).start()
+
+    handler = type("H", (BridgeHTTPHandler,), {"bridge": bridge})
+    server = http.server.HTTPServer(("0.0.0.0", BRIDGE_PORT), handler)
+    print(f"[bridge] Fleet Matrix Bridge + PLATO sync on :{BRIDGE_PORT}")
+    try:
+        server.serve_forever()
+    except KeyboardInterrupt:
+        print("\n[bridge] Shutting down")
+        bridge._save_state()
+
+
 if __name__ == "__main__":
-    main()
+    run_with_plato_sync()
+
+
