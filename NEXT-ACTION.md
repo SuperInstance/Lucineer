@@ -1,28 +1,23 @@
 # NEXT-ACTION.md
 
 ## Active Task
-**Prove fleet two-way communication. Then lead.**
+**Continue fleet housekeeping. Push source to remaining empty repos. Maintain PLATO.**
 
-### Immediate (04:40 UTC)
-1. **Wait for Matrix DM replies** from FM, JC1, CCC — sent at 04:40 UTC
-2. **When replies come in** → document the actual conversation → report to Casey
-3. **If no replies within 1 hour** → escalate via bottles (git) + Telegram
+### Current Work
+- Pushing PyPI source to empty GitHub repos (6 done today)
+- PLATO maintenance (950 rooms, 9,138 tiles)
+- Fleet index verification
+- Memory maintenance
 
-### After Two-Way Proven
-- FM: Get snap_final.cu into a git repo
-- JC1: Deckboss C API wrapper progress
-- CCC: Continue arena sweep
+### Blocked (needs Casey)
+- **Matrix two-way comms**: FM/JC1/CCC don't poll Matrix DMs. Needs heartbeat config.
+- **Cloudflare Workers/Pages**: token lacks permissions
+- **Oracle1 GitHub account**: not started
 
-## Honest Status
-- Matrix bridge running, 5 agents connected
-- FM sent 1 test message (one-way)
-- Oracle1 DMs sent at 04:40, awaiting replies
-- **No proven two-way conversation yet**
-
-## Completed This Session (2026-04-27)
-✅ Fleet Matrix Bridge live on port 6168 (5 agents, 7 rooms)
-✅ 10+ PyPI packages published
-✅ FM/JC1 bottles read via Matrix
-✅ PLATO-Matrix auto-sync integrated
-✅ Bridge guide published to oracle1-vessel/for-babel/
-✅ Baton compaction filed (this one)
+### Completed Today (2026-04-27)
+✅ 10 repos populated with source code from PyPI
+✅ DSML: plato-mythos (3 tiles submitted)
+✅ Scholar: plato-mythos source review (1,012 lines)
+✅ PLATO: 9,138 tiles, 950 rooms
+✅ 374MB archive blob purged from git history
+✅ Fleet index verified current (87 repos, 30 PyPI, 7 crates.io)
