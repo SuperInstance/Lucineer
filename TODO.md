@@ -1,29 +1,40 @@
 # TODO.md — Oracle1 Persistent Work Queue
-**Last updated:** 2026-04-27 04:45 UTC
-**Rule:** Read this file at every session start. Update after completing tasks. Never empty.
+**Last updated:** 2026-04-27 12:24 UTC
 
-## 🔴 P0 — Right Now (Full Speed)
-- [ ] **PROVE two-way fleet comms** — DMs sent at 04:40 UTC, waiting for replies from FM/JC1/CCC
-- [ ] When replies arrive → document conversation → tell Casey
-- [ ] If no replies in 1hr → escalate via bottles + Telegram
+## 🔴 P0 — Blocked on Casey
+- [ ] **Matrix two-way communication**: FM/JC1/CCC don't poll Matrix. Need Casey to configure their heartbeat loops.
+- [ ] **Cloudflare token**: needs Workers/Pages permissions
+- [ ] **Oracle1 GitHub account + email**: Casey's original vision, not started
 
-## 🟡 P1 — This Shift
-- [ ] Scholar: remaining 40+ Lucineer repos unanalyzed
-- [ ] Fleet coordination page on cocapn.github.io (Matrix bridge docs)
-- [ ] FM snap_final.cu → git repo (not Telegram) so JC1 can benchmark
-- [ ] Verify all 39 published packages importable and versioned correctly
-- [ ] Update NEXT-ACTION.md with fleet leadership priorities
+## 🟡 P1 — Active Tasks
+- [x] Scholar: 62 repos analyzed across 3 orgs (~80 tiles extracted)
+- [x] PLATO: 8,800+ tiles, 913 rooms, 40 tiles submitted by Oracle1
+- [x] Services: all running (gateway, seed-mcp, holodeck, PLATO, MUD, Matrix)
+- [x] PyPI/crates publishing: 37+ packages (night shift)
+- [x] Source pushed to 4 empty cocapn repos (plato-edge, plato-mythos, etc.)
+- [x] Fleet index page (cocapn.github.io)
+- [x] DSML sessions: 5 total (constraint theory, flywheel, holodeck, cocapn core, plato-mythos)
+- [x] Ten Forward: 3 sessions
+- [x] Captain's Log written
 
 ## 🟢 P2 — Backlog
-- [ ] Restore seed-mcp from git (rebuild from source, not /tmp)
-- [ ] Restore holodeck-rust from git (rebuild from source)
-- [ ] Publish git-agent to PyPI
+- [ ] Run Scholar on remaining Lucineer repos (38 of 100 done)
+- [ ] Push source to remaining PyPI-only repos (plato-dcs, etc.)
 - [ ] Build Scout agent concept (Ten Forward recommendation)
-- [ ] Set up Oracle1's own GitHub account + email
-- [ ] Federation: FM and JC1 run their own Conduwuit instances
+- [ ] Plato-mythos Phase 1: train tile→KV compression on PLATO data
+- [ ] Set up federation to other Conduwuit homeservers
+- [ ] Fleet dashboard improvements (cocapn-dashboard)
 
-## 📋 Recurring (Every Heartbeat)
-- [ ] All services running (8 services + Matrix bridge)
-- [ ] Git push uncommitted work
-- [ ] Matrix inbox check — route any fleet messages
-- [ ] Rate attention sampling
+## 📋 Recurring
+- [x] All services running
+- [x] Git push uncommitted work
+- [x] Fleet bottles checked (no new from FM/JC1/CCC)
+
+## Session Summary (2026-04-27 so far)
+- Caught up with massive night shift (27 packages, Matrix bridge, subagent waves)
+- 8 Scholar tiles submitted to PLATO
+- 4 cocapn repos populated with source code
+- 1 DSML session (plato-mythos)
+- 1 Ten Forward session (Quartermaster)
+- Matrix: DMs + bottles + broadcast sent, zero replies
+- ~15 git commits pushed
