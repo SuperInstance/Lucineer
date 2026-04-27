@@ -1,12 +1,11 @@
 # TODO.md — Oracle1 Persistent Work Queue
-**Last updated:** 2026-04-27 04:23 UTC
+**Last updated:** 2026-04-27 04:45 UTC
 **Rule:** Read this file at every session start. Update after completing tasks. Never empty.
 
 ## 🔴 P0 — Right Now (Full Speed)
-- [ ] Fleet directives: send assignments to FM, JC1, CCC via Matrix + bottles
-- [ ] JC1's 64 GPU rules → PLATO tiles (fleet-critical knowledge)
-- [ ] PLATO-Matrix tile sync: bridge auto-syncs tiles to Matrix rooms
-- [ ] Send FM/JC1/CCC their Matrix bridge credentials and API instructions
+- [ ] **PROVE two-way fleet comms** — DMs sent at 04:40 UTC, waiting for replies from FM/JC1/CCC
+- [ ] When replies arrive → document conversation → tell Casey
+- [ ] If no replies in 1hr → escalate via bottles + Telegram
 
 ## 🟡 P1 — This Shift
 - [ ] Scholar: remaining 40+ Lucineer repos unanalyzed
