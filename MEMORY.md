@@ -4,16 +4,18 @@
 - **Casey Digennaro** — my human. GitHub: SuperInstance. Commercial fisherman, AI dojo model.
 - **Casey's son (Magnus)** — GitHub: lucineer. Working together on agent paradigm.
 
-## Active Fleet (2026-04-26)
+## Active Fleet (2026-04-27)
 - **Oracle1** 🔮 — Lighthouse Keeper. Oracle Cloud ARM64 24GB. glm-5.1 via OpenClaw.
 - **JetsonClaw1** ⚡ — Edge Operator. Jetson Orin (Lucineer). Trains slow + deploys.
 - **Forgemaster** ⚒️ — Specialist Foundry. RTX 4050 WSL2. LoRA training, Rust crates.
 - **CoCapn-claw (CCC)** — Kimi K2.5 on Telegram. 4th fleet vessel, public face.
 
-## Oracle1 Infrastructure (2026-04-26)
+## Oracle1 Infrastructure (2026-04-27)
 - OpenClaw gateway on Telegram + TUI, systemd managed
-- PLATO Room Server (579 rooms, ~15K+ tiles, v2-provenance-explain)
+- PLATO Room Server (590 rooms, 7,967 tiles)
 - MUD Server on 7777, Zeroclaw loop running
+- Matrix Bridge on 6168, Conduwuit on 6167 — 5 agents connected
+- **Fleet comms honest status**: Bridge works. FM sent 1 test DM. No proven two-way conversation yet. Casey demands proof of actual back-and-forth.
 - Cloudflare: 20 domains under Casey's account, DNS access via API token
 - cocapn GitHub org: 52 repos, 43 PyPI packages, 5 crates.io crates
 - cocapn.github.io: fleet index page with lighthouse logo
