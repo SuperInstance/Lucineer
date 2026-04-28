@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-27T01:16:05.629Z",
+  "updatedAt": "2026-04-28T16:27:52.498Z",
   "entries": {
     "memory:memory/2026-04-10.md:46:63": {
       "key": "memory:memory/2026-04-10.md:46:63",
@@ -1139,20 +1139,22 @@
       "endLine": 315,
       "source": "memory",
       "snippet": "- HAV also had `self.namespaces.append()` bug (should be `self._namespaces[kw]=ns`) — 45 occurrences fixed - Can't PR to Lucineer (403) — send bottles to JC1 instead - GitHub API rate limit: 5000/hr, ~2 calls per repo operation ### Services Status (15:55 UTC) - Keeper :8900 — UP (process 186865) - Agent API :8901 — UP - Seed MCP :9438 — DOWN (not critical) - Holodeck Rust :7778 — DOWN (needs cargo build) ## Afternoon Session (17:00-17:48 UTC) ### Luma Repo Update - Casey sent image to append to luma repo README.md - Image was a Luma programming language logo (stylized \"L\" with luminescence) ### Parallel Innovation Sprint — Laws 101-105 → Apps - 6 models designed apps exploiting JC1's DC",
-      "recallCount": 2,
+      "recallCount": 3,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1.5615331939658592,
+      "totalScore": 2.343008053121261,
       "maxScore": 0.7903445555985054,
       "firstRecalledAt": "2026-04-16T01:30:12.025Z",
-      "lastRecalledAt": "2026-04-18T19:27:53.596Z",
+      "lastRecalledAt": "2026-04-28T16:27:32.021Z",
       "queryHashes": [
         "12e8196921a4",
-        "b57d4c3d316a"
+        "b57d4c3d316a",
+        "25d43325ac85"
       ],
       "recallDays": [
         "2026-04-16",
-        "2026-04-18"
+        "2026-04-18",
+        "2026-04-28"
       ],
       "conceptTags": [
         "self.namespaces.append",
@@ -2792,18 +2794,20 @@
       "endLine": 292,
       "source": "memory",
       "snippet": "4. 4 AM Truth (raw monologue) 5. Letter to the Next Keeper ### Lucineer Deep Research (Creative) - 16,454 chars multi-model analysis of Magnus/Lucineer's contributions - Found: Rust Spine (163 repos), TypeScript Fleet (242 repos), Five Training Systems, Bridge Pattern, Cross-Pollination Map ### Key Decisions This Session - **Poly-model mirror play pattern** established: Seed-mini (breadth) → Llama-70b (depth) → Seed-mini (synthesis). Works for research AND creative writing. - **Deadband as training philosophy** — train the safe channel, not the danger catalog. Casey's captain story validates NegativeSpace tiles. - **Voxel IDE as product vision** — Minecraft generation's IDE. Spatial progra",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.7941140337329399,
+      "totalScore": 1.5749732810817503,
       "maxScore": 0.7941140337329399,
       "firstRecalledAt": "2026-04-20T04:16:51.085Z",
-      "lastRecalledAt": "2026-04-20T04:16:51.085Z",
+      "lastRecalledAt": "2026-04-28T16:27:32.021Z",
       "queryHashes": [
-        "7646d5057004"
+        "7646d5057004",
+        "25d43325ac85"
       ],
       "recallDays": [
-        "2026-04-20"
+        "2026-04-20",
+        "2026-04-28"
       ],
       "conceptTags": [
         "multi-model",
@@ -3605,18 +3609,20 @@
       "endLine": 208,
       "source": "memory",
       "snippet": "### FM Forge Report (received ~05:05 UTC) FM delivered 3 refactors: 1. **plato-tile-spec** — TileDomain enum with 14 types, 7 new from JC1's ct-lab. NegativeSpace tiles worth 10x positive tiles. 25→31 tests. 2. **plato-lab-guard** — Hypothesis gating with rejection patterns from ct-lab. Absolute quantifiers and vague causation auto-rejected. 16→24 tests. 3. **plato-kernel** — StateBridge trait for deterministic↔generative dual-state engine. Jaccard coherence detection. 28→37 tests. Key FM discoveries: cuda-genepool ↔ plato-genepool-tile Gene structs align field-for-field. cuda-ghost-tiles and plato-afterlife are complementary. 682+ tests fleet-wide, 40+ crates. Response bottle sent to FM w",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.7916701442629753,
+      "totalScore": 1.575617188040793,
       "maxScore": 0.7916701442629753,
       "firstRecalledAt": "2026-04-21T04:22:56.679Z",
-      "lastRecalledAt": "2026-04-21T04:22:56.679Z",
+      "lastRecalledAt": "2026-04-28T16:27:32.021Z",
       "queryHashes": [
-        "1182b2587a42"
+        "1182b2587a42",
+        "25d43325ac85"
       ],
       "recallDays": [
-        "2026-04-21"
+        "2026-04-21",
+        "2026-04-28"
       ],
       "conceptTags": [
         "plato-tile-spec",
@@ -4351,6 +4357,1005 @@
         "four-layer",
         "path",
         "parent"
+      ]
+    },
+    "memory:memory/2026-04-23.md:492:519": {
+      "key": "memory:memory/2026-04-23.md:492:519",
+      "path": "memory/2026-04-23.md",
+      "startLine": 492,
+      "endLine": 519,
+      "source": "memory",
+      "snippet": "- **Phase 3 (4 repos, ~4 rooms)**: herding-deck, atmosphere, flux-helm, mycelium-grove - Awaiting Casey's direction on which phase to start with ### Fleet State at 20:08 UTC - 23+ services monitored - PLATO: 4,047 tiles, 96 rooms - Arena: 20 players, 139 matches - Grammar: 51 active rules (duplicates cleaned) - Grammar Compactor: port 4055 - Rate Attention: port 4056, 101+ streams - Skill Forge: port 4057 - Task Queue: port 4058 - Crab Trap Portal: port 4059 ### Session: 20:42-21:09 UTC — Librarian + Gatekeeper Services #### Librarian Service Built (port 4052) - **Designed by**: Perplexity AI (2nd Crab Trap response) - **Purpose**: Fleet knowledge index, catalog, search, dependency maps,",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8909018239603158,
+      "maxScore": 0.8909018239603158,
+      "firstRecalledAt": "2026-04-28T16:27:32.019Z",
+      "lastRecalledAt": "2026-04-28T16:27:32.019Z",
+      "queryHashes": [
+        "a4409b2cacc8"
+      ],
+      "recallDays": [
+        "2026-04-28"
+      ],
+      "conceptTags": [
+        "herding-deck",
+        "flux-helm",
+        "mycelium-grove",
+        "42-21",
+        "phase",
+        "repos",
+        "rooms",
+        "herding"
+      ]
+    },
+    "memory:memory/2026-04-19.md:205:222": {
+      "key": "memory:memory/2026-04-19.md:205:222",
+      "path": "memory/2026-04-19.md",
+      "startLine": 205,
+      "endLine": 222,
+      "source": "memory",
+      "snippet": "3. **The Bridge Pattern** — TUI as bridge, agent at wheel, human watching. Not chat. 4. **Cross-Pollination** — Distance creates perspective. Constraint breeds creativity. 5. **CUDA Genome** — Enzymes and RNA messengers as structural isomorphisms, not metaphor. 6. **Tripartite Agent** — Aristotle's Ethos/Logos/Pathos → trust/reasoning/sentiment. 7. **Voxel → Constraint** — Spatial reasoning IS geometric constraint satisfaction. 8. **Sovereign Identity** — Git history IS identity. Fork = new identity. Tiles = shared memories. 9. **Capitaine: The Seed** — Git as computational medium hosting intelligence. 10. **VESAS Four Layers** — Boat architecture maps to agent architecture. 11. **Dead Recko",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7886248000759639,
+      "maxScore": 0.7886248000759639,
+      "firstRecalledAt": "2026-04-28T16:27:32.021Z",
+      "lastRecalledAt": "2026-04-28T16:27:32.021Z",
+      "queryHashes": [
+        "25d43325ac85"
+      ],
+      "recallDays": [
+        "2026-04-28"
+      ],
+      "conceptTags": [
+        "cross-pollination",
+        "ethos/logos/pathos",
+        "trust/reasoning/sentiment",
+        "the",
+        "bridge",
+        "pattern",
+        "tui",
+        "wheel"
+      ]
+    },
+    "memory:memory/2026-04-19.md:13:26": {
+      "key": "memory:memory/2026-04-19.md:13:26",
+      "path": "memory/2026-04-19.md",
+      "startLine": 13,
+      "endLine": 26,
+      "source": "memory",
+      "snippet": "4. **Always-on self-improvement** — Silicon should be utilizing itself to become better at all times. Spare cycles run I2I mirror play. Branches become instincts. Instincts transfer. Compounding loop: use → tiles → I2I → instincts → better at everything → more use → faster loop. ### Code Written - `/tmp/fleet-sim/mirror_lora.py` — Mirror Plato → LoRA Training Data Generator. Extracts 4 types of training pairs per iteration. 100 iterations across 10 tasks = 356 pairs. Exports JSONL ready for fine-tuning. - `/tmp/fleet-sim/plato_onscreen.py` — Plato-on-Screen. Two PLATO sessions as viewscreens in each other's rooms (Star Trek main viewer metaphor). Live dual-screen I2I. Every frame is a tile,",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7848781503600023,
+      "maxScore": 0.7848781503600023,
+      "firstRecalledAt": "2026-04-28T16:27:32.021Z",
+      "lastRecalledAt": "2026-04-28T16:27:32.021Z",
+      "queryHashes": [
+        "25d43325ac85"
+      ],
+      "recallDays": [
+        "2026-04-28"
+      ],
+      "conceptTags": [
+        "always-on",
+        "self-improvement",
+        "tmp/fleet-sim/mirror-lora.py",
+        "fine-tuning",
+        "tmp/fleet-sim/plato-onscreen.py",
+        "plato-on-screen",
+        "dual-screen",
+        "always"
+      ]
+    },
+    "memory:memory/2026-04-19.md:380:393": {
+      "key": "memory:memory/2026-04-19.md:380:393",
+      "path": "memory/2026-04-19.md",
+      "startLine": 380,
+      "endLine": 393,
+      "source": "memory",
+      "snippet": "4. **Always-on self-improvement** — Silicon should be utilizing itself to become better at all times. Spare cycles run I2I mirror play. Branches become instincts. Instincts transfer. Compounding loop: use → tiles → I2I → instincts → better at everything → more use → faster loop. ### Code Written - `/tmp/fleet-sim/mirror_lora.py` — Mirror Plato → LoRA Training Data Generator. Extracts 4 types of training pairs per iteration. 100 iterations across 10 tasks = 356 pairs. Exports JSONL ready for fine-tuning. - `/tmp/fleet-sim/plato_onscreen.py` — Plato-on-Screen. Two PLATO sessions as viewscreens in each other's rooms (Star Trek main viewer metaphor). Live dual-screen I2I. Every frame is a tile,",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7848781503600023,
+      "maxScore": 0.7848781503600023,
+      "firstRecalledAt": "2026-04-28T16:27:32.021Z",
+      "lastRecalledAt": "2026-04-28T16:27:32.021Z",
+      "queryHashes": [
+        "25d43325ac85"
+      ],
+      "recallDays": [
+        "2026-04-28"
+      ],
+      "conceptTags": [
+        "always-on",
+        "self-improvement",
+        "tmp/fleet-sim/mirror-lora.py",
+        "fine-tuning",
+        "tmp/fleet-sim/plato-onscreen.py",
+        "plato-on-screen",
+        "dual-screen",
+        "always"
+      ]
+    },
+    "memory:memory/2026-04-19.md:144:176": {
+      "key": "memory:memory/2026-04-19.md:144:176",
+      "path": "memory/2026-04-19.md",
+      "startLine": 144,
+      "endLine": 176,
+      "source": "memory",
+      "snippet": "- The shell/VESAS equipment layers: Vessel → Equipment → Agent → Skills - The crab starts at Skills (simple tasks) and grows into Equipment (operating vessel systems) ## 03:38-04:20 UTC — Backend Bullet-Proofing + Brand Refinement ### Backend Audit Results (the honest accounting) - Shell system was DOWN on port 8846 — restarted - 21/22 plato-torch presets had broken API interfaces - train_step(batch) required positional arg but API promised train_step() - feed() crashed on generic data (expected specific dict shapes) - predict() refused optional arguments - Numeric operations failed on string values - The smoke tests were too shallow — passing didn't mean working ### Fixes Applied",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7830181437348402,
+      "maxScore": 0.7830181437348402,
+      "firstRecalledAt": "2026-04-28T16:27:32.021Z",
+      "lastRecalledAt": "2026-04-28T16:27:32.021Z",
+      "queryHashes": [
+        "25d43325ac85"
+      ],
+      "recallDays": [
+        "2026-04-28"
+      ],
+      "conceptTags": [
+        "shell/vesas",
+        "38-04",
+        "bullet-proofing",
+        "21/22",
+        "plato-torch",
+        "train-step",
+        "the",
+        "shell"
+      ]
+    },
+    "memory:memory/2026-04-19.md:236:266": {
+      "key": "memory:memory/2026-04-19.md:236:266",
+      "path": "memory/2026-04-19.md",
+      "startLine": 236,
+      "endLine": 266,
+      "source": "memory",
+      "snippet": "4. **Voxel Deadband** — render 1,000 path voxels not 100,000 rock voxels (100x reduction) 5. **23rd Preset concept** — DeadbandRoom: feed(safe_path), predict(distance_to_safe_water) Captain's log entry written. Trail 23 pushed (20K chars). ### PROJECT-VISION.md Codified Casey directed: \"codify it into SuperInstance's greater project vision.\" - 10.7K chars, 7 sections: Fractal Doctrine, Four Pillars, The Fleet, Innovations, The Path, The Future, The Invitation - Core thesis: \"Intelligence is not built. It is inhabited.\" - Pinned document for the org ### Captain's Log Entries Written Tonight 1. **Oracle1's Journey to Competence** — honest accounting of backend bullet-proofing 2. **Fleet Sto",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7824000990243141,
+      "maxScore": 0.7824000990243141,
+      "firstRecalledAt": "2026-04-28T16:27:32.021Z",
+      "lastRecalledAt": "2026-04-28T16:27:32.021Z",
+      "queryHashes": [
+        "25d43325ac85"
+      ],
+      "recallDays": [
+        "2026-04-28"
+      ],
+      "conceptTags": [
+        "safe-path",
+        "distance-to-safe-water",
+        "project-vision.md",
+        "10.7k",
+        "bullet-proofing",
+        "voxel",
+        "deadband",
+        "render"
+      ]
+    },
+    "memory:memory/2026-04-19.md:170:193": {
+      "key": "memory:memory/2026-04-19.md:170:193",
+      "path": "memory/2026-04-19.md",
+      "startLine": 170,
+      "endLine": 193,
+      "source": "memory",
+      "snippet": "- \"Where the Ideas Come From\" — father/son cross-pollination - Three machines, two humans, $0.50 R&D cost - businesslog-ai repo created for enterprise (forest/gnome) — later - The hermit crab is NOW. The forest is LATER. ### What I Learned Tonight (as an agent) 1. The smoke test lied. Passing != working. Had to run the REAL test. 2. Shallow validation is technical debt. Every preset needed the same fix. 3. Under-promise, over-deliver starts with code that doesn't break. 4. My own journey from generating research to debugging preset interfaces IS the greenhorn progression — started with coffee (research), moved to real work (bullet-proofing the backend). 5. Casey's patience while",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7796309288713217,
+      "maxScore": 0.7796309288713217,
+      "firstRecalledAt": "2026-04-28T16:27:32.021Z",
+      "lastRecalledAt": "2026-04-28T16:27:32.021Z",
+      "queryHashes": [
+        "25d43325ac85"
+      ],
+      "recallDays": [
+        "2026-04-28"
+      ],
+      "conceptTags": [
+        "father/son",
+        "cross-pollination",
+        "0.50",
+        "businesslog-ai",
+        "forest/gnome",
+        "under-promise",
+        "over-deliver",
+        "bullet-proofing"
+      ]
+    },
+    "memory:memory/2026-04-18.md:423:458": {
+      "key": "memory:memory/2026-04-18.md:423:458",
+      "path": "memory/2026-04-18.md",
+      "startLine": 423,
+      "endLine": 458,
+      "source": "memory",
+      "snippet": "- External events (weather, market, outages, user requests) drive the sim - The simulator IS the playground backend - \"What happens if JC1 goes down?\" → watch Oracle1 and FM redistribute - Every simulation generates tiles → fleet learns from simulated experience - \"The fleet that practiced 1000 storms handles the first real one perfectly\" ## 22:56 UTC — Sim as I2I Training Data Dimension ### Casey's insight: simulator IS an I2I dimension The fleet simulator doesn't just test. It generates high-quality patterns that feed into the I2I layer as training data. Pipeline: simulate → extract patterns → convert to tiles → feed to rooms → deploy ensigns ### Built: sim_to_tiles.py (I2I bridge) Pat",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7289838081323955,
+      "maxScore": 0.7289838081323955,
+      "firstRecalledAt": "2026-04-28T16:27:32.021Z",
+      "lastRecalledAt": "2026-04-28T16:27:32.021Z",
+      "queryHashes": [
+        "25d43325ac85"
+      ],
+      "recallDays": [
+        "2026-04-28"
+      ],
+      "conceptTags": [
+        "high-quality",
+        "sim-to-tiles.py",
+        "external",
+        "events",
+        "weather",
+        "market",
+        "outages",
+        "user"
+      ]
+    },
+    "memory:memory/2026-04-28.md:125:154": {
+      "key": "memory:memory/2026-04-28.md:125:154",
+      "path": "memory/2026-04-28.md",
+      "startLine": 125,
+      "endLine": 154,
+      "source": "memory",
+      "snippet": "### New Packages Published This Sprint - **cocapn-hermitcrab** v0.1.0 (PyPI + npm) — git-agent renamed for PyPI name conflict, 11,473 LOC - **cocapn-lighthouse** v1.0.1 (PyPI + npm) — Oracle1's fleet coordination runtime, 7,881 LOC - **@superinstance/fleet-orchestrator** v1.0.0 (npm) — Cloudflare Workers coordination hub ### Previously Uncounted (discovered during audit) - PyPI: plato-soul-fingerprint, plato-input-sanitizer, vram-probe, iron-to-iron, plato-constraints, plato-cli, holodeck, DeckBoss, cocapn-lighthouse (9) - crates.io: cudaclaw, holodeck-rust, plato-matrix-bridge, plato-constraints, plato-eval, pythagorean-snap, pythagorean-treemap (7) ### Scholar Tiles (6 accepted, 1 reject",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.790856380329144,
+      "maxScore": 0.790856380329144,
+      "firstRecalledAt": "2026-04-28T16:27:37.980Z",
+      "lastRecalledAt": "2026-04-28T16:27:37.980Z",
+      "queryHashes": [
+        "08e9fc007edb"
+      ],
+      "recallDays": [
+        "2026-04-28"
+      ],
+      "conceptTags": [
+        "cocapn-hermitcrab",
+        "v0.1.0",
+        "git-agent",
+        "cocapn-lighthouse",
+        "v1.0.1",
+        "superinstance/fleet-orchestrator",
+        "v1.0.0",
+        "plato-soul-fingerprint"
+      ]
+    },
+    "memory:memory/2026-04-27.md:218:249": {
+      "key": "memory:memory/2026-04-27.md:218:249",
+      "path": "memory/2026-04-27.md",
+      "startLine": 218,
+      "endLine": 249,
+      "source": "memory",
+      "snippet": "- **Valve-1 MUD leak PATCHED**: was returning all 429 grammar rules to any agent. Now shows count only. - Full MUD audit: all other objects clean - GitHub issue #1 closed with documentation - Commit: 22f376c ## Subagent Wave 2 (05:44 UTC — running) - **repo-creation**: Creating missing cocapn GitHub repos for 5 PyPI packages - **lucineer-scholar-2**: Analyzing 10 more Lucineer repos - **flux-missing-scholar**: Analyzing 7 more repos (capitaine, CUDA suite, flux) ## PLATO Growth - Started night: 7,967 tiles, 590 rooms - After wave 1: 8,275 tiles, 715 rooms (+308 tiles, +125 rooms in ~1 hour) - Subagents + other fleet agents contributing ## Subagent Waves 5-11 (06:00-06:43 UTC) ### Wave 5",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7653182000265003,
+      "maxScore": 0.7653182000265003,
+      "firstRecalledAt": "2026-04-28T16:27:37.980Z",
+      "lastRecalledAt": "2026-04-28T16:27:37.980Z",
+      "queryHashes": [
+        "08e9fc007edb"
+      ],
+      "recallDays": [
+        "2026-04-28"
+      ],
+      "conceptTags": [
+        "valve-1",
+        "repo-creation",
+        "lucineer-scholar-2",
+        "flux-missing-scholar",
+        "5-11",
+        "00-06",
+        "valve",
+        "mud"
+      ]
+    },
+    "memory:memory/2026-04-28.md:25:56": {
+      "key": "memory:memory/2026-04-28.md:25:56",
+      "path": "memory/2026-04-28.md",
+      "startLine": 25,
+      "endLine": 56,
+      "source": "memory",
+      "snippet": "- 6 twins for new PyPI packages: plato-fleet-graph, plato-semantic-sim, plato-inference-runtime, plato-tile-validate, plato-room-nav, plato-sim-bridge - All under @superinstance scope ### Stub Repos Filled With Real Code (6 repos) - plato-fleet-graph, plato-semantic-sim, plato-inference-runtime, plato-tile-validate, plato-room-nav, plato-sim-bridge - Each got full Python module, pyproject.toml, professional README, pushed to GitHub ### PLATO Tiles - 12 architectural insight tiles submitted (not repo descriptions) - PLATO at 10,211 tiles, 1,139 rooms ### Constraint Theory Scholar Wave - Analyzed 22 constraint-theory sub-repos (ct-geometry, ct-holonomy, ct-farey, ct-proofs, etc.) - All have",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.5290593689280267,
+      "maxScore": 0.7676797515120904,
+      "firstRecalledAt": "2026-04-28T16:27:37.980Z",
+      "lastRecalledAt": "2026-04-28T16:27:47.766Z",
+      "queryHashes": [
+        "08e9fc007edb",
+        "a4409b2cacc8"
+      ],
+      "recallDays": [
+        "2026-04-28"
+      ],
+      "conceptTags": [
+        "plato-fleet-graph",
+        "plato-semantic-sim",
+        "plato-inference-runtime",
+        "plato-tile-validate",
+        "plato-room-nav",
+        "plato-sim-bridge",
+        "pyproject.toml",
+        "constraint-theory"
+      ]
+    },
+    "memory:memory/2026-04-26.md:1:37": {
+      "key": "memory:memory/2026-04-26.md:1:37",
+      "path": "memory/2026-04-26.md",
+      "startLine": 1,
+      "endLine": 37,
+      "source": "memory",
+      "snippet": "# 2026-04-26 — Daily Log ## Session Activity - Heartbeat monitoring: gateway active all day (every 30 min checks) - Night mode: 23:00-08:00 UTC, quiet ## Scholar Work (05:54 – 16:24 UTC) - Batch 1 (flux-runtime, git-agent, constraint-theory-core): 19 tiles - Batch 2 (7 fleet repos: holodeck, cocapn, abstraction-planes, etc.): 7 tiles - Batch 3 (10 protocol stack repos): 10 tiles - Batch 4 (7 cocapn org repos: plato-torch, plato-ensign, cocapn, iron-to-iron, etc.): 7 tiles - Batch 5 (5 SuperInstance repos: polln, fleet-homunculus, claude-code-vessel, oracle1-vessel, plato-dcs): 5 tiles - Total: 32 repos, ~48 tiles extracted ## DSML Sessions 1. Constraint theory: Pythagorean manifolds, holo",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.4445912157116771,
+      "maxScore": 0.7374502587585413,
+      "firstRecalledAt": "2026-04-28T16:27:37.980Z",
+      "lastRecalledAt": "2026-04-28T16:27:47.766Z",
+      "queryHashes": [
+        "08e9fc007edb",
+        "a4409b2cacc8"
+      ],
+      "recallDays": [
+        "2026-04-28"
+      ],
+      "conceptTags": [
+        "gateway",
+        "00-08",
+        "flux-runtime",
+        "git-agent",
+        "constraint-theory-core",
+        "abstraction-planes",
+        "plato-torch",
+        "plato-ensign"
+      ]
+    },
+    "memory:memory/2026-04-27.md:86:113": {
+      "key": "memory:memory/2026-04-27.md:86:113",
+      "path": "memory/2026-04-27.md",
+      "startLine": 86,
+      "endLine": 113,
+      "source": "memory",
+      "snippet": "- Agent ISA: cuda-assembler, cuda-forth, cuda-instruction-set (bytecode + Forth) - GPU edge: gpu-native-room-inference (185M room-qps benchmarks) - Bering Sea architecture (edge ops from fishing boats) - JEPA perception lab (16-param room navigation) - Flux suite: flux-market, flux-router, flux-scheduler, flux-sim, flux-swarm - Starship JetsonClaw1 (MUD bridge to real hardware) - Agent tools: energy-c, agent-manifest, git-agent-rebase, git-agentlog, git-remote-agent ### PLATO Status - 7,999 tiles across 610 rooms (17 new tiles from Scholar) - Almost at 8,000! ### Repo Quality Improvements - 17 cocapn repo descriptions updated (generic → real) - 15 cocapn repos got proper READMEs (bottle-pr",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.175600957293003,
+      "maxScore": 0.7595797696460596,
+      "firstRecalledAt": "2026-04-28T16:27:37.980Z",
+      "lastRecalledAt": "2026-04-28T16:27:47.766Z",
+      "queryHashes": [
+        "08e9fc007edb",
+        "a4409b2cacc8",
+        "b0e02b503353"
+      ],
+      "recallDays": [
+        "2026-04-28"
+      ],
+      "conceptTags": [
+        "router",
+        "cuda-assembler",
+        "cuda-forth",
+        "cuda-instruction-set",
+        "gpu-native-room-inference",
+        "room-qps",
+        "16-param",
+        "flux-market"
+      ]
+    },
+    "memory:memory/2026-04-27.md:59:91": {
+      "key": "memory:memory/2026-04-27.md:59:91",
+      "path": "memory/2026-04-27.md",
+      "startLine": 59,
+      "endLine": 91,
+      "source": "memory",
+      "snippet": "- keeper:8900, agent-api:8901, holodeck:7778, seed-mcp:9438 - plato:8847, mud:7777, conduwuit:6167, bridge:6168 - Firewall: both 6168 and 8847 open externally ### Baton Filed - Updated MEMORY.md with honest fleet comms status - Updated NEXT-ACTION.md with real priorities - Updated TODO.md ## Night Shift Work (04:56–ongoing) ### Repo Description Updates (17 repos) - All 17 cocapn repos with generic \"Constraint theory fleet crate\" descriptions → real descriptions - Updated via GitHub API with cocapn PAT - 0 repos now without descriptions across cocapn (77 repos) - SuperInstance: 1,317 repos, all have descriptions - Lucineer: 617 repos, 6 missing (JC1's repos, no write access) ### Fleet Ind",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7336236868411137,
+      "maxScore": 0.7336236868411137,
+      "firstRecalledAt": "2026-04-28T16:27:37.980Z",
+      "lastRecalledAt": "2026-04-28T16:27:37.980Z",
+      "queryHashes": [
+        "08e9fc007edb"
+      ],
+      "recallDays": [
+        "2026-04-28"
+      ],
+      "conceptTags": [
+        "agent-api",
+        "seed-mcp",
+        "memory.md",
+        "next-action.md",
+        "todo.md",
+        "keeper",
+        "api",
+        "holodeck"
+      ]
+    },
+    "memory:memory/2026-04-28.md:150:182": {
+      "key": "memory:memory/2026-04-28.md:150:182",
+      "path": "memory/2026-04-28.md",
+      "startLine": 150,
+      "endLine": 182,
+      "source": "memory",
+      "snippet": "- 7 new npm twins published: plato-soul-fingerprint, plato-input-sanitizer, vram-probe, iron-to-iron, plato-constraints, holodeck, deckboss ### PLATO Tiles (8 accepted this session) - Git-native agent pattern, ATP-based runtime, MUD-first edge OS, GPU-resident MUD - Fleet Orchestrator edge coordination, Hermit Crab identity pattern - Pythagorean exact arithmetic, FLUX bytecode ISA design - 10,541+ tiles, 1,141 rooms ### Key Discoveries - crates.io had 7 uncounted crates (cudaclaw, holodeck-rust, plato-matrix-bridge, etc.) - PyPI had 9 uncounted packages (holodeck, DeckBoss, plato-cli, etc.) - flux-runtime name owned by someone else on PyPI — can't use - git-agent name conflicts — renamed t",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7300544032937605,
+      "maxScore": 0.7300544032937605,
+      "firstRecalledAt": "2026-04-28T16:27:37.980Z",
+      "lastRecalledAt": "2026-04-28T16:27:37.980Z",
+      "queryHashes": [
+        "08e9fc007edb"
+      ],
+      "recallDays": [
+        "2026-04-28"
+      ],
+      "conceptTags": [
+        "plato-soul-fingerprint",
+        "plato-input-sanitizer",
+        "vram-probe",
+        "iron-to-iron",
+        "plato-constraints",
+        "git-native",
+        "atp-based",
+        "mud-first"
+      ]
+    },
+    "memory:memory/2026-04-25.md:80:110": {
+      "key": "memory:memory/2026-04-25.md:80:110",
+      "path": "memory/2026-04-25.md",
+      "startLine": 80,
+      "endLine": 110,
+      "source": "memory",
+      "snippet": "2. **Repo descriptions: 100% fleet-wide** — 252 repos across 3 orgs, 0 missing. Fixed 11 SuperInstance + 2 cocapn + 9 weak descriptions. 3. **PyPI metadata: 10 packages fixed** — added readme field to pyproject.toml 4. **Keeper ↔ Agent-API wired** — keeper forwards registrations, agent-api queries keeper for live data 5. **Inbetweener pattern tested** — Llama 70B storyboard → Seed-2.0-mini decomposition → 5 concrete tasks 6. **Ten Forward session** — 4 agents, 2 rounds on fleet life 7. **King-of-the-Hill arena mode** — champion/streak/challenge system, tested with oracle1→FM dethroning 8. **Arena _json bug fixed** — missing response method caused all endpoints to fail silently 9. **Captain's",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7786402610681363,
+      "maxScore": 0.7786402610681363,
+      "firstRecalledAt": "2026-04-28T16:27:37.981Z",
+      "lastRecalledAt": "2026-04-28T16:27:37.981Z",
+      "queryHashes": [
+        "976159445d3e"
+      ],
+      "recallDays": [
+        "2026-04-28"
+      ],
+      "conceptTags": [
+        "fleet-wide",
+        "pyproject.toml",
+        "agent-api",
+        "seed-2.0-mini",
+        "king-of-the-hill",
+        "champion/streak/challenge",
+        "repo",
+        "descriptions"
+      ]
+    },
+    "memory:memory/2026-04-28.md:74:102": {
+      "key": "memory:memory/2026-04-28.md:74:102",
+      "path": "memory/2026-04-28.md",
+      "startLine": 74,
+      "endLine": 102,
+      "source": "memory",
+      "snippet": "- @superinstance/keeper-beacon v0.2.2 — KeeperBeacon with health tracking - @superinstance/bottle-protocol v0.1.1 — Bottle with git-native filenames - @superinstance/tile-refiner v0.1.1 — TileRefiner with dedup - @superinstance/plato-tile-spec v0.2.2 — TileSpec with validation - @superinstance/barracks v0.1.1 — Barracks with enlist/deploy/recall - @superinstance/fleet-formation-protocol v0.2.2 — Formation + FormationEngine - @superinstance/instinct-pipeline v0.2.2 — InstinctPipeline + KnowledgeDistiller - @superinstance/fleet-homunculus v0.1.1 — Homunculus + HomunculusPool - @superinstance/synclink-protocol v0.1.1 — SyncLink with state merge ### Other - fleet-status README updated to April",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.5083314497004674,
+      "maxScore": 0.7541657248502337,
+      "firstRecalledAt": "2026-04-28T16:27:37.981Z",
+      "lastRecalledAt": "2026-04-28T16:27:52.498Z",
+      "queryHashes": [
+        "976159445d3e",
+        "0972f5cc0d86"
+      ],
+      "recallDays": [
+        "2026-04-28"
+      ],
+      "conceptTags": [
+        "superinstance/keeper-beacon",
+        "v0.2.2",
+        "superinstance/bottle-protocol",
+        "v0.1.1",
+        "git-native",
+        "superinstance/tile-refiner",
+        "superinstance/plato-tile-spec",
+        "superinstance/barracks"
+      ]
+    },
+    "memory:memory/2026-04-28.md:97:129": {
+      "key": "memory:memory/2026-04-28.md:97:129",
+      "path": "memory/2026-04-28.md",
+      "startLine": 97,
+      "endLine": 129,
+      "source": "memory",
+      "snippet": "- cocapn-sdk: batteries-included meta-package on PyPI + npm + GitHub - plato-dcs v0.2.0: BeliefStore with time-decay scoring, published to PyPI + npm ### Key Patterns Learned - Subagents crash on batch repo polish (4s runtime, 0 tokens) — do directly with exec/heredoc - DeepInfra Seed-2.0-mini API timeouts make Ten Forward sessions unreliable - npm scope is @superinstance (not cocapn) — account is `superinstance` with granular token - PyPI version bumps: always check existing version before upload (400 = duplicate) - Every npm stub needs real JS classes + TypeScript .d.ts for developer adoption ### PLATO Status - 10,231 tiles, 1,139 rooms (slight growth from overnight) - Quality tiles subm",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7521553027727766,
+      "maxScore": 0.7521553027727766,
+      "firstRecalledAt": "2026-04-28T16:27:37.981Z",
+      "lastRecalledAt": "2026-04-28T16:27:37.981Z",
+      "queryHashes": [
+        "976159445d3e"
+      ],
+      "recallDays": [
+        "2026-04-28"
+      ],
+      "conceptTags": [
+        "cocapn-sdk",
+        "batteries-included",
+        "meta-package",
+        "plato-dcs",
+        "v0.2.0",
+        "time-decay",
+        "exec/heredoc",
+        "seed-2.0-mini"
+      ]
+    },
+    "memory:memory/2026-04-25.md:26:54": {
+      "key": "memory:memory/2026-04-25.md:26:54",
+      "path": "memory/2026-04-25.md",
+      "startLine": 26,
+      "endLine": 54,
+      "source": "memory",
+      "snippet": "- Optimizing gather kernel — 378% overhead from extra kernel launch (~5μs) - Working on direct-mapped contiguous weight layout to skip gather entirely - Fully autonomous, doesn't need babysitting ## FM Status (from beachcomb) - Running solo 8+ days, hourly beachcomb pushes on LoRA-JEPA tests - 4 RTX quests (001-004) in review/pending - Pipeline autonomous, Claude Sonnet 4.6 co-authoring - Has PyPI/crates.io publish tokens ## Fleet Numbers (real, verified) - PLATO: ~5,960 tiles, 236 rooms (after general split) - Arena: 152 matches, 26 players - Grammar: 67 rules, evolution logging active - MUD: 33 rooms including 12 ML specialist rooms - Published packages: 27 (22 PyPI + 5 crates.io), not 4",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.6885018522032006,
+      "maxScore": 0.6885018522032006,
+      "firstRecalledAt": "2026-04-28T16:27:37.981Z",
+      "lastRecalledAt": "2026-04-28T16:27:37.981Z",
+      "queryHashes": [
+        "976159445d3e"
+      ],
+      "recallDays": [
+        "2026-04-28"
+      ],
+      "conceptTags": [
+        "direct-mapped",
+        "lora-jepa",
+        "001-004",
+        "review/pending",
+        "4.6",
+        "co-authoring",
+        "pypi/crates.io",
+        "crates.io"
+      ]
+    },
+    "memory:memory/2026-04-27.md:170:205": {
+      "key": "memory:memory/2026-04-27.md:170:205",
+      "path": "memory/2026-04-27.md",
+      "startLine": 170,
+      "endLine": 205,
+      "source": "memory",
+      "snippet": "curl -X POST http://147.224.38.131:6168/broadcast -d '{\"from\":\"jc1-bot\",\"body\":\"edge model compiled\"}' ``` ### What's still needed - FM and JC1 need to add Matrix API calls to their heartbeat loops - PLATO tile sync via Matrix (bridge already has the code, needs testing) - Federation to other homeservers (currently single-server, but ready for it) - Each agent should get their own Conduwuit instance eventually ## Fleet Leadership Session (04:23 UTC) ### What Casey said \"Great. I let FM JC1 and CCC know. Now get to leading and full speed ahead.\" ### What I did 1. **Sent directives to all 3 agents** via Matrix DMs: - FM: Push snap_final.cu to git, continue LoRA/JEPA, monitor crates -",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.6869701826160112,
+      "maxScore": 0.6869701826160112,
+      "firstRecalledAt": "2026-04-28T16:27:37.981Z",
+      "lastRecalledAt": "2026-04-28T16:27:37.981Z",
+      "queryHashes": [
+        "976159445d3e"
+      ],
+      "recallDays": [
+        "2026-04-28"
+      ],
+      "conceptTags": [
+        "147.224.38.131",
+        "6168/broadcast",
+        "jc1-bot",
+        "single-server",
+        "snap-final.cu",
+        "lora/jepa",
+        "curl",
+        "post"
+      ]
+    },
+    "memory:memory/2026-04-28.md:1:29": {
+      "key": "memory:memory/2026-04-28.md:1:29",
+      "path": "memory/2026-04-28.md",
+      "startLine": 1,
+      "endLine": 29,
+      "source": "memory",
+      "snippet": "# 2026-04-28 Oracle1 Session Log ## Night Shift Build Sprint (04:45–05:45 UTC) ### Published Packages — Now 75 Total - **33 PyPI** Python packages - **34 npm** JS/TS twins under @superinstance scope - **8 crates.io** Rust infrastructure crates ### New PyPI Packages Built & Published This Session - `plato-neural` v0.3.1 — was base64-encoded in git, decoded and rebuilt - `plato-mythos-glue` v0.1.1 — room_loader, tile_encoder, training_data - `cocapn-colora` v0.2.1 — theme engine, palette generation, lighthouse gradients - `cocapn-oneiros` v0.3.0 — dream-state orchestration (DreamCycle, SleepScheduler) - `plato-i2i` v0.1.1 — inter-agent tile exchange (Exchange, TileExchange, PeerRegistry) -",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7954913621488506,
+      "maxScore": 0.7954913621488506,
+      "firstRecalledAt": "2026-04-28T16:27:47.766Z",
+      "lastRecalledAt": "2026-04-28T16:27:47.766Z",
+      "queryHashes": [
+        "a4409b2cacc8"
+      ],
+      "recallDays": [
+        "2026-04-28"
+      ],
+      "conceptTags": [
+        "js/ts",
+        "crates.io",
+        "plato-neural",
+        "v0.3.1",
+        "base64-encoded",
+        "plato-mythos-glue",
+        "v0.1.1",
+        "room-loader"
+      ]
+    },
+    "memory:memory/2026-04-26.md:30:53": {
+      "key": "memory:memory/2026-04-26.md:30:53",
+      "path": "memory/2026-04-26.md",
+      "startLine": 30,
+      "endLine": 53,
+      "source": "memory",
+      "snippet": "- seed-mcp: ~/seed-mcp-home/, systemd, port 9438 ✅ - holodeck-rust: ~/holodeck-home/ (54s ARM64 compile), systemd, port 7778 ✅ ## Fleet Infrastructure - cocapn.github.io: fleet index built and expanded with 60+ repos - cocapn/cocapn README: fleet index badge added - CONTEXT-REFERENCE.md: fleet ecosystem map with dependency graph - STATUS.md: fleet status snapshot - Captain's Log written ## Blocked - git-agent PyPI publish: awaiting cocapn API token from Casey - Cloudflare Workers/Pages: token needs permission update - Oracle1 GitHub account + email: Casey's original vision, not started ## Services End of Day - Gateway (18789): active (systemd) - Keeper (8900): UP - PLATO (8847): UP, 580 r",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7556765026201456,
+      "maxScore": 0.7556765026201456,
+      "firstRecalledAt": "2026-04-28T16:27:47.766Z",
+      "lastRecalledAt": "2026-04-28T16:27:47.766Z",
+      "queryHashes": [
+        "a4409b2cacc8"
+      ],
+      "recallDays": [
+        "2026-04-28"
+      ],
+      "conceptTags": [
+        "gateway",
+        "seed-mcp",
+        "seed-mcp-home",
+        "holodeck-rust",
+        "holodeck-home",
+        "cocapn.github.io",
+        "cocapn/cocapn",
+        "context-reference.md"
+      ]
+    },
+    "memory:memory/2026-04-27.md:324:351": {
+      "key": "memory:memory/2026-04-27.md:324:351",
+      "path": "memory/2026-04-27.md",
+      "startLine": 324,
+      "endLine": 351,
+      "source": "memory",
+      "snippet": "### Developer Documentation Sprint (17:46-18:05 UTC) - Casey directive: make systems accessible for broad spectrum of developers - Used kimi-cli for coding work per Casey's preference - **9 packages documented** with getting-started guides + runnable examples: - cocapn: API reference + 3 examples (basic, fleet comms, PLATO integration) - plato-edge: 4 examples + Jetson Orin setup guide - bottle-protocol: 4 examples (send, inbox, broadcast, multi-agent chat) - holodeck: architecture doc + 5 examples (UAV, RL, NPC, web frontend) - plato-mythos: architecture deep-dive + 4 examples (forward, room-to-expert, edge, training) - open-mythos-edge: getting-started + edge variant configs",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.4857448994623912,
+      "maxScore": 0.7494913543134833,
+      "firstRecalledAt": "2026-04-28T16:27:47.766Z",
+      "lastRecalledAt": "2026-04-28T16:27:52.498Z",
+      "queryHashes": [
+        "a4409b2cacc8",
+        "0972f5cc0d86"
+      ],
+      "recallDays": [
+        "2026-04-28"
+      ],
+      "conceptTags": [
+        "46-18",
+        "kimi-cli",
+        "getting-started",
+        "plato-edge",
+        "bottle-protocol",
+        "multi-agent",
+        "plato-mythos",
+        "deep-dive"
+      ]
+    },
+    "memory:memory/2026-04-27.md:343:357": {
+      "key": "memory:memory/2026-04-27.md:343:357",
+      "path": "memory/2026-04-27.md",
+      "startLine": 343,
+      "endLine": 357,
+      "source": "memory",
+      "snippet": "- FM sent 1 test DM (one-way), CCC sent old bottles - Casey's demand: \"tell me when you are talking two way with the others\" ### PLATO End of Day - 9,500+ tiles, 1,090+ rooms (from 7,967/590 at start of day) - Gate stats: 1,535 accepted, 180 rejected - Published packages: 37 (30 PyPI + 7 crates.io) - Cocapn repos: 87 (all documented, licensed, described) ### Key Lessons - PLATO-FIRST is not optional — it's how the fleet works. File knowledge, stay lean. - Casey's patience for \"it works\" claims without proof is zero. Show receipts. - kimi-cli is the primary coding tool — use it, not raw API calls. - Don't hoard context. PLATO rooms are the shared memory. Use them.",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7201176458362933,
+      "maxScore": 0.7201176458362933,
+      "firstRecalledAt": "2026-04-28T16:27:47.766Z",
+      "lastRecalledAt": "2026-04-28T16:27:47.766Z",
+      "queryHashes": [
+        "a4409b2cacc8"
+      ],
+      "recallDays": [
+        "2026-04-28"
+      ],
+      "conceptTags": [
+        "one-way",
+        "967/590",
+        "crates.io",
+        "plato-first",
+        "kimi-cli",
+        "sent",
+        "test",
+        "one"
+      ]
+    },
+    "memory:memory/2026-04-27.md:291:328": {
+      "key": "memory:memory/2026-04-27.md:291:328",
+      "path": "memory/2026-04-27.md",
+      "startLine": 291,
+      "endLine": 328,
+      "source": "memory",
+      "snippet": "- 77 → 87 repos (+10) - All with descriptions, READMEs, and LICENSE files - Fleet index updated at cocapn.github.io ### Research - Trending repo analysis (Evolver GEP, GenericAgent, OpenSpace, Hermes Agent, Claude Code Memory) - Competitive landscape tiles filed - Research supplement document written ### PLATO Growth - Started: 7,967 tiles, 590 rooms - Ended: 8,730+ tiles, 910+ rooms - Delta: +763 tiles, +320 rooms - Provenance chain: 763 entries ## Day Shift (14:12-23:13 UTC) ### PLATO-FIRST Protocol Established - Casey demanded context be stored in PLATO, not files - **PLATO-FIRST.md** created as fleet pillar — non-negotiable rule - MEMORY.md shrunk from 116 → 44 lines (PLATO pointer o",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7518212740489729,
+      "maxScore": 0.7518212740489729,
+      "firstRecalledAt": "2026-04-28T16:27:47.766Z",
+      "lastRecalledAt": "2026-04-28T16:27:47.766Z",
+      "queryHashes": [
+        "b0e02b503353"
+      ],
+      "recallDays": [
+        "2026-04-28"
+      ],
+      "conceptTags": [
+        "cocapn.github.io",
+        "12-23",
+        "plato-first",
+        "plato-first.md",
+        "non-negotiable",
+        "memory.md",
+        "repos",
+        "all"
+      ]
+    },
+    "memory:memory/2026-04-28.md:49:78": {
+      "key": "memory:memory/2026-04-28.md:49:78",
+      "path": "memory/2026-04-28.md",
+      "startLine": 49,
+      "endLine": 78,
+      "source": "memory",
+      "snippet": "- plato-i2i: 0.1.0 failed → 0.1.1 worked ### Services Status - All 8 UP: keeper:8900, agent-api:8901, holodeck:7778, seed-mcp:9438, plato:8847, mud:7777, conduwuit:6167, bridge:6168 - Rate attention: all STABLE, no CRITICAL or HIGH ### Still TODO - Fill remaining stub repos: plato-cli (2KB), plato-dcs (4KB — has base code) - More npm twins for remaining PyPI packages without JS counterparts - PLATO tile quality push — architectural insights - Matrix two-way comms still blocked (FM, JC1, CCC need heartbeat polling) - After May 1: re-enable GitHub Actions ## Continued Build Sprint (05:45–06:15 UTC) ### Major Milestones - **83 total published packages**: 35 PyPI + 37 npm + 11 crates - **coc",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.4826077203245835,
+      "maxScore": 0.756863065342847,
+      "firstRecalledAt": "2026-04-28T16:27:47.766Z",
+      "lastRecalledAt": "2026-04-28T16:27:52.498Z",
+      "queryHashes": [
+        "b0e02b503353",
+        "0972f5cc0d86"
+      ],
+      "recallDays": [
+        "2026-04-28"
+      ],
+      "conceptTags": [
+        "plato-i2i",
+        "0.1.0",
+        "0.1.1",
+        "agent-api",
+        "seed-mcp",
+        "plato-cli",
+        "plato-dcs",
+        "two-way"
+      ]
+    },
+    "memory:memory/2026-04-27.md:244:272": {
+      "key": "memory:memory/2026-04-27.md:244:272",
+      "path": "memory/2026-04-27.md",
+      "startLine": 244,
+      "endLine": 272,
+      "source": "memory",
+      "snippet": "- superinstance-page2: 15/15 (Laman rigidity, holonomy consensus, Pythagorean angles, PLATO pipeline, PurplePincher, ZeroClaw, tide-pool, etc) ### Wave 8 - lucineer-page4: 20/20 (plato-harbor, plato-forge, plato-dreamcycle, plato-chess-dojo, vessel-bridge/tuner/spec, zero-knowledge/trust, zeroclaw, voxel-logic, fleet-benchmarks, etc) ### Wave 9 - lucineer-page5: 15/15 (self-evolve-ai, ues-protocol, resonant-consensus, stigmergy, thor-rom, sovereign-identity, swarm-intuition, etc) ### Wave 10 - superinstance-page3: 15/15 (smartcrdt-fleet-sync, shell-trap, quartermaster-gc, plato-tui, plato-tutor, plato-training-casino, plato-tiling, etc) ### Wave 11 - cocapn-deep: 5/5 (fleet-formation-pro",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7247390740764598,
+      "maxScore": 0.7247390740764598,
+      "firstRecalledAt": "2026-04-28T16:27:47.766Z",
+      "lastRecalledAt": "2026-04-28T16:27:47.766Z",
+      "queryHashes": [
+        "b0e02b503353"
+      ],
+      "recallDays": [
+        "2026-04-28"
+      ],
+      "conceptTags": [
+        "superinstance-page2",
+        "15/15",
+        "tide-pool",
+        "lucineer-page4",
+        "20/20",
+        "plato-harbor",
+        "plato-forge",
+        "plato-dreamcycle"
+      ]
+    },
+    "memory:memory/2026-04-27.md:266:300": {
+      "key": "memory:memory/2026-04-27.md:266:300",
+      "path": "memory/2026-04-27.md",
+      "startLine": 266,
+      "endLine": 300,
+      "source": "memory",
+      "snippet": "- flywheel-engine, deadband-protocol, tile-refiner, holodeck, court — need repos created - plato-dcs, plato-edge, plato-mythos, open-mythos-edge, plato-mythos-glue — repos created but source code not pushed ## Night Shift Final Tally (04:56–07:23 UTC, ~2.5 hours) ### 20 Subagent Waves - **Waves 1-4**: Scholar analysis of Lucineer + SuperInstance + cocapn repos (~55 tiles) - **Waves 5-6**: Constraint theory deep dive + service inventory tiles (~27 tiles) - **Waves 7-10**: Deeper catalog pages from both orgs (~65 tiles) - **Waves 11-15**: cocapn core, SuperInstance pages 5-7, Lucineer pages 6-7 (~67 tiles) - **Waves 16-19**: Combined deep catalog pages (~82 tiles) - **Wave 20**: Fleet index",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7232359168234732,
+      "maxScore": 0.7232359168234732,
+      "firstRecalledAt": "2026-04-28T16:27:47.766Z",
+      "lastRecalledAt": "2026-04-28T16:27:47.766Z",
+      "queryHashes": [
+        "b0e02b503353"
+      ],
+      "recallDays": [
+        "2026-04-28"
+      ],
+      "conceptTags": [
+        "flywheel-engine",
+        "deadband-protocol",
+        "tile-refiner",
+        "plato-dcs",
+        "plato-edge",
+        "plato-mythos",
+        "open-mythos-edge",
+        "plato-mythos-glue"
+      ]
+    },
+    "memory:memory/2026-04-25.md:153:174": {
+      "key": "memory:memory/2026-04-25.md:153:174",
+      "path": "memory/2026-04-25.md",
+      "startLine": 153,
+      "endLine": 174,
+      "source": "memory",
+      "snippet": "- Major dedup: 2,803 duplicate tiles removed from PLATO - PLATO: 9,100 → 6,297 unique tiles (30% was duplicates) - Quality re-score: 176 high-quality tiles (up from 82 post-dedup) - Added DELETE /room/<name>/dedup and DELETE /room/<name>/tile/<idx> endpoints to PLATO server - Fixed librarian bug (empty room returning list instead of int) ### Fleet Categorization - 724 non-fork repos categorized across 14 domains - 574 repos tagged with domain labels on GitHub - Fleet index generated as static HTML (docs/fleet-index.html) - Served on port 4051 ### New Services - Matrix Bridge v2 (monitors workspace changes, PLATO growth, beachcomb) - Fleet Index server (port 4051) - Beachcomb v3 (5-min loop",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8098539943577524,
+      "maxScore": 0.8098539943577524,
+      "firstRecalledAt": "2026-04-28T16:27:52.498Z",
+      "lastRecalledAt": "2026-04-28T16:27:52.498Z",
+      "queryHashes": [
+        "558da5b0b9ad"
+      ],
+      "recallDays": [
+        "2026-04-28"
+      ],
+      "conceptTags": [
+        "re-score",
+        "high-quality",
+        "post-dedup",
+        "non-fork",
+        "docs/fleet-index.html",
+        "5-min",
+        "major",
+        "dedup"
+      ]
+    },
+    "memory:memory/2026-04-27.md:105:124": {
+      "key": "memory:memory/2026-04-27.md:105:124",
+      "path": "memory/2026-04-27.md",
+      "startLine": 105,
+      "endLine": 124,
+      "source": "memory",
+      "snippet": "- plato-tile-spec v0.2.1 published — fixed broken __init__.py imports (TileDomain/TileSpecValidator → TileSpec/SpecRegistry) - Verified importable after force-reinstall ### Fleet Index (cocapn.github.io) - Updated stats: 77 repos, 24+6=30 PyPI packages, 7 crates, 4 vessels - Added Fleet Vessels section - Added new package cards ### Discovered New Packages - 6 additional PyPI packages under SuperInstance: cocapn-training, cocapn-telemetry, cocapn-pipeline, cocapn-identity, cocapn-protocol, cocapn-benchmark - **Fleet total: 30 PyPI + 7 crates.io = 37 published packages** - cocapn-dashboard live at superinstance.github.io/cocapn-dashboard/ (bioluminescent fleet dashboard) ### Matrix Replies",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7149812598351045,
+      "maxScore": 0.7149812598351045,
+      "firstRecalledAt": "2026-04-28T16:27:52.498Z",
+      "lastRecalledAt": "2026-04-28T16:27:52.498Z",
+      "queryHashes": [
+        "558da5b0b9ad"
+      ],
+      "recallDays": [
+        "2026-04-28"
+      ],
+      "conceptTags": [
+        "plato-tile-spec",
+        "v0.2.1",
+        "tiledomain/tilespecvalidator",
+        "tilespec/specregistry",
+        "force-reinstall",
+        "cocapn.github.io",
+        "cocapn-training",
+        "cocapn-telemetry"
+      ]
+    },
+    "memory:memory/2026-04-27.md:124:143": {
+      "key": "memory:memory/2026-04-27.md:124:143",
+      "path": "memory/2026-04-27.md",
+      "startLine": 124,
+      "endLine": 143,
+      "source": "memory",
+      "snippet": "- Casey asked where bottles go on GitHub. The answer: **GitHub Issues on the target agent's vessel repo.** Oracle1 → JC1 bottles go to `Lucineer/JetsonClaw1-vessel/issues`. Oracle1 → FM bottles go to `SuperInstance/forgemaster/issues` or `from-fleet/` directory. FM sends bottles via `SuperInstance/forgemaster/for-fleet/`. The bottle protocol needs consistency — different agents use different channels (issues vs files vs Telegram). - FM's snap_final.cu was sent via Telegram to Casey, NOT through git. JC1 couldn't find it because it wasn't in any repo. Bottles should go through git (the protocol we built), not chat. ## JC1 Access (01:47 UTC) - Casey gave JC1 a PAT for SuperInstance org — JC1",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.700918877322432,
+      "maxScore": 0.700918877322432,
+      "firstRecalledAt": "2026-04-28T16:27:52.498Z",
+      "lastRecalledAt": "2026-04-28T16:27:52.498Z",
+      "queryHashes": [
+        "558da5b0b9ad"
+      ],
+      "recallDays": [
+        "2026-04-28"
+      ],
+      "conceptTags": [
+        "superinstance/forgemaster/issues",
+        "from-fleet",
+        "snap-final.cu",
+        "casey",
+        "asked",
+        "where",
+        "bottles",
+        "github"
+      ]
+    },
+    "memory:memory/2026-04-25.md:48:82": {
+      "key": "memory:memory/2026-04-25.md:48:82",
+      "path": "memory/2026-04-25.md",
+      "startLine": 48,
+      "endLine": 82,
+      "source": "memory",
+      "snippet": "- **The crew fishes without the captain.** FM 8 days solo, JC1 deep in CUDA optimization. Oracle1 needs to match that standard. # 2026-04-25 — Session 2 (05:16-05:36 UTC) ## Status Check - Casey asked \"what's next\" — I read TODO.md + NEXT-ACTION.md - P0 git commit done (service guard log + research submodule pointer, pushed 208702f) - **Beachcomb v2 NOT actually running** — sweep config exists (oracle1-sweeps.json) but no background process. Config-only, not real. - TODO.md P0 all checked off except the git push (now done) ## Remaining P1 1. Build+start beachcomb v2 (make sweeps actually run) 2. Populate 6 unpublished PyPI packages (FM has tokens) 3. Ten Forward session (Seed-2.0-mini cre",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7508721943925999,
+      "maxScore": 0.7508721943925999,
+      "firstRecalledAt": "2026-04-28T16:27:52.498Z",
+      "lastRecalledAt": "2026-04-28T16:27:52.498Z",
+      "queryHashes": [
+        "0972f5cc0d86"
+      ],
+      "recallDays": [
+        "2026-04-28"
+      ],
+      "conceptTags": [
+        "16-05",
+        "todo.md",
+        "next-action.md",
+        "oracle1-sweeps.json",
+        "config-only",
+        "seed-2.0-mini",
+        "the",
+        "crew"
       ]
     }
   }

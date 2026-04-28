@@ -2015,3 +2015,9 @@ After reviewing the research outputs from the 12 autonomous agents, several cros
   Preview: ## Top 3 Cross-Cutting Patterns
 
 1. **Distributed Systems**: Many topics, including `confidence_proofs` (zc-healer), `deadband_protocol` (zc-echo), `fleet_orchestration` (zc-weaver), and `fleet_securi...
+[2026-04-28T16:30:02.079569+00:00] Fleet synthesizer starting...
+  Loaded 240 entries from 12 agents
+  Synthesis saved to /home/ubuntu/.openclaw/workspace/research/fleet-synthesis/synthesis-20260428-1630.md
+  Preview: **1. Top 3 cross-cutting patterns:**
+
+* **Decentralization and Distribution**: Many agents (zc-healer, zc-weaver, zc-warden) are exploring decentralized and distributed approaches to various problems,...
