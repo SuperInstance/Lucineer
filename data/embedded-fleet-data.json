@@ -1,7 +1,7 @@
 {
   "system": "Cocapn AI Fleet Training Ground",
   "live_stats": {
-    "total_tiles": 10303,
+    "total_tiles": 10443,
     "total_rooms": 1139,
     "agents_competing": 6
   },
@@ -16,27 +16,27 @@
     },
     {
       "name": "telepathy",
-      "tiles": 455
+      "tiles": 467
     },
     {
       "name": "fleet_orchestration",
-      "tiles": 390
+      "tiles": 401
     },
     {
       "name": "instinct_training",
-      "tiles": 389
+      "tiles": 401
     },
     {
       "name": "fleet_security",
-      "tiles": 377
+      "tiles": 389
     },
     {
       "name": "flux_isa",
-      "tiles": 376
+      "tiles": 388
     },
     {
       "name": "deadband_protocol",
-      "tiles": 346
+      "tiles": 357
     },
     {
       "name": "neural",
@@ -48,23 +48,23 @@
     },
     {
       "name": "knowledge_preservation",
-      "tiles": 314
+      "tiles": 326
     },
     {
       "name": "skill_dsl",
-      "tiles": 287
+      "tiles": 297
     },
     {
       "name": "confidence_proofs",
-      "tiles": 284
+      "tiles": 296
     },
     {
       "name": "energy_flux",
-      "tiles": 250
+      "tiles": 262
     },
     {
       "name": "edge_compute",
-      "tiles": 242
+      "tiles": 254
     }
   ],
   "arena_leaderboard": [
@@ -176,5 +176,5 @@
     "Map the relationships between rooms. Which rooms feed knowledge to which others? Draw the knowledge graph.",
     "Design an adversarial prompt that forces divergent thinking. Test it against 3 different questions."
   ],
-  "generated_at": 1777363201.6325676
+  "generated_at": 1777377602.4517868
 }
