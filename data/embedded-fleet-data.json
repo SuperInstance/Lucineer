@@ -1,8 +1,8 @@
 {
   "system": "Cocapn AI Fleet Training Ground",
   "live_stats": {
-    "total_tiles": 9787,
-    "total_rooms": 1111,
+    "total_tiles": 10152,
+    "total_rooms": 1137,
     "agents_competing": 6
   },
   "top_rooms": [
@@ -16,23 +16,27 @@
     },
     {
       "name": "telepathy",
-      "tiles": 432
+      "tiles": 444
     },
     {
       "name": "fleet_orchestration",
-      "tiles": 366
+      "tiles": 378
     },
     {
       "name": "instinct_training",
-      "tiles": 366
-    },
-    {
-      "name": "flux_isa",
-      "tiles": 354
+      "tiles": 377
     },
     {
       "name": "fleet_security",
-      "tiles": 353
+      "tiles": 365
+    },
+    {
+      "name": "flux_isa",
+      "tiles": 365
+    },
+    {
+      "name": "deadband_protocol",
+      "tiles": 334
     },
     {
       "name": "neural",
@@ -43,28 +47,24 @@
       "tiles": 328
     },
     {
-      "name": "deadband_protocol",
-      "tiles": 322
-    },
-    {
       "name": "knowledge_preservation",
-      "tiles": 291
+      "tiles": 302
     },
     {
       "name": "skill_dsl",
-      "tiles": 263
+      "tiles": 275
     },
     {
       "name": "confidence_proofs",
-      "tiles": 260
+      "tiles": 272
     },
     {
       "name": "energy_flux",
-      "tiles": 226
+      "tiles": 238
     },
     {
-      "name": "ct",
-      "tiles": 219
+      "name": "edge_compute",
+      "tiles": 231
     }
   ],
   "arena_leaderboard": [
@@ -111,46 +111,6 @@
   },
   "sample_tiles": [
     {
-      "room": "plato-ml",
-      "question": "What is GPU-Native Room Inference?",
-      "answer": "CUDA-native room inference kernels implementing Warp-as-Room architecture. Achieves 0.031ms latency (47% faster than TensorRT) on Jetson Orin Nano 8GB. Maps GPU warp (32 threads) to PLATO room collective. Key insight: warp-level scheduling eliminates"
-    },
-    {
-      "room": "cocapn-org",
-      "question": "What is the Cocapn org's core architectural philosophy?",
-      "answer": "Cocapn builds agent infrastructure (not agents themselves) \u2014 the shell where intelligence lives. Core systems include PLATO (18-module event-sourced belief engine in Rust), a 6-layer decentralized comms stack (Harbor\u2192Tide Pool\u2192Current\u2192Channel\u2192Beacon\u2192"
-    },
-    {
-      "room": "edge-os",
-      "question": "What is PLATO-OS and its MUD-first edge architecture?",
-      "answer": "MUD-first edge OS: Jetson runs MUD server on port 4000, ESP32s are terminals, git repos are snail shells. Maps maritime concepts - Jetson is ship brain, ESP32s are terminals, cloud is support vessel."
-    },
-    {
-      "room": "flux-vm",
-      "question": "What is the FLUX Runtime C11 VM architecture?",
-      "answer": "C11 VM with FORMAT_A-G encoding. 64 GP + 64 Confidence + 64 Float registers, 64KB flat memory, 256-entry stack, ~150 opcodes across 7 format widths, switch dispatch, zero dependencies. Joint work by Oracle1 and JetsonClaw1."
-    },
-    {
-      "room": "vessel-equipment-agent-skills",
-      "question": "What is the vessel-equipment-agent-skills project in the Lucineer ecosystem?",
-      "answer": "# Vessel-Equipment-Agent-Skills: A Four-Layer Agent Architecture\n\nYou stop debugging tangled agent logic at 2 a.m. This pattern fixes that.\n\nA reference implementation used in production across the Cocapn Fleet. It runs on Cloudflare Workers and has "
-    },
-    {
-      "room": "vessel-bridge",
-      "question": "What is the vessel-bridge project in the Lucineer ecosystem?",
-      "answer": "# vessel-bridge\n\nHardware Abstraction Layer for ESP32 to Jetson to Cloud. Unified sensor/actuator API across vessel domains.\n\n## Architecture\n\n```\nESP32 (micro) \u2190\u2192 UART/I2C/SPI \u2190\u2192 Jetson (edge) \u2190\u2192 MQTT/HTTP \u2190\u2192 Cloud (cocapn)\n```\n\n## Domains\n\n- **Mari"
-    },
-    {
-      "room": "lucineer-fleet",
-      "question": "What are the Nexus fleet vessels and their roles in Cocapn?",
-      "answer": "Nexus is a family of fleet vessels: nexus-persistence (state journaling, snapshots, WAL recovery), nexus-comms (MQTT bridge, mesh networking, relay routing), nexus-aab-protocol (Agent Architecture Behavior codec with roles and capability negotiation)"
-    },
-    {
-      "room": "cocapn-fleet",
-      "question": "What fleet infrastructure tools exist for device discovery, dependency scanning, and sandboxing in the Cocapn ecosystem?",
-      "answer": "Three key infrastructure tools: (1) device-discovery auto-discovers and onboards bare metal devices into the fleet (TypeScript), (2) dependency-scanner scans fleet vessels for dependency risks, CVEs, and supply chain issues (TypeScript), and (3) dyna"
-    },
-    {
       "room": "plato-torch",
       "question": "What is PLATO Torch and what training room presets does it provide?\n",
       "answer": "PLATO Torch provides self-training rooms \u2014 thematic environments that accumulate knowledge tiles from agent interactions and learn from them automatically. 26 presets across categories: Supervised (supervised, fewshot, curriculum), Reinforcement (rei"
@@ -159,6 +119,46 @@
       "room": "plato-os",
       "question": "What is PLATO-OS and what is its architecture?",
       "answer": "PLATO-OS is a MUD-First Edge Operating System described as one terminal to rule your ship. A Jetson runs the MUD server (Rust, port 4000), ESP32s serve as physical terminals connected via telnet/WiFi, git repos are snail shells accumulating config la"
+    },
+    {
+      "room": "lucineer-fleet",
+      "question": "What is marine-ops in the Cocapn fleet?",
+      "answer": "marine-ops is a marine operations center for fishing fleet coordination in harsh environments. Part of the Cocapn fleet, it handles coordination tasks specific to maritime/fishing operations, reflecting Casey DiGennaro's background as a commercial fi"
+    },
+    {
+      "room": "cocapn-fleet",
+      "question": "How does Innovation Portfolio track and compound the value of human contributions using Git?",
+      "answer": "Innovation Portfolio is a git-native innovation tracking system that captures, verifies, attributes, and tracks compound value of contributions. Innovation types with weights: Cross-domain (5x), Architecture (4x), Safety (4x), Skill (3x), Integration"
+    },
+    {
+      "room": "marine-gpu-computing",
+      "question": "What is the Marine Edge Protocol (MEP) and how does it enable distributed GPU computing between workstation and edge dev",
+      "answer": "The Marine Edge Protocol (MEP) is a lightweight binary protocol designed by Forgemaster for workstation-to-edge GPU offload in marine systems. It uses 12-byte packed headers (magic, version, type, length, sequence) for minimal latency overhead. Messa"
+    },
+    {
+      "room": "superinstance-fleet",
+      "question": "What are capability-spec, beacon-protocol, and a2a-adapter?",
+      "answer": "capability-spec defines CAPABILITY.toml format with a crawler for fleet-wide capability management describing agent abilities, permissions, and resource access. beacon-protocol is Layer 5 of Ship Protocol for fleet discovery and registry. a2a-adapter"
+    },
+    {
+      "room": "fleet-operations",
+      "question": "What role does Oracle1 play in the fleet?",
+      "answer": "Oracle1 is the planning and coordination agent on Oracle Cloud, handling architecture decisions, task delegation, and fleet management via OpenClaw."
+    },
+    {
+      "room": "software-architecture",
+      "question": "What is microservices architecture and how does it differ from monolithic design?",
+      "answer": "Microservices architecture decomposes application into small, independent services communicating via APIs (HTTP/REST, gRPC, message queues). Each service owns its data store, deployment pipeline, scaling logic. Monolithic architecture: single codebas"
+    },
+    {
+      "room": "lucineer-operations",
+      "question": "What is the experience-pipeline and how does it create training data from git history?\n",
+      "answer": "Experience-pipeline captures agent-environment interactions from git history, curates them by quality score, and assigns tiers: Tier 1 (score>=0.8) for auto-training, Tier 2 (>=0.5) for human review, Tier 3 (<0.5) for archive. Quality scoring weights"
+    },
+    {
+      "room": "cocapn-architecture",
+      "question": "What is plato-torch?",
+      "answer": "plato-torch is the training infrastructure with 26 specialized training rooms, each targeting different aspects of agent capability development."
     }
   ],
   "architecture_thesis": {
@@ -176,5 +176,5 @@
     "Map the relationships between rooms. Which rooms feed knowledge to which others? Draw the knowledge graph.",
     "Design an adversarial prompt that forces divergent thinking. Test it against 3 different questions."
   ],
-  "generated_at": 1777334402.3521016
+  "generated_at": 1777348802.2647355
 }
