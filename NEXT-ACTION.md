@@ -17,9 +17,9 @@
 - ✅ cocapn.github.io: counts updated
 
 ### Next
-- Build npm twins for new PyPI packages
-- Run Scholar on remaining repos
+- ~~Build npm twins for new PyPI packages~~ ✅ All 22 have npm twins
 - PLATO tile quality pass
+- Run Scholar on remaining repos
 
 ### Blocked (needs Casey)
 - **Matrix two-way comms**: FM/JC1/CCC heartbeat config
