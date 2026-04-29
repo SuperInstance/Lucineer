@@ -179,6 +179,65 @@ class RoomManager:
         self._save_room(room_name)
         return {"status": "deduped", "room": room_name, "removed": dupes, "remaining": len(unique)}
     
+    def reclassify_tile(self, source_room: str, tile_hash: str, target_room: str) -> dict:
+        """Move a tile from one room to another by hash."""
+        src = self.rooms.get(source_room)
+        if not src:
+            return {"error": f"Source room '{source_room}' not found"}
+        
+        # Find tile by hash
+        tile = None
+        tile_idx = None
+        for i, t in enumerate(src.get("tiles", [])):
+            if t.get("_hash") == tile_hash:
+                tile = t
+                tile_idx = i
+                break
+        
+        if tile is None:
+            return {"error": f"Tile {tile_hash[:12]} not found in {source_room}"}
+        
+        # Ensure target room exists
+        if target_room not in self.rooms:
+            self.rooms[target_room] = {
+                "tiles": [],
+                "tile_count": 0,
+                "created": datetime.now(timezone.utc).isoformat(),
+            }
+        
+        # Update tile domain
+        tile["domain"] = target_room
+        
+        # Add to target room
+        self.add_tile(target_room, tile)
+        
+        # Remove from source room
+        src["tiles"].pop(tile_idx)
+        src["tile_count"] = len(src["tiles"])
+        self._save_room(source_room)
+        
+        return {
+            "status": "reclassified",
+            "tile_hash": tile_hash,
+            "from": source_room,
+            "to": target_room,
+            "question": tile.get("question", "")[:80],
+            "source_remaining": src["tile_count"],
+            "target_count": self.rooms[target_room]["tile_count"],
+        }
+    
+    def batch_reclassify(self, source_room: str, reclassifications: list) -> dict:
+        """Move multiple tiles at once. Each item: {"hash": "...", "target": "room-name"}"""
+        results = {"moved": 0, "errors": []}
+        for item in reclassifications:
+            r = self.reclassify_tile(source_room, item["hash"], item["target"])
+            if "error" in r:
+                results["errors"].append(r["error"])
+            else:
+                results["moved"] += 1
+        results["source_remaining"] = self.rooms.get(source_room, {}).get("tile_count", 0)
+        return results
+
     def list_rooms(self) -> dict:
         return {name: {"tile_count": r["tile_count"], "created": r["created"]} 
                 for name, r in self.rooms.items()}
@@ -463,6 +522,12 @@ class PlatoHandler(BaseHTTPRequestHandler):
             self._handle_submit_batch()
         elif self.path == "/reinforce":
             self._handle_reinforce()
+        elif self.path == "/reclassify":
+            body = self._read_body()
+            source = body.get("source", "general")
+            items = body.get("tiles", [])
+            result = rooms.batch_reclassify(source, items)
+            self._send_json(result)
         elif self.path.startswith("/workspace/"):
             self._handle_workspace_update()
         elif self.path.startswith("/train/"):
