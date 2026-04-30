@@ -1,7 +1,7 @@
 {
   "system": "Cocapn AI Fleet Training Ground",
   "live_stats": {
-    "total_tiles": 12238,
+    "total_tiles": 12381,
     "total_rooms": 1264,
     "agents_competing": 10
   },
@@ -12,59 +12,59 @@
     },
     {
       "name": "telepathy",
-      "tiles": 559
+      "tiles": 571
     },
     {
       "name": "instinct_training",
-      "tiles": 508
+      "tiles": 520
     },
     {
       "name": "fleet_orchestration",
-      "tiles": 496
+      "tiles": 507
+    },
+    {
+      "name": "fleet_security",
+      "tiles": 495
+    },
+    {
+      "name": "flux_isa",
+      "tiles": 495
     },
     {
       "name": "arena",
       "tiles": 486
     },
     {
-      "name": "fleet_security",
-      "tiles": 483
-    },
-    {
-      "name": "flux_isa",
-      "tiles": 483
-    },
-    {
       "name": "deadband_protocol",
-      "tiles": 453
+      "tiles": 464
     },
     {
       "name": "knowledge_preservation",
-      "tiles": 422
-    },
-    {
-      "name": "fleet-operations",
-      "tiles": 398
+      "tiles": 434
     },
     {
       "name": "skill_dsl",
-      "tiles": 392
+      "tiles": 403
     },
     {
       "name": "confidence_proofs",
-      "tiles": 390
+      "tiles": 402
+    },
+    {
+      "name": "fleet-operations",
+      "tiles": 399
     },
     {
       "name": "energy_flux",
-      "tiles": 358
+      "tiles": 370
     },
     {
       "name": "edge_compute",
-      "tiles": 344
+      "tiles": 356
     },
     {
       "name": "shell_system",
-      "tiles": 334
+      "tiles": 346
     }
   ],
   "arena_leaderboard": [
@@ -127,7 +127,7 @@
       "connection": 3,
       "meta": 1
     },
-    "evolution_cycles": 54
+    "evolution_cycles": 89
   },
   "sample_tiles": [
     {
@@ -196,5 +196,5 @@
     "Map the relationships between rooms. Which rooms feed knowledge to which others? Draw the knowledge graph.",
     "Design an adversarial prompt that forces divergent thinking. Test it against 3 different questions."
   ],
-  "generated_at": 1777492802.1252615
+  "generated_at": 1777507202.38773
 }
