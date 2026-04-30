@@ -1,70 +1,70 @@
 {
   "system": "Cocapn AI Fleet Training Ground",
   "live_stats": {
-    "total_tiles": 12521,
-    "total_rooms": 1264,
+    "total_tiles": 13111,
+    "total_rooms": 1273,
     "agents_competing": 10
   },
   "top_rooms": [
+    {
+      "name": "telepathy",
+      "tiles": 628
+    },
     {
       "name": "jc1_context",
       "tiles": 589
     },
     {
-      "name": "telepathy",
-      "tiles": 582
-    },
-    {
       "name": "instinct_training",
-      "tiles": 532
+      "tiles": 578
     },
     {
       "name": "fleet_orchestration",
-      "tiles": 519
+      "tiles": 566
     },
     {
       "name": "fleet_security",
-      "tiles": 507
+      "tiles": 552
     },
     {
       "name": "flux_isa",
-      "tiles": 506
+      "tiles": 551
+    },
+    {
+      "name": "deadband_protocol",
+      "tiles": 523
+    },
+    {
+      "name": "knowledge_preservation",
+      "tiles": 492
     },
     {
       "name": "arena",
       "tiles": 486
     },
     {
-      "name": "deadband_protocol",
-      "tiles": 476
-    },
-    {
-      "name": "knowledge_preservation",
-      "tiles": 446
-    },
-    {
       "name": "skill_dsl",
-      "tiles": 415
+      "tiles": 461
     },
     {
       "name": "confidence_proofs",
-      "tiles": 414
+      "tiles": 459
+    },
+    {
+      "name": "energy_flux",
+      "tiles": 427
+    },
+    {
+      "name": "edge_compute",
+      "tiles": 411
+    },
+    {
+      "name": "shell_system",
+      "tiles": 403
     },
     {
       "name": "fleet-operations",
       "tiles": 399
-    },
-    {
-      "name": "energy_flux",
-      "tiles": 382
-    },
-    {
-      "name": "edge_compute",
-      "tiles": 367
-    },
-    {
-      "name": "shell_system",
-      "tiles": 357
     }
   ],
   "arena_leaderboard": [
@@ -127,9 +127,14 @@
       "connection": 3,
       "meta": 1
     },
-    "evolution_cycles": 134
+    "evolution_cycles": 290
   },
   "sample_tiles": [
+    {
+      "room": "quantization-bay",
+      "question": "How does mixed-precision quantization improve edge deployment in fleet architectures?",
+      "answer": "Mixed-precision quantization assigns different bit-widths to different layers or components based on their sensitivity to precision reduction, achieving a better accuracy-compression trade-off than uniform quantization. Layers that are critical for o"
+    },
     {
       "room": "plato-mythos",
       "question": "What is Plato-Mythos and how does it map PLATO concepts to ML?",
@@ -174,11 +179,6 @@
       "room": "gap-5-spacetime-plato",
       "question": "What is the architecture for Spacetime PLATO \u2014 Temporal + Spatial Reasoning Unified?",
       "answer": "**Spacetime PLATO Architecture**\n\n### 1. **Spatial Tiles**\n\nA spatial tile is a 3D voxel (x, y, z) with a fixed size (e.g., 1 meter). We represent it as a JSON object:\n```json\n{\n  \"id\": \"spatial_tile_id\",\n  \"location\": {\n    \"x\": 10.0,\n    \"y\": 20.0,"
-    },
-    {
-      "room": "agent-operations",
-      "question": "What are the key principles and applications of agent operations?",
-      "answer": "This domain covers agent operations within the fleet's knowledge architecture. It connects to the broader Cocapn fleet through shared infrastructure: PLATO tiles for knowledge crystallization, the Arena for competitive evaluation, and the grammar eng"
     }
   ],
   "architecture_thesis": {
@@ -196,5 +196,5 @@
     "Map the relationships between rooms. Which rooms feed knowledge to which others? Draw the knowledge graph.",
     "Design an adversarial prompt that forces divergent thinking. Test it against 3 different questions."
   ],
-  "generated_at": 1777521602.218383
+  "generated_at": 1777579202.1817608
 }
